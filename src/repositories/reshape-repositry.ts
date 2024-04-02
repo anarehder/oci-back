@@ -6,7 +6,7 @@ export async function getReshapeRepository() {
     SELECT * 
     FROM TesteAccerte3
     WHERE DATE(Time) = CURDATE() - INTERVAL 0 DAY
-    ORDER BY Time DESC
+    ORDER BY Status ASC
     `);
 
     return response[0];
