@@ -4,6 +4,7 @@ import httpStatus from "http-status";
 
 export async function getReshapeController(req: Request, res: Response) {
     try{
+        const teste = 'o';
         const response = await getReshapeService();
         return res.status(httpStatus.OK).send(response);
     } catch(error) {
