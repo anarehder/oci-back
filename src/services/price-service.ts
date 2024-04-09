@@ -1,4 +1,4 @@
-import { getPriceRepository, getReshapeRepository } from "@/repositories";
+import { getPriceRepository } from "@/repositories";
 
 export async function getPriceService() {
     const response = await getPriceRepository();
