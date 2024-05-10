@@ -1,4 +1,4 @@
-import { getContractsController } from "@/controllers";
+import { getContractsController } from "../controllers";
 import { Router } from "express";
 
 const contractRouter = Router();

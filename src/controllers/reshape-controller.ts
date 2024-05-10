@@ -1,4 +1,4 @@
-import { getReshapeService } from "@/services";
+import { getReshapeService } from "../services";
 import { Request, Response } from "express";
 import httpStatus from "http-status";
 

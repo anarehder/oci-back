@@ -1,4 +1,4 @@
-import { getContractsService } from "@/services";
+import { getContractsService } from "../services";
 import { Request, Response } from "express";
 import httpStatus from "http-status";
 

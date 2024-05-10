@@ -1,11 +1,11 @@
-import { db } from "@/config/database";
+import { db } from "../config/database";
 import { RowDataPacket } from "mysql2";
 
 export async function getReshapeRepository() {
     const response = await db.query<RowDataPacket[]>(`
     SELECT * 
-    FROM TesteAccerte3
-    WHERE DATE(Time) = CURDATE() - INTERVAL 0 DAY
+    FROM ACCERTETECNOLOGIA
+    WHERE DATE(Day) > (CURDATE() - INTERVAL 2 DAY)
     ORDER BY Status ASC
     `);
 
@@ -13,6 +13,24 @@ export async function getReshapeRepository() {
     
 }
 
+export async function getLast30ReshapeRepository(){
+    const response = await db.query<RowDataPacket[]>(`
+    SELECT 
+        group_concat(Distinct Name) AS OCID,
+        OCID,
+        MAX(MaxCPU) AS MaxCPU,
+        MAX(MaxMEM) AS MaxMEM,
+        ROUND(AVG(MeanMEM), 2) AS MeanMEM,    
+        ROUND(AVG(MeanCPU), 2) AS MeanCPU
+    FROM 
+        ACCERTETECNOLOGIA
+    WHERE 
+        DATE(Day) > (CURDATE() - INTERVAL 30 DAY)
+    GROUP BY 
+        OCID
+    `);
+    return response[0];
+}
 
 export async function getResha2peRepository(){
     const response = await db.query<RowDataPacket[]>(`

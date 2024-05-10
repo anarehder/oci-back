@@ -1,4 +1,4 @@
-import { getContractsRespository } from "@/repositories";
+import { getContractsRespository } from "../repositories";
 
 export async function getContractsService() {
     const response = await getContractsRespository();
