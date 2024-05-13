@@ -13,4 +13,15 @@ export type User = {
 
 export type NewUserInput = Omit<User, 'id'>;
 
-export type LoginParams = Omit<NewUserInput, 'name'>;
+export type LoginParams = {
+    username: string;
+    password: string;
+}
+
+export type UserLogin = {
+    id: number;
+    username: string;
+    isAdmin: boolean;
+    client: string;
+    token: string;
+}

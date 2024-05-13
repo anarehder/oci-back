@@ -1,3 +1,4 @@
+import { User } from "@/protocols";
 import { db } from "../config/database";
 import { RowDataPacket } from "mysql2";
 
@@ -9,13 +10,38 @@ export async function createUserRepository(username: string, password: string, i
     return response[0];
 }
 
-export async function getUserByUsernameRepository(username: string) {
+export async function createUserSessionRepository(userId: number, token: string ) {
     const response = await db.query<RowDataPacket[]>(`
+        INSERT INTO Session (userId, token)
+        VALUES (?, ?);
+    `, [userId, token]);
+    return response[0];
+}
+
+export async function deleteUserSessionRepository(token: string ) {
+    const response = await db.query<RowDataPacket[]>(`
+        DELETE FROM Session
+        WHERE token = ?;
+    `, [token]);
+    return response[0];
+}
+
+
+export async function getUserByUsernameRepository(username: string) {
+    const [rows] = await db.query<RowDataPacket[]>(`
         SELECT * FROM User
         WHERE username = ?;
     `, [username]);
 
-    return response[0];
+    const user: User[] = rows.map(row => ({
+        id: row.id,
+        username: row.username,
+        password: row.password,
+        isAdmin: row.isAdmin,
+        client: row.client
+    }));
+
+    return user[0];
 }
 
 export async function getClientByClientNameRepository(client: string) {
