@@ -3,7 +3,7 @@ import express, { Express } from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import { connectDb } from "./config/database";
-import { contractRouter, priceRouter, reshapeRouter } from "./routers";
+import { contractRouter, priceRouter, reshapeRouter, userRouter } from "./routers";
 
 dotenv.config()
 
@@ -14,7 +14,8 @@ app
   .get("/health", (_req, res) => res.send("OK OCI!"))
   .use("/contracts", contractRouter)
   .use("/price", priceRouter)
-  .use("/reshape", reshapeRouter);
+  .use("/reshape", reshapeRouter)
+  .use("/user", userRouter);
 
 export function init(): Promise<Express> {
   connectDb();
