@@ -1,19 +1,19 @@
 import { db } from "../config/database";
 import { RowDataPacket } from "mysql2";
 
-export async function getReshapeRepository() {
+export async function getReshapeRepository(tenancy: string) {
     const response = await db.query<RowDataPacket[]>(`
     SELECT * 
-    FROM ACCERTETECNOLOGIA
+    FROM ${tenancy}
     WHERE DATE(Day) > (CURDATE() - INTERVAL 2 DAY)
     ORDER BY Status ASC
-    `);
+    ;`);
 
     return response[0];
     
 }
 
-export async function getLast30ReshapeRepository(){
+export async function getLast30ReshapeRepository(tenancy: string){
     const response = await db.query<RowDataPacket[]>(`
     SELECT 
         group_concat(Distinct Name) AS OCID,
@@ -23,12 +23,12 @@ export async function getLast30ReshapeRepository(){
         ROUND(AVG(MeanMEM), 2) AS MeanMEM,    
         ROUND(AVG(MeanCPU), 2) AS MeanCPU
     FROM 
-        ACCERTETECNOLOGIA
+        ${tenancy}
     WHERE 
         DATE(Day) > (CURDATE() - INTERVAL 30 DAY)
     GROUP BY 
         OCID
-    `);
+    ;`);
     return response[0];
 }
 

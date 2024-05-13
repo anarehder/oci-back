@@ -3,9 +3,10 @@ import { Request, Response } from "express";
 import httpStatus from "http-status";
 
 export async function getReshapeController(req: Request, res: Response) {
+    const userToken = req.headers.authorization;
+    const { tenancy } = req.body;
     try{
-        const teste = 'o';
-        const response = await getReshapeService();
+        const response = await getReshapeService(userToken, tenancy);
         return res.status(httpStatus.OK).send(response);
     } catch(error) {
         return res.status(httpStatus.BAD_REQUEST).send(error);

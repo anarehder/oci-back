@@ -33,3 +33,7 @@ export type UserLogin = {
     client: string;
     token: string;
 }
+
+export type ReshapeInput = {
+    tenancy: string;
+}

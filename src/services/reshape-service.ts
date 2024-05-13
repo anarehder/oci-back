@@ -1,8 +1,21 @@
-import { getLast30ReshapeRepository, getReshapeRepository } from "../repositories";
+import { conflictError } from "@/errors";
+import { getLast30ReshapeRepository, getReshapeRepository, getUserDetailsByTokenRepository } from "../repositories";
 
-export async function getReshapeService() {
-    const response = await getReshapeRepository();
-    const response30 = await getLast30ReshapeRepository();
+export async function getReshapeService(userToken: string, tenancy: string) {
+    const token = userToken.slice(7);
+    const userDetails = await getUserDetailsByTokenRepository(token);
+
+    if (userDetails.isAdmin === 0 && userDetails.tenancy !== tenancy){
+        throw conflictError("This user can't see informations of this client");
+    }
+    const response = await reshapeInfo(tenancy);
+
+    return response;
+}
+
+async function reshapeInfo(tenancy: string){
+    const response = await getReshapeRepository(tenancy);
+    const response30 = await getLast30ReshapeRepository(tenancy);
 
     for(let i=0; i<response.length; i++){ 
         const itemEncontrado = response30.find(item => response[i].OCID === item.OCID);
