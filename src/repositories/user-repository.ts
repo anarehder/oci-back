@@ -1,4 +1,4 @@
-import { User } from "@/protocols";
+import { User, UserTenancy } from "@/protocols";
 import { db } from "../config/database";
 import { RowDataPacket } from "mysql2";
 
@@ -50,4 +50,24 @@ export async function getClientByClientNameRepository(client: string) {
         WHERE client = ?;
     `, [client]);
     return response[0];
+}
+
+export async function getUserDetailsByTokenRepository(token: string){
+    const [rows] = await db.query<RowDataPacket[]>(`
+        SELECT userId, User.username, User.isAdmin, User.client, Clients.tenancy
+        FROM Session
+        JOIN User ON User.id = Session.userId
+        JOIN Clients ON Clients.client = User.client
+        WHERE token = ?;
+    `, [token]);
+
+    const user: UserTenancy[] = rows.map(row => ({
+        userId: row.userId,
+        username: row.username,
+        isAdmin: row.isAdmin,
+        client: row.client,
+        tenancy: row.tenancy
+    }));
+
+    return user[0];
 }

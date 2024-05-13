@@ -10,3 +10,14 @@ export async function getContractsRespository() {
     return response[0];
     
 }
+
+export async function getContractsByTenancyRespository(tenancy: string) {
+    const response = await db.query<RowDataPacket[]>(`
+    SELECT * 
+    FROM ContratosOCI
+    WHERE Tenancy = ?
+    ;`, [tenancy]);
+
+    return response[0];
+    
+}

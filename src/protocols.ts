@@ -11,6 +11,14 @@ export type User = {
     client: string;
 }
 
+export type UserTenancy = {
+    userId: number;
+    username: string;
+    isAdmin: number;
+    client: string;
+    tenancy: string;
+}
+
 export type NewUserInput = Omit<User, 'id'>;
 
 export type LoginParams = {

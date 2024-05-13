@@ -1,4 +1,4 @@
-import { createUserRepository, createUserSessionRepository, deleteUserSessionRepository, getClientByClientNameRepository, getUserByUsernameRepository } from "../repositories/user-repository";
+import { createUserRepository, createUserSessionRepository, deleteUserSessionRepository, getClientByClientNameRepository, getUserByUsernameRepository } from "../repositories";
 import bcrypt from "bcrypt";
 import { conflictError, invalidCredentialsError } from "../errors";
 import { UserLogin } from "../protocols";
