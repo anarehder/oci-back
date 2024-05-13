@@ -16,8 +16,9 @@ export async function getReshapeRepository(tenancy: string) {
 export async function getLast30ReshapeRepository(tenancy: string){
     const response = await db.query<RowDataPacket[]>(`
     SELECT 
-        group_concat(Distinct Name) AS OCID,
+        group_concat(Distinct Name) AS Name,
         OCID,
+        COUNT(*) AS DaysCount,
         MAX(MaxCPU) AS MaxCPU,
         MAX(MaxMEM) AS MaxMEM,
         ROUND(AVG(MeanMEM), 2) AS MeanMEM,    
@@ -25,7 +26,7 @@ export async function getLast30ReshapeRepository(tenancy: string){
     FROM 
         ${tenancy}
     WHERE 
-        DATE(Day) > (CURDATE() - INTERVAL 30 DAY)
+        DATE(Day) > (CURDATE() - INTERVAL 31 DAY)
     GROUP BY 
         OCID
     ;`);
