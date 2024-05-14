@@ -32,7 +32,7 @@ export type SessionParams = {
 }
 
 export type UserLogin = {
-    id: number;
+    userId: number;
     username: string;
     isAdmin: boolean;
     client: string;

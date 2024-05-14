@@ -2,9 +2,9 @@ import { getContractsByTenancyRespository, getContractsRespository, getUserDetai
 
 export async function getContractsService(userToken: string) {
     const token = userToken.slice(7);
-    console.log(token);
+  
     const userDetails = await getUserDetailsByTokenRepository(token);
-    console.log(userDetails);
+
     if (userDetails.isAdmin === 1 && userDetails.tenancy === "ACCERTETECNOLOGIA"){
         const response = await getContractsRespository();
         return response;
