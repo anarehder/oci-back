@@ -1,4 +1,4 @@
-import { authenticateToken } from "@/middlewares";
+import { authenticateToken } from "../middlewares";
 import { getContractsController } from "../controllers";
 import { Router } from "express";
 

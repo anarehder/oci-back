@@ -1,4 +1,4 @@
-import { User, UserTenancy } from "@/protocols";
+import { User, UserTenancy } from "../protocols";
 import { db } from "../config/database";
 import { RowDataPacket } from "mysql2";
 

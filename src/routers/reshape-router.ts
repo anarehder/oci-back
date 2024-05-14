@@ -1,7 +1,7 @@
-import { authenticateToken, validateBody } from "@/middlewares";
+import { authenticateToken, validateBody } from "../middlewares";
 import { getReshapeController } from "../controllers";
 import { Router } from "express";
-import { getReshapeSchema } from "@/schemas";
+import { getReshapeSchema } from "../schemas";
 
 const reshapeRouter = Router();
 

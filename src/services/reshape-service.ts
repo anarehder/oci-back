@@ -1,4 +1,4 @@
-import { conflictError } from "@/errors";
+import { conflictError } from "../errors";
 import { getLast30ReshapeRepository, getReshapeRepository, getUserDetailsByTokenRepository } from "../repositories";
 
 export async function getReshapeService(userToken: string, tenancy: string) {
