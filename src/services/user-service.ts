@@ -1,4 +1,4 @@
-import { createUserRepository, createUserSessionRepository, deleteUserSessionRepository, getClientByClientNameRepository, getUserByUsernameRepository } from "../repositories";
+import { createUserRepository, createUserSessionRepository, deleteUserSessionRepository, getClientByClientNameRepository, getUserByUsernameRepository, userSessionRepository } from "../repositories";
 import bcrypt from "bcrypt";
 import { conflictError, invalidCredentialsError } from "../errors";
 import { UserLogin } from "../protocols";
@@ -44,6 +44,14 @@ async function createSession(userId: number) {
     await createUserSessionRepository(userId, token);
 
     return token;
+}
+
+export async function userSessionService(userId: number, token: string) {
+    const session = await userSessionRepository(userId, token);
+    if (session.length === 0){
+        throw conflictError("This session does not exist");
+    }
+    return session;
 }
 
 async function validateUniqueUsername(username: string) {

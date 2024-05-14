@@ -26,6 +26,11 @@ export type LoginParams = {
     password: string;
 }
 
+export type SessionParams = {
+    userId: number;
+    token: string;
+}
+
 export type UserLogin = {
     id: number;
     username: string;

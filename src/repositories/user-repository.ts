@@ -71,3 +71,11 @@ export async function getUserDetailsByTokenRepository(token: string){
 
     return user[0];
 }
+
+export async function userSessionRepository(userId: number, token: string) {
+    const response = await db.query<RowDataPacket[]>(`
+        SELECT * FROM Session
+        WHERE userId = ? AND token = ?;
+    `, [userId, token]);
+    return response[0];
+}
