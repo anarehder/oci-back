@@ -11,6 +11,7 @@ export async function getReshapeService(userToken: string, tenancy: string) {
     if (userDetails.isAdmin === 0 && userDetails.tenancy !== tenancy){
         throw conflictError("This user can't see informations of this client");
     }
+
     const response = await reshapeInfo(tenancy);
 
     return response;
@@ -20,7 +21,9 @@ async function reshapeInfo(tenancy: string){
     const response = await getReshapeRepository(tenancy);
     const response30 = await getLast30ReshapeRepository(tenancy);
     const prices: any[] = await getPriceService();
+
     for(let i=0; i<response.length; i++){ 
+        
         const itemEncontrado = response30.find(item => response[i].OCID === item.OCID);
         const bestShape = 'VM.Standard.E5.Flex';
         let reshape: string;
