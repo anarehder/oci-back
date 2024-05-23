@@ -8,7 +8,6 @@ export async function getContractsRespository() {
     `);
 
     return response[0];
-    
 }
 
 export async function getContractsByTenancyRespository(tenancy: string) {
@@ -19,5 +18,13 @@ export async function getContractsByTenancyRespository(tenancy: string) {
     ;`, [tenancy]);
 
     return response[0];
-    
+}
+
+export async function getClientsListRespository() {
+    const response = await db.query<RowDataPacket[]>(`
+    SELECT * 
+    FROM Clients
+    ;`);
+
+    return response[0];
 }
