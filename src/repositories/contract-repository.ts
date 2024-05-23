@@ -24,6 +24,7 @@ export async function getClientsListRespository() {
     const response = await db.query<RowDataPacket[]>(`
     SELECT * 
     FROM Clients
+    ORDER BY client ASC
     ;`);
 
     return response[0];
