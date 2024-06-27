@@ -1,28 +1,42 @@
 import { db } from "../config/database";
 import { RowDataPacket } from "mysql2";
 
-export async function getReshapeRepository(tenancy: string) {
+export async function getLastReshapeDay(){
+    const [response] = await db.query<RowDataPacket[]>(`
+    SELECT Day
+    FROM ACCERTETECNOLOGIA
+    ORDER BY DAY DESC
+    LIMIT 1;`);
+    
+    const lastDay: string = response[0].Day;
+
+    return lastDay;
+}
+
+export async function getReshapeRepository(tenancy: string, day: string) {
     const response = await db.query<RowDataPacket[]>(`
     SELECT * 
     FROM ${tenancy}
-    WHERE DATE(Day) > (CURDATE() - INTERVAL 2 DAY)
+    WHERE Day = ?
     ORDER BY Status ASC
-    ;`);
-
+    ;`, [day]);
     return response[0];
-    
 }
 
 export async function getLast30ReshapeRepository(tenancy: string){
     const response = await db.query<RowDataPacket[]>(`
     SELECT 
-        group_concat(Distinct Name) AS Name,
+        group_concat(Distinct VM_Name) AS VM_Name,
         OCID,
         COUNT(*) AS DaysCount,
-        MAX(MaxCPU) AS MaxCPU,
+        MAX(MaxOCPU) AS MaxOCPU,
         MAX(MaxMEM) AS MaxMEM,
         ROUND(AVG(MeanMEM), 2) AS MeanMEM,    
-        ROUND(AVG(MeanCPU), 2) AS MeanCPU
+        ROUND(AVG(MeanOCPU), 2) AS MeanOCPU,
+        MAX(MaxOCPU_COM) AS MaxOCPU_COM,
+        MAX(MaxMEM_COM) AS MaxMEM_COM,
+        ROUND(AVG(MeanMEM_COM), 2) AS MeanMEM_COM,    
+        ROUND(AVG(MeanOCPU_COM), 2) AS MeanOCPU_COM
     FROM 
         ${tenancy}
     WHERE 
@@ -30,35 +44,5 @@ export async function getLast30ReshapeRepository(tenancy: string){
     GROUP BY 
         OCID
     ;`);
-    return response[0];
-}
-
-export async function getResha2peRepository(){
-    const response = await db.query<RowDataPacket[]>(`
-    SELECT 
-    hstgrp.groupid,
-    hstgrp.name AS groupName,
-    hosts_groups.hostid,
-    hosts.host,
-    hosts.name AS hostName,
-    items.itemid,
-    items.name,
-    items.units,
-    items.delay
-    FROM 
-        hstgrp
-    JOIN 
-        hosts_groups ON hstgrp.groupid = hosts_groups.groupid
-    JOIN 
-        hosts ON hosts_groups.hostid = hosts.hostid
-    JOIN
-        items ON items.hostid = hosts.hostid
-    WHERE 
-        hstgrp.name LIKE ? AND items.name LIKE ? AND items.name LIKE ?
-    ORDER BY hosts.name ASC
-    `,
-    ['DELLYS/FW','%Interface port%','%Bits%']
-    );
-
     return response[0];
 }

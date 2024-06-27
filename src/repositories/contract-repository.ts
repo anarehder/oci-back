@@ -4,7 +4,7 @@ import { RowDataPacket } from "mysql2";
 export async function getContractsRespository() {
     const response = await db.query<RowDataPacket[]>(`
     SELECT * 
-    FROM ContratosOCI
+    FROM ContractsOCI
     `);
 
     return response[0];
@@ -13,7 +13,7 @@ export async function getContractsRespository() {
 export async function getContractsByTenancyRespository(tenancy: string) {
     const response = await db.query<RowDataPacket[]>(`
     SELECT * 
-    FROM ContratosOCI
+    FROM ContractsOCI
     WHERE Tenancy = ?
     ;`, [tenancy]);
 
@@ -24,7 +24,7 @@ export async function getClientsListRespository() {
     const response = await db.query<RowDataPacket[]>(`
     SELECT * 
     FROM Clients
-    ORDER BY client ASC
+    ORDER BY Client ASC
     ;`);
 
     return response[0];

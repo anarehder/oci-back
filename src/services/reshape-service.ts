@@ -1,5 +1,5 @@
 import { conflictError } from "../errors";
-import { getLast30ReshapeRepository, getReshapeRepository, getUserDetailsByTokenRepository } from "../repositories";
+import { getLast30ReshapeRepository, getLastReshapeDay, getReshapeRepository, getUserDetailsByTokenRepository } from "../repositories";
 import { estimatePrice } from "./calculate-reshape-prices-service";
 import { estimateCPUincrease, estimateCPUreduce, estimateMEMincrease, estimateMEMreduce } from "./calculate-reshape-values-service";
 import { getPriceService } from "./price-service";
@@ -18,7 +18,9 @@ export async function getReshapeService(userToken: string, tenancy: string) {
 }
 
 async function reshapeInfo(tenancy: string){
-    const response = await getReshapeRepository(tenancy);
+    const lastDay = await getLastReshapeDay();
+    const response = await getReshapeRepository(tenancy, lastDay);
+    
     const response30 = await getLast30ReshapeRepository(tenancy);
     const prices: any[] = await getPriceService();
 
@@ -27,17 +29,31 @@ async function reshapeInfo(tenancy: string){
         const itemEncontrado = response30.find(item => response[i].OCID === item.OCID);
         const bestShape = 'VM.Standard.E5.Flex';
         let reshape: string;
-        if(isNaN(itemEncontrado.MaxCPU) && isNaN(itemEncontrado.MaxMEM)){
+        let reshape_COM: string;
+        
+        if(isNaN(itemEncontrado.MaxOCPU) && isNaN(itemEncontrado.MaxMEM)){
             reshape = "-";
         } else {
-            reshape = reshapeCalculation(Number(response[i].OCPU), Number(itemEncontrado.MaxCPU), Number(itemEncontrado.MeanCPU), Number(itemEncontrado.MaxMEM));
+            reshape = reshapeCalculation(Number(response[i].OCPU), Number(itemEncontrado.MaxOCPU), Number(itemEncontrado.MeanOCPU), Number(itemEncontrado.MaxMEM));
         }
         // de cada item calcular o reshape
-        const newCPU = estimateReshapeCPUValues(reshape, Number(response[i].OCPU), Number(itemEncontrado.MaxCPU), Number(itemEncontrado.MeanCPU)); 
-        const newMEM = estimateReshapeMEMValues(reshape, Number(response[i].MEMORY_GB), Number(itemEncontrado.MaxMEM), Number(itemEncontrado.MeanMEM)); 
-        const newPrice = await estimatePrice(response[i].Shape, newMEM, newCPU, prices);
-        const BestShapePrice = await estimatePrice(bestShape, newMEM, newCPU, prices);
-        const itemReshape = {...itemEncontrado, reshape, newCPU, newMEM, newPrice, BestShapePrice};
+        const newOCPU = estimateReshapeCPUValues(reshape, Number(response[i].OCPU), Number(itemEncontrado.MaxOCPU), Number(itemEncontrado.MeanOCPU)); 
+        const newMEM = estimateReshapeMEMValues(reshape, Number(response[i].Memory), Number(itemEncontrado.MaxMEM), Number(itemEncontrado.MeanMEM)); 
+        const newPrice = await estimatePrice(response[i].Shape, newMEM, newOCPU, prices);
+        const BestShapePrice = await estimatePrice(bestShape, newMEM, newOCPU, prices);
+
+        if(isNaN(itemEncontrado.MaxOCPU_COM) && isNaN(itemEncontrado.MaxMEM_COM)){
+            reshape_COM = "-";
+        } else {
+            reshape_COM = reshapeCalculation(Number(response[i].OCPU), Number(itemEncontrado.MaxOCPU_COM), Number(itemEncontrado.MeanOCPU_COM), Number(itemEncontrado.MaxMEM_COM));
+        }
+        // de cada item calcular o reshape
+        const newOCPU_COM = estimateReshapeCPUValues(reshape_COM, Number(response[i].OCPU), Number(itemEncontrado.MaxOCPU_COM), Number(itemEncontrado.MeanOCPU_COM)); 
+        const newMEM_COM = estimateReshapeMEMValues(reshape, Number(response[i].Memory), Number(itemEncontrado.MaxMEM_COM), Number(itemEncontrado.MeanMEM_COM)); 
+        const newPrice_COM = await estimatePrice(response[i].Shape, newMEM_COM, newOCPU_COM, prices);
+        const BestShapePrice_COM = await estimatePrice(bestShape, newMEM_COM, newOCPU_COM, prices);
+
+        const itemReshape = {...itemEncontrado, reshape, newOCPU, newMEM, newPrice, BestShapePrice, reshape_COM, newOCPU_COM, newMEM_COM, newPrice_COM, BestShapePrice_COM};
         response[i].last30 = itemReshape;
     }
     return response;
