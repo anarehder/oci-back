@@ -42,3 +42,9 @@ export type UserLogin = {
 export type ReshapeInput = {
     tenancy: string;
 }
+
+export type JoinDashboardsInput = {
+    tenancy1: string;
+    tenancy2: string;
+    tenancy3?: string;
+}

@@ -10,14 +10,6 @@
         "types": ["node", "mysql2"],
         "rootDirs": ["src", "tests"],
         "baseUrl": "src",
-        "paths": {
-        "@/*": ["*"]
-        },
-        "plugins": [
-        {
-            "transform": "typescript-transform-paths"
-        }
-        ]
     },
     "exclude": ["node_modules"],
     "include": ["src", "tests", "src/**/*.ts"]
