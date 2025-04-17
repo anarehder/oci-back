@@ -3,7 +3,7 @@ import express, { Express } from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import { connectDbs } from "./config/database";
-import { computeInstanceRouter, contractRouter, dashboardRouter, priceRouter, reshapeRouter, userRouter } from "./routers";
+import { auditRouter, computeInstanceRouter, contractRouter, dashboardRouter, notificationsRouter, priceRouter, reshapeRouter, userRouter } from "./routers";
 
 dotenv.config()
 
@@ -12,9 +12,11 @@ app
   .use(cors())
   .use(express.json())
   .get("/health", (_req, res) => res.send("OK OCI!"))
+  .use("/audit", auditRouter)
   .use("/computeinstances", computeInstanceRouter)
   .use("/contracts", contractRouter)
   .use("/dashboards", dashboardRouter)
+  .use("/notifications", notificationsRouter)
   .use("/price", priceRouter)
   .use("/reshape", reshapeRouter)
   .use("/user", userRouter);
