@@ -1,7 +1,7 @@
 import { DashboardsOutput, JoinDashboardsInput } from "../protocols";
 import { unauthorizedError } from "../errors";
 import { getUserDetails } from "./user-service";
-import { getAllTenanciesSubscriptionAmountRepository, getComputeInstancesByTenancyRepository, getComputeInstancesRepository, getSubscriptionAmountByTenancyRepository, getTop5CostComputeInstancesByTenancyRepository, getTop5CostComputeInstancesRepository } from "../repositories";
+import { getAllTenanciesSubscriptionAmountRepository, getComputeInstancesByTenancyRepository, getComputeInstancesRepository, getSubscriptionAmountByTenancyRepository, getTenanciesListRepository, getTop5CostComputeInstancesByTenancyRepository, getTop5CostComputeInstancesRepository } from "../repositories";
 
 export async function getDashboardService(userToken: string) {
     const token = userToken.slice(7);
@@ -31,19 +31,21 @@ export async function getJoinDashboardService(userToken: string, body:JoinDashbo
 
 export async function getAllDashboards(){
     const computeInstances = await getComputeInstancesRepository();
-        const top5_costVM = await getTop5CostComputeInstancesRepository();
-        const creditsOCI = await getAllTenanciesSubscriptionAmountRepository();
-        
-        const response: DashboardsOutput = {
-            user: null,
-            computeInstances,
-            orphan: null,
-            cost_history: null,
-            cost_services: null,
-            top5_costVM,
-            creditsOCI
-        }
-        return response;
+    const top5_costVM = await getTop5CostComputeInstancesRepository();
+    const creditsOCI = await getAllTenanciesSubscriptionAmountRepository();
+    const tenanciesList = await getTenanciesListRepository();
+    const tenancies = tenanciesList.map(t => t.tenancy_name);
+    const response: DashboardsOutput = {
+        tenancies,
+        user: null,
+        computeInstances,
+        orphan: null,
+        cost_history: null,
+        cost_services: null,
+        top5_costVM,
+        creditsOCI
+    }
+    return response;
 }
 
 export async function getTenancyDashboards(tenancies: string[]){
@@ -51,6 +53,7 @@ export async function getTenancyDashboards(tenancies: string[]){
     const top5_costVM = await getTop5CostComputeInstancesByTenancyRepository(tenancies);
     const creditsOCI = await getSubscriptionAmountByTenancyRepository(tenancies);
     const response: DashboardsOutput = {
+        tenancies,
         user: null,
         computeInstances,
         orphan: null,

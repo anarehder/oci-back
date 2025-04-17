@@ -52,6 +52,7 @@ export type JoinDashboardsInput = {
 }
 
 export type DashboardsOutput = {
+    tenancies: string[],
     user: string[]| null,
     computeInstances: ComputeInstances[],
     orphan: string[]| null,
