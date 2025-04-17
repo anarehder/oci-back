@@ -6,7 +6,6 @@ import { getUserDetails } from "./user-service";
 export async function getLatestCpusService(userToken: string) {
     const token = userToken.slice(7);
     const userDetails = await getUserDetails(token);
-    console.log(userDetails);
     if (userDetails[0].isAdmin){
         const response = await getLatestCpusRepository();
         return response;
