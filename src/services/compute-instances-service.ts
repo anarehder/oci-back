@@ -24,7 +24,10 @@ export async function getJoinComputeInstancesService(userToken: string, body:Joi
     if (!userDetails[0].isAdmin){
         throw unauthorizedError("Apenas administradores podem acessar essa rota");
     }
-    const tenancies = Object.values(body);
+    const filteredTenancies = Object.fromEntries(
+        Object.entries(body).filter(([key, value]) => value !== null)
+    );
+    const tenancies = Object.values(filteredTenancies);
     const response = await getComputeInstancesByTenancyRepository(tenancies);
     return response;
 }

@@ -78,6 +78,8 @@ export type CreditsOCI = {
     available_amount: number;
     used_percentage: number;
     date_percentage: number;
+    dias_decorridos?: number;
+    total_dias_contrato?: number;
 }
 
 export type CpuUtilization = {
