@@ -3,7 +3,7 @@ import express, { Express } from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import { connectDbs } from "./config/database";
-import { auditRouter, computeInstanceRouter, contractRouter, dashboardRouter, notificationsRouter, priceRouter, reshapeRouter, userRouter } from "./routers";
+import { auditRouter, computeInstanceRouter, contractRouter, cpusRouter, dashboardRouter, notificationsRouter, priceRouter, reshapeRouter, userRouter } from "./routers";
 
 dotenv.config()
 
@@ -15,6 +15,7 @@ app
   .use("/audit", auditRouter)
   .use("/computeinstances", computeInstanceRouter)
   .use("/contracts", contractRouter)
+  .use("/cpus", cpusRouter)
   .use("/dashboards", dashboardRouter)
   .use("/notifications", notificationsRouter)
   .use("/price", priceRouter)

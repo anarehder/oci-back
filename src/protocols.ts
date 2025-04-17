@@ -79,3 +79,13 @@ export type CreditsOCI = {
     used_percentage: number;
     date_percentage: number;
 }
+
+export type CpuUtilization = {
+    profile_name: string;
+    compartment_id: string;
+    region: string;
+    resourceDisplayName: string;
+    resourceId: string;
+    metric_timestamp: Date;
+    cpu_usage: number;
+  };

@@ -2,6 +2,7 @@
 export * from './audit-controller';
 export * from './compute-instance-controller';
 export * from './contract-controller';
+export * from './cpus-controller';
 export * from './dashboards-controller';
 export * from './notifications-controller';
 export * from './price-controller';

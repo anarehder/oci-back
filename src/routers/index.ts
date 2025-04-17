@@ -1,6 +1,7 @@
 export * from './audit-router';
 export * from './compute-instance-router';
 export * from './contract-router';
+export * from './cpus-router';
 export * from './dashboards-router';
 export * from './notifications-router';
 export * from './price-router';
