@@ -1,5 +1,7 @@
 import { getUserDetails } from "./user-service";
 import { getAuditRepository, getAuditByTenancyRepository } from "../repositories";
+import { JoinDashboardsInput } from "../protocols";
+import { unauthorizedError } from "../errors";
 
 export async function getAuditsService(userToken: string) {
     const token = userToken.slice(7);
@@ -14,4 +16,16 @@ export async function getAuditsService(userToken: string) {
         return response;
     }
     
+}
+
+
+export async function getJoinAuditsService(userToken: string, body:JoinDashboardsInput) {
+    const token = userToken.slice(7);
+    const userDetails = await getUserDetails(token);
+    if (!userDetails[0].isAdmin){
+        throw unauthorizedError("Apenas administradores podem acessar essa rota");
+    }
+    const tenancies = Object.values(body);
+    const response = await getAuditByTenancyRepository(tenancies);
+    return response;
 }

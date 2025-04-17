@@ -1,5 +1,7 @@
 import { getUserDetails } from "./user-service";
 import { getNotificationsByTenancyRepository, getNotificationsRepository } from "../repositories";
+import { JoinDashboardsInput } from "../protocols";
+import { unauthorizedError } from "../errors";
 
 export async function getNotificationsService(userToken: string) {
     const token = userToken.slice(7);
@@ -14,4 +16,15 @@ export async function getNotificationsService(userToken: string) {
         return response;
     }
     
+}
+
+export async function getJoinNotificationsService(userToken: string, body:JoinDashboardsInput) {
+    const token = userToken.slice(7);
+    const userDetails = await getUserDetails(token);
+    if (!userDetails[0].isAdmin){
+        throw unauthorizedError("Apenas administradores podem acessar essa rota");
+    }
+    const tenancies = Object.values(body);
+    const response = await getNotificationsByTenancyRepository(tenancies);
+    return response;
 }
