@@ -1,4 +1,4 @@
-import { Top5VMCost } from "protocols";
+import { Top5VMCost } from "../protocols";
 import { prisma2 } from "../config/database";
 
 export async function getComputeInstancesRepository(){

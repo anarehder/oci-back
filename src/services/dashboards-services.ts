@@ -1,8 +1,7 @@
-import { DashboardsOutput, JoinDashboardsInput, UserTenancy } from "protocols";
-import { conflictError, unauthorizedError } from "../errors";
-import { getComputeInstancesByTenancyRepository, getComputeInstancesRepository, getTop5CostComputeInstancesByTenancyRepository, getTop5CostComputeInstancesRepository } from "repositories/compute-instances-repository";
-import { getAllTenanciesSubscriptionAmountRepository, getSubscriptionAmountByTenancyRepository, getUserDetailsByTokenRepository } from "repositories";
+import { DashboardsOutput, JoinDashboardsInput } from "../protocols";
+import { unauthorizedError } from "../errors";
 import { getUserDetails } from "./user-service";
+import { getAllTenanciesSubscriptionAmountRepository, getComputeInstancesByTenancyRepository, getComputeInstancesRepository, getSubscriptionAmountByTenancyRepository, getTop5CostComputeInstancesByTenancyRepository, getTop5CostComputeInstancesRepository } from "../repositories";
 
 export async function getDashboardService(userToken: string) {
     const token = userToken.slice(7);

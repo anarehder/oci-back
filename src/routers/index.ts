@@ -1,3 +1,4 @@
+export * from './compute-instance-router';
 export * from './contract-router';
 export * from './dashboards-router';
 export * from './price-router';

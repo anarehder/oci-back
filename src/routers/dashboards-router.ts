@@ -1,7 +1,7 @@
 import { joinDashboardSchema } from "../schemas";
 import { authenticateToken, validateBody } from "../middlewares";
 import { Router } from "express";
-import { getDashboardController, getJoinDashboardController } from "controllers/dashboards-controller";
+import { getDashboardController, getJoinDashboardController } from "../controllers";
 
 const dashboardRouter = Router();
 

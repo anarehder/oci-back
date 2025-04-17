@@ -1,16 +1,18 @@
 {
     "compilerOptions": {
-        "target": "es2020",
-        "module": "commonjs",
-        "outDir": "dist",
-        "noImplicitAny": true,
-        "emitDecoratorMetadata": true,
-        "experimentalDecorators": true,
-        "esModuleInterop": true,
-        "types": ["node", "mysql2"],
-        "rootDirs": ["src", "tests"],
-        "baseUrl": "src",
+      "target": "es2020",
+      "module": "commonjs",
+      "outDir": "dist",
+      "noImplicitAny": true,
+      "emitDecoratorMetadata": true,
+      "experimentalDecorators": true,
+      "esModuleInterop": true,
+      "types": ["node", "mysql2"],
+      "rootDirs": ["src", "tests"],
+    //   "baseUrl": "./", // Para resolver a partir do diretório src
+      "paths": {}
     },
     "exclude": ["node_modules"],
     "include": ["src", "tests", "src/**/*.ts"]
-}
+  }
+  
