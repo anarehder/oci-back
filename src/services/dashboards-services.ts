@@ -48,7 +48,6 @@ export async function getAllDashboards(){
 
 export async function getTenancyDashboards(tenancies: string[]){
     const computeInstances = await getComputeInstancesByTenancyRepository(tenancies);
-    console.log(computeInstances.length);
     const top5_costVM = await getTop5CostComputeInstancesByTenancyRepository(tenancies);
     const creditsOCI = await getSubscriptionAmountByTenancyRepository(tenancies);
     const response: DashboardsOutput = {
