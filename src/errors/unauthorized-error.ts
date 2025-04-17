@@ -1,8 +1,8 @@
 import { ApplicationError } from "../protocols";
 
-export function unauthorizedError(): ApplicationError {
+export function unauthorizedError(message?: string): ApplicationError {
     return {
         name: "UnauthorizedError",
-        message: "You must be signed in to continue",
+        message: message || "You must be signed in to continue", // Usa o valor de message, se fornecido; caso contrário, usa a mensagem padrão.
     };
 }

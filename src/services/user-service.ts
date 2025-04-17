@@ -1,4 +1,4 @@
-import { createUserRepository, createUserSessionRepository, deleteUserSessionRepository, getClientByClientNameRepository, getUserByUsernameRepository, userSessionRepository } from "../repositories";
+import { createUserRepository, createUserSessionRepository, deleteUserSessionRepository, getClientByClientNameRepository, getUserByUsernameRepository, getUserDetailsByTokenRepository, userSessionRepository } from "../repositories";
 import bcrypt from "bcrypt";
 import { conflictError, invalidCredentialsError } from "../errors";
 import { UserLogin } from "../protocols";
@@ -71,4 +71,12 @@ async function validateClient(client: string) {
 async function validatePassword(password: string, userPassword: string) {
     const isPasswordValid = await bcrypt.compare(password, userPassword);
     if (!isPasswordValid) throw invalidCredentialsError();
+}
+
+export async function getUserDetails(token: string){
+    const userDetails = await getUserDetailsByTokenRepository(token);
+        if(!userDetails || userDetails.length ===0){
+            throw conflictError("usuário inexistente");
+        }
+    return userDetails;
 }

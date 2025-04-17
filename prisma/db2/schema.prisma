@@ -1,0 +1,125 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/banco2"
+}
+
+datasource db2 {
+  provider = "mysql"
+  url      = env("DATABASE_URL_2")
+}
+
+model ComputeInstances {
+  tenancy_name          String?   @db2.VarChar(50)
+  tenancy_id            String?   @db2.VarChar(255)
+  id                    String    @id @default(dbgenerated("()")) @db2.VarChar(150)
+  display_name          String?   @db2.VarChar(50)
+  compartment_id        String?   @db2.VarChar(150)
+  availability_domain   String?   @db2.VarChar(50)
+  fault_domain          String?   @db2.VarChar(50)
+  region                String?   @db2.VarChar(30)
+  lifecycle_state       String?   @db2.VarChar(20)
+  shape                 String?   @db2.VarChar(30)
+  memory_in_gbs         Float?
+  ocpus                 Int?
+  processor_description String?   @db2.VarChar(50)
+  time_created          DateTime? @db2.DateTime(0)
+  CreatedBy             String?   @db2.VarChar(200)
+  hourly_cost           Float?
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model CpuUtilization {
+  profile_name        String?   @db2.VarChar(30)
+  compartment_id      String?   @db2.VarChar(150)
+  region              String?   @db2.VarChar(50)
+  resourceDisplayName String?   @db2.VarChar(50)
+  resourceId          String?   @db2.VarChar(150)
+  metric_timestamp    DateTime? @db2.DateTime(0)
+  cpu_usage           Float?
+
+  @@ignore
+}
+
+model SubscriptionDetails {
+  tenancy_name        String?   @db2.VarChar(50)
+  tenancy_id          String    @default(dbgenerated("()")) @db2.VarChar(150)
+  home_region         String?   @db2.VarChar(20)
+  subscription_id     String    @default(dbgenerated("()")) @db2.VarChar(20)
+  service_name        String?   @db2.VarChar(30)
+  currency            String?   @db2.VarChar(10)
+  time_start          DateTime  @default(dbgenerated("(0000-00-00 00:00:00)")) @db2.DateTime(0)
+  time_end            DateTime? @db2.DateTime(0)
+  admin_email         String?   @db2.VarChar(50)
+  buyer_email         String?   @db2.VarChar(50)
+  end_user_customer   String?   @db2.VarChar(100)
+  payment_method      String?   @db2.VarChar(50)
+  pricing_model       String?   @db2.VarChar(50)
+  product             String?   @db2.VarChar(50)
+  is_having_usage     String?   @db2.VarChar(10)
+  total_value         Float?
+  used_amount         Float?
+  line_net_amount     Float?
+  available_amount    Float?
+  total_dias_contrato Int?
+  dias_decorridos     Int?
+
+  @@id([tenancy_id, subscription_id, time_start])
+}
+
+model TenancyDetails {
+  tenancy_name    String?   @db2.VarChar(50)
+  tenancy_id      String    @id @db2.VarChar(150)
+  home_region     String?   @db2.VarChar(20)
+  subscription_id String?   @db2.VarChar(20)
+  service_name    String?   @db2.VarChar(30)
+  currency        String?   @db2.VarChar(10)
+  time_start      DateTime? @db2.DateTime(0)
+  time_end        DateTime? @db2.DateTime(0)
+  tenancy_status  String?   @db2.VarChar(10)
+  total_credit    Float?
+}
+
+model audit {
+  id               Int      @id @default(autoincrement())
+  event_id         String   @db2.VarChar(255)
+  event_type       String   @db2.VarChar(255)
+  event_time       DateTime @db2.DateTime(0)
+  source           String   @db2.VarChar(255)
+  compartment_id   String   @db2.VarChar(255)
+  compartment_name String   @db2.VarChar(255)
+  event_name       String   @db2.VarChar(255)
+  ip_address       String   @db2.VarChar(45)
+  principal_id     String   @db2.VarChar(255)
+  principal_name   String   @db2.VarChar(255)
+  tenant_id        String   @db2.VarChar(255)
+  action           String   @db2.VarChar(255)
+  message          String   @db2.Text
+  tenancy_name     String   @db2.VarChar(255)
+}
+
+model notifications {
+  id                 Int      @id @default(autoincrement())
+  event_id           String   @db2.Text
+  event_type         String   @db2.Text
+  event_time         String   @db2.Text
+  compartment_id     String   @db2.Text
+  compartment_name   String   @db2.Text
+  resource_name      String   @db2.Text
+  created_by         String   @db2.Text
+  tenancy_name       String   @db2.Text
+  timestamp          DateTime @default(now()) @db2.Timestamp(0)
+  instanceActionType String?  @db2.Text
+  type_vm            String?  @db2.Text
+}
+
+model tenancy_details {
+  tenancy_id   String   @id @db2.VarChar(255)
+  tenancy_name String?  @db2.VarChar(255)
+  home_region  String?  @db2.VarChar(100)
+  service_name String?  @db2.VarChar(255)
+  currency     String?  @db2.VarChar(10)
+  time_start   DateTime @db2.DateTime(0)
+  time_end     DateTime @db2.DateTime(0)
+  status       String?  @db2.VarChar(50)
+  total_value  Decimal? @db2.Decimal(15, 2)
+}

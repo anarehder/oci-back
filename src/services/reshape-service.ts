@@ -8,9 +8,9 @@ export async function getReshapeService(userToken: string, tenancy: string) {
     const token = userToken.slice(7);
     const userDetails = await getUserDetailsByTokenRepository(token);
 
-    if (userDetails.isAdmin === 0 && userDetails.tenancy !== tenancy){
-        throw conflictError("This user can't see informations of this client");
-    }
+    // if (userDetails.isAdmin === 0 && userDetails.tenancy !== tenancy){
+    //     throw conflictError("This user can't see informations of this client");
+    // }
 
     const response = await reshapeInfo(tenancy);
 
