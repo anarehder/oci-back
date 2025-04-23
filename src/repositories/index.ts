@@ -1,6 +1,7 @@
 export * from './audit-repository';
 export * from './compute-instances-repository';
 export * from './contract-repository';
+export * from './costs-repository';
 export * from './cpus-repository';
 export * from './notifications-repository';
 export * from './price-repository';

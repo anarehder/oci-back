@@ -56,7 +56,7 @@ export type DashboardsOutput = {
     user: string[]| null,
     computeInstances: ComputeInstances[],
     orphan: string[]| null,
-    cost_history: string[]| null,
+    cost_history: MonthCost[]| null,
     cost_services: string[] | null,
     top5_costVM: Top5VMCost[],
     creditsOCI: CreditsOCI[]
@@ -89,4 +89,12 @@ export type CpuUtilization = {
     resourceId: string;
     metric_timestamp: Date;
     cpu_usage: number;
+  };
+
+export type MonthCost = {
+    tenancy_name: string;
+    time_started: Date;
+    time_ended: Date;
+    cost_mes: number;
+    usage_mes: number;
   };

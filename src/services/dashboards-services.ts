@@ -1,7 +1,7 @@
 import { DashboardsOutput, JoinDashboardsInput } from "../protocols";
 import { unauthorizedError } from "../errors";
 import { getUserDetails } from "./user-service";
-import { getAllTenanciesSubscriptionAmountRepository, getComputeInstancesByTenancyRepository, getComputeInstancesRepository, getSubscriptionAmountByTenancyRepository, getTenanciesListRepository, getTop5CostComputeInstancesByTenancyRepository, getTop5CostComputeInstancesRepository } from "../repositories";
+import { getAllMonthCosts, getAllTenanciesSubscriptionAmountRepository, getComputeInstancesByTenancyRepository, getComputeInstancesRepository, getMonthCostsByTenancyRepository, getSubscriptionAmountByTenancyRepository, getTenanciesListRepository, getTop5CostComputeInstancesByTenancyRepository, getTop5CostComputeInstancesRepository } from "../repositories";
 
 export async function getDashboardService(userToken: string) {
     const token = userToken.slice(7);
@@ -11,7 +11,7 @@ export async function getDashboardService(userToken: string) {
         const response = await getAllDashboards();
         return response;
     } else{
-        const tenancies = userDetails.map(user => user.tenancy);
+        const tenancies = userDetails.map(user => user.tenancy.toLocaleLowerCase());
         const response = await getTenancyDashboards(tenancies);
         return response;
     }
@@ -37,6 +37,7 @@ export async function getAllDashboards(){
     const computeInstances = await getComputeInstancesRepository();
     const top5_costVM = await getTop5CostComputeInstancesRepository();
     const creditsOCI = await getAllTenanciesSubscriptionAmountRepository();
+    const cost_history = await getAllMonthCosts();
     const tenanciesList = await getTenanciesListRepository();
     const tenancies = tenanciesList.map(t => t.tenancy_name);
     const response: DashboardsOutput = {
@@ -44,7 +45,7 @@ export async function getAllDashboards(){
         user: null,
         computeInstances,
         orphan: null,
-        cost_history: null,
+        cost_history: cost_history,
         cost_services: null,
         top5_costVM,
         creditsOCI
@@ -56,12 +57,13 @@ export async function getTenancyDashboards(tenancies: string[]){
     const computeInstances = await getComputeInstancesByTenancyRepository(tenancies);
     const top5_costVM = await getTop5CostComputeInstancesByTenancyRepository(tenancies);
     const creditsOCI = await getSubscriptionAmountByTenancyRepository(tenancies);
+    const cost_history = await getMonthCostsByTenancyRepository(tenancies);
     const response: DashboardsOutput = {
         tenancies,
         user: null,
         computeInstances,
         orphan: null,
-        cost_history: null,
+        cost_history: cost_history,
         cost_services: null,
         top5_costVM,
         creditsOCI
