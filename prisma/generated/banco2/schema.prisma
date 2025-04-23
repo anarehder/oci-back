@@ -24,7 +24,7 @@ model ComputeInstances {
   processor_description String?   @db2.VarChar(50)
   time_created          DateTime? @db2.DateTime(0)
   CreatedBy             String?   @db2.VarChar(200)
-  hourly_cost           Float?
+  monthly_cost          Float?
 }
 
 /// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
@@ -122,4 +122,96 @@ model tenancy_details {
   time_end     DateTime @db2.DateTime(0)
   status       String?  @db2.VarChar(50)
   total_value  Decimal? @db2.Decimal(15, 2)
+}
+
+model CustoDiarioTotal {
+  tenancy_name String?   @db2.VarChar(50)
+  tenant_id    String    @default(dbgenerated("()")) @db2.VarChar(255)
+  cost_dia     Float?
+  currency     String?   @db2.VarChar(20)
+  usage_dia    Float?
+  time_started DateTime  @default(dbgenerated("(0000-00-00 00:00:00)")) @db2.DateTime(0)
+  time_ended   DateTime? @db2.DateTime(0)
+
+  @@id([tenant_id, time_started])
+}
+
+model CustoMensalTotal {
+  tenancy_name String?   @db2.VarChar(50)
+  tenant_id    String    @default(dbgenerated("()")) @db2.VarChar(255)
+  cost_mes     Float?
+  currency     String?   @db2.VarChar(20)
+  usage_mes    Float?
+  time_started DateTime  @default(dbgenerated("(0000-00-00 00:00:00)")) @db2.DateTime(0)
+  time_ended   DateTime? @db2.DateTime(0)
+
+  @@id([tenant_id, time_started])
+}
+
+model computeEvents {
+  id                    BigInt    @id @default(autoincrement())
+  event_type            String?   @db2.VarChar(255)
+  event_time            DateTime? @db2.DateTime(0)
+  source                String?   @db2.VarChar(100)
+  opcRequestId          String?   @unique(map: "opcRequestId")
+  raw_event             String?   @db2.LongText
+  compartment_id        String?   @db2.VarChar(255)
+  compartment_name      String?   @db2.VarChar(255)
+  event_name            String?   @db2.VarChar(255)
+  message               String?   @db2.Text
+  action                String?   @db2.VarChar(100)
+  principal_name        String?   @db2.VarChar(255)
+  ip_address            String?   @db2.VarChar(100)
+  display_name          String?   @db2.VarChar(255)
+  lifecycle_state       String?   @db2.VarChar(50)
+  shape                 String?   @db2.VarChar(100)
+  ocpus                 Float?    @db2.Float
+  memory_in_gbs         Float?    @db2.Float
+  processor_description String?   @db2.VarChar(255)
+  created_by            String?   @db2.VarChar(100)
+  created_on            DateTime? @db2.DateTime(0)
+  preserve_boot_volume  Boolean?
+  created_at            DateTime  @default(now()) @db2.Timestamp(0)
+  instanceActionType    String?   @db2.VarChar(50)
+}
+
+model identityEvents {
+  id                     BigInt    @id @default(autoincrement())
+  eventType              String?   @db2.VarChar(255)
+  eventTime              DateTime? @db2.DateTime(0)
+  source                 String?   @db2.VarChar(100)
+  opcRequestId           String?   @unique(map: "opcRequestId")
+  rawEvent               String?   @db2.LongText
+  adminResourceName      String?   @db2.VarChar(255)
+  adminResourceType      String?   @db2.VarChar(100)
+  compartmentName        String?   @db2.VarChar(255)
+  principalName          String?   @db2.VarChar(255)
+  action                 String?   @db2.VarChar(100)
+  message                String?   @db2.Text
+  idcsLastModifiedByName String?   @db2.VarChar(255)
+  idcsLastModifiedByType String?   @db2.VarChar(100)
+  policyName             String?   @db2.VarChar(255)
+  statements             String?   @db2.Text
+  createdAt              DateTime  @default(now()) @db2.Timestamp(0)
+  eventName              String?   @db2.VarChar(50)
+}
+
+model networkEvents {
+  id              BigInt    @id @default(autoincrement())
+  eventType       String?   @db2.VarChar(255)
+  eventTime       DateTime? @db2.DateTime(0)
+  source          String?   @db2.VarChar(100)
+  opcRequestId    String?   @unique(map: "opcRequestId")
+  rawEvent        String?   @db2.LongText
+  compartmentId   String?   @db2.VarChar(255)
+  compartmentName String?   @db2.VarChar(255)
+  eventName       String?   @db2.VarChar(255)
+  message         String?   @db2.Text
+  action          String?   @db2.VarChar(100)
+  principalName   String?   @db2.VarChar(255)
+  ipAddress       String?   @db2.VarChar(100)
+  routeRules      String?   @db2.VarChar(255)
+  createdBy       String?   @db2.VarChar(100)
+  createdOn       DateTime? @db2.DateTime(0)
+  createdAt       DateTime  @default(now()) @db2.Timestamp(0)
 }

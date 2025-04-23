@@ -43,6 +43,31 @@ export type notifications = $Result.DefaultSelection<Prisma.$notificationsPayloa
  * 
  */
 export type tenancy_details = $Result.DefaultSelection<Prisma.$tenancy_detailsPayload>
+/**
+ * Model CustoDiarioTotal
+ * 
+ */
+export type CustoDiarioTotal = $Result.DefaultSelection<Prisma.$CustoDiarioTotalPayload>
+/**
+ * Model CustoMensalTotal
+ * 
+ */
+export type CustoMensalTotal = $Result.DefaultSelection<Prisma.$CustoMensalTotalPayload>
+/**
+ * Model computeEvents
+ * 
+ */
+export type computeEvents = $Result.DefaultSelection<Prisma.$computeEventsPayload>
+/**
+ * Model identityEvents
+ * 
+ */
+export type identityEvents = $Result.DefaultSelection<Prisma.$identityEventsPayload>
+/**
+ * Model networkEvents
+ * 
+ */
+export type networkEvents = $Result.DefaultSelection<Prisma.$networkEventsPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -228,6 +253,56 @@ export class PrismaClient<
     * ```
     */
   get tenancy_details(): Prisma.tenancy_detailsDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.custoDiarioTotal`: Exposes CRUD operations for the **CustoDiarioTotal** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more CustoDiarioTotals
+    * const custoDiarioTotals = await prisma.custoDiarioTotal.findMany()
+    * ```
+    */
+  get custoDiarioTotal(): Prisma.CustoDiarioTotalDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.custoMensalTotal`: Exposes CRUD operations for the **CustoMensalTotal** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more CustoMensalTotals
+    * const custoMensalTotals = await prisma.custoMensalTotal.findMany()
+    * ```
+    */
+  get custoMensalTotal(): Prisma.CustoMensalTotalDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.computeEvents`: Exposes CRUD operations for the **computeEvents** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ComputeEvents
+    * const computeEvents = await prisma.computeEvents.findMany()
+    * ```
+    */
+  get computeEvents(): Prisma.computeEventsDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.identityEvents`: Exposes CRUD operations for the **identityEvents** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more IdentityEvents
+    * const identityEvents = await prisma.identityEvents.findMany()
+    * ```
+    */
+  get identityEvents(): Prisma.identityEventsDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.networkEvents`: Exposes CRUD operations for the **networkEvents** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more NetworkEvents
+    * const networkEvents = await prisma.networkEvents.findMany()
+    * ```
+    */
+  get networkEvents(): Prisma.networkEventsDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -673,7 +748,12 @@ export namespace Prisma {
     TenancyDetails: 'TenancyDetails',
     audit: 'audit',
     notifications: 'notifications',
-    tenancy_details: 'tenancy_details'
+    tenancy_details: 'tenancy_details',
+    CustoDiarioTotal: 'CustoDiarioTotal',
+    CustoMensalTotal: 'CustoMensalTotal',
+    computeEvents: 'computeEvents',
+    identityEvents: 'identityEvents',
+    networkEvents: 'networkEvents'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -692,7 +772,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "computeInstances" | "subscriptionDetails" | "tenancyDetails" | "audit" | "notifications" | "tenancy_details"
+      modelProps: "computeInstances" | "subscriptionDetails" | "tenancyDetails" | "audit" | "notifications" | "tenancy_details" | "custoDiarioTotal" | "custoMensalTotal" | "computeEvents" | "identityEvents" | "networkEvents"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1092,6 +1172,336 @@ export namespace Prisma {
           }
         }
       }
+      CustoDiarioTotal: {
+        payload: Prisma.$CustoDiarioTotalPayload<ExtArgs>
+        fields: Prisma.CustoDiarioTotalFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CustoDiarioTotalFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CustoDiarioTotalPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CustoDiarioTotalFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CustoDiarioTotalPayload>
+          }
+          findFirst: {
+            args: Prisma.CustoDiarioTotalFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CustoDiarioTotalPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CustoDiarioTotalFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CustoDiarioTotalPayload>
+          }
+          findMany: {
+            args: Prisma.CustoDiarioTotalFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CustoDiarioTotalPayload>[]
+          }
+          create: {
+            args: Prisma.CustoDiarioTotalCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CustoDiarioTotalPayload>
+          }
+          createMany: {
+            args: Prisma.CustoDiarioTotalCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.CustoDiarioTotalDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CustoDiarioTotalPayload>
+          }
+          update: {
+            args: Prisma.CustoDiarioTotalUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CustoDiarioTotalPayload>
+          }
+          deleteMany: {
+            args: Prisma.CustoDiarioTotalDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CustoDiarioTotalUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.CustoDiarioTotalUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CustoDiarioTotalPayload>
+          }
+          aggregate: {
+            args: Prisma.CustoDiarioTotalAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCustoDiarioTotal>
+          }
+          groupBy: {
+            args: Prisma.CustoDiarioTotalGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CustoDiarioTotalGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CustoDiarioTotalCountArgs<ExtArgs>
+            result: $Utils.Optional<CustoDiarioTotalCountAggregateOutputType> | number
+          }
+        }
+      }
+      CustoMensalTotal: {
+        payload: Prisma.$CustoMensalTotalPayload<ExtArgs>
+        fields: Prisma.CustoMensalTotalFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CustoMensalTotalFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CustoMensalTotalPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CustoMensalTotalFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CustoMensalTotalPayload>
+          }
+          findFirst: {
+            args: Prisma.CustoMensalTotalFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CustoMensalTotalPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CustoMensalTotalFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CustoMensalTotalPayload>
+          }
+          findMany: {
+            args: Prisma.CustoMensalTotalFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CustoMensalTotalPayload>[]
+          }
+          create: {
+            args: Prisma.CustoMensalTotalCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CustoMensalTotalPayload>
+          }
+          createMany: {
+            args: Prisma.CustoMensalTotalCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.CustoMensalTotalDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CustoMensalTotalPayload>
+          }
+          update: {
+            args: Prisma.CustoMensalTotalUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CustoMensalTotalPayload>
+          }
+          deleteMany: {
+            args: Prisma.CustoMensalTotalDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CustoMensalTotalUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.CustoMensalTotalUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CustoMensalTotalPayload>
+          }
+          aggregate: {
+            args: Prisma.CustoMensalTotalAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCustoMensalTotal>
+          }
+          groupBy: {
+            args: Prisma.CustoMensalTotalGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CustoMensalTotalGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CustoMensalTotalCountArgs<ExtArgs>
+            result: $Utils.Optional<CustoMensalTotalCountAggregateOutputType> | number
+          }
+        }
+      }
+      computeEvents: {
+        payload: Prisma.$computeEventsPayload<ExtArgs>
+        fields: Prisma.computeEventsFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.computeEventsFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$computeEventsPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.computeEventsFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$computeEventsPayload>
+          }
+          findFirst: {
+            args: Prisma.computeEventsFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$computeEventsPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.computeEventsFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$computeEventsPayload>
+          }
+          findMany: {
+            args: Prisma.computeEventsFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$computeEventsPayload>[]
+          }
+          create: {
+            args: Prisma.computeEventsCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$computeEventsPayload>
+          }
+          createMany: {
+            args: Prisma.computeEventsCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.computeEventsDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$computeEventsPayload>
+          }
+          update: {
+            args: Prisma.computeEventsUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$computeEventsPayload>
+          }
+          deleteMany: {
+            args: Prisma.computeEventsDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.computeEventsUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.computeEventsUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$computeEventsPayload>
+          }
+          aggregate: {
+            args: Prisma.ComputeEventsAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateComputeEvents>
+          }
+          groupBy: {
+            args: Prisma.computeEventsGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ComputeEventsGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.computeEventsCountArgs<ExtArgs>
+            result: $Utils.Optional<ComputeEventsCountAggregateOutputType> | number
+          }
+        }
+      }
+      identityEvents: {
+        payload: Prisma.$identityEventsPayload<ExtArgs>
+        fields: Prisma.identityEventsFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.identityEventsFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$identityEventsPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.identityEventsFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$identityEventsPayload>
+          }
+          findFirst: {
+            args: Prisma.identityEventsFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$identityEventsPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.identityEventsFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$identityEventsPayload>
+          }
+          findMany: {
+            args: Prisma.identityEventsFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$identityEventsPayload>[]
+          }
+          create: {
+            args: Prisma.identityEventsCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$identityEventsPayload>
+          }
+          createMany: {
+            args: Prisma.identityEventsCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.identityEventsDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$identityEventsPayload>
+          }
+          update: {
+            args: Prisma.identityEventsUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$identityEventsPayload>
+          }
+          deleteMany: {
+            args: Prisma.identityEventsDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.identityEventsUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.identityEventsUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$identityEventsPayload>
+          }
+          aggregate: {
+            args: Prisma.IdentityEventsAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateIdentityEvents>
+          }
+          groupBy: {
+            args: Prisma.identityEventsGroupByArgs<ExtArgs>
+            result: $Utils.Optional<IdentityEventsGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.identityEventsCountArgs<ExtArgs>
+            result: $Utils.Optional<IdentityEventsCountAggregateOutputType> | number
+          }
+        }
+      }
+      networkEvents: {
+        payload: Prisma.$networkEventsPayload<ExtArgs>
+        fields: Prisma.networkEventsFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.networkEventsFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$networkEventsPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.networkEventsFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$networkEventsPayload>
+          }
+          findFirst: {
+            args: Prisma.networkEventsFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$networkEventsPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.networkEventsFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$networkEventsPayload>
+          }
+          findMany: {
+            args: Prisma.networkEventsFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$networkEventsPayload>[]
+          }
+          create: {
+            args: Prisma.networkEventsCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$networkEventsPayload>
+          }
+          createMany: {
+            args: Prisma.networkEventsCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.networkEventsDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$networkEventsPayload>
+          }
+          update: {
+            args: Prisma.networkEventsUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$networkEventsPayload>
+          }
+          deleteMany: {
+            args: Prisma.networkEventsDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.networkEventsUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.networkEventsUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$networkEventsPayload>
+          }
+          aggregate: {
+            args: Prisma.NetworkEventsAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateNetworkEvents>
+          }
+          groupBy: {
+            args: Prisma.networkEventsGroupByArgs<ExtArgs>
+            result: $Utils.Optional<NetworkEventsGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.networkEventsCountArgs<ExtArgs>
+            result: $Utils.Optional<NetworkEventsCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1182,6 +1592,11 @@ export namespace Prisma {
     audit?: auditOmit
     notifications?: notificationsOmit
     tenancy_details?: tenancy_detailsOmit
+    custoDiarioTotal?: CustoDiarioTotalOmit
+    custoMensalTotal?: CustoMensalTotalOmit
+    computeEvents?: computeEventsOmit
+    identityEvents?: identityEventsOmit
+    networkEvents?: networkEventsOmit
   }
 
   /* Types for Logging */
@@ -1291,13 +1706,13 @@ export namespace Prisma {
   export type ComputeInstancesAvgAggregateOutputType = {
     memory_in_gbs: number | null
     ocpus: number | null
-    hourly_cost: number | null
+    monthly_cost: number | null
   }
 
   export type ComputeInstancesSumAggregateOutputType = {
     memory_in_gbs: number | null
     ocpus: number | null
-    hourly_cost: number | null
+    monthly_cost: number | null
   }
 
   export type ComputeInstancesMinAggregateOutputType = {
@@ -1316,7 +1731,7 @@ export namespace Prisma {
     processor_description: string | null
     time_created: Date | null
     CreatedBy: string | null
-    hourly_cost: number | null
+    monthly_cost: number | null
   }
 
   export type ComputeInstancesMaxAggregateOutputType = {
@@ -1335,7 +1750,7 @@ export namespace Prisma {
     processor_description: string | null
     time_created: Date | null
     CreatedBy: string | null
-    hourly_cost: number | null
+    monthly_cost: number | null
   }
 
   export type ComputeInstancesCountAggregateOutputType = {
@@ -1354,7 +1769,7 @@ export namespace Prisma {
     processor_description: number
     time_created: number
     CreatedBy: number
-    hourly_cost: number
+    monthly_cost: number
     _all: number
   }
 
@@ -1362,13 +1777,13 @@ export namespace Prisma {
   export type ComputeInstancesAvgAggregateInputType = {
     memory_in_gbs?: true
     ocpus?: true
-    hourly_cost?: true
+    monthly_cost?: true
   }
 
   export type ComputeInstancesSumAggregateInputType = {
     memory_in_gbs?: true
     ocpus?: true
-    hourly_cost?: true
+    monthly_cost?: true
   }
 
   export type ComputeInstancesMinAggregateInputType = {
@@ -1387,7 +1802,7 @@ export namespace Prisma {
     processor_description?: true
     time_created?: true
     CreatedBy?: true
-    hourly_cost?: true
+    monthly_cost?: true
   }
 
   export type ComputeInstancesMaxAggregateInputType = {
@@ -1406,7 +1821,7 @@ export namespace Prisma {
     processor_description?: true
     time_created?: true
     CreatedBy?: true
-    hourly_cost?: true
+    monthly_cost?: true
   }
 
   export type ComputeInstancesCountAggregateInputType = {
@@ -1425,7 +1840,7 @@ export namespace Prisma {
     processor_description?: true
     time_created?: true
     CreatedBy?: true
-    hourly_cost?: true
+    monthly_cost?: true
     _all?: true
   }
 
@@ -1531,7 +1946,7 @@ export namespace Prisma {
     processor_description: string | null
     time_created: Date | null
     CreatedBy: string | null
-    hourly_cost: number | null
+    monthly_cost: number | null
     _count: ComputeInstancesCountAggregateOutputType | null
     _avg: ComputeInstancesAvgAggregateOutputType | null
     _sum: ComputeInstancesSumAggregateOutputType | null
@@ -1569,7 +1984,7 @@ export namespace Prisma {
     processor_description?: boolean
     time_created?: boolean
     CreatedBy?: boolean
-    hourly_cost?: boolean
+    monthly_cost?: boolean
   }, ExtArgs["result"]["computeInstances"]>
 
 
@@ -1590,10 +2005,10 @@ export namespace Prisma {
     processor_description?: boolean
     time_created?: boolean
     CreatedBy?: boolean
-    hourly_cost?: boolean
+    monthly_cost?: boolean
   }
 
-  export type ComputeInstancesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"tenancy_name" | "tenancy_id" | "id" | "display_name" | "compartment_id" | "availability_domain" | "fault_domain" | "region" | "lifecycle_state" | "shape" | "memory_in_gbs" | "ocpus" | "processor_description" | "time_created" | "CreatedBy" | "hourly_cost", ExtArgs["result"]["computeInstances"]>
+  export type ComputeInstancesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"tenancy_name" | "tenancy_id" | "id" | "display_name" | "compartment_id" | "availability_domain" | "fault_domain" | "region" | "lifecycle_state" | "shape" | "memory_in_gbs" | "ocpus" | "processor_description" | "time_created" | "CreatedBy" | "monthly_cost", ExtArgs["result"]["computeInstances"]>
 
   export type $ComputeInstancesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "ComputeInstances"
@@ -1614,7 +2029,7 @@ export namespace Prisma {
       processor_description: string | null
       time_created: Date | null
       CreatedBy: string | null
-      hourly_cost: number | null
+      monthly_cost: number | null
     }, ExtArgs["result"]["computeInstances"]>
     composites: {}
   }
@@ -1999,7 +2414,7 @@ export namespace Prisma {
     readonly processor_description: FieldRef<"ComputeInstances", 'String'>
     readonly time_created: FieldRef<"ComputeInstances", 'DateTime'>
     readonly CreatedBy: FieldRef<"ComputeInstances", 'String'>
-    readonly hourly_cost: FieldRef<"ComputeInstances", 'Float'>
+    readonly monthly_cost: FieldRef<"ComputeInstances", 'Float'>
   }
     
 
@@ -7384,6 +7799,5130 @@ export namespace Prisma {
 
 
   /**
+   * Model CustoDiarioTotal
+   */
+
+  export type AggregateCustoDiarioTotal = {
+    _count: CustoDiarioTotalCountAggregateOutputType | null
+    _avg: CustoDiarioTotalAvgAggregateOutputType | null
+    _sum: CustoDiarioTotalSumAggregateOutputType | null
+    _min: CustoDiarioTotalMinAggregateOutputType | null
+    _max: CustoDiarioTotalMaxAggregateOutputType | null
+  }
+
+  export type CustoDiarioTotalAvgAggregateOutputType = {
+    cost_dia: number | null
+    usage_dia: number | null
+  }
+
+  export type CustoDiarioTotalSumAggregateOutputType = {
+    cost_dia: number | null
+    usage_dia: number | null
+  }
+
+  export type CustoDiarioTotalMinAggregateOutputType = {
+    tenancy_name: string | null
+    tenant_id: string | null
+    cost_dia: number | null
+    currency: string | null
+    usage_dia: number | null
+    time_started: Date | null
+    time_ended: Date | null
+  }
+
+  export type CustoDiarioTotalMaxAggregateOutputType = {
+    tenancy_name: string | null
+    tenant_id: string | null
+    cost_dia: number | null
+    currency: string | null
+    usage_dia: number | null
+    time_started: Date | null
+    time_ended: Date | null
+  }
+
+  export type CustoDiarioTotalCountAggregateOutputType = {
+    tenancy_name: number
+    tenant_id: number
+    cost_dia: number
+    currency: number
+    usage_dia: number
+    time_started: number
+    time_ended: number
+    _all: number
+  }
+
+
+  export type CustoDiarioTotalAvgAggregateInputType = {
+    cost_dia?: true
+    usage_dia?: true
+  }
+
+  export type CustoDiarioTotalSumAggregateInputType = {
+    cost_dia?: true
+    usage_dia?: true
+  }
+
+  export type CustoDiarioTotalMinAggregateInputType = {
+    tenancy_name?: true
+    tenant_id?: true
+    cost_dia?: true
+    currency?: true
+    usage_dia?: true
+    time_started?: true
+    time_ended?: true
+  }
+
+  export type CustoDiarioTotalMaxAggregateInputType = {
+    tenancy_name?: true
+    tenant_id?: true
+    cost_dia?: true
+    currency?: true
+    usage_dia?: true
+    time_started?: true
+    time_ended?: true
+  }
+
+  export type CustoDiarioTotalCountAggregateInputType = {
+    tenancy_name?: true
+    tenant_id?: true
+    cost_dia?: true
+    currency?: true
+    usage_dia?: true
+    time_started?: true
+    time_ended?: true
+    _all?: true
+  }
+
+  export type CustoDiarioTotalAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CustoDiarioTotal to aggregate.
+     */
+    where?: CustoDiarioTotalWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CustoDiarioTotals to fetch.
+     */
+    orderBy?: CustoDiarioTotalOrderByWithRelationInput | CustoDiarioTotalOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CustoDiarioTotalWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CustoDiarioTotals from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CustoDiarioTotals.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned CustoDiarioTotals
+    **/
+    _count?: true | CustoDiarioTotalCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: CustoDiarioTotalAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: CustoDiarioTotalSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CustoDiarioTotalMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CustoDiarioTotalMaxAggregateInputType
+  }
+
+  export type GetCustoDiarioTotalAggregateType<T extends CustoDiarioTotalAggregateArgs> = {
+        [P in keyof T & keyof AggregateCustoDiarioTotal]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCustoDiarioTotal[P]>
+      : GetScalarType<T[P], AggregateCustoDiarioTotal[P]>
+  }
+
+
+
+
+  export type CustoDiarioTotalGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CustoDiarioTotalWhereInput
+    orderBy?: CustoDiarioTotalOrderByWithAggregationInput | CustoDiarioTotalOrderByWithAggregationInput[]
+    by: CustoDiarioTotalScalarFieldEnum[] | CustoDiarioTotalScalarFieldEnum
+    having?: CustoDiarioTotalScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CustoDiarioTotalCountAggregateInputType | true
+    _avg?: CustoDiarioTotalAvgAggregateInputType
+    _sum?: CustoDiarioTotalSumAggregateInputType
+    _min?: CustoDiarioTotalMinAggregateInputType
+    _max?: CustoDiarioTotalMaxAggregateInputType
+  }
+
+  export type CustoDiarioTotalGroupByOutputType = {
+    tenancy_name: string | null
+    tenant_id: string
+    cost_dia: number | null
+    currency: string | null
+    usage_dia: number | null
+    time_started: Date
+    time_ended: Date | null
+    _count: CustoDiarioTotalCountAggregateOutputType | null
+    _avg: CustoDiarioTotalAvgAggregateOutputType | null
+    _sum: CustoDiarioTotalSumAggregateOutputType | null
+    _min: CustoDiarioTotalMinAggregateOutputType | null
+    _max: CustoDiarioTotalMaxAggregateOutputType | null
+  }
+
+  type GetCustoDiarioTotalGroupByPayload<T extends CustoDiarioTotalGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CustoDiarioTotalGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CustoDiarioTotalGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CustoDiarioTotalGroupByOutputType[P]>
+            : GetScalarType<T[P], CustoDiarioTotalGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CustoDiarioTotalSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    tenancy_name?: boolean
+    tenant_id?: boolean
+    cost_dia?: boolean
+    currency?: boolean
+    usage_dia?: boolean
+    time_started?: boolean
+    time_ended?: boolean
+  }, ExtArgs["result"]["custoDiarioTotal"]>
+
+
+
+  export type CustoDiarioTotalSelectScalar = {
+    tenancy_name?: boolean
+    tenant_id?: boolean
+    cost_dia?: boolean
+    currency?: boolean
+    usage_dia?: boolean
+    time_started?: boolean
+    time_ended?: boolean
+  }
+
+  export type CustoDiarioTotalOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"tenancy_name" | "tenant_id" | "cost_dia" | "currency" | "usage_dia" | "time_started" | "time_ended", ExtArgs["result"]["custoDiarioTotal"]>
+
+  export type $CustoDiarioTotalPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "CustoDiarioTotal"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      tenancy_name: string | null
+      tenant_id: string
+      cost_dia: number | null
+      currency: string | null
+      usage_dia: number | null
+      time_started: Date
+      time_ended: Date | null
+    }, ExtArgs["result"]["custoDiarioTotal"]>
+    composites: {}
+  }
+
+  type CustoDiarioTotalGetPayload<S extends boolean | null | undefined | CustoDiarioTotalDefaultArgs> = $Result.GetResult<Prisma.$CustoDiarioTotalPayload, S>
+
+  type CustoDiarioTotalCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CustoDiarioTotalFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CustoDiarioTotalCountAggregateInputType | true
+    }
+
+  export interface CustoDiarioTotalDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CustoDiarioTotal'], meta: { name: 'CustoDiarioTotal' } }
+    /**
+     * Find zero or one CustoDiarioTotal that matches the filter.
+     * @param {CustoDiarioTotalFindUniqueArgs} args - Arguments to find a CustoDiarioTotal
+     * @example
+     * // Get one CustoDiarioTotal
+     * const custoDiarioTotal = await prisma.custoDiarioTotal.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CustoDiarioTotalFindUniqueArgs>(args: SelectSubset<T, CustoDiarioTotalFindUniqueArgs<ExtArgs>>): Prisma__CustoDiarioTotalClient<$Result.GetResult<Prisma.$CustoDiarioTotalPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one CustoDiarioTotal that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CustoDiarioTotalFindUniqueOrThrowArgs} args - Arguments to find a CustoDiarioTotal
+     * @example
+     * // Get one CustoDiarioTotal
+     * const custoDiarioTotal = await prisma.custoDiarioTotal.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CustoDiarioTotalFindUniqueOrThrowArgs>(args: SelectSubset<T, CustoDiarioTotalFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CustoDiarioTotalClient<$Result.GetResult<Prisma.$CustoDiarioTotalPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CustoDiarioTotal that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CustoDiarioTotalFindFirstArgs} args - Arguments to find a CustoDiarioTotal
+     * @example
+     * // Get one CustoDiarioTotal
+     * const custoDiarioTotal = await prisma.custoDiarioTotal.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CustoDiarioTotalFindFirstArgs>(args?: SelectSubset<T, CustoDiarioTotalFindFirstArgs<ExtArgs>>): Prisma__CustoDiarioTotalClient<$Result.GetResult<Prisma.$CustoDiarioTotalPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CustoDiarioTotal that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CustoDiarioTotalFindFirstOrThrowArgs} args - Arguments to find a CustoDiarioTotal
+     * @example
+     * // Get one CustoDiarioTotal
+     * const custoDiarioTotal = await prisma.custoDiarioTotal.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CustoDiarioTotalFindFirstOrThrowArgs>(args?: SelectSubset<T, CustoDiarioTotalFindFirstOrThrowArgs<ExtArgs>>): Prisma__CustoDiarioTotalClient<$Result.GetResult<Prisma.$CustoDiarioTotalPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more CustoDiarioTotals that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CustoDiarioTotalFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all CustoDiarioTotals
+     * const custoDiarioTotals = await prisma.custoDiarioTotal.findMany()
+     * 
+     * // Get first 10 CustoDiarioTotals
+     * const custoDiarioTotals = await prisma.custoDiarioTotal.findMany({ take: 10 })
+     * 
+     * // Only select the `tenancy_name`
+     * const custoDiarioTotalWithTenancy_nameOnly = await prisma.custoDiarioTotal.findMany({ select: { tenancy_name: true } })
+     * 
+     */
+    findMany<T extends CustoDiarioTotalFindManyArgs>(args?: SelectSubset<T, CustoDiarioTotalFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CustoDiarioTotalPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a CustoDiarioTotal.
+     * @param {CustoDiarioTotalCreateArgs} args - Arguments to create a CustoDiarioTotal.
+     * @example
+     * // Create one CustoDiarioTotal
+     * const CustoDiarioTotal = await prisma.custoDiarioTotal.create({
+     *   data: {
+     *     // ... data to create a CustoDiarioTotal
+     *   }
+     * })
+     * 
+     */
+    create<T extends CustoDiarioTotalCreateArgs>(args: SelectSubset<T, CustoDiarioTotalCreateArgs<ExtArgs>>): Prisma__CustoDiarioTotalClient<$Result.GetResult<Prisma.$CustoDiarioTotalPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many CustoDiarioTotals.
+     * @param {CustoDiarioTotalCreateManyArgs} args - Arguments to create many CustoDiarioTotals.
+     * @example
+     * // Create many CustoDiarioTotals
+     * const custoDiarioTotal = await prisma.custoDiarioTotal.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CustoDiarioTotalCreateManyArgs>(args?: SelectSubset<T, CustoDiarioTotalCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a CustoDiarioTotal.
+     * @param {CustoDiarioTotalDeleteArgs} args - Arguments to delete one CustoDiarioTotal.
+     * @example
+     * // Delete one CustoDiarioTotal
+     * const CustoDiarioTotal = await prisma.custoDiarioTotal.delete({
+     *   where: {
+     *     // ... filter to delete one CustoDiarioTotal
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CustoDiarioTotalDeleteArgs>(args: SelectSubset<T, CustoDiarioTotalDeleteArgs<ExtArgs>>): Prisma__CustoDiarioTotalClient<$Result.GetResult<Prisma.$CustoDiarioTotalPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one CustoDiarioTotal.
+     * @param {CustoDiarioTotalUpdateArgs} args - Arguments to update one CustoDiarioTotal.
+     * @example
+     * // Update one CustoDiarioTotal
+     * const custoDiarioTotal = await prisma.custoDiarioTotal.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CustoDiarioTotalUpdateArgs>(args: SelectSubset<T, CustoDiarioTotalUpdateArgs<ExtArgs>>): Prisma__CustoDiarioTotalClient<$Result.GetResult<Prisma.$CustoDiarioTotalPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more CustoDiarioTotals.
+     * @param {CustoDiarioTotalDeleteManyArgs} args - Arguments to filter CustoDiarioTotals to delete.
+     * @example
+     * // Delete a few CustoDiarioTotals
+     * const { count } = await prisma.custoDiarioTotal.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CustoDiarioTotalDeleteManyArgs>(args?: SelectSubset<T, CustoDiarioTotalDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CustoDiarioTotals.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CustoDiarioTotalUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many CustoDiarioTotals
+     * const custoDiarioTotal = await prisma.custoDiarioTotal.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CustoDiarioTotalUpdateManyArgs>(args: SelectSubset<T, CustoDiarioTotalUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one CustoDiarioTotal.
+     * @param {CustoDiarioTotalUpsertArgs} args - Arguments to update or create a CustoDiarioTotal.
+     * @example
+     * // Update or create a CustoDiarioTotal
+     * const custoDiarioTotal = await prisma.custoDiarioTotal.upsert({
+     *   create: {
+     *     // ... data to create a CustoDiarioTotal
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the CustoDiarioTotal we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CustoDiarioTotalUpsertArgs>(args: SelectSubset<T, CustoDiarioTotalUpsertArgs<ExtArgs>>): Prisma__CustoDiarioTotalClient<$Result.GetResult<Prisma.$CustoDiarioTotalPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of CustoDiarioTotals.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CustoDiarioTotalCountArgs} args - Arguments to filter CustoDiarioTotals to count.
+     * @example
+     * // Count the number of CustoDiarioTotals
+     * const count = await prisma.custoDiarioTotal.count({
+     *   where: {
+     *     // ... the filter for the CustoDiarioTotals we want to count
+     *   }
+     * })
+    **/
+    count<T extends CustoDiarioTotalCountArgs>(
+      args?: Subset<T, CustoDiarioTotalCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CustoDiarioTotalCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a CustoDiarioTotal.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CustoDiarioTotalAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CustoDiarioTotalAggregateArgs>(args: Subset<T, CustoDiarioTotalAggregateArgs>): Prisma.PrismaPromise<GetCustoDiarioTotalAggregateType<T>>
+
+    /**
+     * Group by CustoDiarioTotal.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CustoDiarioTotalGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CustoDiarioTotalGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CustoDiarioTotalGroupByArgs['orderBy'] }
+        : { orderBy?: CustoDiarioTotalGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CustoDiarioTotalGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCustoDiarioTotalGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the CustoDiarioTotal model
+   */
+  readonly fields: CustoDiarioTotalFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for CustoDiarioTotal.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CustoDiarioTotalClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the CustoDiarioTotal model
+   */
+  interface CustoDiarioTotalFieldRefs {
+    readonly tenancy_name: FieldRef<"CustoDiarioTotal", 'String'>
+    readonly tenant_id: FieldRef<"CustoDiarioTotal", 'String'>
+    readonly cost_dia: FieldRef<"CustoDiarioTotal", 'Float'>
+    readonly currency: FieldRef<"CustoDiarioTotal", 'String'>
+    readonly usage_dia: FieldRef<"CustoDiarioTotal", 'Float'>
+    readonly time_started: FieldRef<"CustoDiarioTotal", 'DateTime'>
+    readonly time_ended: FieldRef<"CustoDiarioTotal", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * CustoDiarioTotal findUnique
+   */
+  export type CustoDiarioTotalFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CustoDiarioTotal
+     */
+    select?: CustoDiarioTotalSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CustoDiarioTotal
+     */
+    omit?: CustoDiarioTotalOmit<ExtArgs> | null
+    /**
+     * Filter, which CustoDiarioTotal to fetch.
+     */
+    where: CustoDiarioTotalWhereUniqueInput
+  }
+
+  /**
+   * CustoDiarioTotal findUniqueOrThrow
+   */
+  export type CustoDiarioTotalFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CustoDiarioTotal
+     */
+    select?: CustoDiarioTotalSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CustoDiarioTotal
+     */
+    omit?: CustoDiarioTotalOmit<ExtArgs> | null
+    /**
+     * Filter, which CustoDiarioTotal to fetch.
+     */
+    where: CustoDiarioTotalWhereUniqueInput
+  }
+
+  /**
+   * CustoDiarioTotal findFirst
+   */
+  export type CustoDiarioTotalFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CustoDiarioTotal
+     */
+    select?: CustoDiarioTotalSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CustoDiarioTotal
+     */
+    omit?: CustoDiarioTotalOmit<ExtArgs> | null
+    /**
+     * Filter, which CustoDiarioTotal to fetch.
+     */
+    where?: CustoDiarioTotalWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CustoDiarioTotals to fetch.
+     */
+    orderBy?: CustoDiarioTotalOrderByWithRelationInput | CustoDiarioTotalOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CustoDiarioTotals.
+     */
+    cursor?: CustoDiarioTotalWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CustoDiarioTotals from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CustoDiarioTotals.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CustoDiarioTotals.
+     */
+    distinct?: CustoDiarioTotalScalarFieldEnum | CustoDiarioTotalScalarFieldEnum[]
+  }
+
+  /**
+   * CustoDiarioTotal findFirstOrThrow
+   */
+  export type CustoDiarioTotalFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CustoDiarioTotal
+     */
+    select?: CustoDiarioTotalSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CustoDiarioTotal
+     */
+    omit?: CustoDiarioTotalOmit<ExtArgs> | null
+    /**
+     * Filter, which CustoDiarioTotal to fetch.
+     */
+    where?: CustoDiarioTotalWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CustoDiarioTotals to fetch.
+     */
+    orderBy?: CustoDiarioTotalOrderByWithRelationInput | CustoDiarioTotalOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CustoDiarioTotals.
+     */
+    cursor?: CustoDiarioTotalWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CustoDiarioTotals from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CustoDiarioTotals.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CustoDiarioTotals.
+     */
+    distinct?: CustoDiarioTotalScalarFieldEnum | CustoDiarioTotalScalarFieldEnum[]
+  }
+
+  /**
+   * CustoDiarioTotal findMany
+   */
+  export type CustoDiarioTotalFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CustoDiarioTotal
+     */
+    select?: CustoDiarioTotalSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CustoDiarioTotal
+     */
+    omit?: CustoDiarioTotalOmit<ExtArgs> | null
+    /**
+     * Filter, which CustoDiarioTotals to fetch.
+     */
+    where?: CustoDiarioTotalWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CustoDiarioTotals to fetch.
+     */
+    orderBy?: CustoDiarioTotalOrderByWithRelationInput | CustoDiarioTotalOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing CustoDiarioTotals.
+     */
+    cursor?: CustoDiarioTotalWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CustoDiarioTotals from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CustoDiarioTotals.
+     */
+    skip?: number
+    distinct?: CustoDiarioTotalScalarFieldEnum | CustoDiarioTotalScalarFieldEnum[]
+  }
+
+  /**
+   * CustoDiarioTotal create
+   */
+  export type CustoDiarioTotalCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CustoDiarioTotal
+     */
+    select?: CustoDiarioTotalSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CustoDiarioTotal
+     */
+    omit?: CustoDiarioTotalOmit<ExtArgs> | null
+    /**
+     * The data needed to create a CustoDiarioTotal.
+     */
+    data?: XOR<CustoDiarioTotalCreateInput, CustoDiarioTotalUncheckedCreateInput>
+  }
+
+  /**
+   * CustoDiarioTotal createMany
+   */
+  export type CustoDiarioTotalCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many CustoDiarioTotals.
+     */
+    data: CustoDiarioTotalCreateManyInput | CustoDiarioTotalCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * CustoDiarioTotal update
+   */
+  export type CustoDiarioTotalUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CustoDiarioTotal
+     */
+    select?: CustoDiarioTotalSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CustoDiarioTotal
+     */
+    omit?: CustoDiarioTotalOmit<ExtArgs> | null
+    /**
+     * The data needed to update a CustoDiarioTotal.
+     */
+    data: XOR<CustoDiarioTotalUpdateInput, CustoDiarioTotalUncheckedUpdateInput>
+    /**
+     * Choose, which CustoDiarioTotal to update.
+     */
+    where: CustoDiarioTotalWhereUniqueInput
+  }
+
+  /**
+   * CustoDiarioTotal updateMany
+   */
+  export type CustoDiarioTotalUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update CustoDiarioTotals.
+     */
+    data: XOR<CustoDiarioTotalUpdateManyMutationInput, CustoDiarioTotalUncheckedUpdateManyInput>
+    /**
+     * Filter which CustoDiarioTotals to update
+     */
+    where?: CustoDiarioTotalWhereInput
+    /**
+     * Limit how many CustoDiarioTotals to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CustoDiarioTotal upsert
+   */
+  export type CustoDiarioTotalUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CustoDiarioTotal
+     */
+    select?: CustoDiarioTotalSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CustoDiarioTotal
+     */
+    omit?: CustoDiarioTotalOmit<ExtArgs> | null
+    /**
+     * The filter to search for the CustoDiarioTotal to update in case it exists.
+     */
+    where: CustoDiarioTotalWhereUniqueInput
+    /**
+     * In case the CustoDiarioTotal found by the `where` argument doesn't exist, create a new CustoDiarioTotal with this data.
+     */
+    create: XOR<CustoDiarioTotalCreateInput, CustoDiarioTotalUncheckedCreateInput>
+    /**
+     * In case the CustoDiarioTotal was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CustoDiarioTotalUpdateInput, CustoDiarioTotalUncheckedUpdateInput>
+  }
+
+  /**
+   * CustoDiarioTotal delete
+   */
+  export type CustoDiarioTotalDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CustoDiarioTotal
+     */
+    select?: CustoDiarioTotalSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CustoDiarioTotal
+     */
+    omit?: CustoDiarioTotalOmit<ExtArgs> | null
+    /**
+     * Filter which CustoDiarioTotal to delete.
+     */
+    where: CustoDiarioTotalWhereUniqueInput
+  }
+
+  /**
+   * CustoDiarioTotal deleteMany
+   */
+  export type CustoDiarioTotalDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CustoDiarioTotals to delete
+     */
+    where?: CustoDiarioTotalWhereInput
+    /**
+     * Limit how many CustoDiarioTotals to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * CustoDiarioTotal without action
+   */
+  export type CustoDiarioTotalDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CustoDiarioTotal
+     */
+    select?: CustoDiarioTotalSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CustoDiarioTotal
+     */
+    omit?: CustoDiarioTotalOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model CustoMensalTotal
+   */
+
+  export type AggregateCustoMensalTotal = {
+    _count: CustoMensalTotalCountAggregateOutputType | null
+    _avg: CustoMensalTotalAvgAggregateOutputType | null
+    _sum: CustoMensalTotalSumAggregateOutputType | null
+    _min: CustoMensalTotalMinAggregateOutputType | null
+    _max: CustoMensalTotalMaxAggregateOutputType | null
+  }
+
+  export type CustoMensalTotalAvgAggregateOutputType = {
+    cost_mes: number | null
+    usage_mes: number | null
+  }
+
+  export type CustoMensalTotalSumAggregateOutputType = {
+    cost_mes: number | null
+    usage_mes: number | null
+  }
+
+  export type CustoMensalTotalMinAggregateOutputType = {
+    tenancy_name: string | null
+    tenant_id: string | null
+    cost_mes: number | null
+    currency: string | null
+    usage_mes: number | null
+    time_started: Date | null
+    time_ended: Date | null
+  }
+
+  export type CustoMensalTotalMaxAggregateOutputType = {
+    tenancy_name: string | null
+    tenant_id: string | null
+    cost_mes: number | null
+    currency: string | null
+    usage_mes: number | null
+    time_started: Date | null
+    time_ended: Date | null
+  }
+
+  export type CustoMensalTotalCountAggregateOutputType = {
+    tenancy_name: number
+    tenant_id: number
+    cost_mes: number
+    currency: number
+    usage_mes: number
+    time_started: number
+    time_ended: number
+    _all: number
+  }
+
+
+  export type CustoMensalTotalAvgAggregateInputType = {
+    cost_mes?: true
+    usage_mes?: true
+  }
+
+  export type CustoMensalTotalSumAggregateInputType = {
+    cost_mes?: true
+    usage_mes?: true
+  }
+
+  export type CustoMensalTotalMinAggregateInputType = {
+    tenancy_name?: true
+    tenant_id?: true
+    cost_mes?: true
+    currency?: true
+    usage_mes?: true
+    time_started?: true
+    time_ended?: true
+  }
+
+  export type CustoMensalTotalMaxAggregateInputType = {
+    tenancy_name?: true
+    tenant_id?: true
+    cost_mes?: true
+    currency?: true
+    usage_mes?: true
+    time_started?: true
+    time_ended?: true
+  }
+
+  export type CustoMensalTotalCountAggregateInputType = {
+    tenancy_name?: true
+    tenant_id?: true
+    cost_mes?: true
+    currency?: true
+    usage_mes?: true
+    time_started?: true
+    time_ended?: true
+    _all?: true
+  }
+
+  export type CustoMensalTotalAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CustoMensalTotal to aggregate.
+     */
+    where?: CustoMensalTotalWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CustoMensalTotals to fetch.
+     */
+    orderBy?: CustoMensalTotalOrderByWithRelationInput | CustoMensalTotalOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CustoMensalTotalWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CustoMensalTotals from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CustoMensalTotals.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned CustoMensalTotals
+    **/
+    _count?: true | CustoMensalTotalCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: CustoMensalTotalAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: CustoMensalTotalSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CustoMensalTotalMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CustoMensalTotalMaxAggregateInputType
+  }
+
+  export type GetCustoMensalTotalAggregateType<T extends CustoMensalTotalAggregateArgs> = {
+        [P in keyof T & keyof AggregateCustoMensalTotal]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCustoMensalTotal[P]>
+      : GetScalarType<T[P], AggregateCustoMensalTotal[P]>
+  }
+
+
+
+
+  export type CustoMensalTotalGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CustoMensalTotalWhereInput
+    orderBy?: CustoMensalTotalOrderByWithAggregationInput | CustoMensalTotalOrderByWithAggregationInput[]
+    by: CustoMensalTotalScalarFieldEnum[] | CustoMensalTotalScalarFieldEnum
+    having?: CustoMensalTotalScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CustoMensalTotalCountAggregateInputType | true
+    _avg?: CustoMensalTotalAvgAggregateInputType
+    _sum?: CustoMensalTotalSumAggregateInputType
+    _min?: CustoMensalTotalMinAggregateInputType
+    _max?: CustoMensalTotalMaxAggregateInputType
+  }
+
+  export type CustoMensalTotalGroupByOutputType = {
+    tenancy_name: string | null
+    tenant_id: string
+    cost_mes: number | null
+    currency: string | null
+    usage_mes: number | null
+    time_started: Date
+    time_ended: Date | null
+    _count: CustoMensalTotalCountAggregateOutputType | null
+    _avg: CustoMensalTotalAvgAggregateOutputType | null
+    _sum: CustoMensalTotalSumAggregateOutputType | null
+    _min: CustoMensalTotalMinAggregateOutputType | null
+    _max: CustoMensalTotalMaxAggregateOutputType | null
+  }
+
+  type GetCustoMensalTotalGroupByPayload<T extends CustoMensalTotalGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CustoMensalTotalGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CustoMensalTotalGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CustoMensalTotalGroupByOutputType[P]>
+            : GetScalarType<T[P], CustoMensalTotalGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CustoMensalTotalSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    tenancy_name?: boolean
+    tenant_id?: boolean
+    cost_mes?: boolean
+    currency?: boolean
+    usage_mes?: boolean
+    time_started?: boolean
+    time_ended?: boolean
+  }, ExtArgs["result"]["custoMensalTotal"]>
+
+
+
+  export type CustoMensalTotalSelectScalar = {
+    tenancy_name?: boolean
+    tenant_id?: boolean
+    cost_mes?: boolean
+    currency?: boolean
+    usage_mes?: boolean
+    time_started?: boolean
+    time_ended?: boolean
+  }
+
+  export type CustoMensalTotalOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"tenancy_name" | "tenant_id" | "cost_mes" | "currency" | "usage_mes" | "time_started" | "time_ended", ExtArgs["result"]["custoMensalTotal"]>
+
+  export type $CustoMensalTotalPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "CustoMensalTotal"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      tenancy_name: string | null
+      tenant_id: string
+      cost_mes: number | null
+      currency: string | null
+      usage_mes: number | null
+      time_started: Date
+      time_ended: Date | null
+    }, ExtArgs["result"]["custoMensalTotal"]>
+    composites: {}
+  }
+
+  type CustoMensalTotalGetPayload<S extends boolean | null | undefined | CustoMensalTotalDefaultArgs> = $Result.GetResult<Prisma.$CustoMensalTotalPayload, S>
+
+  type CustoMensalTotalCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CustoMensalTotalFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CustoMensalTotalCountAggregateInputType | true
+    }
+
+  export interface CustoMensalTotalDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CustoMensalTotal'], meta: { name: 'CustoMensalTotal' } }
+    /**
+     * Find zero or one CustoMensalTotal that matches the filter.
+     * @param {CustoMensalTotalFindUniqueArgs} args - Arguments to find a CustoMensalTotal
+     * @example
+     * // Get one CustoMensalTotal
+     * const custoMensalTotal = await prisma.custoMensalTotal.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CustoMensalTotalFindUniqueArgs>(args: SelectSubset<T, CustoMensalTotalFindUniqueArgs<ExtArgs>>): Prisma__CustoMensalTotalClient<$Result.GetResult<Prisma.$CustoMensalTotalPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one CustoMensalTotal that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CustoMensalTotalFindUniqueOrThrowArgs} args - Arguments to find a CustoMensalTotal
+     * @example
+     * // Get one CustoMensalTotal
+     * const custoMensalTotal = await prisma.custoMensalTotal.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CustoMensalTotalFindUniqueOrThrowArgs>(args: SelectSubset<T, CustoMensalTotalFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CustoMensalTotalClient<$Result.GetResult<Prisma.$CustoMensalTotalPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CustoMensalTotal that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CustoMensalTotalFindFirstArgs} args - Arguments to find a CustoMensalTotal
+     * @example
+     * // Get one CustoMensalTotal
+     * const custoMensalTotal = await prisma.custoMensalTotal.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CustoMensalTotalFindFirstArgs>(args?: SelectSubset<T, CustoMensalTotalFindFirstArgs<ExtArgs>>): Prisma__CustoMensalTotalClient<$Result.GetResult<Prisma.$CustoMensalTotalPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CustoMensalTotal that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CustoMensalTotalFindFirstOrThrowArgs} args - Arguments to find a CustoMensalTotal
+     * @example
+     * // Get one CustoMensalTotal
+     * const custoMensalTotal = await prisma.custoMensalTotal.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CustoMensalTotalFindFirstOrThrowArgs>(args?: SelectSubset<T, CustoMensalTotalFindFirstOrThrowArgs<ExtArgs>>): Prisma__CustoMensalTotalClient<$Result.GetResult<Prisma.$CustoMensalTotalPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more CustoMensalTotals that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CustoMensalTotalFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all CustoMensalTotals
+     * const custoMensalTotals = await prisma.custoMensalTotal.findMany()
+     * 
+     * // Get first 10 CustoMensalTotals
+     * const custoMensalTotals = await prisma.custoMensalTotal.findMany({ take: 10 })
+     * 
+     * // Only select the `tenancy_name`
+     * const custoMensalTotalWithTenancy_nameOnly = await prisma.custoMensalTotal.findMany({ select: { tenancy_name: true } })
+     * 
+     */
+    findMany<T extends CustoMensalTotalFindManyArgs>(args?: SelectSubset<T, CustoMensalTotalFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CustoMensalTotalPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a CustoMensalTotal.
+     * @param {CustoMensalTotalCreateArgs} args - Arguments to create a CustoMensalTotal.
+     * @example
+     * // Create one CustoMensalTotal
+     * const CustoMensalTotal = await prisma.custoMensalTotal.create({
+     *   data: {
+     *     // ... data to create a CustoMensalTotal
+     *   }
+     * })
+     * 
+     */
+    create<T extends CustoMensalTotalCreateArgs>(args: SelectSubset<T, CustoMensalTotalCreateArgs<ExtArgs>>): Prisma__CustoMensalTotalClient<$Result.GetResult<Prisma.$CustoMensalTotalPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many CustoMensalTotals.
+     * @param {CustoMensalTotalCreateManyArgs} args - Arguments to create many CustoMensalTotals.
+     * @example
+     * // Create many CustoMensalTotals
+     * const custoMensalTotal = await prisma.custoMensalTotal.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CustoMensalTotalCreateManyArgs>(args?: SelectSubset<T, CustoMensalTotalCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a CustoMensalTotal.
+     * @param {CustoMensalTotalDeleteArgs} args - Arguments to delete one CustoMensalTotal.
+     * @example
+     * // Delete one CustoMensalTotal
+     * const CustoMensalTotal = await prisma.custoMensalTotal.delete({
+     *   where: {
+     *     // ... filter to delete one CustoMensalTotal
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CustoMensalTotalDeleteArgs>(args: SelectSubset<T, CustoMensalTotalDeleteArgs<ExtArgs>>): Prisma__CustoMensalTotalClient<$Result.GetResult<Prisma.$CustoMensalTotalPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one CustoMensalTotal.
+     * @param {CustoMensalTotalUpdateArgs} args - Arguments to update one CustoMensalTotal.
+     * @example
+     * // Update one CustoMensalTotal
+     * const custoMensalTotal = await prisma.custoMensalTotal.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CustoMensalTotalUpdateArgs>(args: SelectSubset<T, CustoMensalTotalUpdateArgs<ExtArgs>>): Prisma__CustoMensalTotalClient<$Result.GetResult<Prisma.$CustoMensalTotalPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more CustoMensalTotals.
+     * @param {CustoMensalTotalDeleteManyArgs} args - Arguments to filter CustoMensalTotals to delete.
+     * @example
+     * // Delete a few CustoMensalTotals
+     * const { count } = await prisma.custoMensalTotal.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CustoMensalTotalDeleteManyArgs>(args?: SelectSubset<T, CustoMensalTotalDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CustoMensalTotals.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CustoMensalTotalUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many CustoMensalTotals
+     * const custoMensalTotal = await prisma.custoMensalTotal.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CustoMensalTotalUpdateManyArgs>(args: SelectSubset<T, CustoMensalTotalUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one CustoMensalTotal.
+     * @param {CustoMensalTotalUpsertArgs} args - Arguments to update or create a CustoMensalTotal.
+     * @example
+     * // Update or create a CustoMensalTotal
+     * const custoMensalTotal = await prisma.custoMensalTotal.upsert({
+     *   create: {
+     *     // ... data to create a CustoMensalTotal
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the CustoMensalTotal we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CustoMensalTotalUpsertArgs>(args: SelectSubset<T, CustoMensalTotalUpsertArgs<ExtArgs>>): Prisma__CustoMensalTotalClient<$Result.GetResult<Prisma.$CustoMensalTotalPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of CustoMensalTotals.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CustoMensalTotalCountArgs} args - Arguments to filter CustoMensalTotals to count.
+     * @example
+     * // Count the number of CustoMensalTotals
+     * const count = await prisma.custoMensalTotal.count({
+     *   where: {
+     *     // ... the filter for the CustoMensalTotals we want to count
+     *   }
+     * })
+    **/
+    count<T extends CustoMensalTotalCountArgs>(
+      args?: Subset<T, CustoMensalTotalCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CustoMensalTotalCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a CustoMensalTotal.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CustoMensalTotalAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CustoMensalTotalAggregateArgs>(args: Subset<T, CustoMensalTotalAggregateArgs>): Prisma.PrismaPromise<GetCustoMensalTotalAggregateType<T>>
+
+    /**
+     * Group by CustoMensalTotal.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CustoMensalTotalGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CustoMensalTotalGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CustoMensalTotalGroupByArgs['orderBy'] }
+        : { orderBy?: CustoMensalTotalGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CustoMensalTotalGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCustoMensalTotalGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the CustoMensalTotal model
+   */
+  readonly fields: CustoMensalTotalFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for CustoMensalTotal.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CustoMensalTotalClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the CustoMensalTotal model
+   */
+  interface CustoMensalTotalFieldRefs {
+    readonly tenancy_name: FieldRef<"CustoMensalTotal", 'String'>
+    readonly tenant_id: FieldRef<"CustoMensalTotal", 'String'>
+    readonly cost_mes: FieldRef<"CustoMensalTotal", 'Float'>
+    readonly currency: FieldRef<"CustoMensalTotal", 'String'>
+    readonly usage_mes: FieldRef<"CustoMensalTotal", 'Float'>
+    readonly time_started: FieldRef<"CustoMensalTotal", 'DateTime'>
+    readonly time_ended: FieldRef<"CustoMensalTotal", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * CustoMensalTotal findUnique
+   */
+  export type CustoMensalTotalFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CustoMensalTotal
+     */
+    select?: CustoMensalTotalSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CustoMensalTotal
+     */
+    omit?: CustoMensalTotalOmit<ExtArgs> | null
+    /**
+     * Filter, which CustoMensalTotal to fetch.
+     */
+    where: CustoMensalTotalWhereUniqueInput
+  }
+
+  /**
+   * CustoMensalTotal findUniqueOrThrow
+   */
+  export type CustoMensalTotalFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CustoMensalTotal
+     */
+    select?: CustoMensalTotalSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CustoMensalTotal
+     */
+    omit?: CustoMensalTotalOmit<ExtArgs> | null
+    /**
+     * Filter, which CustoMensalTotal to fetch.
+     */
+    where: CustoMensalTotalWhereUniqueInput
+  }
+
+  /**
+   * CustoMensalTotal findFirst
+   */
+  export type CustoMensalTotalFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CustoMensalTotal
+     */
+    select?: CustoMensalTotalSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CustoMensalTotal
+     */
+    omit?: CustoMensalTotalOmit<ExtArgs> | null
+    /**
+     * Filter, which CustoMensalTotal to fetch.
+     */
+    where?: CustoMensalTotalWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CustoMensalTotals to fetch.
+     */
+    orderBy?: CustoMensalTotalOrderByWithRelationInput | CustoMensalTotalOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CustoMensalTotals.
+     */
+    cursor?: CustoMensalTotalWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CustoMensalTotals from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CustoMensalTotals.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CustoMensalTotals.
+     */
+    distinct?: CustoMensalTotalScalarFieldEnum | CustoMensalTotalScalarFieldEnum[]
+  }
+
+  /**
+   * CustoMensalTotal findFirstOrThrow
+   */
+  export type CustoMensalTotalFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CustoMensalTotal
+     */
+    select?: CustoMensalTotalSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CustoMensalTotal
+     */
+    omit?: CustoMensalTotalOmit<ExtArgs> | null
+    /**
+     * Filter, which CustoMensalTotal to fetch.
+     */
+    where?: CustoMensalTotalWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CustoMensalTotals to fetch.
+     */
+    orderBy?: CustoMensalTotalOrderByWithRelationInput | CustoMensalTotalOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CustoMensalTotals.
+     */
+    cursor?: CustoMensalTotalWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CustoMensalTotals from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CustoMensalTotals.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CustoMensalTotals.
+     */
+    distinct?: CustoMensalTotalScalarFieldEnum | CustoMensalTotalScalarFieldEnum[]
+  }
+
+  /**
+   * CustoMensalTotal findMany
+   */
+  export type CustoMensalTotalFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CustoMensalTotal
+     */
+    select?: CustoMensalTotalSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CustoMensalTotal
+     */
+    omit?: CustoMensalTotalOmit<ExtArgs> | null
+    /**
+     * Filter, which CustoMensalTotals to fetch.
+     */
+    where?: CustoMensalTotalWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CustoMensalTotals to fetch.
+     */
+    orderBy?: CustoMensalTotalOrderByWithRelationInput | CustoMensalTotalOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing CustoMensalTotals.
+     */
+    cursor?: CustoMensalTotalWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CustoMensalTotals from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CustoMensalTotals.
+     */
+    skip?: number
+    distinct?: CustoMensalTotalScalarFieldEnum | CustoMensalTotalScalarFieldEnum[]
+  }
+
+  /**
+   * CustoMensalTotal create
+   */
+  export type CustoMensalTotalCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CustoMensalTotal
+     */
+    select?: CustoMensalTotalSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CustoMensalTotal
+     */
+    omit?: CustoMensalTotalOmit<ExtArgs> | null
+    /**
+     * The data needed to create a CustoMensalTotal.
+     */
+    data?: XOR<CustoMensalTotalCreateInput, CustoMensalTotalUncheckedCreateInput>
+  }
+
+  /**
+   * CustoMensalTotal createMany
+   */
+  export type CustoMensalTotalCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many CustoMensalTotals.
+     */
+    data: CustoMensalTotalCreateManyInput | CustoMensalTotalCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * CustoMensalTotal update
+   */
+  export type CustoMensalTotalUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CustoMensalTotal
+     */
+    select?: CustoMensalTotalSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CustoMensalTotal
+     */
+    omit?: CustoMensalTotalOmit<ExtArgs> | null
+    /**
+     * The data needed to update a CustoMensalTotal.
+     */
+    data: XOR<CustoMensalTotalUpdateInput, CustoMensalTotalUncheckedUpdateInput>
+    /**
+     * Choose, which CustoMensalTotal to update.
+     */
+    where: CustoMensalTotalWhereUniqueInput
+  }
+
+  /**
+   * CustoMensalTotal updateMany
+   */
+  export type CustoMensalTotalUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update CustoMensalTotals.
+     */
+    data: XOR<CustoMensalTotalUpdateManyMutationInput, CustoMensalTotalUncheckedUpdateManyInput>
+    /**
+     * Filter which CustoMensalTotals to update
+     */
+    where?: CustoMensalTotalWhereInput
+    /**
+     * Limit how many CustoMensalTotals to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CustoMensalTotal upsert
+   */
+  export type CustoMensalTotalUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CustoMensalTotal
+     */
+    select?: CustoMensalTotalSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CustoMensalTotal
+     */
+    omit?: CustoMensalTotalOmit<ExtArgs> | null
+    /**
+     * The filter to search for the CustoMensalTotal to update in case it exists.
+     */
+    where: CustoMensalTotalWhereUniqueInput
+    /**
+     * In case the CustoMensalTotal found by the `where` argument doesn't exist, create a new CustoMensalTotal with this data.
+     */
+    create: XOR<CustoMensalTotalCreateInput, CustoMensalTotalUncheckedCreateInput>
+    /**
+     * In case the CustoMensalTotal was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CustoMensalTotalUpdateInput, CustoMensalTotalUncheckedUpdateInput>
+  }
+
+  /**
+   * CustoMensalTotal delete
+   */
+  export type CustoMensalTotalDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CustoMensalTotal
+     */
+    select?: CustoMensalTotalSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CustoMensalTotal
+     */
+    omit?: CustoMensalTotalOmit<ExtArgs> | null
+    /**
+     * Filter which CustoMensalTotal to delete.
+     */
+    where: CustoMensalTotalWhereUniqueInput
+  }
+
+  /**
+   * CustoMensalTotal deleteMany
+   */
+  export type CustoMensalTotalDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CustoMensalTotals to delete
+     */
+    where?: CustoMensalTotalWhereInput
+    /**
+     * Limit how many CustoMensalTotals to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * CustoMensalTotal without action
+   */
+  export type CustoMensalTotalDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CustoMensalTotal
+     */
+    select?: CustoMensalTotalSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CustoMensalTotal
+     */
+    omit?: CustoMensalTotalOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model computeEvents
+   */
+
+  export type AggregateComputeEvents = {
+    _count: ComputeEventsCountAggregateOutputType | null
+    _avg: ComputeEventsAvgAggregateOutputType | null
+    _sum: ComputeEventsSumAggregateOutputType | null
+    _min: ComputeEventsMinAggregateOutputType | null
+    _max: ComputeEventsMaxAggregateOutputType | null
+  }
+
+  export type ComputeEventsAvgAggregateOutputType = {
+    id: number | null
+    ocpus: number | null
+    memory_in_gbs: number | null
+  }
+
+  export type ComputeEventsSumAggregateOutputType = {
+    id: bigint | null
+    ocpus: number | null
+    memory_in_gbs: number | null
+  }
+
+  export type ComputeEventsMinAggregateOutputType = {
+    id: bigint | null
+    event_type: string | null
+    event_time: Date | null
+    source: string | null
+    opcRequestId: string | null
+    raw_event: string | null
+    compartment_id: string | null
+    compartment_name: string | null
+    event_name: string | null
+    message: string | null
+    action: string | null
+    principal_name: string | null
+    ip_address: string | null
+    display_name: string | null
+    lifecycle_state: string | null
+    shape: string | null
+    ocpus: number | null
+    memory_in_gbs: number | null
+    processor_description: string | null
+    created_by: string | null
+    created_on: Date | null
+    preserve_boot_volume: boolean | null
+    created_at: Date | null
+    instanceActionType: string | null
+  }
+
+  export type ComputeEventsMaxAggregateOutputType = {
+    id: bigint | null
+    event_type: string | null
+    event_time: Date | null
+    source: string | null
+    opcRequestId: string | null
+    raw_event: string | null
+    compartment_id: string | null
+    compartment_name: string | null
+    event_name: string | null
+    message: string | null
+    action: string | null
+    principal_name: string | null
+    ip_address: string | null
+    display_name: string | null
+    lifecycle_state: string | null
+    shape: string | null
+    ocpus: number | null
+    memory_in_gbs: number | null
+    processor_description: string | null
+    created_by: string | null
+    created_on: Date | null
+    preserve_boot_volume: boolean | null
+    created_at: Date | null
+    instanceActionType: string | null
+  }
+
+  export type ComputeEventsCountAggregateOutputType = {
+    id: number
+    event_type: number
+    event_time: number
+    source: number
+    opcRequestId: number
+    raw_event: number
+    compartment_id: number
+    compartment_name: number
+    event_name: number
+    message: number
+    action: number
+    principal_name: number
+    ip_address: number
+    display_name: number
+    lifecycle_state: number
+    shape: number
+    ocpus: number
+    memory_in_gbs: number
+    processor_description: number
+    created_by: number
+    created_on: number
+    preserve_boot_volume: number
+    created_at: number
+    instanceActionType: number
+    _all: number
+  }
+
+
+  export type ComputeEventsAvgAggregateInputType = {
+    id?: true
+    ocpus?: true
+    memory_in_gbs?: true
+  }
+
+  export type ComputeEventsSumAggregateInputType = {
+    id?: true
+    ocpus?: true
+    memory_in_gbs?: true
+  }
+
+  export type ComputeEventsMinAggregateInputType = {
+    id?: true
+    event_type?: true
+    event_time?: true
+    source?: true
+    opcRequestId?: true
+    raw_event?: true
+    compartment_id?: true
+    compartment_name?: true
+    event_name?: true
+    message?: true
+    action?: true
+    principal_name?: true
+    ip_address?: true
+    display_name?: true
+    lifecycle_state?: true
+    shape?: true
+    ocpus?: true
+    memory_in_gbs?: true
+    processor_description?: true
+    created_by?: true
+    created_on?: true
+    preserve_boot_volume?: true
+    created_at?: true
+    instanceActionType?: true
+  }
+
+  export type ComputeEventsMaxAggregateInputType = {
+    id?: true
+    event_type?: true
+    event_time?: true
+    source?: true
+    opcRequestId?: true
+    raw_event?: true
+    compartment_id?: true
+    compartment_name?: true
+    event_name?: true
+    message?: true
+    action?: true
+    principal_name?: true
+    ip_address?: true
+    display_name?: true
+    lifecycle_state?: true
+    shape?: true
+    ocpus?: true
+    memory_in_gbs?: true
+    processor_description?: true
+    created_by?: true
+    created_on?: true
+    preserve_boot_volume?: true
+    created_at?: true
+    instanceActionType?: true
+  }
+
+  export type ComputeEventsCountAggregateInputType = {
+    id?: true
+    event_type?: true
+    event_time?: true
+    source?: true
+    opcRequestId?: true
+    raw_event?: true
+    compartment_id?: true
+    compartment_name?: true
+    event_name?: true
+    message?: true
+    action?: true
+    principal_name?: true
+    ip_address?: true
+    display_name?: true
+    lifecycle_state?: true
+    shape?: true
+    ocpus?: true
+    memory_in_gbs?: true
+    processor_description?: true
+    created_by?: true
+    created_on?: true
+    preserve_boot_volume?: true
+    created_at?: true
+    instanceActionType?: true
+    _all?: true
+  }
+
+  export type ComputeEventsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which computeEvents to aggregate.
+     */
+    where?: computeEventsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of computeEvents to fetch.
+     */
+    orderBy?: computeEventsOrderByWithRelationInput | computeEventsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: computeEventsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` computeEvents from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` computeEvents.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned computeEvents
+    **/
+    _count?: true | ComputeEventsCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ComputeEventsAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ComputeEventsSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ComputeEventsMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ComputeEventsMaxAggregateInputType
+  }
+
+  export type GetComputeEventsAggregateType<T extends ComputeEventsAggregateArgs> = {
+        [P in keyof T & keyof AggregateComputeEvents]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateComputeEvents[P]>
+      : GetScalarType<T[P], AggregateComputeEvents[P]>
+  }
+
+
+
+
+  export type computeEventsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: computeEventsWhereInput
+    orderBy?: computeEventsOrderByWithAggregationInput | computeEventsOrderByWithAggregationInput[]
+    by: ComputeEventsScalarFieldEnum[] | ComputeEventsScalarFieldEnum
+    having?: computeEventsScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ComputeEventsCountAggregateInputType | true
+    _avg?: ComputeEventsAvgAggregateInputType
+    _sum?: ComputeEventsSumAggregateInputType
+    _min?: ComputeEventsMinAggregateInputType
+    _max?: ComputeEventsMaxAggregateInputType
+  }
+
+  export type ComputeEventsGroupByOutputType = {
+    id: bigint
+    event_type: string | null
+    event_time: Date | null
+    source: string | null
+    opcRequestId: string | null
+    raw_event: string | null
+    compartment_id: string | null
+    compartment_name: string | null
+    event_name: string | null
+    message: string | null
+    action: string | null
+    principal_name: string | null
+    ip_address: string | null
+    display_name: string | null
+    lifecycle_state: string | null
+    shape: string | null
+    ocpus: number | null
+    memory_in_gbs: number | null
+    processor_description: string | null
+    created_by: string | null
+    created_on: Date | null
+    preserve_boot_volume: boolean | null
+    created_at: Date
+    instanceActionType: string | null
+    _count: ComputeEventsCountAggregateOutputType | null
+    _avg: ComputeEventsAvgAggregateOutputType | null
+    _sum: ComputeEventsSumAggregateOutputType | null
+    _min: ComputeEventsMinAggregateOutputType | null
+    _max: ComputeEventsMaxAggregateOutputType | null
+  }
+
+  type GetComputeEventsGroupByPayload<T extends computeEventsGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ComputeEventsGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ComputeEventsGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ComputeEventsGroupByOutputType[P]>
+            : GetScalarType<T[P], ComputeEventsGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type computeEventsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    event_type?: boolean
+    event_time?: boolean
+    source?: boolean
+    opcRequestId?: boolean
+    raw_event?: boolean
+    compartment_id?: boolean
+    compartment_name?: boolean
+    event_name?: boolean
+    message?: boolean
+    action?: boolean
+    principal_name?: boolean
+    ip_address?: boolean
+    display_name?: boolean
+    lifecycle_state?: boolean
+    shape?: boolean
+    ocpus?: boolean
+    memory_in_gbs?: boolean
+    processor_description?: boolean
+    created_by?: boolean
+    created_on?: boolean
+    preserve_boot_volume?: boolean
+    created_at?: boolean
+    instanceActionType?: boolean
+  }, ExtArgs["result"]["computeEvents"]>
+
+
+
+  export type computeEventsSelectScalar = {
+    id?: boolean
+    event_type?: boolean
+    event_time?: boolean
+    source?: boolean
+    opcRequestId?: boolean
+    raw_event?: boolean
+    compartment_id?: boolean
+    compartment_name?: boolean
+    event_name?: boolean
+    message?: boolean
+    action?: boolean
+    principal_name?: boolean
+    ip_address?: boolean
+    display_name?: boolean
+    lifecycle_state?: boolean
+    shape?: boolean
+    ocpus?: boolean
+    memory_in_gbs?: boolean
+    processor_description?: boolean
+    created_by?: boolean
+    created_on?: boolean
+    preserve_boot_volume?: boolean
+    created_at?: boolean
+    instanceActionType?: boolean
+  }
+
+  export type computeEventsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "event_type" | "event_time" | "source" | "opcRequestId" | "raw_event" | "compartment_id" | "compartment_name" | "event_name" | "message" | "action" | "principal_name" | "ip_address" | "display_name" | "lifecycle_state" | "shape" | "ocpus" | "memory_in_gbs" | "processor_description" | "created_by" | "created_on" | "preserve_boot_volume" | "created_at" | "instanceActionType", ExtArgs["result"]["computeEvents"]>
+
+  export type $computeEventsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "computeEvents"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: bigint
+      event_type: string | null
+      event_time: Date | null
+      source: string | null
+      opcRequestId: string | null
+      raw_event: string | null
+      compartment_id: string | null
+      compartment_name: string | null
+      event_name: string | null
+      message: string | null
+      action: string | null
+      principal_name: string | null
+      ip_address: string | null
+      display_name: string | null
+      lifecycle_state: string | null
+      shape: string | null
+      ocpus: number | null
+      memory_in_gbs: number | null
+      processor_description: string | null
+      created_by: string | null
+      created_on: Date | null
+      preserve_boot_volume: boolean | null
+      created_at: Date
+      instanceActionType: string | null
+    }, ExtArgs["result"]["computeEvents"]>
+    composites: {}
+  }
+
+  type computeEventsGetPayload<S extends boolean | null | undefined | computeEventsDefaultArgs> = $Result.GetResult<Prisma.$computeEventsPayload, S>
+
+  type computeEventsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<computeEventsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ComputeEventsCountAggregateInputType | true
+    }
+
+  export interface computeEventsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['computeEvents'], meta: { name: 'computeEvents' } }
+    /**
+     * Find zero or one ComputeEvents that matches the filter.
+     * @param {computeEventsFindUniqueArgs} args - Arguments to find a ComputeEvents
+     * @example
+     * // Get one ComputeEvents
+     * const computeEvents = await prisma.computeEvents.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends computeEventsFindUniqueArgs>(args: SelectSubset<T, computeEventsFindUniqueArgs<ExtArgs>>): Prisma__computeEventsClient<$Result.GetResult<Prisma.$computeEventsPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one ComputeEvents that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {computeEventsFindUniqueOrThrowArgs} args - Arguments to find a ComputeEvents
+     * @example
+     * // Get one ComputeEvents
+     * const computeEvents = await prisma.computeEvents.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends computeEventsFindUniqueOrThrowArgs>(args: SelectSubset<T, computeEventsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__computeEventsClient<$Result.GetResult<Prisma.$computeEventsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ComputeEvents that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {computeEventsFindFirstArgs} args - Arguments to find a ComputeEvents
+     * @example
+     * // Get one ComputeEvents
+     * const computeEvents = await prisma.computeEvents.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends computeEventsFindFirstArgs>(args?: SelectSubset<T, computeEventsFindFirstArgs<ExtArgs>>): Prisma__computeEventsClient<$Result.GetResult<Prisma.$computeEventsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ComputeEvents that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {computeEventsFindFirstOrThrowArgs} args - Arguments to find a ComputeEvents
+     * @example
+     * // Get one ComputeEvents
+     * const computeEvents = await prisma.computeEvents.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends computeEventsFindFirstOrThrowArgs>(args?: SelectSubset<T, computeEventsFindFirstOrThrowArgs<ExtArgs>>): Prisma__computeEventsClient<$Result.GetResult<Prisma.$computeEventsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more ComputeEvents that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {computeEventsFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ComputeEvents
+     * const computeEvents = await prisma.computeEvents.findMany()
+     * 
+     * // Get first 10 ComputeEvents
+     * const computeEvents = await prisma.computeEvents.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const computeEventsWithIdOnly = await prisma.computeEvents.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends computeEventsFindManyArgs>(args?: SelectSubset<T, computeEventsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$computeEventsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a ComputeEvents.
+     * @param {computeEventsCreateArgs} args - Arguments to create a ComputeEvents.
+     * @example
+     * // Create one ComputeEvents
+     * const ComputeEvents = await prisma.computeEvents.create({
+     *   data: {
+     *     // ... data to create a ComputeEvents
+     *   }
+     * })
+     * 
+     */
+    create<T extends computeEventsCreateArgs>(args: SelectSubset<T, computeEventsCreateArgs<ExtArgs>>): Prisma__computeEventsClient<$Result.GetResult<Prisma.$computeEventsPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many ComputeEvents.
+     * @param {computeEventsCreateManyArgs} args - Arguments to create many ComputeEvents.
+     * @example
+     * // Create many ComputeEvents
+     * const computeEvents = await prisma.computeEvents.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends computeEventsCreateManyArgs>(args?: SelectSubset<T, computeEventsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a ComputeEvents.
+     * @param {computeEventsDeleteArgs} args - Arguments to delete one ComputeEvents.
+     * @example
+     * // Delete one ComputeEvents
+     * const ComputeEvents = await prisma.computeEvents.delete({
+     *   where: {
+     *     // ... filter to delete one ComputeEvents
+     *   }
+     * })
+     * 
+     */
+    delete<T extends computeEventsDeleteArgs>(args: SelectSubset<T, computeEventsDeleteArgs<ExtArgs>>): Prisma__computeEventsClient<$Result.GetResult<Prisma.$computeEventsPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one ComputeEvents.
+     * @param {computeEventsUpdateArgs} args - Arguments to update one ComputeEvents.
+     * @example
+     * // Update one ComputeEvents
+     * const computeEvents = await prisma.computeEvents.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends computeEventsUpdateArgs>(args: SelectSubset<T, computeEventsUpdateArgs<ExtArgs>>): Prisma__computeEventsClient<$Result.GetResult<Prisma.$computeEventsPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more ComputeEvents.
+     * @param {computeEventsDeleteManyArgs} args - Arguments to filter ComputeEvents to delete.
+     * @example
+     * // Delete a few ComputeEvents
+     * const { count } = await prisma.computeEvents.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends computeEventsDeleteManyArgs>(args?: SelectSubset<T, computeEventsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ComputeEvents.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {computeEventsUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ComputeEvents
+     * const computeEvents = await prisma.computeEvents.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends computeEventsUpdateManyArgs>(args: SelectSubset<T, computeEventsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one ComputeEvents.
+     * @param {computeEventsUpsertArgs} args - Arguments to update or create a ComputeEvents.
+     * @example
+     * // Update or create a ComputeEvents
+     * const computeEvents = await prisma.computeEvents.upsert({
+     *   create: {
+     *     // ... data to create a ComputeEvents
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ComputeEvents we want to update
+     *   }
+     * })
+     */
+    upsert<T extends computeEventsUpsertArgs>(args: SelectSubset<T, computeEventsUpsertArgs<ExtArgs>>): Prisma__computeEventsClient<$Result.GetResult<Prisma.$computeEventsPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of ComputeEvents.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {computeEventsCountArgs} args - Arguments to filter ComputeEvents to count.
+     * @example
+     * // Count the number of ComputeEvents
+     * const count = await prisma.computeEvents.count({
+     *   where: {
+     *     // ... the filter for the ComputeEvents we want to count
+     *   }
+     * })
+    **/
+    count<T extends computeEventsCountArgs>(
+      args?: Subset<T, computeEventsCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ComputeEventsCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ComputeEvents.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ComputeEventsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ComputeEventsAggregateArgs>(args: Subset<T, ComputeEventsAggregateArgs>): Prisma.PrismaPromise<GetComputeEventsAggregateType<T>>
+
+    /**
+     * Group by ComputeEvents.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {computeEventsGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends computeEventsGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: computeEventsGroupByArgs['orderBy'] }
+        : { orderBy?: computeEventsGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, computeEventsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetComputeEventsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the computeEvents model
+   */
+  readonly fields: computeEventsFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for computeEvents.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__computeEventsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the computeEvents model
+   */
+  interface computeEventsFieldRefs {
+    readonly id: FieldRef<"computeEvents", 'BigInt'>
+    readonly event_type: FieldRef<"computeEvents", 'String'>
+    readonly event_time: FieldRef<"computeEvents", 'DateTime'>
+    readonly source: FieldRef<"computeEvents", 'String'>
+    readonly opcRequestId: FieldRef<"computeEvents", 'String'>
+    readonly raw_event: FieldRef<"computeEvents", 'String'>
+    readonly compartment_id: FieldRef<"computeEvents", 'String'>
+    readonly compartment_name: FieldRef<"computeEvents", 'String'>
+    readonly event_name: FieldRef<"computeEvents", 'String'>
+    readonly message: FieldRef<"computeEvents", 'String'>
+    readonly action: FieldRef<"computeEvents", 'String'>
+    readonly principal_name: FieldRef<"computeEvents", 'String'>
+    readonly ip_address: FieldRef<"computeEvents", 'String'>
+    readonly display_name: FieldRef<"computeEvents", 'String'>
+    readonly lifecycle_state: FieldRef<"computeEvents", 'String'>
+    readonly shape: FieldRef<"computeEvents", 'String'>
+    readonly ocpus: FieldRef<"computeEvents", 'Float'>
+    readonly memory_in_gbs: FieldRef<"computeEvents", 'Float'>
+    readonly processor_description: FieldRef<"computeEvents", 'String'>
+    readonly created_by: FieldRef<"computeEvents", 'String'>
+    readonly created_on: FieldRef<"computeEvents", 'DateTime'>
+    readonly preserve_boot_volume: FieldRef<"computeEvents", 'Boolean'>
+    readonly created_at: FieldRef<"computeEvents", 'DateTime'>
+    readonly instanceActionType: FieldRef<"computeEvents", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * computeEvents findUnique
+   */
+  export type computeEventsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the computeEvents
+     */
+    select?: computeEventsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the computeEvents
+     */
+    omit?: computeEventsOmit<ExtArgs> | null
+    /**
+     * Filter, which computeEvents to fetch.
+     */
+    where: computeEventsWhereUniqueInput
+  }
+
+  /**
+   * computeEvents findUniqueOrThrow
+   */
+  export type computeEventsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the computeEvents
+     */
+    select?: computeEventsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the computeEvents
+     */
+    omit?: computeEventsOmit<ExtArgs> | null
+    /**
+     * Filter, which computeEvents to fetch.
+     */
+    where: computeEventsWhereUniqueInput
+  }
+
+  /**
+   * computeEvents findFirst
+   */
+  export type computeEventsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the computeEvents
+     */
+    select?: computeEventsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the computeEvents
+     */
+    omit?: computeEventsOmit<ExtArgs> | null
+    /**
+     * Filter, which computeEvents to fetch.
+     */
+    where?: computeEventsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of computeEvents to fetch.
+     */
+    orderBy?: computeEventsOrderByWithRelationInput | computeEventsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for computeEvents.
+     */
+    cursor?: computeEventsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` computeEvents from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` computeEvents.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of computeEvents.
+     */
+    distinct?: ComputeEventsScalarFieldEnum | ComputeEventsScalarFieldEnum[]
+  }
+
+  /**
+   * computeEvents findFirstOrThrow
+   */
+  export type computeEventsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the computeEvents
+     */
+    select?: computeEventsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the computeEvents
+     */
+    omit?: computeEventsOmit<ExtArgs> | null
+    /**
+     * Filter, which computeEvents to fetch.
+     */
+    where?: computeEventsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of computeEvents to fetch.
+     */
+    orderBy?: computeEventsOrderByWithRelationInput | computeEventsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for computeEvents.
+     */
+    cursor?: computeEventsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` computeEvents from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` computeEvents.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of computeEvents.
+     */
+    distinct?: ComputeEventsScalarFieldEnum | ComputeEventsScalarFieldEnum[]
+  }
+
+  /**
+   * computeEvents findMany
+   */
+  export type computeEventsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the computeEvents
+     */
+    select?: computeEventsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the computeEvents
+     */
+    omit?: computeEventsOmit<ExtArgs> | null
+    /**
+     * Filter, which computeEvents to fetch.
+     */
+    where?: computeEventsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of computeEvents to fetch.
+     */
+    orderBy?: computeEventsOrderByWithRelationInput | computeEventsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing computeEvents.
+     */
+    cursor?: computeEventsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` computeEvents from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` computeEvents.
+     */
+    skip?: number
+    distinct?: ComputeEventsScalarFieldEnum | ComputeEventsScalarFieldEnum[]
+  }
+
+  /**
+   * computeEvents create
+   */
+  export type computeEventsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the computeEvents
+     */
+    select?: computeEventsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the computeEvents
+     */
+    omit?: computeEventsOmit<ExtArgs> | null
+    /**
+     * The data needed to create a computeEvents.
+     */
+    data?: XOR<computeEventsCreateInput, computeEventsUncheckedCreateInput>
+  }
+
+  /**
+   * computeEvents createMany
+   */
+  export type computeEventsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many computeEvents.
+     */
+    data: computeEventsCreateManyInput | computeEventsCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * computeEvents update
+   */
+  export type computeEventsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the computeEvents
+     */
+    select?: computeEventsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the computeEvents
+     */
+    omit?: computeEventsOmit<ExtArgs> | null
+    /**
+     * The data needed to update a computeEvents.
+     */
+    data: XOR<computeEventsUpdateInput, computeEventsUncheckedUpdateInput>
+    /**
+     * Choose, which computeEvents to update.
+     */
+    where: computeEventsWhereUniqueInput
+  }
+
+  /**
+   * computeEvents updateMany
+   */
+  export type computeEventsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update computeEvents.
+     */
+    data: XOR<computeEventsUpdateManyMutationInput, computeEventsUncheckedUpdateManyInput>
+    /**
+     * Filter which computeEvents to update
+     */
+    where?: computeEventsWhereInput
+    /**
+     * Limit how many computeEvents to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * computeEvents upsert
+   */
+  export type computeEventsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the computeEvents
+     */
+    select?: computeEventsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the computeEvents
+     */
+    omit?: computeEventsOmit<ExtArgs> | null
+    /**
+     * The filter to search for the computeEvents to update in case it exists.
+     */
+    where: computeEventsWhereUniqueInput
+    /**
+     * In case the computeEvents found by the `where` argument doesn't exist, create a new computeEvents with this data.
+     */
+    create: XOR<computeEventsCreateInput, computeEventsUncheckedCreateInput>
+    /**
+     * In case the computeEvents was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<computeEventsUpdateInput, computeEventsUncheckedUpdateInput>
+  }
+
+  /**
+   * computeEvents delete
+   */
+  export type computeEventsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the computeEvents
+     */
+    select?: computeEventsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the computeEvents
+     */
+    omit?: computeEventsOmit<ExtArgs> | null
+    /**
+     * Filter which computeEvents to delete.
+     */
+    where: computeEventsWhereUniqueInput
+  }
+
+  /**
+   * computeEvents deleteMany
+   */
+  export type computeEventsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which computeEvents to delete
+     */
+    where?: computeEventsWhereInput
+    /**
+     * Limit how many computeEvents to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * computeEvents without action
+   */
+  export type computeEventsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the computeEvents
+     */
+    select?: computeEventsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the computeEvents
+     */
+    omit?: computeEventsOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model identityEvents
+   */
+
+  export type AggregateIdentityEvents = {
+    _count: IdentityEventsCountAggregateOutputType | null
+    _avg: IdentityEventsAvgAggregateOutputType | null
+    _sum: IdentityEventsSumAggregateOutputType | null
+    _min: IdentityEventsMinAggregateOutputType | null
+    _max: IdentityEventsMaxAggregateOutputType | null
+  }
+
+  export type IdentityEventsAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type IdentityEventsSumAggregateOutputType = {
+    id: bigint | null
+  }
+
+  export type IdentityEventsMinAggregateOutputType = {
+    id: bigint | null
+    eventType: string | null
+    eventTime: Date | null
+    source: string | null
+    opcRequestId: string | null
+    rawEvent: string | null
+    adminResourceName: string | null
+    adminResourceType: string | null
+    compartmentName: string | null
+    principalName: string | null
+    action: string | null
+    message: string | null
+    idcsLastModifiedByName: string | null
+    idcsLastModifiedByType: string | null
+    policyName: string | null
+    statements: string | null
+    createdAt: Date | null
+    eventName: string | null
+  }
+
+  export type IdentityEventsMaxAggregateOutputType = {
+    id: bigint | null
+    eventType: string | null
+    eventTime: Date | null
+    source: string | null
+    opcRequestId: string | null
+    rawEvent: string | null
+    adminResourceName: string | null
+    adminResourceType: string | null
+    compartmentName: string | null
+    principalName: string | null
+    action: string | null
+    message: string | null
+    idcsLastModifiedByName: string | null
+    idcsLastModifiedByType: string | null
+    policyName: string | null
+    statements: string | null
+    createdAt: Date | null
+    eventName: string | null
+  }
+
+  export type IdentityEventsCountAggregateOutputType = {
+    id: number
+    eventType: number
+    eventTime: number
+    source: number
+    opcRequestId: number
+    rawEvent: number
+    adminResourceName: number
+    adminResourceType: number
+    compartmentName: number
+    principalName: number
+    action: number
+    message: number
+    idcsLastModifiedByName: number
+    idcsLastModifiedByType: number
+    policyName: number
+    statements: number
+    createdAt: number
+    eventName: number
+    _all: number
+  }
+
+
+  export type IdentityEventsAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type IdentityEventsSumAggregateInputType = {
+    id?: true
+  }
+
+  export type IdentityEventsMinAggregateInputType = {
+    id?: true
+    eventType?: true
+    eventTime?: true
+    source?: true
+    opcRequestId?: true
+    rawEvent?: true
+    adminResourceName?: true
+    adminResourceType?: true
+    compartmentName?: true
+    principalName?: true
+    action?: true
+    message?: true
+    idcsLastModifiedByName?: true
+    idcsLastModifiedByType?: true
+    policyName?: true
+    statements?: true
+    createdAt?: true
+    eventName?: true
+  }
+
+  export type IdentityEventsMaxAggregateInputType = {
+    id?: true
+    eventType?: true
+    eventTime?: true
+    source?: true
+    opcRequestId?: true
+    rawEvent?: true
+    adminResourceName?: true
+    adminResourceType?: true
+    compartmentName?: true
+    principalName?: true
+    action?: true
+    message?: true
+    idcsLastModifiedByName?: true
+    idcsLastModifiedByType?: true
+    policyName?: true
+    statements?: true
+    createdAt?: true
+    eventName?: true
+  }
+
+  export type IdentityEventsCountAggregateInputType = {
+    id?: true
+    eventType?: true
+    eventTime?: true
+    source?: true
+    opcRequestId?: true
+    rawEvent?: true
+    adminResourceName?: true
+    adminResourceType?: true
+    compartmentName?: true
+    principalName?: true
+    action?: true
+    message?: true
+    idcsLastModifiedByName?: true
+    idcsLastModifiedByType?: true
+    policyName?: true
+    statements?: true
+    createdAt?: true
+    eventName?: true
+    _all?: true
+  }
+
+  export type IdentityEventsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which identityEvents to aggregate.
+     */
+    where?: identityEventsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of identityEvents to fetch.
+     */
+    orderBy?: identityEventsOrderByWithRelationInput | identityEventsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: identityEventsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` identityEvents from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` identityEvents.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned identityEvents
+    **/
+    _count?: true | IdentityEventsCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: IdentityEventsAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: IdentityEventsSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: IdentityEventsMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: IdentityEventsMaxAggregateInputType
+  }
+
+  export type GetIdentityEventsAggregateType<T extends IdentityEventsAggregateArgs> = {
+        [P in keyof T & keyof AggregateIdentityEvents]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateIdentityEvents[P]>
+      : GetScalarType<T[P], AggregateIdentityEvents[P]>
+  }
+
+
+
+
+  export type identityEventsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: identityEventsWhereInput
+    orderBy?: identityEventsOrderByWithAggregationInput | identityEventsOrderByWithAggregationInput[]
+    by: IdentityEventsScalarFieldEnum[] | IdentityEventsScalarFieldEnum
+    having?: identityEventsScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: IdentityEventsCountAggregateInputType | true
+    _avg?: IdentityEventsAvgAggregateInputType
+    _sum?: IdentityEventsSumAggregateInputType
+    _min?: IdentityEventsMinAggregateInputType
+    _max?: IdentityEventsMaxAggregateInputType
+  }
+
+  export type IdentityEventsGroupByOutputType = {
+    id: bigint
+    eventType: string | null
+    eventTime: Date | null
+    source: string | null
+    opcRequestId: string | null
+    rawEvent: string | null
+    adminResourceName: string | null
+    adminResourceType: string | null
+    compartmentName: string | null
+    principalName: string | null
+    action: string | null
+    message: string | null
+    idcsLastModifiedByName: string | null
+    idcsLastModifiedByType: string | null
+    policyName: string | null
+    statements: string | null
+    createdAt: Date
+    eventName: string | null
+    _count: IdentityEventsCountAggregateOutputType | null
+    _avg: IdentityEventsAvgAggregateOutputType | null
+    _sum: IdentityEventsSumAggregateOutputType | null
+    _min: IdentityEventsMinAggregateOutputType | null
+    _max: IdentityEventsMaxAggregateOutputType | null
+  }
+
+  type GetIdentityEventsGroupByPayload<T extends identityEventsGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<IdentityEventsGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof IdentityEventsGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], IdentityEventsGroupByOutputType[P]>
+            : GetScalarType<T[P], IdentityEventsGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type identityEventsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    eventType?: boolean
+    eventTime?: boolean
+    source?: boolean
+    opcRequestId?: boolean
+    rawEvent?: boolean
+    adminResourceName?: boolean
+    adminResourceType?: boolean
+    compartmentName?: boolean
+    principalName?: boolean
+    action?: boolean
+    message?: boolean
+    idcsLastModifiedByName?: boolean
+    idcsLastModifiedByType?: boolean
+    policyName?: boolean
+    statements?: boolean
+    createdAt?: boolean
+    eventName?: boolean
+  }, ExtArgs["result"]["identityEvents"]>
+
+
+
+  export type identityEventsSelectScalar = {
+    id?: boolean
+    eventType?: boolean
+    eventTime?: boolean
+    source?: boolean
+    opcRequestId?: boolean
+    rawEvent?: boolean
+    adminResourceName?: boolean
+    adminResourceType?: boolean
+    compartmentName?: boolean
+    principalName?: boolean
+    action?: boolean
+    message?: boolean
+    idcsLastModifiedByName?: boolean
+    idcsLastModifiedByType?: boolean
+    policyName?: boolean
+    statements?: boolean
+    createdAt?: boolean
+    eventName?: boolean
+  }
+
+  export type identityEventsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "eventType" | "eventTime" | "source" | "opcRequestId" | "rawEvent" | "adminResourceName" | "adminResourceType" | "compartmentName" | "principalName" | "action" | "message" | "idcsLastModifiedByName" | "idcsLastModifiedByType" | "policyName" | "statements" | "createdAt" | "eventName", ExtArgs["result"]["identityEvents"]>
+
+  export type $identityEventsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "identityEvents"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: bigint
+      eventType: string | null
+      eventTime: Date | null
+      source: string | null
+      opcRequestId: string | null
+      rawEvent: string | null
+      adminResourceName: string | null
+      adminResourceType: string | null
+      compartmentName: string | null
+      principalName: string | null
+      action: string | null
+      message: string | null
+      idcsLastModifiedByName: string | null
+      idcsLastModifiedByType: string | null
+      policyName: string | null
+      statements: string | null
+      createdAt: Date
+      eventName: string | null
+    }, ExtArgs["result"]["identityEvents"]>
+    composites: {}
+  }
+
+  type identityEventsGetPayload<S extends boolean | null | undefined | identityEventsDefaultArgs> = $Result.GetResult<Prisma.$identityEventsPayload, S>
+
+  type identityEventsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<identityEventsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: IdentityEventsCountAggregateInputType | true
+    }
+
+  export interface identityEventsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['identityEvents'], meta: { name: 'identityEvents' } }
+    /**
+     * Find zero or one IdentityEvents that matches the filter.
+     * @param {identityEventsFindUniqueArgs} args - Arguments to find a IdentityEvents
+     * @example
+     * // Get one IdentityEvents
+     * const identityEvents = await prisma.identityEvents.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends identityEventsFindUniqueArgs>(args: SelectSubset<T, identityEventsFindUniqueArgs<ExtArgs>>): Prisma__identityEventsClient<$Result.GetResult<Prisma.$identityEventsPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one IdentityEvents that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {identityEventsFindUniqueOrThrowArgs} args - Arguments to find a IdentityEvents
+     * @example
+     * // Get one IdentityEvents
+     * const identityEvents = await prisma.identityEvents.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends identityEventsFindUniqueOrThrowArgs>(args: SelectSubset<T, identityEventsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__identityEventsClient<$Result.GetResult<Prisma.$identityEventsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first IdentityEvents that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {identityEventsFindFirstArgs} args - Arguments to find a IdentityEvents
+     * @example
+     * // Get one IdentityEvents
+     * const identityEvents = await prisma.identityEvents.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends identityEventsFindFirstArgs>(args?: SelectSubset<T, identityEventsFindFirstArgs<ExtArgs>>): Prisma__identityEventsClient<$Result.GetResult<Prisma.$identityEventsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first IdentityEvents that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {identityEventsFindFirstOrThrowArgs} args - Arguments to find a IdentityEvents
+     * @example
+     * // Get one IdentityEvents
+     * const identityEvents = await prisma.identityEvents.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends identityEventsFindFirstOrThrowArgs>(args?: SelectSubset<T, identityEventsFindFirstOrThrowArgs<ExtArgs>>): Prisma__identityEventsClient<$Result.GetResult<Prisma.$identityEventsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more IdentityEvents that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {identityEventsFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all IdentityEvents
+     * const identityEvents = await prisma.identityEvents.findMany()
+     * 
+     * // Get first 10 IdentityEvents
+     * const identityEvents = await prisma.identityEvents.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const identityEventsWithIdOnly = await prisma.identityEvents.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends identityEventsFindManyArgs>(args?: SelectSubset<T, identityEventsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$identityEventsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a IdentityEvents.
+     * @param {identityEventsCreateArgs} args - Arguments to create a IdentityEvents.
+     * @example
+     * // Create one IdentityEvents
+     * const IdentityEvents = await prisma.identityEvents.create({
+     *   data: {
+     *     // ... data to create a IdentityEvents
+     *   }
+     * })
+     * 
+     */
+    create<T extends identityEventsCreateArgs>(args: SelectSubset<T, identityEventsCreateArgs<ExtArgs>>): Prisma__identityEventsClient<$Result.GetResult<Prisma.$identityEventsPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many IdentityEvents.
+     * @param {identityEventsCreateManyArgs} args - Arguments to create many IdentityEvents.
+     * @example
+     * // Create many IdentityEvents
+     * const identityEvents = await prisma.identityEvents.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends identityEventsCreateManyArgs>(args?: SelectSubset<T, identityEventsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a IdentityEvents.
+     * @param {identityEventsDeleteArgs} args - Arguments to delete one IdentityEvents.
+     * @example
+     * // Delete one IdentityEvents
+     * const IdentityEvents = await prisma.identityEvents.delete({
+     *   where: {
+     *     // ... filter to delete one IdentityEvents
+     *   }
+     * })
+     * 
+     */
+    delete<T extends identityEventsDeleteArgs>(args: SelectSubset<T, identityEventsDeleteArgs<ExtArgs>>): Prisma__identityEventsClient<$Result.GetResult<Prisma.$identityEventsPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one IdentityEvents.
+     * @param {identityEventsUpdateArgs} args - Arguments to update one IdentityEvents.
+     * @example
+     * // Update one IdentityEvents
+     * const identityEvents = await prisma.identityEvents.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends identityEventsUpdateArgs>(args: SelectSubset<T, identityEventsUpdateArgs<ExtArgs>>): Prisma__identityEventsClient<$Result.GetResult<Prisma.$identityEventsPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more IdentityEvents.
+     * @param {identityEventsDeleteManyArgs} args - Arguments to filter IdentityEvents to delete.
+     * @example
+     * // Delete a few IdentityEvents
+     * const { count } = await prisma.identityEvents.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends identityEventsDeleteManyArgs>(args?: SelectSubset<T, identityEventsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more IdentityEvents.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {identityEventsUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many IdentityEvents
+     * const identityEvents = await prisma.identityEvents.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends identityEventsUpdateManyArgs>(args: SelectSubset<T, identityEventsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one IdentityEvents.
+     * @param {identityEventsUpsertArgs} args - Arguments to update or create a IdentityEvents.
+     * @example
+     * // Update or create a IdentityEvents
+     * const identityEvents = await prisma.identityEvents.upsert({
+     *   create: {
+     *     // ... data to create a IdentityEvents
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the IdentityEvents we want to update
+     *   }
+     * })
+     */
+    upsert<T extends identityEventsUpsertArgs>(args: SelectSubset<T, identityEventsUpsertArgs<ExtArgs>>): Prisma__identityEventsClient<$Result.GetResult<Prisma.$identityEventsPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of IdentityEvents.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {identityEventsCountArgs} args - Arguments to filter IdentityEvents to count.
+     * @example
+     * // Count the number of IdentityEvents
+     * const count = await prisma.identityEvents.count({
+     *   where: {
+     *     // ... the filter for the IdentityEvents we want to count
+     *   }
+     * })
+    **/
+    count<T extends identityEventsCountArgs>(
+      args?: Subset<T, identityEventsCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], IdentityEventsCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a IdentityEvents.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {IdentityEventsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends IdentityEventsAggregateArgs>(args: Subset<T, IdentityEventsAggregateArgs>): Prisma.PrismaPromise<GetIdentityEventsAggregateType<T>>
+
+    /**
+     * Group by IdentityEvents.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {identityEventsGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends identityEventsGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: identityEventsGroupByArgs['orderBy'] }
+        : { orderBy?: identityEventsGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, identityEventsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetIdentityEventsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the identityEvents model
+   */
+  readonly fields: identityEventsFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for identityEvents.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__identityEventsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the identityEvents model
+   */
+  interface identityEventsFieldRefs {
+    readonly id: FieldRef<"identityEvents", 'BigInt'>
+    readonly eventType: FieldRef<"identityEvents", 'String'>
+    readonly eventTime: FieldRef<"identityEvents", 'DateTime'>
+    readonly source: FieldRef<"identityEvents", 'String'>
+    readonly opcRequestId: FieldRef<"identityEvents", 'String'>
+    readonly rawEvent: FieldRef<"identityEvents", 'String'>
+    readonly adminResourceName: FieldRef<"identityEvents", 'String'>
+    readonly adminResourceType: FieldRef<"identityEvents", 'String'>
+    readonly compartmentName: FieldRef<"identityEvents", 'String'>
+    readonly principalName: FieldRef<"identityEvents", 'String'>
+    readonly action: FieldRef<"identityEvents", 'String'>
+    readonly message: FieldRef<"identityEvents", 'String'>
+    readonly idcsLastModifiedByName: FieldRef<"identityEvents", 'String'>
+    readonly idcsLastModifiedByType: FieldRef<"identityEvents", 'String'>
+    readonly policyName: FieldRef<"identityEvents", 'String'>
+    readonly statements: FieldRef<"identityEvents", 'String'>
+    readonly createdAt: FieldRef<"identityEvents", 'DateTime'>
+    readonly eventName: FieldRef<"identityEvents", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * identityEvents findUnique
+   */
+  export type identityEventsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the identityEvents
+     */
+    select?: identityEventsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the identityEvents
+     */
+    omit?: identityEventsOmit<ExtArgs> | null
+    /**
+     * Filter, which identityEvents to fetch.
+     */
+    where: identityEventsWhereUniqueInput
+  }
+
+  /**
+   * identityEvents findUniqueOrThrow
+   */
+  export type identityEventsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the identityEvents
+     */
+    select?: identityEventsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the identityEvents
+     */
+    omit?: identityEventsOmit<ExtArgs> | null
+    /**
+     * Filter, which identityEvents to fetch.
+     */
+    where: identityEventsWhereUniqueInput
+  }
+
+  /**
+   * identityEvents findFirst
+   */
+  export type identityEventsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the identityEvents
+     */
+    select?: identityEventsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the identityEvents
+     */
+    omit?: identityEventsOmit<ExtArgs> | null
+    /**
+     * Filter, which identityEvents to fetch.
+     */
+    where?: identityEventsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of identityEvents to fetch.
+     */
+    orderBy?: identityEventsOrderByWithRelationInput | identityEventsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for identityEvents.
+     */
+    cursor?: identityEventsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` identityEvents from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` identityEvents.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of identityEvents.
+     */
+    distinct?: IdentityEventsScalarFieldEnum | IdentityEventsScalarFieldEnum[]
+  }
+
+  /**
+   * identityEvents findFirstOrThrow
+   */
+  export type identityEventsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the identityEvents
+     */
+    select?: identityEventsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the identityEvents
+     */
+    omit?: identityEventsOmit<ExtArgs> | null
+    /**
+     * Filter, which identityEvents to fetch.
+     */
+    where?: identityEventsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of identityEvents to fetch.
+     */
+    orderBy?: identityEventsOrderByWithRelationInput | identityEventsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for identityEvents.
+     */
+    cursor?: identityEventsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` identityEvents from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` identityEvents.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of identityEvents.
+     */
+    distinct?: IdentityEventsScalarFieldEnum | IdentityEventsScalarFieldEnum[]
+  }
+
+  /**
+   * identityEvents findMany
+   */
+  export type identityEventsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the identityEvents
+     */
+    select?: identityEventsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the identityEvents
+     */
+    omit?: identityEventsOmit<ExtArgs> | null
+    /**
+     * Filter, which identityEvents to fetch.
+     */
+    where?: identityEventsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of identityEvents to fetch.
+     */
+    orderBy?: identityEventsOrderByWithRelationInput | identityEventsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing identityEvents.
+     */
+    cursor?: identityEventsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` identityEvents from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` identityEvents.
+     */
+    skip?: number
+    distinct?: IdentityEventsScalarFieldEnum | IdentityEventsScalarFieldEnum[]
+  }
+
+  /**
+   * identityEvents create
+   */
+  export type identityEventsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the identityEvents
+     */
+    select?: identityEventsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the identityEvents
+     */
+    omit?: identityEventsOmit<ExtArgs> | null
+    /**
+     * The data needed to create a identityEvents.
+     */
+    data?: XOR<identityEventsCreateInput, identityEventsUncheckedCreateInput>
+  }
+
+  /**
+   * identityEvents createMany
+   */
+  export type identityEventsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many identityEvents.
+     */
+    data: identityEventsCreateManyInput | identityEventsCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * identityEvents update
+   */
+  export type identityEventsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the identityEvents
+     */
+    select?: identityEventsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the identityEvents
+     */
+    omit?: identityEventsOmit<ExtArgs> | null
+    /**
+     * The data needed to update a identityEvents.
+     */
+    data: XOR<identityEventsUpdateInput, identityEventsUncheckedUpdateInput>
+    /**
+     * Choose, which identityEvents to update.
+     */
+    where: identityEventsWhereUniqueInput
+  }
+
+  /**
+   * identityEvents updateMany
+   */
+  export type identityEventsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update identityEvents.
+     */
+    data: XOR<identityEventsUpdateManyMutationInput, identityEventsUncheckedUpdateManyInput>
+    /**
+     * Filter which identityEvents to update
+     */
+    where?: identityEventsWhereInput
+    /**
+     * Limit how many identityEvents to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * identityEvents upsert
+   */
+  export type identityEventsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the identityEvents
+     */
+    select?: identityEventsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the identityEvents
+     */
+    omit?: identityEventsOmit<ExtArgs> | null
+    /**
+     * The filter to search for the identityEvents to update in case it exists.
+     */
+    where: identityEventsWhereUniqueInput
+    /**
+     * In case the identityEvents found by the `where` argument doesn't exist, create a new identityEvents with this data.
+     */
+    create: XOR<identityEventsCreateInput, identityEventsUncheckedCreateInput>
+    /**
+     * In case the identityEvents was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<identityEventsUpdateInput, identityEventsUncheckedUpdateInput>
+  }
+
+  /**
+   * identityEvents delete
+   */
+  export type identityEventsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the identityEvents
+     */
+    select?: identityEventsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the identityEvents
+     */
+    omit?: identityEventsOmit<ExtArgs> | null
+    /**
+     * Filter which identityEvents to delete.
+     */
+    where: identityEventsWhereUniqueInput
+  }
+
+  /**
+   * identityEvents deleteMany
+   */
+  export type identityEventsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which identityEvents to delete
+     */
+    where?: identityEventsWhereInput
+    /**
+     * Limit how many identityEvents to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * identityEvents without action
+   */
+  export type identityEventsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the identityEvents
+     */
+    select?: identityEventsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the identityEvents
+     */
+    omit?: identityEventsOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model networkEvents
+   */
+
+  export type AggregateNetworkEvents = {
+    _count: NetworkEventsCountAggregateOutputType | null
+    _avg: NetworkEventsAvgAggregateOutputType | null
+    _sum: NetworkEventsSumAggregateOutputType | null
+    _min: NetworkEventsMinAggregateOutputType | null
+    _max: NetworkEventsMaxAggregateOutputType | null
+  }
+
+  export type NetworkEventsAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type NetworkEventsSumAggregateOutputType = {
+    id: bigint | null
+  }
+
+  export type NetworkEventsMinAggregateOutputType = {
+    id: bigint | null
+    eventType: string | null
+    eventTime: Date | null
+    source: string | null
+    opcRequestId: string | null
+    rawEvent: string | null
+    compartmentId: string | null
+    compartmentName: string | null
+    eventName: string | null
+    message: string | null
+    action: string | null
+    principalName: string | null
+    ipAddress: string | null
+    routeRules: string | null
+    createdBy: string | null
+    createdOn: Date | null
+    createdAt: Date | null
+  }
+
+  export type NetworkEventsMaxAggregateOutputType = {
+    id: bigint | null
+    eventType: string | null
+    eventTime: Date | null
+    source: string | null
+    opcRequestId: string | null
+    rawEvent: string | null
+    compartmentId: string | null
+    compartmentName: string | null
+    eventName: string | null
+    message: string | null
+    action: string | null
+    principalName: string | null
+    ipAddress: string | null
+    routeRules: string | null
+    createdBy: string | null
+    createdOn: Date | null
+    createdAt: Date | null
+  }
+
+  export type NetworkEventsCountAggregateOutputType = {
+    id: number
+    eventType: number
+    eventTime: number
+    source: number
+    opcRequestId: number
+    rawEvent: number
+    compartmentId: number
+    compartmentName: number
+    eventName: number
+    message: number
+    action: number
+    principalName: number
+    ipAddress: number
+    routeRules: number
+    createdBy: number
+    createdOn: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type NetworkEventsAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type NetworkEventsSumAggregateInputType = {
+    id?: true
+  }
+
+  export type NetworkEventsMinAggregateInputType = {
+    id?: true
+    eventType?: true
+    eventTime?: true
+    source?: true
+    opcRequestId?: true
+    rawEvent?: true
+    compartmentId?: true
+    compartmentName?: true
+    eventName?: true
+    message?: true
+    action?: true
+    principalName?: true
+    ipAddress?: true
+    routeRules?: true
+    createdBy?: true
+    createdOn?: true
+    createdAt?: true
+  }
+
+  export type NetworkEventsMaxAggregateInputType = {
+    id?: true
+    eventType?: true
+    eventTime?: true
+    source?: true
+    opcRequestId?: true
+    rawEvent?: true
+    compartmentId?: true
+    compartmentName?: true
+    eventName?: true
+    message?: true
+    action?: true
+    principalName?: true
+    ipAddress?: true
+    routeRules?: true
+    createdBy?: true
+    createdOn?: true
+    createdAt?: true
+  }
+
+  export type NetworkEventsCountAggregateInputType = {
+    id?: true
+    eventType?: true
+    eventTime?: true
+    source?: true
+    opcRequestId?: true
+    rawEvent?: true
+    compartmentId?: true
+    compartmentName?: true
+    eventName?: true
+    message?: true
+    action?: true
+    principalName?: true
+    ipAddress?: true
+    routeRules?: true
+    createdBy?: true
+    createdOn?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type NetworkEventsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which networkEvents to aggregate.
+     */
+    where?: networkEventsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of networkEvents to fetch.
+     */
+    orderBy?: networkEventsOrderByWithRelationInput | networkEventsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: networkEventsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` networkEvents from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` networkEvents.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned networkEvents
+    **/
+    _count?: true | NetworkEventsCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: NetworkEventsAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: NetworkEventsSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: NetworkEventsMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: NetworkEventsMaxAggregateInputType
+  }
+
+  export type GetNetworkEventsAggregateType<T extends NetworkEventsAggregateArgs> = {
+        [P in keyof T & keyof AggregateNetworkEvents]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateNetworkEvents[P]>
+      : GetScalarType<T[P], AggregateNetworkEvents[P]>
+  }
+
+
+
+
+  export type networkEventsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: networkEventsWhereInput
+    orderBy?: networkEventsOrderByWithAggregationInput | networkEventsOrderByWithAggregationInput[]
+    by: NetworkEventsScalarFieldEnum[] | NetworkEventsScalarFieldEnum
+    having?: networkEventsScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: NetworkEventsCountAggregateInputType | true
+    _avg?: NetworkEventsAvgAggregateInputType
+    _sum?: NetworkEventsSumAggregateInputType
+    _min?: NetworkEventsMinAggregateInputType
+    _max?: NetworkEventsMaxAggregateInputType
+  }
+
+  export type NetworkEventsGroupByOutputType = {
+    id: bigint
+    eventType: string | null
+    eventTime: Date | null
+    source: string | null
+    opcRequestId: string | null
+    rawEvent: string | null
+    compartmentId: string | null
+    compartmentName: string | null
+    eventName: string | null
+    message: string | null
+    action: string | null
+    principalName: string | null
+    ipAddress: string | null
+    routeRules: string | null
+    createdBy: string | null
+    createdOn: Date | null
+    createdAt: Date
+    _count: NetworkEventsCountAggregateOutputType | null
+    _avg: NetworkEventsAvgAggregateOutputType | null
+    _sum: NetworkEventsSumAggregateOutputType | null
+    _min: NetworkEventsMinAggregateOutputType | null
+    _max: NetworkEventsMaxAggregateOutputType | null
+  }
+
+  type GetNetworkEventsGroupByPayload<T extends networkEventsGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<NetworkEventsGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof NetworkEventsGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], NetworkEventsGroupByOutputType[P]>
+            : GetScalarType<T[P], NetworkEventsGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type networkEventsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    eventType?: boolean
+    eventTime?: boolean
+    source?: boolean
+    opcRequestId?: boolean
+    rawEvent?: boolean
+    compartmentId?: boolean
+    compartmentName?: boolean
+    eventName?: boolean
+    message?: boolean
+    action?: boolean
+    principalName?: boolean
+    ipAddress?: boolean
+    routeRules?: boolean
+    createdBy?: boolean
+    createdOn?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["networkEvents"]>
+
+
+
+  export type networkEventsSelectScalar = {
+    id?: boolean
+    eventType?: boolean
+    eventTime?: boolean
+    source?: boolean
+    opcRequestId?: boolean
+    rawEvent?: boolean
+    compartmentId?: boolean
+    compartmentName?: boolean
+    eventName?: boolean
+    message?: boolean
+    action?: boolean
+    principalName?: boolean
+    ipAddress?: boolean
+    routeRules?: boolean
+    createdBy?: boolean
+    createdOn?: boolean
+    createdAt?: boolean
+  }
+
+  export type networkEventsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "eventType" | "eventTime" | "source" | "opcRequestId" | "rawEvent" | "compartmentId" | "compartmentName" | "eventName" | "message" | "action" | "principalName" | "ipAddress" | "routeRules" | "createdBy" | "createdOn" | "createdAt", ExtArgs["result"]["networkEvents"]>
+
+  export type $networkEventsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "networkEvents"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: bigint
+      eventType: string | null
+      eventTime: Date | null
+      source: string | null
+      opcRequestId: string | null
+      rawEvent: string | null
+      compartmentId: string | null
+      compartmentName: string | null
+      eventName: string | null
+      message: string | null
+      action: string | null
+      principalName: string | null
+      ipAddress: string | null
+      routeRules: string | null
+      createdBy: string | null
+      createdOn: Date | null
+      createdAt: Date
+    }, ExtArgs["result"]["networkEvents"]>
+    composites: {}
+  }
+
+  type networkEventsGetPayload<S extends boolean | null | undefined | networkEventsDefaultArgs> = $Result.GetResult<Prisma.$networkEventsPayload, S>
+
+  type networkEventsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<networkEventsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: NetworkEventsCountAggregateInputType | true
+    }
+
+  export interface networkEventsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['networkEvents'], meta: { name: 'networkEvents' } }
+    /**
+     * Find zero or one NetworkEvents that matches the filter.
+     * @param {networkEventsFindUniqueArgs} args - Arguments to find a NetworkEvents
+     * @example
+     * // Get one NetworkEvents
+     * const networkEvents = await prisma.networkEvents.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends networkEventsFindUniqueArgs>(args: SelectSubset<T, networkEventsFindUniqueArgs<ExtArgs>>): Prisma__networkEventsClient<$Result.GetResult<Prisma.$networkEventsPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one NetworkEvents that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {networkEventsFindUniqueOrThrowArgs} args - Arguments to find a NetworkEvents
+     * @example
+     * // Get one NetworkEvents
+     * const networkEvents = await prisma.networkEvents.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends networkEventsFindUniqueOrThrowArgs>(args: SelectSubset<T, networkEventsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__networkEventsClient<$Result.GetResult<Prisma.$networkEventsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first NetworkEvents that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {networkEventsFindFirstArgs} args - Arguments to find a NetworkEvents
+     * @example
+     * // Get one NetworkEvents
+     * const networkEvents = await prisma.networkEvents.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends networkEventsFindFirstArgs>(args?: SelectSubset<T, networkEventsFindFirstArgs<ExtArgs>>): Prisma__networkEventsClient<$Result.GetResult<Prisma.$networkEventsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first NetworkEvents that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {networkEventsFindFirstOrThrowArgs} args - Arguments to find a NetworkEvents
+     * @example
+     * // Get one NetworkEvents
+     * const networkEvents = await prisma.networkEvents.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends networkEventsFindFirstOrThrowArgs>(args?: SelectSubset<T, networkEventsFindFirstOrThrowArgs<ExtArgs>>): Prisma__networkEventsClient<$Result.GetResult<Prisma.$networkEventsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more NetworkEvents that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {networkEventsFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all NetworkEvents
+     * const networkEvents = await prisma.networkEvents.findMany()
+     * 
+     * // Get first 10 NetworkEvents
+     * const networkEvents = await prisma.networkEvents.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const networkEventsWithIdOnly = await prisma.networkEvents.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends networkEventsFindManyArgs>(args?: SelectSubset<T, networkEventsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$networkEventsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a NetworkEvents.
+     * @param {networkEventsCreateArgs} args - Arguments to create a NetworkEvents.
+     * @example
+     * // Create one NetworkEvents
+     * const NetworkEvents = await prisma.networkEvents.create({
+     *   data: {
+     *     // ... data to create a NetworkEvents
+     *   }
+     * })
+     * 
+     */
+    create<T extends networkEventsCreateArgs>(args: SelectSubset<T, networkEventsCreateArgs<ExtArgs>>): Prisma__networkEventsClient<$Result.GetResult<Prisma.$networkEventsPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many NetworkEvents.
+     * @param {networkEventsCreateManyArgs} args - Arguments to create many NetworkEvents.
+     * @example
+     * // Create many NetworkEvents
+     * const networkEvents = await prisma.networkEvents.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends networkEventsCreateManyArgs>(args?: SelectSubset<T, networkEventsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a NetworkEvents.
+     * @param {networkEventsDeleteArgs} args - Arguments to delete one NetworkEvents.
+     * @example
+     * // Delete one NetworkEvents
+     * const NetworkEvents = await prisma.networkEvents.delete({
+     *   where: {
+     *     // ... filter to delete one NetworkEvents
+     *   }
+     * })
+     * 
+     */
+    delete<T extends networkEventsDeleteArgs>(args: SelectSubset<T, networkEventsDeleteArgs<ExtArgs>>): Prisma__networkEventsClient<$Result.GetResult<Prisma.$networkEventsPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one NetworkEvents.
+     * @param {networkEventsUpdateArgs} args - Arguments to update one NetworkEvents.
+     * @example
+     * // Update one NetworkEvents
+     * const networkEvents = await prisma.networkEvents.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends networkEventsUpdateArgs>(args: SelectSubset<T, networkEventsUpdateArgs<ExtArgs>>): Prisma__networkEventsClient<$Result.GetResult<Prisma.$networkEventsPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more NetworkEvents.
+     * @param {networkEventsDeleteManyArgs} args - Arguments to filter NetworkEvents to delete.
+     * @example
+     * // Delete a few NetworkEvents
+     * const { count } = await prisma.networkEvents.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends networkEventsDeleteManyArgs>(args?: SelectSubset<T, networkEventsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more NetworkEvents.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {networkEventsUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many NetworkEvents
+     * const networkEvents = await prisma.networkEvents.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends networkEventsUpdateManyArgs>(args: SelectSubset<T, networkEventsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one NetworkEvents.
+     * @param {networkEventsUpsertArgs} args - Arguments to update or create a NetworkEvents.
+     * @example
+     * // Update or create a NetworkEvents
+     * const networkEvents = await prisma.networkEvents.upsert({
+     *   create: {
+     *     // ... data to create a NetworkEvents
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the NetworkEvents we want to update
+     *   }
+     * })
+     */
+    upsert<T extends networkEventsUpsertArgs>(args: SelectSubset<T, networkEventsUpsertArgs<ExtArgs>>): Prisma__networkEventsClient<$Result.GetResult<Prisma.$networkEventsPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of NetworkEvents.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {networkEventsCountArgs} args - Arguments to filter NetworkEvents to count.
+     * @example
+     * // Count the number of NetworkEvents
+     * const count = await prisma.networkEvents.count({
+     *   where: {
+     *     // ... the filter for the NetworkEvents we want to count
+     *   }
+     * })
+    **/
+    count<T extends networkEventsCountArgs>(
+      args?: Subset<T, networkEventsCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], NetworkEventsCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a NetworkEvents.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NetworkEventsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends NetworkEventsAggregateArgs>(args: Subset<T, NetworkEventsAggregateArgs>): Prisma.PrismaPromise<GetNetworkEventsAggregateType<T>>
+
+    /**
+     * Group by NetworkEvents.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {networkEventsGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends networkEventsGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: networkEventsGroupByArgs['orderBy'] }
+        : { orderBy?: networkEventsGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, networkEventsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetNetworkEventsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the networkEvents model
+   */
+  readonly fields: networkEventsFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for networkEvents.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__networkEventsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the networkEvents model
+   */
+  interface networkEventsFieldRefs {
+    readonly id: FieldRef<"networkEvents", 'BigInt'>
+    readonly eventType: FieldRef<"networkEvents", 'String'>
+    readonly eventTime: FieldRef<"networkEvents", 'DateTime'>
+    readonly source: FieldRef<"networkEvents", 'String'>
+    readonly opcRequestId: FieldRef<"networkEvents", 'String'>
+    readonly rawEvent: FieldRef<"networkEvents", 'String'>
+    readonly compartmentId: FieldRef<"networkEvents", 'String'>
+    readonly compartmentName: FieldRef<"networkEvents", 'String'>
+    readonly eventName: FieldRef<"networkEvents", 'String'>
+    readonly message: FieldRef<"networkEvents", 'String'>
+    readonly action: FieldRef<"networkEvents", 'String'>
+    readonly principalName: FieldRef<"networkEvents", 'String'>
+    readonly ipAddress: FieldRef<"networkEvents", 'String'>
+    readonly routeRules: FieldRef<"networkEvents", 'String'>
+    readonly createdBy: FieldRef<"networkEvents", 'String'>
+    readonly createdOn: FieldRef<"networkEvents", 'DateTime'>
+    readonly createdAt: FieldRef<"networkEvents", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * networkEvents findUnique
+   */
+  export type networkEventsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the networkEvents
+     */
+    select?: networkEventsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the networkEvents
+     */
+    omit?: networkEventsOmit<ExtArgs> | null
+    /**
+     * Filter, which networkEvents to fetch.
+     */
+    where: networkEventsWhereUniqueInput
+  }
+
+  /**
+   * networkEvents findUniqueOrThrow
+   */
+  export type networkEventsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the networkEvents
+     */
+    select?: networkEventsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the networkEvents
+     */
+    omit?: networkEventsOmit<ExtArgs> | null
+    /**
+     * Filter, which networkEvents to fetch.
+     */
+    where: networkEventsWhereUniqueInput
+  }
+
+  /**
+   * networkEvents findFirst
+   */
+  export type networkEventsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the networkEvents
+     */
+    select?: networkEventsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the networkEvents
+     */
+    omit?: networkEventsOmit<ExtArgs> | null
+    /**
+     * Filter, which networkEvents to fetch.
+     */
+    where?: networkEventsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of networkEvents to fetch.
+     */
+    orderBy?: networkEventsOrderByWithRelationInput | networkEventsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for networkEvents.
+     */
+    cursor?: networkEventsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` networkEvents from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` networkEvents.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of networkEvents.
+     */
+    distinct?: NetworkEventsScalarFieldEnum | NetworkEventsScalarFieldEnum[]
+  }
+
+  /**
+   * networkEvents findFirstOrThrow
+   */
+  export type networkEventsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the networkEvents
+     */
+    select?: networkEventsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the networkEvents
+     */
+    omit?: networkEventsOmit<ExtArgs> | null
+    /**
+     * Filter, which networkEvents to fetch.
+     */
+    where?: networkEventsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of networkEvents to fetch.
+     */
+    orderBy?: networkEventsOrderByWithRelationInput | networkEventsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for networkEvents.
+     */
+    cursor?: networkEventsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` networkEvents from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` networkEvents.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of networkEvents.
+     */
+    distinct?: NetworkEventsScalarFieldEnum | NetworkEventsScalarFieldEnum[]
+  }
+
+  /**
+   * networkEvents findMany
+   */
+  export type networkEventsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the networkEvents
+     */
+    select?: networkEventsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the networkEvents
+     */
+    omit?: networkEventsOmit<ExtArgs> | null
+    /**
+     * Filter, which networkEvents to fetch.
+     */
+    where?: networkEventsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of networkEvents to fetch.
+     */
+    orderBy?: networkEventsOrderByWithRelationInput | networkEventsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing networkEvents.
+     */
+    cursor?: networkEventsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` networkEvents from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` networkEvents.
+     */
+    skip?: number
+    distinct?: NetworkEventsScalarFieldEnum | NetworkEventsScalarFieldEnum[]
+  }
+
+  /**
+   * networkEvents create
+   */
+  export type networkEventsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the networkEvents
+     */
+    select?: networkEventsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the networkEvents
+     */
+    omit?: networkEventsOmit<ExtArgs> | null
+    /**
+     * The data needed to create a networkEvents.
+     */
+    data?: XOR<networkEventsCreateInput, networkEventsUncheckedCreateInput>
+  }
+
+  /**
+   * networkEvents createMany
+   */
+  export type networkEventsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many networkEvents.
+     */
+    data: networkEventsCreateManyInput | networkEventsCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * networkEvents update
+   */
+  export type networkEventsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the networkEvents
+     */
+    select?: networkEventsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the networkEvents
+     */
+    omit?: networkEventsOmit<ExtArgs> | null
+    /**
+     * The data needed to update a networkEvents.
+     */
+    data: XOR<networkEventsUpdateInput, networkEventsUncheckedUpdateInput>
+    /**
+     * Choose, which networkEvents to update.
+     */
+    where: networkEventsWhereUniqueInput
+  }
+
+  /**
+   * networkEvents updateMany
+   */
+  export type networkEventsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update networkEvents.
+     */
+    data: XOR<networkEventsUpdateManyMutationInput, networkEventsUncheckedUpdateManyInput>
+    /**
+     * Filter which networkEvents to update
+     */
+    where?: networkEventsWhereInput
+    /**
+     * Limit how many networkEvents to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * networkEvents upsert
+   */
+  export type networkEventsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the networkEvents
+     */
+    select?: networkEventsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the networkEvents
+     */
+    omit?: networkEventsOmit<ExtArgs> | null
+    /**
+     * The filter to search for the networkEvents to update in case it exists.
+     */
+    where: networkEventsWhereUniqueInput
+    /**
+     * In case the networkEvents found by the `where` argument doesn't exist, create a new networkEvents with this data.
+     */
+    create: XOR<networkEventsCreateInput, networkEventsUncheckedCreateInput>
+    /**
+     * In case the networkEvents was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<networkEventsUpdateInput, networkEventsUncheckedUpdateInput>
+  }
+
+  /**
+   * networkEvents delete
+   */
+  export type networkEventsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the networkEvents
+     */
+    select?: networkEventsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the networkEvents
+     */
+    omit?: networkEventsOmit<ExtArgs> | null
+    /**
+     * Filter which networkEvents to delete.
+     */
+    where: networkEventsWhereUniqueInput
+  }
+
+  /**
+   * networkEvents deleteMany
+   */
+  export type networkEventsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which networkEvents to delete
+     */
+    where?: networkEventsWhereInput
+    /**
+     * Limit how many networkEvents to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * networkEvents without action
+   */
+  export type networkEventsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the networkEvents
+     */
+    select?: networkEventsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the networkEvents
+     */
+    omit?: networkEventsOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -7413,7 +12952,7 @@ export namespace Prisma {
     processor_description: 'processor_description',
     time_created: 'time_created',
     CreatedBy: 'CreatedBy',
-    hourly_cost: 'hourly_cost'
+    monthly_cost: 'monthly_cost'
   };
 
   export type ComputeInstancesScalarFieldEnum = (typeof ComputeInstancesScalarFieldEnum)[keyof typeof ComputeInstancesScalarFieldEnum]
@@ -7514,6 +13053,109 @@ export namespace Prisma {
   };
 
   export type Tenancy_detailsScalarFieldEnum = (typeof Tenancy_detailsScalarFieldEnum)[keyof typeof Tenancy_detailsScalarFieldEnum]
+
+
+  export const CustoDiarioTotalScalarFieldEnum: {
+    tenancy_name: 'tenancy_name',
+    tenant_id: 'tenant_id',
+    cost_dia: 'cost_dia',
+    currency: 'currency',
+    usage_dia: 'usage_dia',
+    time_started: 'time_started',
+    time_ended: 'time_ended'
+  };
+
+  export type CustoDiarioTotalScalarFieldEnum = (typeof CustoDiarioTotalScalarFieldEnum)[keyof typeof CustoDiarioTotalScalarFieldEnum]
+
+
+  export const CustoMensalTotalScalarFieldEnum: {
+    tenancy_name: 'tenancy_name',
+    tenant_id: 'tenant_id',
+    cost_mes: 'cost_mes',
+    currency: 'currency',
+    usage_mes: 'usage_mes',
+    time_started: 'time_started',
+    time_ended: 'time_ended'
+  };
+
+  export type CustoMensalTotalScalarFieldEnum = (typeof CustoMensalTotalScalarFieldEnum)[keyof typeof CustoMensalTotalScalarFieldEnum]
+
+
+  export const ComputeEventsScalarFieldEnum: {
+    id: 'id',
+    event_type: 'event_type',
+    event_time: 'event_time',
+    source: 'source',
+    opcRequestId: 'opcRequestId',
+    raw_event: 'raw_event',
+    compartment_id: 'compartment_id',
+    compartment_name: 'compartment_name',
+    event_name: 'event_name',
+    message: 'message',
+    action: 'action',
+    principal_name: 'principal_name',
+    ip_address: 'ip_address',
+    display_name: 'display_name',
+    lifecycle_state: 'lifecycle_state',
+    shape: 'shape',
+    ocpus: 'ocpus',
+    memory_in_gbs: 'memory_in_gbs',
+    processor_description: 'processor_description',
+    created_by: 'created_by',
+    created_on: 'created_on',
+    preserve_boot_volume: 'preserve_boot_volume',
+    created_at: 'created_at',
+    instanceActionType: 'instanceActionType'
+  };
+
+  export type ComputeEventsScalarFieldEnum = (typeof ComputeEventsScalarFieldEnum)[keyof typeof ComputeEventsScalarFieldEnum]
+
+
+  export const IdentityEventsScalarFieldEnum: {
+    id: 'id',
+    eventType: 'eventType',
+    eventTime: 'eventTime',
+    source: 'source',
+    opcRequestId: 'opcRequestId',
+    rawEvent: 'rawEvent',
+    adminResourceName: 'adminResourceName',
+    adminResourceType: 'adminResourceType',
+    compartmentName: 'compartmentName',
+    principalName: 'principalName',
+    action: 'action',
+    message: 'message',
+    idcsLastModifiedByName: 'idcsLastModifiedByName',
+    idcsLastModifiedByType: 'idcsLastModifiedByType',
+    policyName: 'policyName',
+    statements: 'statements',
+    createdAt: 'createdAt',
+    eventName: 'eventName'
+  };
+
+  export type IdentityEventsScalarFieldEnum = (typeof IdentityEventsScalarFieldEnum)[keyof typeof IdentityEventsScalarFieldEnum]
+
+
+  export const NetworkEventsScalarFieldEnum: {
+    id: 'id',
+    eventType: 'eventType',
+    eventTime: 'eventTime',
+    source: 'source',
+    opcRequestId: 'opcRequestId',
+    rawEvent: 'rawEvent',
+    compartmentId: 'compartmentId',
+    compartmentName: 'compartmentName',
+    eventName: 'eventName',
+    message: 'message',
+    action: 'action',
+    principalName: 'principalName',
+    ipAddress: 'ipAddress',
+    routeRules: 'routeRules',
+    createdBy: 'createdBy',
+    createdOn: 'createdOn',
+    createdAt: 'createdAt'
+  };
+
+  export type NetworkEventsScalarFieldEnum = (typeof NetworkEventsScalarFieldEnum)[keyof typeof NetworkEventsScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -7629,6 +13271,87 @@ export namespace Prisma {
   export type tenancy_detailsOrderByRelevanceFieldEnum = (typeof tenancy_detailsOrderByRelevanceFieldEnum)[keyof typeof tenancy_detailsOrderByRelevanceFieldEnum]
 
 
+  export const CustoDiarioTotalOrderByRelevanceFieldEnum: {
+    tenancy_name: 'tenancy_name',
+    tenant_id: 'tenant_id',
+    currency: 'currency'
+  };
+
+  export type CustoDiarioTotalOrderByRelevanceFieldEnum = (typeof CustoDiarioTotalOrderByRelevanceFieldEnum)[keyof typeof CustoDiarioTotalOrderByRelevanceFieldEnum]
+
+
+  export const CustoMensalTotalOrderByRelevanceFieldEnum: {
+    tenancy_name: 'tenancy_name',
+    tenant_id: 'tenant_id',
+    currency: 'currency'
+  };
+
+  export type CustoMensalTotalOrderByRelevanceFieldEnum = (typeof CustoMensalTotalOrderByRelevanceFieldEnum)[keyof typeof CustoMensalTotalOrderByRelevanceFieldEnum]
+
+
+  export const computeEventsOrderByRelevanceFieldEnum: {
+    event_type: 'event_type',
+    source: 'source',
+    opcRequestId: 'opcRequestId',
+    raw_event: 'raw_event',
+    compartment_id: 'compartment_id',
+    compartment_name: 'compartment_name',
+    event_name: 'event_name',
+    message: 'message',
+    action: 'action',
+    principal_name: 'principal_name',
+    ip_address: 'ip_address',
+    display_name: 'display_name',
+    lifecycle_state: 'lifecycle_state',
+    shape: 'shape',
+    processor_description: 'processor_description',
+    created_by: 'created_by',
+    instanceActionType: 'instanceActionType'
+  };
+
+  export type computeEventsOrderByRelevanceFieldEnum = (typeof computeEventsOrderByRelevanceFieldEnum)[keyof typeof computeEventsOrderByRelevanceFieldEnum]
+
+
+  export const identityEventsOrderByRelevanceFieldEnum: {
+    eventType: 'eventType',
+    source: 'source',
+    opcRequestId: 'opcRequestId',
+    rawEvent: 'rawEvent',
+    adminResourceName: 'adminResourceName',
+    adminResourceType: 'adminResourceType',
+    compartmentName: 'compartmentName',
+    principalName: 'principalName',
+    action: 'action',
+    message: 'message',
+    idcsLastModifiedByName: 'idcsLastModifiedByName',
+    idcsLastModifiedByType: 'idcsLastModifiedByType',
+    policyName: 'policyName',
+    statements: 'statements',
+    eventName: 'eventName'
+  };
+
+  export type identityEventsOrderByRelevanceFieldEnum = (typeof identityEventsOrderByRelevanceFieldEnum)[keyof typeof identityEventsOrderByRelevanceFieldEnum]
+
+
+  export const networkEventsOrderByRelevanceFieldEnum: {
+    eventType: 'eventType',
+    source: 'source',
+    opcRequestId: 'opcRequestId',
+    rawEvent: 'rawEvent',
+    compartmentId: 'compartmentId',
+    compartmentName: 'compartmentName',
+    eventName: 'eventName',
+    message: 'message',
+    action: 'action',
+    principalName: 'principalName',
+    ipAddress: 'ipAddress',
+    routeRules: 'routeRules',
+    createdBy: 'createdBy'
+  };
+
+  export type networkEventsOrderByRelevanceFieldEnum = (typeof networkEventsOrderByRelevanceFieldEnum)[keyof typeof networkEventsOrderByRelevanceFieldEnum]
+
+
   /**
    * Field references
    */
@@ -7667,6 +13390,20 @@ export namespace Prisma {
    */
   export type DecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal'>
     
+
+
+  /**
+   * Reference to a field of type 'BigInt'
+   */
+  export type BigIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BigInt'>
+    
+
+
+  /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
   /**
    * Deep Input Types
    */
@@ -7691,7 +13428,7 @@ export namespace Prisma {
     processor_description?: StringNullableFilter<"ComputeInstances"> | string | null
     time_created?: DateTimeNullableFilter<"ComputeInstances"> | Date | string | null
     CreatedBy?: StringNullableFilter<"ComputeInstances"> | string | null
-    hourly_cost?: FloatNullableFilter<"ComputeInstances"> | number | null
+    monthly_cost?: FloatNullableFilter<"ComputeInstances"> | number | null
   }
 
   export type ComputeInstancesOrderByWithRelationInput = {
@@ -7710,7 +13447,7 @@ export namespace Prisma {
     processor_description?: SortOrderInput | SortOrder
     time_created?: SortOrderInput | SortOrder
     CreatedBy?: SortOrderInput | SortOrder
-    hourly_cost?: SortOrderInput | SortOrder
+    monthly_cost?: SortOrderInput | SortOrder
     _relevance?: ComputeInstancesOrderByRelevanceInput
   }
 
@@ -7733,7 +13470,7 @@ export namespace Prisma {
     processor_description?: StringNullableFilter<"ComputeInstances"> | string | null
     time_created?: DateTimeNullableFilter<"ComputeInstances"> | Date | string | null
     CreatedBy?: StringNullableFilter<"ComputeInstances"> | string | null
-    hourly_cost?: FloatNullableFilter<"ComputeInstances"> | number | null
+    monthly_cost?: FloatNullableFilter<"ComputeInstances"> | number | null
   }, "id">
 
   export type ComputeInstancesOrderByWithAggregationInput = {
@@ -7752,7 +13489,7 @@ export namespace Prisma {
     processor_description?: SortOrderInput | SortOrder
     time_created?: SortOrderInput | SortOrder
     CreatedBy?: SortOrderInput | SortOrder
-    hourly_cost?: SortOrderInput | SortOrder
+    monthly_cost?: SortOrderInput | SortOrder
     _count?: ComputeInstancesCountOrderByAggregateInput
     _avg?: ComputeInstancesAvgOrderByAggregateInput
     _max?: ComputeInstancesMaxOrderByAggregateInput
@@ -7779,7 +13516,7 @@ export namespace Prisma {
     processor_description?: StringNullableWithAggregatesFilter<"ComputeInstances"> | string | null
     time_created?: DateTimeNullableWithAggregatesFilter<"ComputeInstances"> | Date | string | null
     CreatedBy?: StringNullableWithAggregatesFilter<"ComputeInstances"> | string | null
-    hourly_cost?: FloatNullableWithAggregatesFilter<"ComputeInstances"> | number | null
+    monthly_cost?: FloatNullableWithAggregatesFilter<"ComputeInstances"> | number | null
   }
 
   export type SubscriptionDetailsWhereInput = {
@@ -8268,6 +14005,523 @@ export namespace Prisma {
     total_value?: DecimalNullableWithAggregatesFilter<"tenancy_details"> | Decimal | DecimalJsLike | number | string | null
   }
 
+  export type CustoDiarioTotalWhereInput = {
+    AND?: CustoDiarioTotalWhereInput | CustoDiarioTotalWhereInput[]
+    OR?: CustoDiarioTotalWhereInput[]
+    NOT?: CustoDiarioTotalWhereInput | CustoDiarioTotalWhereInput[]
+    tenancy_name?: StringNullableFilter<"CustoDiarioTotal"> | string | null
+    tenant_id?: StringFilter<"CustoDiarioTotal"> | string
+    cost_dia?: FloatNullableFilter<"CustoDiarioTotal"> | number | null
+    currency?: StringNullableFilter<"CustoDiarioTotal"> | string | null
+    usage_dia?: FloatNullableFilter<"CustoDiarioTotal"> | number | null
+    time_started?: DateTimeFilter<"CustoDiarioTotal"> | Date | string
+    time_ended?: DateTimeNullableFilter<"CustoDiarioTotal"> | Date | string | null
+  }
+
+  export type CustoDiarioTotalOrderByWithRelationInput = {
+    tenancy_name?: SortOrderInput | SortOrder
+    tenant_id?: SortOrder
+    cost_dia?: SortOrderInput | SortOrder
+    currency?: SortOrderInput | SortOrder
+    usage_dia?: SortOrderInput | SortOrder
+    time_started?: SortOrder
+    time_ended?: SortOrderInput | SortOrder
+    _relevance?: CustoDiarioTotalOrderByRelevanceInput
+  }
+
+  export type CustoDiarioTotalWhereUniqueInput = Prisma.AtLeast<{
+    tenant_id_time_started?: CustoDiarioTotalTenant_idTime_startedCompoundUniqueInput
+    AND?: CustoDiarioTotalWhereInput | CustoDiarioTotalWhereInput[]
+    OR?: CustoDiarioTotalWhereInput[]
+    NOT?: CustoDiarioTotalWhereInput | CustoDiarioTotalWhereInput[]
+    tenancy_name?: StringNullableFilter<"CustoDiarioTotal"> | string | null
+    tenant_id?: StringFilter<"CustoDiarioTotal"> | string
+    cost_dia?: FloatNullableFilter<"CustoDiarioTotal"> | number | null
+    currency?: StringNullableFilter<"CustoDiarioTotal"> | string | null
+    usage_dia?: FloatNullableFilter<"CustoDiarioTotal"> | number | null
+    time_started?: DateTimeFilter<"CustoDiarioTotal"> | Date | string
+    time_ended?: DateTimeNullableFilter<"CustoDiarioTotal"> | Date | string | null
+  }, "tenant_id_time_started">
+
+  export type CustoDiarioTotalOrderByWithAggregationInput = {
+    tenancy_name?: SortOrderInput | SortOrder
+    tenant_id?: SortOrder
+    cost_dia?: SortOrderInput | SortOrder
+    currency?: SortOrderInput | SortOrder
+    usage_dia?: SortOrderInput | SortOrder
+    time_started?: SortOrder
+    time_ended?: SortOrderInput | SortOrder
+    _count?: CustoDiarioTotalCountOrderByAggregateInput
+    _avg?: CustoDiarioTotalAvgOrderByAggregateInput
+    _max?: CustoDiarioTotalMaxOrderByAggregateInput
+    _min?: CustoDiarioTotalMinOrderByAggregateInput
+    _sum?: CustoDiarioTotalSumOrderByAggregateInput
+  }
+
+  export type CustoDiarioTotalScalarWhereWithAggregatesInput = {
+    AND?: CustoDiarioTotalScalarWhereWithAggregatesInput | CustoDiarioTotalScalarWhereWithAggregatesInput[]
+    OR?: CustoDiarioTotalScalarWhereWithAggregatesInput[]
+    NOT?: CustoDiarioTotalScalarWhereWithAggregatesInput | CustoDiarioTotalScalarWhereWithAggregatesInput[]
+    tenancy_name?: StringNullableWithAggregatesFilter<"CustoDiarioTotal"> | string | null
+    tenant_id?: StringWithAggregatesFilter<"CustoDiarioTotal"> | string
+    cost_dia?: FloatNullableWithAggregatesFilter<"CustoDiarioTotal"> | number | null
+    currency?: StringNullableWithAggregatesFilter<"CustoDiarioTotal"> | string | null
+    usage_dia?: FloatNullableWithAggregatesFilter<"CustoDiarioTotal"> | number | null
+    time_started?: DateTimeWithAggregatesFilter<"CustoDiarioTotal"> | Date | string
+    time_ended?: DateTimeNullableWithAggregatesFilter<"CustoDiarioTotal"> | Date | string | null
+  }
+
+  export type CustoMensalTotalWhereInput = {
+    AND?: CustoMensalTotalWhereInput | CustoMensalTotalWhereInput[]
+    OR?: CustoMensalTotalWhereInput[]
+    NOT?: CustoMensalTotalWhereInput | CustoMensalTotalWhereInput[]
+    tenancy_name?: StringNullableFilter<"CustoMensalTotal"> | string | null
+    tenant_id?: StringFilter<"CustoMensalTotal"> | string
+    cost_mes?: FloatNullableFilter<"CustoMensalTotal"> | number | null
+    currency?: StringNullableFilter<"CustoMensalTotal"> | string | null
+    usage_mes?: FloatNullableFilter<"CustoMensalTotal"> | number | null
+    time_started?: DateTimeFilter<"CustoMensalTotal"> | Date | string
+    time_ended?: DateTimeNullableFilter<"CustoMensalTotal"> | Date | string | null
+  }
+
+  export type CustoMensalTotalOrderByWithRelationInput = {
+    tenancy_name?: SortOrderInput | SortOrder
+    tenant_id?: SortOrder
+    cost_mes?: SortOrderInput | SortOrder
+    currency?: SortOrderInput | SortOrder
+    usage_mes?: SortOrderInput | SortOrder
+    time_started?: SortOrder
+    time_ended?: SortOrderInput | SortOrder
+    _relevance?: CustoMensalTotalOrderByRelevanceInput
+  }
+
+  export type CustoMensalTotalWhereUniqueInput = Prisma.AtLeast<{
+    tenant_id_time_started?: CustoMensalTotalTenant_idTime_startedCompoundUniqueInput
+    AND?: CustoMensalTotalWhereInput | CustoMensalTotalWhereInput[]
+    OR?: CustoMensalTotalWhereInput[]
+    NOT?: CustoMensalTotalWhereInput | CustoMensalTotalWhereInput[]
+    tenancy_name?: StringNullableFilter<"CustoMensalTotal"> | string | null
+    tenant_id?: StringFilter<"CustoMensalTotal"> | string
+    cost_mes?: FloatNullableFilter<"CustoMensalTotal"> | number | null
+    currency?: StringNullableFilter<"CustoMensalTotal"> | string | null
+    usage_mes?: FloatNullableFilter<"CustoMensalTotal"> | number | null
+    time_started?: DateTimeFilter<"CustoMensalTotal"> | Date | string
+    time_ended?: DateTimeNullableFilter<"CustoMensalTotal"> | Date | string | null
+  }, "tenant_id_time_started">
+
+  export type CustoMensalTotalOrderByWithAggregationInput = {
+    tenancy_name?: SortOrderInput | SortOrder
+    tenant_id?: SortOrder
+    cost_mes?: SortOrderInput | SortOrder
+    currency?: SortOrderInput | SortOrder
+    usage_mes?: SortOrderInput | SortOrder
+    time_started?: SortOrder
+    time_ended?: SortOrderInput | SortOrder
+    _count?: CustoMensalTotalCountOrderByAggregateInput
+    _avg?: CustoMensalTotalAvgOrderByAggregateInput
+    _max?: CustoMensalTotalMaxOrderByAggregateInput
+    _min?: CustoMensalTotalMinOrderByAggregateInput
+    _sum?: CustoMensalTotalSumOrderByAggregateInput
+  }
+
+  export type CustoMensalTotalScalarWhereWithAggregatesInput = {
+    AND?: CustoMensalTotalScalarWhereWithAggregatesInput | CustoMensalTotalScalarWhereWithAggregatesInput[]
+    OR?: CustoMensalTotalScalarWhereWithAggregatesInput[]
+    NOT?: CustoMensalTotalScalarWhereWithAggregatesInput | CustoMensalTotalScalarWhereWithAggregatesInput[]
+    tenancy_name?: StringNullableWithAggregatesFilter<"CustoMensalTotal"> | string | null
+    tenant_id?: StringWithAggregatesFilter<"CustoMensalTotal"> | string
+    cost_mes?: FloatNullableWithAggregatesFilter<"CustoMensalTotal"> | number | null
+    currency?: StringNullableWithAggregatesFilter<"CustoMensalTotal"> | string | null
+    usage_mes?: FloatNullableWithAggregatesFilter<"CustoMensalTotal"> | number | null
+    time_started?: DateTimeWithAggregatesFilter<"CustoMensalTotal"> | Date | string
+    time_ended?: DateTimeNullableWithAggregatesFilter<"CustoMensalTotal"> | Date | string | null
+  }
+
+  export type computeEventsWhereInput = {
+    AND?: computeEventsWhereInput | computeEventsWhereInput[]
+    OR?: computeEventsWhereInput[]
+    NOT?: computeEventsWhereInput | computeEventsWhereInput[]
+    id?: BigIntFilter<"computeEvents"> | bigint | number
+    event_type?: StringNullableFilter<"computeEvents"> | string | null
+    event_time?: DateTimeNullableFilter<"computeEvents"> | Date | string | null
+    source?: StringNullableFilter<"computeEvents"> | string | null
+    opcRequestId?: StringNullableFilter<"computeEvents"> | string | null
+    raw_event?: StringNullableFilter<"computeEvents"> | string | null
+    compartment_id?: StringNullableFilter<"computeEvents"> | string | null
+    compartment_name?: StringNullableFilter<"computeEvents"> | string | null
+    event_name?: StringNullableFilter<"computeEvents"> | string | null
+    message?: StringNullableFilter<"computeEvents"> | string | null
+    action?: StringNullableFilter<"computeEvents"> | string | null
+    principal_name?: StringNullableFilter<"computeEvents"> | string | null
+    ip_address?: StringNullableFilter<"computeEvents"> | string | null
+    display_name?: StringNullableFilter<"computeEvents"> | string | null
+    lifecycle_state?: StringNullableFilter<"computeEvents"> | string | null
+    shape?: StringNullableFilter<"computeEvents"> | string | null
+    ocpus?: FloatNullableFilter<"computeEvents"> | number | null
+    memory_in_gbs?: FloatNullableFilter<"computeEvents"> | number | null
+    processor_description?: StringNullableFilter<"computeEvents"> | string | null
+    created_by?: StringNullableFilter<"computeEvents"> | string | null
+    created_on?: DateTimeNullableFilter<"computeEvents"> | Date | string | null
+    preserve_boot_volume?: BoolNullableFilter<"computeEvents"> | boolean | null
+    created_at?: DateTimeFilter<"computeEvents"> | Date | string
+    instanceActionType?: StringNullableFilter<"computeEvents"> | string | null
+  }
+
+  export type computeEventsOrderByWithRelationInput = {
+    id?: SortOrder
+    event_type?: SortOrderInput | SortOrder
+    event_time?: SortOrderInput | SortOrder
+    source?: SortOrderInput | SortOrder
+    opcRequestId?: SortOrderInput | SortOrder
+    raw_event?: SortOrderInput | SortOrder
+    compartment_id?: SortOrderInput | SortOrder
+    compartment_name?: SortOrderInput | SortOrder
+    event_name?: SortOrderInput | SortOrder
+    message?: SortOrderInput | SortOrder
+    action?: SortOrderInput | SortOrder
+    principal_name?: SortOrderInput | SortOrder
+    ip_address?: SortOrderInput | SortOrder
+    display_name?: SortOrderInput | SortOrder
+    lifecycle_state?: SortOrderInput | SortOrder
+    shape?: SortOrderInput | SortOrder
+    ocpus?: SortOrderInput | SortOrder
+    memory_in_gbs?: SortOrderInput | SortOrder
+    processor_description?: SortOrderInput | SortOrder
+    created_by?: SortOrderInput | SortOrder
+    created_on?: SortOrderInput | SortOrder
+    preserve_boot_volume?: SortOrderInput | SortOrder
+    created_at?: SortOrder
+    instanceActionType?: SortOrderInput | SortOrder
+    _relevance?: computeEventsOrderByRelevanceInput
+  }
+
+  export type computeEventsWhereUniqueInput = Prisma.AtLeast<{
+    id?: bigint | number
+    opcRequestId?: string
+    AND?: computeEventsWhereInput | computeEventsWhereInput[]
+    OR?: computeEventsWhereInput[]
+    NOT?: computeEventsWhereInput | computeEventsWhereInput[]
+    event_type?: StringNullableFilter<"computeEvents"> | string | null
+    event_time?: DateTimeNullableFilter<"computeEvents"> | Date | string | null
+    source?: StringNullableFilter<"computeEvents"> | string | null
+    raw_event?: StringNullableFilter<"computeEvents"> | string | null
+    compartment_id?: StringNullableFilter<"computeEvents"> | string | null
+    compartment_name?: StringNullableFilter<"computeEvents"> | string | null
+    event_name?: StringNullableFilter<"computeEvents"> | string | null
+    message?: StringNullableFilter<"computeEvents"> | string | null
+    action?: StringNullableFilter<"computeEvents"> | string | null
+    principal_name?: StringNullableFilter<"computeEvents"> | string | null
+    ip_address?: StringNullableFilter<"computeEvents"> | string | null
+    display_name?: StringNullableFilter<"computeEvents"> | string | null
+    lifecycle_state?: StringNullableFilter<"computeEvents"> | string | null
+    shape?: StringNullableFilter<"computeEvents"> | string | null
+    ocpus?: FloatNullableFilter<"computeEvents"> | number | null
+    memory_in_gbs?: FloatNullableFilter<"computeEvents"> | number | null
+    processor_description?: StringNullableFilter<"computeEvents"> | string | null
+    created_by?: StringNullableFilter<"computeEvents"> | string | null
+    created_on?: DateTimeNullableFilter<"computeEvents"> | Date | string | null
+    preserve_boot_volume?: BoolNullableFilter<"computeEvents"> | boolean | null
+    created_at?: DateTimeFilter<"computeEvents"> | Date | string
+    instanceActionType?: StringNullableFilter<"computeEvents"> | string | null
+  }, "id" | "opcRequestId">
+
+  export type computeEventsOrderByWithAggregationInput = {
+    id?: SortOrder
+    event_type?: SortOrderInput | SortOrder
+    event_time?: SortOrderInput | SortOrder
+    source?: SortOrderInput | SortOrder
+    opcRequestId?: SortOrderInput | SortOrder
+    raw_event?: SortOrderInput | SortOrder
+    compartment_id?: SortOrderInput | SortOrder
+    compartment_name?: SortOrderInput | SortOrder
+    event_name?: SortOrderInput | SortOrder
+    message?: SortOrderInput | SortOrder
+    action?: SortOrderInput | SortOrder
+    principal_name?: SortOrderInput | SortOrder
+    ip_address?: SortOrderInput | SortOrder
+    display_name?: SortOrderInput | SortOrder
+    lifecycle_state?: SortOrderInput | SortOrder
+    shape?: SortOrderInput | SortOrder
+    ocpus?: SortOrderInput | SortOrder
+    memory_in_gbs?: SortOrderInput | SortOrder
+    processor_description?: SortOrderInput | SortOrder
+    created_by?: SortOrderInput | SortOrder
+    created_on?: SortOrderInput | SortOrder
+    preserve_boot_volume?: SortOrderInput | SortOrder
+    created_at?: SortOrder
+    instanceActionType?: SortOrderInput | SortOrder
+    _count?: computeEventsCountOrderByAggregateInput
+    _avg?: computeEventsAvgOrderByAggregateInput
+    _max?: computeEventsMaxOrderByAggregateInput
+    _min?: computeEventsMinOrderByAggregateInput
+    _sum?: computeEventsSumOrderByAggregateInput
+  }
+
+  export type computeEventsScalarWhereWithAggregatesInput = {
+    AND?: computeEventsScalarWhereWithAggregatesInput | computeEventsScalarWhereWithAggregatesInput[]
+    OR?: computeEventsScalarWhereWithAggregatesInput[]
+    NOT?: computeEventsScalarWhereWithAggregatesInput | computeEventsScalarWhereWithAggregatesInput[]
+    id?: BigIntWithAggregatesFilter<"computeEvents"> | bigint | number
+    event_type?: StringNullableWithAggregatesFilter<"computeEvents"> | string | null
+    event_time?: DateTimeNullableWithAggregatesFilter<"computeEvents"> | Date | string | null
+    source?: StringNullableWithAggregatesFilter<"computeEvents"> | string | null
+    opcRequestId?: StringNullableWithAggregatesFilter<"computeEvents"> | string | null
+    raw_event?: StringNullableWithAggregatesFilter<"computeEvents"> | string | null
+    compartment_id?: StringNullableWithAggregatesFilter<"computeEvents"> | string | null
+    compartment_name?: StringNullableWithAggregatesFilter<"computeEvents"> | string | null
+    event_name?: StringNullableWithAggregatesFilter<"computeEvents"> | string | null
+    message?: StringNullableWithAggregatesFilter<"computeEvents"> | string | null
+    action?: StringNullableWithAggregatesFilter<"computeEvents"> | string | null
+    principal_name?: StringNullableWithAggregatesFilter<"computeEvents"> | string | null
+    ip_address?: StringNullableWithAggregatesFilter<"computeEvents"> | string | null
+    display_name?: StringNullableWithAggregatesFilter<"computeEvents"> | string | null
+    lifecycle_state?: StringNullableWithAggregatesFilter<"computeEvents"> | string | null
+    shape?: StringNullableWithAggregatesFilter<"computeEvents"> | string | null
+    ocpus?: FloatNullableWithAggregatesFilter<"computeEvents"> | number | null
+    memory_in_gbs?: FloatNullableWithAggregatesFilter<"computeEvents"> | number | null
+    processor_description?: StringNullableWithAggregatesFilter<"computeEvents"> | string | null
+    created_by?: StringNullableWithAggregatesFilter<"computeEvents"> | string | null
+    created_on?: DateTimeNullableWithAggregatesFilter<"computeEvents"> | Date | string | null
+    preserve_boot_volume?: BoolNullableWithAggregatesFilter<"computeEvents"> | boolean | null
+    created_at?: DateTimeWithAggregatesFilter<"computeEvents"> | Date | string
+    instanceActionType?: StringNullableWithAggregatesFilter<"computeEvents"> | string | null
+  }
+
+  export type identityEventsWhereInput = {
+    AND?: identityEventsWhereInput | identityEventsWhereInput[]
+    OR?: identityEventsWhereInput[]
+    NOT?: identityEventsWhereInput | identityEventsWhereInput[]
+    id?: BigIntFilter<"identityEvents"> | bigint | number
+    eventType?: StringNullableFilter<"identityEvents"> | string | null
+    eventTime?: DateTimeNullableFilter<"identityEvents"> | Date | string | null
+    source?: StringNullableFilter<"identityEvents"> | string | null
+    opcRequestId?: StringNullableFilter<"identityEvents"> | string | null
+    rawEvent?: StringNullableFilter<"identityEvents"> | string | null
+    adminResourceName?: StringNullableFilter<"identityEvents"> | string | null
+    adminResourceType?: StringNullableFilter<"identityEvents"> | string | null
+    compartmentName?: StringNullableFilter<"identityEvents"> | string | null
+    principalName?: StringNullableFilter<"identityEvents"> | string | null
+    action?: StringNullableFilter<"identityEvents"> | string | null
+    message?: StringNullableFilter<"identityEvents"> | string | null
+    idcsLastModifiedByName?: StringNullableFilter<"identityEvents"> | string | null
+    idcsLastModifiedByType?: StringNullableFilter<"identityEvents"> | string | null
+    policyName?: StringNullableFilter<"identityEvents"> | string | null
+    statements?: StringNullableFilter<"identityEvents"> | string | null
+    createdAt?: DateTimeFilter<"identityEvents"> | Date | string
+    eventName?: StringNullableFilter<"identityEvents"> | string | null
+  }
+
+  export type identityEventsOrderByWithRelationInput = {
+    id?: SortOrder
+    eventType?: SortOrderInput | SortOrder
+    eventTime?: SortOrderInput | SortOrder
+    source?: SortOrderInput | SortOrder
+    opcRequestId?: SortOrderInput | SortOrder
+    rawEvent?: SortOrderInput | SortOrder
+    adminResourceName?: SortOrderInput | SortOrder
+    adminResourceType?: SortOrderInput | SortOrder
+    compartmentName?: SortOrderInput | SortOrder
+    principalName?: SortOrderInput | SortOrder
+    action?: SortOrderInput | SortOrder
+    message?: SortOrderInput | SortOrder
+    idcsLastModifiedByName?: SortOrderInput | SortOrder
+    idcsLastModifiedByType?: SortOrderInput | SortOrder
+    policyName?: SortOrderInput | SortOrder
+    statements?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    eventName?: SortOrderInput | SortOrder
+    _relevance?: identityEventsOrderByRelevanceInput
+  }
+
+  export type identityEventsWhereUniqueInput = Prisma.AtLeast<{
+    id?: bigint | number
+    opcRequestId?: string
+    AND?: identityEventsWhereInput | identityEventsWhereInput[]
+    OR?: identityEventsWhereInput[]
+    NOT?: identityEventsWhereInput | identityEventsWhereInput[]
+    eventType?: StringNullableFilter<"identityEvents"> | string | null
+    eventTime?: DateTimeNullableFilter<"identityEvents"> | Date | string | null
+    source?: StringNullableFilter<"identityEvents"> | string | null
+    rawEvent?: StringNullableFilter<"identityEvents"> | string | null
+    adminResourceName?: StringNullableFilter<"identityEvents"> | string | null
+    adminResourceType?: StringNullableFilter<"identityEvents"> | string | null
+    compartmentName?: StringNullableFilter<"identityEvents"> | string | null
+    principalName?: StringNullableFilter<"identityEvents"> | string | null
+    action?: StringNullableFilter<"identityEvents"> | string | null
+    message?: StringNullableFilter<"identityEvents"> | string | null
+    idcsLastModifiedByName?: StringNullableFilter<"identityEvents"> | string | null
+    idcsLastModifiedByType?: StringNullableFilter<"identityEvents"> | string | null
+    policyName?: StringNullableFilter<"identityEvents"> | string | null
+    statements?: StringNullableFilter<"identityEvents"> | string | null
+    createdAt?: DateTimeFilter<"identityEvents"> | Date | string
+    eventName?: StringNullableFilter<"identityEvents"> | string | null
+  }, "id" | "opcRequestId">
+
+  export type identityEventsOrderByWithAggregationInput = {
+    id?: SortOrder
+    eventType?: SortOrderInput | SortOrder
+    eventTime?: SortOrderInput | SortOrder
+    source?: SortOrderInput | SortOrder
+    opcRequestId?: SortOrderInput | SortOrder
+    rawEvent?: SortOrderInput | SortOrder
+    adminResourceName?: SortOrderInput | SortOrder
+    adminResourceType?: SortOrderInput | SortOrder
+    compartmentName?: SortOrderInput | SortOrder
+    principalName?: SortOrderInput | SortOrder
+    action?: SortOrderInput | SortOrder
+    message?: SortOrderInput | SortOrder
+    idcsLastModifiedByName?: SortOrderInput | SortOrder
+    idcsLastModifiedByType?: SortOrderInput | SortOrder
+    policyName?: SortOrderInput | SortOrder
+    statements?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    eventName?: SortOrderInput | SortOrder
+    _count?: identityEventsCountOrderByAggregateInput
+    _avg?: identityEventsAvgOrderByAggregateInput
+    _max?: identityEventsMaxOrderByAggregateInput
+    _min?: identityEventsMinOrderByAggregateInput
+    _sum?: identityEventsSumOrderByAggregateInput
+  }
+
+  export type identityEventsScalarWhereWithAggregatesInput = {
+    AND?: identityEventsScalarWhereWithAggregatesInput | identityEventsScalarWhereWithAggregatesInput[]
+    OR?: identityEventsScalarWhereWithAggregatesInput[]
+    NOT?: identityEventsScalarWhereWithAggregatesInput | identityEventsScalarWhereWithAggregatesInput[]
+    id?: BigIntWithAggregatesFilter<"identityEvents"> | bigint | number
+    eventType?: StringNullableWithAggregatesFilter<"identityEvents"> | string | null
+    eventTime?: DateTimeNullableWithAggregatesFilter<"identityEvents"> | Date | string | null
+    source?: StringNullableWithAggregatesFilter<"identityEvents"> | string | null
+    opcRequestId?: StringNullableWithAggregatesFilter<"identityEvents"> | string | null
+    rawEvent?: StringNullableWithAggregatesFilter<"identityEvents"> | string | null
+    adminResourceName?: StringNullableWithAggregatesFilter<"identityEvents"> | string | null
+    adminResourceType?: StringNullableWithAggregatesFilter<"identityEvents"> | string | null
+    compartmentName?: StringNullableWithAggregatesFilter<"identityEvents"> | string | null
+    principalName?: StringNullableWithAggregatesFilter<"identityEvents"> | string | null
+    action?: StringNullableWithAggregatesFilter<"identityEvents"> | string | null
+    message?: StringNullableWithAggregatesFilter<"identityEvents"> | string | null
+    idcsLastModifiedByName?: StringNullableWithAggregatesFilter<"identityEvents"> | string | null
+    idcsLastModifiedByType?: StringNullableWithAggregatesFilter<"identityEvents"> | string | null
+    policyName?: StringNullableWithAggregatesFilter<"identityEvents"> | string | null
+    statements?: StringNullableWithAggregatesFilter<"identityEvents"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"identityEvents"> | Date | string
+    eventName?: StringNullableWithAggregatesFilter<"identityEvents"> | string | null
+  }
+
+  export type networkEventsWhereInput = {
+    AND?: networkEventsWhereInput | networkEventsWhereInput[]
+    OR?: networkEventsWhereInput[]
+    NOT?: networkEventsWhereInput | networkEventsWhereInput[]
+    id?: BigIntFilter<"networkEvents"> | bigint | number
+    eventType?: StringNullableFilter<"networkEvents"> | string | null
+    eventTime?: DateTimeNullableFilter<"networkEvents"> | Date | string | null
+    source?: StringNullableFilter<"networkEvents"> | string | null
+    opcRequestId?: StringNullableFilter<"networkEvents"> | string | null
+    rawEvent?: StringNullableFilter<"networkEvents"> | string | null
+    compartmentId?: StringNullableFilter<"networkEvents"> | string | null
+    compartmentName?: StringNullableFilter<"networkEvents"> | string | null
+    eventName?: StringNullableFilter<"networkEvents"> | string | null
+    message?: StringNullableFilter<"networkEvents"> | string | null
+    action?: StringNullableFilter<"networkEvents"> | string | null
+    principalName?: StringNullableFilter<"networkEvents"> | string | null
+    ipAddress?: StringNullableFilter<"networkEvents"> | string | null
+    routeRules?: StringNullableFilter<"networkEvents"> | string | null
+    createdBy?: StringNullableFilter<"networkEvents"> | string | null
+    createdOn?: DateTimeNullableFilter<"networkEvents"> | Date | string | null
+    createdAt?: DateTimeFilter<"networkEvents"> | Date | string
+  }
+
+  export type networkEventsOrderByWithRelationInput = {
+    id?: SortOrder
+    eventType?: SortOrderInput | SortOrder
+    eventTime?: SortOrderInput | SortOrder
+    source?: SortOrderInput | SortOrder
+    opcRequestId?: SortOrderInput | SortOrder
+    rawEvent?: SortOrderInput | SortOrder
+    compartmentId?: SortOrderInput | SortOrder
+    compartmentName?: SortOrderInput | SortOrder
+    eventName?: SortOrderInput | SortOrder
+    message?: SortOrderInput | SortOrder
+    action?: SortOrderInput | SortOrder
+    principalName?: SortOrderInput | SortOrder
+    ipAddress?: SortOrderInput | SortOrder
+    routeRules?: SortOrderInput | SortOrder
+    createdBy?: SortOrderInput | SortOrder
+    createdOn?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    _relevance?: networkEventsOrderByRelevanceInput
+  }
+
+  export type networkEventsWhereUniqueInput = Prisma.AtLeast<{
+    id?: bigint | number
+    opcRequestId?: string
+    AND?: networkEventsWhereInput | networkEventsWhereInput[]
+    OR?: networkEventsWhereInput[]
+    NOT?: networkEventsWhereInput | networkEventsWhereInput[]
+    eventType?: StringNullableFilter<"networkEvents"> | string | null
+    eventTime?: DateTimeNullableFilter<"networkEvents"> | Date | string | null
+    source?: StringNullableFilter<"networkEvents"> | string | null
+    rawEvent?: StringNullableFilter<"networkEvents"> | string | null
+    compartmentId?: StringNullableFilter<"networkEvents"> | string | null
+    compartmentName?: StringNullableFilter<"networkEvents"> | string | null
+    eventName?: StringNullableFilter<"networkEvents"> | string | null
+    message?: StringNullableFilter<"networkEvents"> | string | null
+    action?: StringNullableFilter<"networkEvents"> | string | null
+    principalName?: StringNullableFilter<"networkEvents"> | string | null
+    ipAddress?: StringNullableFilter<"networkEvents"> | string | null
+    routeRules?: StringNullableFilter<"networkEvents"> | string | null
+    createdBy?: StringNullableFilter<"networkEvents"> | string | null
+    createdOn?: DateTimeNullableFilter<"networkEvents"> | Date | string | null
+    createdAt?: DateTimeFilter<"networkEvents"> | Date | string
+  }, "id" | "opcRequestId">
+
+  export type networkEventsOrderByWithAggregationInput = {
+    id?: SortOrder
+    eventType?: SortOrderInput | SortOrder
+    eventTime?: SortOrderInput | SortOrder
+    source?: SortOrderInput | SortOrder
+    opcRequestId?: SortOrderInput | SortOrder
+    rawEvent?: SortOrderInput | SortOrder
+    compartmentId?: SortOrderInput | SortOrder
+    compartmentName?: SortOrderInput | SortOrder
+    eventName?: SortOrderInput | SortOrder
+    message?: SortOrderInput | SortOrder
+    action?: SortOrderInput | SortOrder
+    principalName?: SortOrderInput | SortOrder
+    ipAddress?: SortOrderInput | SortOrder
+    routeRules?: SortOrderInput | SortOrder
+    createdBy?: SortOrderInput | SortOrder
+    createdOn?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    _count?: networkEventsCountOrderByAggregateInput
+    _avg?: networkEventsAvgOrderByAggregateInput
+    _max?: networkEventsMaxOrderByAggregateInput
+    _min?: networkEventsMinOrderByAggregateInput
+    _sum?: networkEventsSumOrderByAggregateInput
+  }
+
+  export type networkEventsScalarWhereWithAggregatesInput = {
+    AND?: networkEventsScalarWhereWithAggregatesInput | networkEventsScalarWhereWithAggregatesInput[]
+    OR?: networkEventsScalarWhereWithAggregatesInput[]
+    NOT?: networkEventsScalarWhereWithAggregatesInput | networkEventsScalarWhereWithAggregatesInput[]
+    id?: BigIntWithAggregatesFilter<"networkEvents"> | bigint | number
+    eventType?: StringNullableWithAggregatesFilter<"networkEvents"> | string | null
+    eventTime?: DateTimeNullableWithAggregatesFilter<"networkEvents"> | Date | string | null
+    source?: StringNullableWithAggregatesFilter<"networkEvents"> | string | null
+    opcRequestId?: StringNullableWithAggregatesFilter<"networkEvents"> | string | null
+    rawEvent?: StringNullableWithAggregatesFilter<"networkEvents"> | string | null
+    compartmentId?: StringNullableWithAggregatesFilter<"networkEvents"> | string | null
+    compartmentName?: StringNullableWithAggregatesFilter<"networkEvents"> | string | null
+    eventName?: StringNullableWithAggregatesFilter<"networkEvents"> | string | null
+    message?: StringNullableWithAggregatesFilter<"networkEvents"> | string | null
+    action?: StringNullableWithAggregatesFilter<"networkEvents"> | string | null
+    principalName?: StringNullableWithAggregatesFilter<"networkEvents"> | string | null
+    ipAddress?: StringNullableWithAggregatesFilter<"networkEvents"> | string | null
+    routeRules?: StringNullableWithAggregatesFilter<"networkEvents"> | string | null
+    createdBy?: StringNullableWithAggregatesFilter<"networkEvents"> | string | null
+    createdOn?: DateTimeNullableWithAggregatesFilter<"networkEvents"> | Date | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"networkEvents"> | Date | string
+  }
+
   export type ComputeInstancesCreateInput = {
     tenancy_name?: string | null
     tenancy_id?: string | null
@@ -8284,7 +14538,7 @@ export namespace Prisma {
     processor_description?: string | null
     time_created?: Date | string | null
     CreatedBy?: string | null
-    hourly_cost?: number | null
+    monthly_cost?: number | null
   }
 
   export type ComputeInstancesUncheckedCreateInput = {
@@ -8303,7 +14557,7 @@ export namespace Prisma {
     processor_description?: string | null
     time_created?: Date | string | null
     CreatedBy?: string | null
-    hourly_cost?: number | null
+    monthly_cost?: number | null
   }
 
   export type ComputeInstancesUpdateInput = {
@@ -8322,7 +14576,7 @@ export namespace Prisma {
     processor_description?: NullableStringFieldUpdateOperationsInput | string | null
     time_created?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     CreatedBy?: NullableStringFieldUpdateOperationsInput | string | null
-    hourly_cost?: NullableFloatFieldUpdateOperationsInput | number | null
+    monthly_cost?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type ComputeInstancesUncheckedUpdateInput = {
@@ -8341,7 +14595,7 @@ export namespace Prisma {
     processor_description?: NullableStringFieldUpdateOperationsInput | string | null
     time_created?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     CreatedBy?: NullableStringFieldUpdateOperationsInput | string | null
-    hourly_cost?: NullableFloatFieldUpdateOperationsInput | number | null
+    monthly_cost?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type ComputeInstancesCreateManyInput = {
@@ -8360,7 +14614,7 @@ export namespace Prisma {
     processor_description?: string | null
     time_created?: Date | string | null
     CreatedBy?: string | null
-    hourly_cost?: number | null
+    monthly_cost?: number | null
   }
 
   export type ComputeInstancesUpdateManyMutationInput = {
@@ -8379,7 +14633,7 @@ export namespace Prisma {
     processor_description?: NullableStringFieldUpdateOperationsInput | string | null
     time_created?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     CreatedBy?: NullableStringFieldUpdateOperationsInput | string | null
-    hourly_cost?: NullableFloatFieldUpdateOperationsInput | number | null
+    monthly_cost?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type ComputeInstancesUncheckedUpdateManyInput = {
@@ -8398,7 +14652,7 @@ export namespace Prisma {
     processor_description?: NullableStringFieldUpdateOperationsInput | string | null
     time_created?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     CreatedBy?: NullableStringFieldUpdateOperationsInput | string | null
-    hourly_cost?: NullableFloatFieldUpdateOperationsInput | number | null
+    monthly_cost?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type SubscriptionDetailsCreateInput = {
@@ -8969,6 +15223,622 @@ export namespace Prisma {
     total_value?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
   }
 
+  export type CustoDiarioTotalCreateInput = {
+    tenancy_name?: string | null
+    tenant_id?: string
+    cost_dia?: number | null
+    currency?: string | null
+    usage_dia?: number | null
+    time_started?: Date | string
+    time_ended?: Date | string | null
+  }
+
+  export type CustoDiarioTotalUncheckedCreateInput = {
+    tenancy_name?: string | null
+    tenant_id?: string
+    cost_dia?: number | null
+    currency?: string | null
+    usage_dia?: number | null
+    time_started?: Date | string
+    time_ended?: Date | string | null
+  }
+
+  export type CustoDiarioTotalUpdateInput = {
+    tenancy_name?: NullableStringFieldUpdateOperationsInput | string | null
+    tenant_id?: StringFieldUpdateOperationsInput | string
+    cost_dia?: NullableFloatFieldUpdateOperationsInput | number | null
+    currency?: NullableStringFieldUpdateOperationsInput | string | null
+    usage_dia?: NullableFloatFieldUpdateOperationsInput | number | null
+    time_started?: DateTimeFieldUpdateOperationsInput | Date | string
+    time_ended?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type CustoDiarioTotalUncheckedUpdateInput = {
+    tenancy_name?: NullableStringFieldUpdateOperationsInput | string | null
+    tenant_id?: StringFieldUpdateOperationsInput | string
+    cost_dia?: NullableFloatFieldUpdateOperationsInput | number | null
+    currency?: NullableStringFieldUpdateOperationsInput | string | null
+    usage_dia?: NullableFloatFieldUpdateOperationsInput | number | null
+    time_started?: DateTimeFieldUpdateOperationsInput | Date | string
+    time_ended?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type CustoDiarioTotalCreateManyInput = {
+    tenancy_name?: string | null
+    tenant_id?: string
+    cost_dia?: number | null
+    currency?: string | null
+    usage_dia?: number | null
+    time_started?: Date | string
+    time_ended?: Date | string | null
+  }
+
+  export type CustoDiarioTotalUpdateManyMutationInput = {
+    tenancy_name?: NullableStringFieldUpdateOperationsInput | string | null
+    tenant_id?: StringFieldUpdateOperationsInput | string
+    cost_dia?: NullableFloatFieldUpdateOperationsInput | number | null
+    currency?: NullableStringFieldUpdateOperationsInput | string | null
+    usage_dia?: NullableFloatFieldUpdateOperationsInput | number | null
+    time_started?: DateTimeFieldUpdateOperationsInput | Date | string
+    time_ended?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type CustoDiarioTotalUncheckedUpdateManyInput = {
+    tenancy_name?: NullableStringFieldUpdateOperationsInput | string | null
+    tenant_id?: StringFieldUpdateOperationsInput | string
+    cost_dia?: NullableFloatFieldUpdateOperationsInput | number | null
+    currency?: NullableStringFieldUpdateOperationsInput | string | null
+    usage_dia?: NullableFloatFieldUpdateOperationsInput | number | null
+    time_started?: DateTimeFieldUpdateOperationsInput | Date | string
+    time_ended?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type CustoMensalTotalCreateInput = {
+    tenancy_name?: string | null
+    tenant_id?: string
+    cost_mes?: number | null
+    currency?: string | null
+    usage_mes?: number | null
+    time_started?: Date | string
+    time_ended?: Date | string | null
+  }
+
+  export type CustoMensalTotalUncheckedCreateInput = {
+    tenancy_name?: string | null
+    tenant_id?: string
+    cost_mes?: number | null
+    currency?: string | null
+    usage_mes?: number | null
+    time_started?: Date | string
+    time_ended?: Date | string | null
+  }
+
+  export type CustoMensalTotalUpdateInput = {
+    tenancy_name?: NullableStringFieldUpdateOperationsInput | string | null
+    tenant_id?: StringFieldUpdateOperationsInput | string
+    cost_mes?: NullableFloatFieldUpdateOperationsInput | number | null
+    currency?: NullableStringFieldUpdateOperationsInput | string | null
+    usage_mes?: NullableFloatFieldUpdateOperationsInput | number | null
+    time_started?: DateTimeFieldUpdateOperationsInput | Date | string
+    time_ended?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type CustoMensalTotalUncheckedUpdateInput = {
+    tenancy_name?: NullableStringFieldUpdateOperationsInput | string | null
+    tenant_id?: StringFieldUpdateOperationsInput | string
+    cost_mes?: NullableFloatFieldUpdateOperationsInput | number | null
+    currency?: NullableStringFieldUpdateOperationsInput | string | null
+    usage_mes?: NullableFloatFieldUpdateOperationsInput | number | null
+    time_started?: DateTimeFieldUpdateOperationsInput | Date | string
+    time_ended?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type CustoMensalTotalCreateManyInput = {
+    tenancy_name?: string | null
+    tenant_id?: string
+    cost_mes?: number | null
+    currency?: string | null
+    usage_mes?: number | null
+    time_started?: Date | string
+    time_ended?: Date | string | null
+  }
+
+  export type CustoMensalTotalUpdateManyMutationInput = {
+    tenancy_name?: NullableStringFieldUpdateOperationsInput | string | null
+    tenant_id?: StringFieldUpdateOperationsInput | string
+    cost_mes?: NullableFloatFieldUpdateOperationsInput | number | null
+    currency?: NullableStringFieldUpdateOperationsInput | string | null
+    usage_mes?: NullableFloatFieldUpdateOperationsInput | number | null
+    time_started?: DateTimeFieldUpdateOperationsInput | Date | string
+    time_ended?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type CustoMensalTotalUncheckedUpdateManyInput = {
+    tenancy_name?: NullableStringFieldUpdateOperationsInput | string | null
+    tenant_id?: StringFieldUpdateOperationsInput | string
+    cost_mes?: NullableFloatFieldUpdateOperationsInput | number | null
+    currency?: NullableStringFieldUpdateOperationsInput | string | null
+    usage_mes?: NullableFloatFieldUpdateOperationsInput | number | null
+    time_started?: DateTimeFieldUpdateOperationsInput | Date | string
+    time_ended?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type computeEventsCreateInput = {
+    id?: bigint | number
+    event_type?: string | null
+    event_time?: Date | string | null
+    source?: string | null
+    opcRequestId?: string | null
+    raw_event?: string | null
+    compartment_id?: string | null
+    compartment_name?: string | null
+    event_name?: string | null
+    message?: string | null
+    action?: string | null
+    principal_name?: string | null
+    ip_address?: string | null
+    display_name?: string | null
+    lifecycle_state?: string | null
+    shape?: string | null
+    ocpus?: number | null
+    memory_in_gbs?: number | null
+    processor_description?: string | null
+    created_by?: string | null
+    created_on?: Date | string | null
+    preserve_boot_volume?: boolean | null
+    created_at?: Date | string
+    instanceActionType?: string | null
+  }
+
+  export type computeEventsUncheckedCreateInput = {
+    id?: bigint | number
+    event_type?: string | null
+    event_time?: Date | string | null
+    source?: string | null
+    opcRequestId?: string | null
+    raw_event?: string | null
+    compartment_id?: string | null
+    compartment_name?: string | null
+    event_name?: string | null
+    message?: string | null
+    action?: string | null
+    principal_name?: string | null
+    ip_address?: string | null
+    display_name?: string | null
+    lifecycle_state?: string | null
+    shape?: string | null
+    ocpus?: number | null
+    memory_in_gbs?: number | null
+    processor_description?: string | null
+    created_by?: string | null
+    created_on?: Date | string | null
+    preserve_boot_volume?: boolean | null
+    created_at?: Date | string
+    instanceActionType?: string | null
+  }
+
+  export type computeEventsUpdateInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    event_type?: NullableStringFieldUpdateOperationsInput | string | null
+    event_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    source?: NullableStringFieldUpdateOperationsInput | string | null
+    opcRequestId?: NullableStringFieldUpdateOperationsInput | string | null
+    raw_event?: NullableStringFieldUpdateOperationsInput | string | null
+    compartment_id?: NullableStringFieldUpdateOperationsInput | string | null
+    compartment_name?: NullableStringFieldUpdateOperationsInput | string | null
+    event_name?: NullableStringFieldUpdateOperationsInput | string | null
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    action?: NullableStringFieldUpdateOperationsInput | string | null
+    principal_name?: NullableStringFieldUpdateOperationsInput | string | null
+    ip_address?: NullableStringFieldUpdateOperationsInput | string | null
+    display_name?: NullableStringFieldUpdateOperationsInput | string | null
+    lifecycle_state?: NullableStringFieldUpdateOperationsInput | string | null
+    shape?: NullableStringFieldUpdateOperationsInput | string | null
+    ocpus?: NullableFloatFieldUpdateOperationsInput | number | null
+    memory_in_gbs?: NullableFloatFieldUpdateOperationsInput | number | null
+    processor_description?: NullableStringFieldUpdateOperationsInput | string | null
+    created_by?: NullableStringFieldUpdateOperationsInput | string | null
+    created_on?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    preserve_boot_volume?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    instanceActionType?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type computeEventsUncheckedUpdateInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    event_type?: NullableStringFieldUpdateOperationsInput | string | null
+    event_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    source?: NullableStringFieldUpdateOperationsInput | string | null
+    opcRequestId?: NullableStringFieldUpdateOperationsInput | string | null
+    raw_event?: NullableStringFieldUpdateOperationsInput | string | null
+    compartment_id?: NullableStringFieldUpdateOperationsInput | string | null
+    compartment_name?: NullableStringFieldUpdateOperationsInput | string | null
+    event_name?: NullableStringFieldUpdateOperationsInput | string | null
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    action?: NullableStringFieldUpdateOperationsInput | string | null
+    principal_name?: NullableStringFieldUpdateOperationsInput | string | null
+    ip_address?: NullableStringFieldUpdateOperationsInput | string | null
+    display_name?: NullableStringFieldUpdateOperationsInput | string | null
+    lifecycle_state?: NullableStringFieldUpdateOperationsInput | string | null
+    shape?: NullableStringFieldUpdateOperationsInput | string | null
+    ocpus?: NullableFloatFieldUpdateOperationsInput | number | null
+    memory_in_gbs?: NullableFloatFieldUpdateOperationsInput | number | null
+    processor_description?: NullableStringFieldUpdateOperationsInput | string | null
+    created_by?: NullableStringFieldUpdateOperationsInput | string | null
+    created_on?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    preserve_boot_volume?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    instanceActionType?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type computeEventsCreateManyInput = {
+    id?: bigint | number
+    event_type?: string | null
+    event_time?: Date | string | null
+    source?: string | null
+    opcRequestId?: string | null
+    raw_event?: string | null
+    compartment_id?: string | null
+    compartment_name?: string | null
+    event_name?: string | null
+    message?: string | null
+    action?: string | null
+    principal_name?: string | null
+    ip_address?: string | null
+    display_name?: string | null
+    lifecycle_state?: string | null
+    shape?: string | null
+    ocpus?: number | null
+    memory_in_gbs?: number | null
+    processor_description?: string | null
+    created_by?: string | null
+    created_on?: Date | string | null
+    preserve_boot_volume?: boolean | null
+    created_at?: Date | string
+    instanceActionType?: string | null
+  }
+
+  export type computeEventsUpdateManyMutationInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    event_type?: NullableStringFieldUpdateOperationsInput | string | null
+    event_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    source?: NullableStringFieldUpdateOperationsInput | string | null
+    opcRequestId?: NullableStringFieldUpdateOperationsInput | string | null
+    raw_event?: NullableStringFieldUpdateOperationsInput | string | null
+    compartment_id?: NullableStringFieldUpdateOperationsInput | string | null
+    compartment_name?: NullableStringFieldUpdateOperationsInput | string | null
+    event_name?: NullableStringFieldUpdateOperationsInput | string | null
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    action?: NullableStringFieldUpdateOperationsInput | string | null
+    principal_name?: NullableStringFieldUpdateOperationsInput | string | null
+    ip_address?: NullableStringFieldUpdateOperationsInput | string | null
+    display_name?: NullableStringFieldUpdateOperationsInput | string | null
+    lifecycle_state?: NullableStringFieldUpdateOperationsInput | string | null
+    shape?: NullableStringFieldUpdateOperationsInput | string | null
+    ocpus?: NullableFloatFieldUpdateOperationsInput | number | null
+    memory_in_gbs?: NullableFloatFieldUpdateOperationsInput | number | null
+    processor_description?: NullableStringFieldUpdateOperationsInput | string | null
+    created_by?: NullableStringFieldUpdateOperationsInput | string | null
+    created_on?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    preserve_boot_volume?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    instanceActionType?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type computeEventsUncheckedUpdateManyInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    event_type?: NullableStringFieldUpdateOperationsInput | string | null
+    event_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    source?: NullableStringFieldUpdateOperationsInput | string | null
+    opcRequestId?: NullableStringFieldUpdateOperationsInput | string | null
+    raw_event?: NullableStringFieldUpdateOperationsInput | string | null
+    compartment_id?: NullableStringFieldUpdateOperationsInput | string | null
+    compartment_name?: NullableStringFieldUpdateOperationsInput | string | null
+    event_name?: NullableStringFieldUpdateOperationsInput | string | null
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    action?: NullableStringFieldUpdateOperationsInput | string | null
+    principal_name?: NullableStringFieldUpdateOperationsInput | string | null
+    ip_address?: NullableStringFieldUpdateOperationsInput | string | null
+    display_name?: NullableStringFieldUpdateOperationsInput | string | null
+    lifecycle_state?: NullableStringFieldUpdateOperationsInput | string | null
+    shape?: NullableStringFieldUpdateOperationsInput | string | null
+    ocpus?: NullableFloatFieldUpdateOperationsInput | number | null
+    memory_in_gbs?: NullableFloatFieldUpdateOperationsInput | number | null
+    processor_description?: NullableStringFieldUpdateOperationsInput | string | null
+    created_by?: NullableStringFieldUpdateOperationsInput | string | null
+    created_on?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    preserve_boot_volume?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    instanceActionType?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type identityEventsCreateInput = {
+    id?: bigint | number
+    eventType?: string | null
+    eventTime?: Date | string | null
+    source?: string | null
+    opcRequestId?: string | null
+    rawEvent?: string | null
+    adminResourceName?: string | null
+    adminResourceType?: string | null
+    compartmentName?: string | null
+    principalName?: string | null
+    action?: string | null
+    message?: string | null
+    idcsLastModifiedByName?: string | null
+    idcsLastModifiedByType?: string | null
+    policyName?: string | null
+    statements?: string | null
+    createdAt?: Date | string
+    eventName?: string | null
+  }
+
+  export type identityEventsUncheckedCreateInput = {
+    id?: bigint | number
+    eventType?: string | null
+    eventTime?: Date | string | null
+    source?: string | null
+    opcRequestId?: string | null
+    rawEvent?: string | null
+    adminResourceName?: string | null
+    adminResourceType?: string | null
+    compartmentName?: string | null
+    principalName?: string | null
+    action?: string | null
+    message?: string | null
+    idcsLastModifiedByName?: string | null
+    idcsLastModifiedByType?: string | null
+    policyName?: string | null
+    statements?: string | null
+    createdAt?: Date | string
+    eventName?: string | null
+  }
+
+  export type identityEventsUpdateInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    eventType?: NullableStringFieldUpdateOperationsInput | string | null
+    eventTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    source?: NullableStringFieldUpdateOperationsInput | string | null
+    opcRequestId?: NullableStringFieldUpdateOperationsInput | string | null
+    rawEvent?: NullableStringFieldUpdateOperationsInput | string | null
+    adminResourceName?: NullableStringFieldUpdateOperationsInput | string | null
+    adminResourceType?: NullableStringFieldUpdateOperationsInput | string | null
+    compartmentName?: NullableStringFieldUpdateOperationsInput | string | null
+    principalName?: NullableStringFieldUpdateOperationsInput | string | null
+    action?: NullableStringFieldUpdateOperationsInput | string | null
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    idcsLastModifiedByName?: NullableStringFieldUpdateOperationsInput | string | null
+    idcsLastModifiedByType?: NullableStringFieldUpdateOperationsInput | string | null
+    policyName?: NullableStringFieldUpdateOperationsInput | string | null
+    statements?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    eventName?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type identityEventsUncheckedUpdateInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    eventType?: NullableStringFieldUpdateOperationsInput | string | null
+    eventTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    source?: NullableStringFieldUpdateOperationsInput | string | null
+    opcRequestId?: NullableStringFieldUpdateOperationsInput | string | null
+    rawEvent?: NullableStringFieldUpdateOperationsInput | string | null
+    adminResourceName?: NullableStringFieldUpdateOperationsInput | string | null
+    adminResourceType?: NullableStringFieldUpdateOperationsInput | string | null
+    compartmentName?: NullableStringFieldUpdateOperationsInput | string | null
+    principalName?: NullableStringFieldUpdateOperationsInput | string | null
+    action?: NullableStringFieldUpdateOperationsInput | string | null
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    idcsLastModifiedByName?: NullableStringFieldUpdateOperationsInput | string | null
+    idcsLastModifiedByType?: NullableStringFieldUpdateOperationsInput | string | null
+    policyName?: NullableStringFieldUpdateOperationsInput | string | null
+    statements?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    eventName?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type identityEventsCreateManyInput = {
+    id?: bigint | number
+    eventType?: string | null
+    eventTime?: Date | string | null
+    source?: string | null
+    opcRequestId?: string | null
+    rawEvent?: string | null
+    adminResourceName?: string | null
+    adminResourceType?: string | null
+    compartmentName?: string | null
+    principalName?: string | null
+    action?: string | null
+    message?: string | null
+    idcsLastModifiedByName?: string | null
+    idcsLastModifiedByType?: string | null
+    policyName?: string | null
+    statements?: string | null
+    createdAt?: Date | string
+    eventName?: string | null
+  }
+
+  export type identityEventsUpdateManyMutationInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    eventType?: NullableStringFieldUpdateOperationsInput | string | null
+    eventTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    source?: NullableStringFieldUpdateOperationsInput | string | null
+    opcRequestId?: NullableStringFieldUpdateOperationsInput | string | null
+    rawEvent?: NullableStringFieldUpdateOperationsInput | string | null
+    adminResourceName?: NullableStringFieldUpdateOperationsInput | string | null
+    adminResourceType?: NullableStringFieldUpdateOperationsInput | string | null
+    compartmentName?: NullableStringFieldUpdateOperationsInput | string | null
+    principalName?: NullableStringFieldUpdateOperationsInput | string | null
+    action?: NullableStringFieldUpdateOperationsInput | string | null
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    idcsLastModifiedByName?: NullableStringFieldUpdateOperationsInput | string | null
+    idcsLastModifiedByType?: NullableStringFieldUpdateOperationsInput | string | null
+    policyName?: NullableStringFieldUpdateOperationsInput | string | null
+    statements?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    eventName?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type identityEventsUncheckedUpdateManyInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    eventType?: NullableStringFieldUpdateOperationsInput | string | null
+    eventTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    source?: NullableStringFieldUpdateOperationsInput | string | null
+    opcRequestId?: NullableStringFieldUpdateOperationsInput | string | null
+    rawEvent?: NullableStringFieldUpdateOperationsInput | string | null
+    adminResourceName?: NullableStringFieldUpdateOperationsInput | string | null
+    adminResourceType?: NullableStringFieldUpdateOperationsInput | string | null
+    compartmentName?: NullableStringFieldUpdateOperationsInput | string | null
+    principalName?: NullableStringFieldUpdateOperationsInput | string | null
+    action?: NullableStringFieldUpdateOperationsInput | string | null
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    idcsLastModifiedByName?: NullableStringFieldUpdateOperationsInput | string | null
+    idcsLastModifiedByType?: NullableStringFieldUpdateOperationsInput | string | null
+    policyName?: NullableStringFieldUpdateOperationsInput | string | null
+    statements?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    eventName?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type networkEventsCreateInput = {
+    id?: bigint | number
+    eventType?: string | null
+    eventTime?: Date | string | null
+    source?: string | null
+    opcRequestId?: string | null
+    rawEvent?: string | null
+    compartmentId?: string | null
+    compartmentName?: string | null
+    eventName?: string | null
+    message?: string | null
+    action?: string | null
+    principalName?: string | null
+    ipAddress?: string | null
+    routeRules?: string | null
+    createdBy?: string | null
+    createdOn?: Date | string | null
+    createdAt?: Date | string
+  }
+
+  export type networkEventsUncheckedCreateInput = {
+    id?: bigint | number
+    eventType?: string | null
+    eventTime?: Date | string | null
+    source?: string | null
+    opcRequestId?: string | null
+    rawEvent?: string | null
+    compartmentId?: string | null
+    compartmentName?: string | null
+    eventName?: string | null
+    message?: string | null
+    action?: string | null
+    principalName?: string | null
+    ipAddress?: string | null
+    routeRules?: string | null
+    createdBy?: string | null
+    createdOn?: Date | string | null
+    createdAt?: Date | string
+  }
+
+  export type networkEventsUpdateInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    eventType?: NullableStringFieldUpdateOperationsInput | string | null
+    eventTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    source?: NullableStringFieldUpdateOperationsInput | string | null
+    opcRequestId?: NullableStringFieldUpdateOperationsInput | string | null
+    rawEvent?: NullableStringFieldUpdateOperationsInput | string | null
+    compartmentId?: NullableStringFieldUpdateOperationsInput | string | null
+    compartmentName?: NullableStringFieldUpdateOperationsInput | string | null
+    eventName?: NullableStringFieldUpdateOperationsInput | string | null
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    action?: NullableStringFieldUpdateOperationsInput | string | null
+    principalName?: NullableStringFieldUpdateOperationsInput | string | null
+    ipAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    routeRules?: NullableStringFieldUpdateOperationsInput | string | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    createdOn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type networkEventsUncheckedUpdateInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    eventType?: NullableStringFieldUpdateOperationsInput | string | null
+    eventTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    source?: NullableStringFieldUpdateOperationsInput | string | null
+    opcRequestId?: NullableStringFieldUpdateOperationsInput | string | null
+    rawEvent?: NullableStringFieldUpdateOperationsInput | string | null
+    compartmentId?: NullableStringFieldUpdateOperationsInput | string | null
+    compartmentName?: NullableStringFieldUpdateOperationsInput | string | null
+    eventName?: NullableStringFieldUpdateOperationsInput | string | null
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    action?: NullableStringFieldUpdateOperationsInput | string | null
+    principalName?: NullableStringFieldUpdateOperationsInput | string | null
+    ipAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    routeRules?: NullableStringFieldUpdateOperationsInput | string | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    createdOn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type networkEventsCreateManyInput = {
+    id?: bigint | number
+    eventType?: string | null
+    eventTime?: Date | string | null
+    source?: string | null
+    opcRequestId?: string | null
+    rawEvent?: string | null
+    compartmentId?: string | null
+    compartmentName?: string | null
+    eventName?: string | null
+    message?: string | null
+    action?: string | null
+    principalName?: string | null
+    ipAddress?: string | null
+    routeRules?: string | null
+    createdBy?: string | null
+    createdOn?: Date | string | null
+    createdAt?: Date | string
+  }
+
+  export type networkEventsUpdateManyMutationInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    eventType?: NullableStringFieldUpdateOperationsInput | string | null
+    eventTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    source?: NullableStringFieldUpdateOperationsInput | string | null
+    opcRequestId?: NullableStringFieldUpdateOperationsInput | string | null
+    rawEvent?: NullableStringFieldUpdateOperationsInput | string | null
+    compartmentId?: NullableStringFieldUpdateOperationsInput | string | null
+    compartmentName?: NullableStringFieldUpdateOperationsInput | string | null
+    eventName?: NullableStringFieldUpdateOperationsInput | string | null
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    action?: NullableStringFieldUpdateOperationsInput | string | null
+    principalName?: NullableStringFieldUpdateOperationsInput | string | null
+    ipAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    routeRules?: NullableStringFieldUpdateOperationsInput | string | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    createdOn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type networkEventsUncheckedUpdateManyInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    eventType?: NullableStringFieldUpdateOperationsInput | string | null
+    eventTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    source?: NullableStringFieldUpdateOperationsInput | string | null
+    opcRequestId?: NullableStringFieldUpdateOperationsInput | string | null
+    rawEvent?: NullableStringFieldUpdateOperationsInput | string | null
+    compartmentId?: NullableStringFieldUpdateOperationsInput | string | null
+    compartmentName?: NullableStringFieldUpdateOperationsInput | string | null
+    eventName?: NullableStringFieldUpdateOperationsInput | string | null
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    action?: NullableStringFieldUpdateOperationsInput | string | null
+    principalName?: NullableStringFieldUpdateOperationsInput | string | null
+    ipAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    routeRules?: NullableStringFieldUpdateOperationsInput | string | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    createdOn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type StringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | null
@@ -9059,13 +15929,13 @@ export namespace Prisma {
     processor_description?: SortOrder
     time_created?: SortOrder
     CreatedBy?: SortOrder
-    hourly_cost?: SortOrder
+    monthly_cost?: SortOrder
   }
 
   export type ComputeInstancesAvgOrderByAggregateInput = {
     memory_in_gbs?: SortOrder
     ocpus?: SortOrder
-    hourly_cost?: SortOrder
+    monthly_cost?: SortOrder
   }
 
   export type ComputeInstancesMaxOrderByAggregateInput = {
@@ -9084,7 +15954,7 @@ export namespace Prisma {
     processor_description?: SortOrder
     time_created?: SortOrder
     CreatedBy?: SortOrder
-    hourly_cost?: SortOrder
+    monthly_cost?: SortOrder
   }
 
   export type ComputeInstancesMinOrderByAggregateInput = {
@@ -9103,13 +15973,13 @@ export namespace Prisma {
     processor_description?: SortOrder
     time_created?: SortOrder
     CreatedBy?: SortOrder
-    hourly_cost?: SortOrder
+    monthly_cost?: SortOrder
   }
 
   export type ComputeInstancesSumOrderByAggregateInput = {
     memory_in_gbs?: SortOrder
     ocpus?: SortOrder
-    hourly_cost?: SortOrder
+    monthly_cost?: SortOrder
   }
 
   export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -9605,6 +16475,398 @@ export namespace Prisma {
     _max?: NestedDecimalNullableFilter<$PrismaModel>
   }
 
+  export type CustoDiarioTotalOrderByRelevanceInput = {
+    fields: CustoDiarioTotalOrderByRelevanceFieldEnum | CustoDiarioTotalOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type CustoDiarioTotalTenant_idTime_startedCompoundUniqueInput = {
+    tenant_id: string
+    time_started: Date | string
+  }
+
+  export type CustoDiarioTotalCountOrderByAggregateInput = {
+    tenancy_name?: SortOrder
+    tenant_id?: SortOrder
+    cost_dia?: SortOrder
+    currency?: SortOrder
+    usage_dia?: SortOrder
+    time_started?: SortOrder
+    time_ended?: SortOrder
+  }
+
+  export type CustoDiarioTotalAvgOrderByAggregateInput = {
+    cost_dia?: SortOrder
+    usage_dia?: SortOrder
+  }
+
+  export type CustoDiarioTotalMaxOrderByAggregateInput = {
+    tenancy_name?: SortOrder
+    tenant_id?: SortOrder
+    cost_dia?: SortOrder
+    currency?: SortOrder
+    usage_dia?: SortOrder
+    time_started?: SortOrder
+    time_ended?: SortOrder
+  }
+
+  export type CustoDiarioTotalMinOrderByAggregateInput = {
+    tenancy_name?: SortOrder
+    tenant_id?: SortOrder
+    cost_dia?: SortOrder
+    currency?: SortOrder
+    usage_dia?: SortOrder
+    time_started?: SortOrder
+    time_ended?: SortOrder
+  }
+
+  export type CustoDiarioTotalSumOrderByAggregateInput = {
+    cost_dia?: SortOrder
+    usage_dia?: SortOrder
+  }
+
+  export type CustoMensalTotalOrderByRelevanceInput = {
+    fields: CustoMensalTotalOrderByRelevanceFieldEnum | CustoMensalTotalOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type CustoMensalTotalTenant_idTime_startedCompoundUniqueInput = {
+    tenant_id: string
+    time_started: Date | string
+  }
+
+  export type CustoMensalTotalCountOrderByAggregateInput = {
+    tenancy_name?: SortOrder
+    tenant_id?: SortOrder
+    cost_mes?: SortOrder
+    currency?: SortOrder
+    usage_mes?: SortOrder
+    time_started?: SortOrder
+    time_ended?: SortOrder
+  }
+
+  export type CustoMensalTotalAvgOrderByAggregateInput = {
+    cost_mes?: SortOrder
+    usage_mes?: SortOrder
+  }
+
+  export type CustoMensalTotalMaxOrderByAggregateInput = {
+    tenancy_name?: SortOrder
+    tenant_id?: SortOrder
+    cost_mes?: SortOrder
+    currency?: SortOrder
+    usage_mes?: SortOrder
+    time_started?: SortOrder
+    time_ended?: SortOrder
+  }
+
+  export type CustoMensalTotalMinOrderByAggregateInput = {
+    tenancy_name?: SortOrder
+    tenant_id?: SortOrder
+    cost_mes?: SortOrder
+    currency?: SortOrder
+    usage_mes?: SortOrder
+    time_started?: SortOrder
+    time_ended?: SortOrder
+  }
+
+  export type CustoMensalTotalSumOrderByAggregateInput = {
+    cost_mes?: SortOrder
+    usage_mes?: SortOrder
+  }
+
+  export type BigIntFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    in?: bigint[] | number[]
+    notIn?: bigint[] | number[]
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntFilter<$PrismaModel> | bigint | number
+  }
+
+  export type BoolNullableFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
+  }
+
+  export type computeEventsOrderByRelevanceInput = {
+    fields: computeEventsOrderByRelevanceFieldEnum | computeEventsOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type computeEventsCountOrderByAggregateInput = {
+    id?: SortOrder
+    event_type?: SortOrder
+    event_time?: SortOrder
+    source?: SortOrder
+    opcRequestId?: SortOrder
+    raw_event?: SortOrder
+    compartment_id?: SortOrder
+    compartment_name?: SortOrder
+    event_name?: SortOrder
+    message?: SortOrder
+    action?: SortOrder
+    principal_name?: SortOrder
+    ip_address?: SortOrder
+    display_name?: SortOrder
+    lifecycle_state?: SortOrder
+    shape?: SortOrder
+    ocpus?: SortOrder
+    memory_in_gbs?: SortOrder
+    processor_description?: SortOrder
+    created_by?: SortOrder
+    created_on?: SortOrder
+    preserve_boot_volume?: SortOrder
+    created_at?: SortOrder
+    instanceActionType?: SortOrder
+  }
+
+  export type computeEventsAvgOrderByAggregateInput = {
+    id?: SortOrder
+    ocpus?: SortOrder
+    memory_in_gbs?: SortOrder
+  }
+
+  export type computeEventsMaxOrderByAggregateInput = {
+    id?: SortOrder
+    event_type?: SortOrder
+    event_time?: SortOrder
+    source?: SortOrder
+    opcRequestId?: SortOrder
+    raw_event?: SortOrder
+    compartment_id?: SortOrder
+    compartment_name?: SortOrder
+    event_name?: SortOrder
+    message?: SortOrder
+    action?: SortOrder
+    principal_name?: SortOrder
+    ip_address?: SortOrder
+    display_name?: SortOrder
+    lifecycle_state?: SortOrder
+    shape?: SortOrder
+    ocpus?: SortOrder
+    memory_in_gbs?: SortOrder
+    processor_description?: SortOrder
+    created_by?: SortOrder
+    created_on?: SortOrder
+    preserve_boot_volume?: SortOrder
+    created_at?: SortOrder
+    instanceActionType?: SortOrder
+  }
+
+  export type computeEventsMinOrderByAggregateInput = {
+    id?: SortOrder
+    event_type?: SortOrder
+    event_time?: SortOrder
+    source?: SortOrder
+    opcRequestId?: SortOrder
+    raw_event?: SortOrder
+    compartment_id?: SortOrder
+    compartment_name?: SortOrder
+    event_name?: SortOrder
+    message?: SortOrder
+    action?: SortOrder
+    principal_name?: SortOrder
+    ip_address?: SortOrder
+    display_name?: SortOrder
+    lifecycle_state?: SortOrder
+    shape?: SortOrder
+    ocpus?: SortOrder
+    memory_in_gbs?: SortOrder
+    processor_description?: SortOrder
+    created_by?: SortOrder
+    created_on?: SortOrder
+    preserve_boot_volume?: SortOrder
+    created_at?: SortOrder
+    instanceActionType?: SortOrder
+  }
+
+  export type computeEventsSumOrderByAggregateInput = {
+    id?: SortOrder
+    ocpus?: SortOrder
+    memory_in_gbs?: SortOrder
+  }
+
+  export type BigIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    in?: bigint[] | number[]
+    notIn?: bigint[] | number[]
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntWithAggregatesFilter<$PrismaModel> | bigint | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedBigIntFilter<$PrismaModel>
+    _min?: NestedBigIntFilter<$PrismaModel>
+    _max?: NestedBigIntFilter<$PrismaModel>
+  }
+
+  export type BoolNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedBoolNullableFilter<$PrismaModel>
+    _max?: NestedBoolNullableFilter<$PrismaModel>
+  }
+
+  export type identityEventsOrderByRelevanceInput = {
+    fields: identityEventsOrderByRelevanceFieldEnum | identityEventsOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type identityEventsCountOrderByAggregateInput = {
+    id?: SortOrder
+    eventType?: SortOrder
+    eventTime?: SortOrder
+    source?: SortOrder
+    opcRequestId?: SortOrder
+    rawEvent?: SortOrder
+    adminResourceName?: SortOrder
+    adminResourceType?: SortOrder
+    compartmentName?: SortOrder
+    principalName?: SortOrder
+    action?: SortOrder
+    message?: SortOrder
+    idcsLastModifiedByName?: SortOrder
+    idcsLastModifiedByType?: SortOrder
+    policyName?: SortOrder
+    statements?: SortOrder
+    createdAt?: SortOrder
+    eventName?: SortOrder
+  }
+
+  export type identityEventsAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type identityEventsMaxOrderByAggregateInput = {
+    id?: SortOrder
+    eventType?: SortOrder
+    eventTime?: SortOrder
+    source?: SortOrder
+    opcRequestId?: SortOrder
+    rawEvent?: SortOrder
+    adminResourceName?: SortOrder
+    adminResourceType?: SortOrder
+    compartmentName?: SortOrder
+    principalName?: SortOrder
+    action?: SortOrder
+    message?: SortOrder
+    idcsLastModifiedByName?: SortOrder
+    idcsLastModifiedByType?: SortOrder
+    policyName?: SortOrder
+    statements?: SortOrder
+    createdAt?: SortOrder
+    eventName?: SortOrder
+  }
+
+  export type identityEventsMinOrderByAggregateInput = {
+    id?: SortOrder
+    eventType?: SortOrder
+    eventTime?: SortOrder
+    source?: SortOrder
+    opcRequestId?: SortOrder
+    rawEvent?: SortOrder
+    adminResourceName?: SortOrder
+    adminResourceType?: SortOrder
+    compartmentName?: SortOrder
+    principalName?: SortOrder
+    action?: SortOrder
+    message?: SortOrder
+    idcsLastModifiedByName?: SortOrder
+    idcsLastModifiedByType?: SortOrder
+    policyName?: SortOrder
+    statements?: SortOrder
+    createdAt?: SortOrder
+    eventName?: SortOrder
+  }
+
+  export type identityEventsSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type networkEventsOrderByRelevanceInput = {
+    fields: networkEventsOrderByRelevanceFieldEnum | networkEventsOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type networkEventsCountOrderByAggregateInput = {
+    id?: SortOrder
+    eventType?: SortOrder
+    eventTime?: SortOrder
+    source?: SortOrder
+    opcRequestId?: SortOrder
+    rawEvent?: SortOrder
+    compartmentId?: SortOrder
+    compartmentName?: SortOrder
+    eventName?: SortOrder
+    message?: SortOrder
+    action?: SortOrder
+    principalName?: SortOrder
+    ipAddress?: SortOrder
+    routeRules?: SortOrder
+    createdBy?: SortOrder
+    createdOn?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type networkEventsAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type networkEventsMaxOrderByAggregateInput = {
+    id?: SortOrder
+    eventType?: SortOrder
+    eventTime?: SortOrder
+    source?: SortOrder
+    opcRequestId?: SortOrder
+    rawEvent?: SortOrder
+    compartmentId?: SortOrder
+    compartmentName?: SortOrder
+    eventName?: SortOrder
+    message?: SortOrder
+    action?: SortOrder
+    principalName?: SortOrder
+    ipAddress?: SortOrder
+    routeRules?: SortOrder
+    createdBy?: SortOrder
+    createdOn?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type networkEventsMinOrderByAggregateInput = {
+    id?: SortOrder
+    eventType?: SortOrder
+    eventTime?: SortOrder
+    source?: SortOrder
+    opcRequestId?: SortOrder
+    rawEvent?: SortOrder
+    compartmentId?: SortOrder
+    compartmentName?: SortOrder
+    eventName?: SortOrder
+    message?: SortOrder
+    action?: SortOrder
+    principalName?: SortOrder
+    ipAddress?: SortOrder
+    routeRules?: SortOrder
+    createdBy?: SortOrder
+    createdOn?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type networkEventsSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
   export type NullableStringFieldUpdateOperationsInput = {
     set?: string | null
   }
@@ -9651,6 +16913,18 @@ export namespace Prisma {
     decrement?: Decimal | DecimalJsLike | number | string
     multiply?: Decimal | DecimalJsLike | number | string
     divide?: Decimal | DecimalJsLike | number | string
+  }
+
+  export type BigIntFieldUpdateOperationsInput = {
+    set?: bigint | number
+    increment?: bigint | number
+    decrement?: bigint | number
+    multiply?: bigint | number
+    divide?: bigint | number
+  }
+
+  export type NullableBoolFieldUpdateOperationsInput = {
+    set?: boolean | null
   }
 
   export type NestedStringNullableFilter<$PrismaModel = never> = {
@@ -9886,6 +17160,46 @@ export namespace Prisma {
     _sum?: NestedDecimalNullableFilter<$PrismaModel>
     _min?: NestedDecimalNullableFilter<$PrismaModel>
     _max?: NestedDecimalNullableFilter<$PrismaModel>
+  }
+
+  export type NestedBigIntFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    in?: bigint[] | number[]
+    notIn?: bigint[] | number[]
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntFilter<$PrismaModel> | bigint | number
+  }
+
+  export type NestedBoolNullableFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
+  }
+
+  export type NestedBigIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    in?: bigint[] | number[]
+    notIn?: bigint[] | number[]
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntWithAggregatesFilter<$PrismaModel> | bigint | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedBigIntFilter<$PrismaModel>
+    _min?: NestedBigIntFilter<$PrismaModel>
+    _max?: NestedBigIntFilter<$PrismaModel>
+  }
+
+  export type NestedBoolNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedBoolNullableFilter<$PrismaModel>
+    _max?: NestedBoolNullableFilter<$PrismaModel>
   }
 
 

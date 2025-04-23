@@ -133,7 +133,7 @@ exports.Prisma.ComputeInstancesScalarFieldEnum = {
   processor_description: 'processor_description',
   time_created: 'time_created',
   CreatedBy: 'CreatedBy',
-  hourly_cost: 'hourly_cost'
+  monthly_cost: 'monthly_cost'
 };
 
 exports.Prisma.SubscriptionDetailsScalarFieldEnum = {
@@ -216,6 +216,94 @@ exports.Prisma.Tenancy_detailsScalarFieldEnum = {
   time_end: 'time_end',
   status: 'status',
   total_value: 'total_value'
+};
+
+exports.Prisma.CustoDiarioTotalScalarFieldEnum = {
+  tenancy_name: 'tenancy_name',
+  tenant_id: 'tenant_id',
+  cost_dia: 'cost_dia',
+  currency: 'currency',
+  usage_dia: 'usage_dia',
+  time_started: 'time_started',
+  time_ended: 'time_ended'
+};
+
+exports.Prisma.CustoMensalTotalScalarFieldEnum = {
+  tenancy_name: 'tenancy_name',
+  tenant_id: 'tenant_id',
+  cost_mes: 'cost_mes',
+  currency: 'currency',
+  usage_mes: 'usage_mes',
+  time_started: 'time_started',
+  time_ended: 'time_ended'
+};
+
+exports.Prisma.ComputeEventsScalarFieldEnum = {
+  id: 'id',
+  event_type: 'event_type',
+  event_time: 'event_time',
+  source: 'source',
+  opcRequestId: 'opcRequestId',
+  raw_event: 'raw_event',
+  compartment_id: 'compartment_id',
+  compartment_name: 'compartment_name',
+  event_name: 'event_name',
+  message: 'message',
+  action: 'action',
+  principal_name: 'principal_name',
+  ip_address: 'ip_address',
+  display_name: 'display_name',
+  lifecycle_state: 'lifecycle_state',
+  shape: 'shape',
+  ocpus: 'ocpus',
+  memory_in_gbs: 'memory_in_gbs',
+  processor_description: 'processor_description',
+  created_by: 'created_by',
+  created_on: 'created_on',
+  preserve_boot_volume: 'preserve_boot_volume',
+  created_at: 'created_at',
+  instanceActionType: 'instanceActionType'
+};
+
+exports.Prisma.IdentityEventsScalarFieldEnum = {
+  id: 'id',
+  eventType: 'eventType',
+  eventTime: 'eventTime',
+  source: 'source',
+  opcRequestId: 'opcRequestId',
+  rawEvent: 'rawEvent',
+  adminResourceName: 'adminResourceName',
+  adminResourceType: 'adminResourceType',
+  compartmentName: 'compartmentName',
+  principalName: 'principalName',
+  action: 'action',
+  message: 'message',
+  idcsLastModifiedByName: 'idcsLastModifiedByName',
+  idcsLastModifiedByType: 'idcsLastModifiedByType',
+  policyName: 'policyName',
+  statements: 'statements',
+  createdAt: 'createdAt',
+  eventName: 'eventName'
+};
+
+exports.Prisma.NetworkEventsScalarFieldEnum = {
+  id: 'id',
+  eventType: 'eventType',
+  eventTime: 'eventTime',
+  source: 'source',
+  opcRequestId: 'opcRequestId',
+  rawEvent: 'rawEvent',
+  compartmentId: 'compartmentId',
+  compartmentName: 'compartmentName',
+  eventName: 'eventName',
+  message: 'message',
+  action: 'action',
+  principalName: 'principalName',
+  ipAddress: 'ipAddress',
+  routeRules: 'routeRules',
+  createdBy: 'createdBy',
+  createdOn: 'createdOn',
+  createdAt: 'createdAt'
 };
 
 exports.Prisma.SortOrder = {
@@ -307,6 +395,72 @@ exports.Prisma.tenancy_detailsOrderByRelevanceFieldEnum = {
   status: 'status'
 };
 
+exports.Prisma.CustoDiarioTotalOrderByRelevanceFieldEnum = {
+  tenancy_name: 'tenancy_name',
+  tenant_id: 'tenant_id',
+  currency: 'currency'
+};
+
+exports.Prisma.CustoMensalTotalOrderByRelevanceFieldEnum = {
+  tenancy_name: 'tenancy_name',
+  tenant_id: 'tenant_id',
+  currency: 'currency'
+};
+
+exports.Prisma.computeEventsOrderByRelevanceFieldEnum = {
+  event_type: 'event_type',
+  source: 'source',
+  opcRequestId: 'opcRequestId',
+  raw_event: 'raw_event',
+  compartment_id: 'compartment_id',
+  compartment_name: 'compartment_name',
+  event_name: 'event_name',
+  message: 'message',
+  action: 'action',
+  principal_name: 'principal_name',
+  ip_address: 'ip_address',
+  display_name: 'display_name',
+  lifecycle_state: 'lifecycle_state',
+  shape: 'shape',
+  processor_description: 'processor_description',
+  created_by: 'created_by',
+  instanceActionType: 'instanceActionType'
+};
+
+exports.Prisma.identityEventsOrderByRelevanceFieldEnum = {
+  eventType: 'eventType',
+  source: 'source',
+  opcRequestId: 'opcRequestId',
+  rawEvent: 'rawEvent',
+  adminResourceName: 'adminResourceName',
+  adminResourceType: 'adminResourceType',
+  compartmentName: 'compartmentName',
+  principalName: 'principalName',
+  action: 'action',
+  message: 'message',
+  idcsLastModifiedByName: 'idcsLastModifiedByName',
+  idcsLastModifiedByType: 'idcsLastModifiedByType',
+  policyName: 'policyName',
+  statements: 'statements',
+  eventName: 'eventName'
+};
+
+exports.Prisma.networkEventsOrderByRelevanceFieldEnum = {
+  eventType: 'eventType',
+  source: 'source',
+  opcRequestId: 'opcRequestId',
+  rawEvent: 'rawEvent',
+  compartmentId: 'compartmentId',
+  compartmentName: 'compartmentName',
+  eventName: 'eventName',
+  message: 'message',
+  action: 'action',
+  principalName: 'principalName',
+  ipAddress: 'ipAddress',
+  routeRules: 'routeRules',
+  createdBy: 'createdBy'
+};
+
 
 exports.Prisma.ModelName = {
   ComputeInstances: 'ComputeInstances',
@@ -314,7 +468,12 @@ exports.Prisma.ModelName = {
   TenancyDetails: 'TenancyDetails',
   audit: 'audit',
   notifications: 'notifications',
-  tenancy_details: 'tenancy_details'
+  tenancy_details: 'tenancy_details',
+  CustoDiarioTotal: 'CustoDiarioTotal',
+  CustoMensalTotal: 'CustoMensalTotal',
+  computeEvents: 'computeEvents',
+  identityEvents: 'identityEvents',
+  networkEvents: 'networkEvents'
 };
 
 /**

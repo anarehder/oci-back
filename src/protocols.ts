@@ -67,8 +67,7 @@ export type Top5VMCost = {
     display_name: string;
     id: string;
     lifecycle_state: string;
-    hourly_cost: number;
-    dailyCost: number;
+    monthly_cost: number;
 }
 
 export type CreditsOCI = {
