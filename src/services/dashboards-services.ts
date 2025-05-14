@@ -2,7 +2,7 @@ import { DashboardsOutput, JoinDashboardsInput } from "../protocols";
 import { unauthorizedError } from "../errors";
 import { getUserDetails } from "./user-service";
 import { getAllMonthCosts, getAllTenanciesSubscriptionAmountRepository, getComputeInstancesByTenancyRepository, getComputeInstancesRepository, getMonthCostsByTenancyRepository, getMonthDailyCostsRepository, getMonthServiceCostsByTenancyRepository, getMonthSKUCostsByTenancyRepository, getSubscriptionAmountByTenancyRepository, getTenanciesListRepository, getTop5CostComputeInstancesByTenancyRepository, getTop5CostComputeInstancesRepository } from "../repositories";
-import { getBlockVolumeListRepository } from "../repositories/block-volume-repository";
+import { getBlockVolumeListRepository, getBlockVolumesByTenancyRepository } from "../repositories/block-volume-repository";
 import { getSubscriptionDetailsRepository } from "./price-service";
 
 export async function getDashboardService(userToken: string, month: string) {
@@ -67,12 +67,13 @@ export async function getTenancyDashboards(tenancies: string[], month: string){
     const computeInstances = await getComputeInstancesByTenancyRepository(tenancies);
     const top5_costVM = await getTop5CostComputeInstancesByTenancyRepository(tenancies);
     const creditsOCI = await getSubscriptionAmountByTenancyRepository(tenancies);
-    const orphan = await getBlockVolumeListRepository();
+    const orphan = await getBlockVolumesByTenancyRepository(tenancies);
     const cost_history = await getMonthCostsByTenancyRepository(tenancies);
-    const cost_services = await getMonthServiceCostsByTenancyRepository(tenancies, '2025-05');
-    const cost_SKU = await getMonthSKUCostsByTenancyRepository(tenancies, '2025-05');
-    const cost_daily = await getMonthDailyCostsRepository(tenancies, '2025-05');
+    const cost_services = await getMonthServiceCostsByTenancyRepository(tenancies, month);
+    const cost_SKU = await getMonthSKUCostsByTenancyRepository(tenancies, month);
+    const cost_daily = await getMonthDailyCostsRepository(tenancies, month);
     const subscriptionDetails = await getSubscriptionDetailsRepository(tenancies);
+    
     const response: DashboardsOutput = {
         tenancies,
         user: null,

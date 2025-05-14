@@ -95,14 +95,17 @@ export async function getMonthSKUCostsByTenancyRepository(tenancies: string[], m
   return monthSKUCost;
 }
 
-export async function getMonthDailyCostsRepository(tenancies: string[], startOfMonth: string) {
+export async function getMonthDailyCostsRepository(tenancies: string[], month: string) {
+  const startOfMonth = new Date(`${month}-01T00:00:00.000Z`);
+  const startOfNextMonth = new Date(new Date(startOfMonth).setMonth(startOfMonth.getMonth() + 1));
   const monthDailyCosts = await prisma2.custoDiarioTotal.findMany({
-      where: {
-        tenancy_name: {
-          in: tenancies,
+    where: {
+      tenancy_name: {
+        in: tenancies,
         },
         time_started: {
           gte: startOfMonth,
+          lt: startOfNextMonth,
         }
       },
       orderBy: {

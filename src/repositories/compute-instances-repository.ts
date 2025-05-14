@@ -21,7 +21,7 @@ export async function getComputeInstancesByTenancyRepository(tenancies: string[]
           display_name: 'asc',
         },
       });
-
+      
     return computeInstances;
 }
 export async function getComputeInstancesByDisplayNameRepository(displayName: string) {
