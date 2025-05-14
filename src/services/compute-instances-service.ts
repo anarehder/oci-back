@@ -1,7 +1,7 @@
 import { JoinDashboardsInput } from "../protocols";
-import { conflictError } from "../errors";
+import { conflictError, unauthorizedError } from "../errors";
 import { getUserDetails } from "./user-service";
-import { getComputeInstancesByTenancyRepository, getComputeInstancesRepository } from "../repositories";
+import { getComputeInstancesByDisplayNameRepository, getComputeInstancesByTenancyRepository, getComputeInstancesRepository, getCPUByDisplayNameAndTimeRepository, getMemoryByDisplayNameAndTimeRepository } from "../repositories";
 
 export async function getComputeInstancesService(userToken: string) {
     const token = userToken.slice(7);
@@ -39,4 +39,30 @@ export async function getJoinComputeInstancesService(userToken: string, body: Jo
         const response = await getComputeInstancesByTenancyRepository(tenancies);
         return response;
     }
+}
+
+
+export async function getComputeInstanceDetailsService(userToken: string, displayName: string, interval: string ) {
+
+    const token = userToken.slice(7);
+    const userDetails = await getUserDetails(token);
+    if (!userDetails) throw unauthorizedError("Usuario nao encontrado");
+    // const validatedInterval = validateInterval(interval);
+    // console.log(validatedInterval);
+    // ver se essa maquina esta na tenancy?
+    const details = await getComputeInstancesByDisplayNameRepository(displayName);
+    const cpu = await getCPUByDisplayNameAndTimeRepository(displayName, interval);
+    const memory = await getMemoryByDisplayNameAndTimeRepository(displayName, interval);
+    const response = {details, cpu, memory};
+    return response;
+}
+
+const allowedIntervals = ['1 HOUR', '3 HOUR', '6 HOUR', '12 HOUR', '24 HOUR', '1 WEEK', '2 WEEK', '3 WEEK', '4 WEEK', '2 MONTH', '6 MONTH'];
+
+export function validateInterval(input: string): string {
+  if (!allowedIntervals.includes(input.toUpperCase())) {
+    throw new Error('Intervalo inválido');
+  }
+  console.log(input);
+  return input.toUpperCase();
 }

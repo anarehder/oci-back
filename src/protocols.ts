@@ -92,6 +92,18 @@ export type CpuUtilization = {
     resourceId: string;
     metric_timestamp: Date;
     cpu_usage: number;
+};
+
+export type MemoryUtilization = {
+    profile_name: string;
+    tenancy_name: string;
+    tenancy_id?: string;
+    compartment_id?: string;
+    resourceId: string;
+    region: string;
+    resourceDisplayName: string;
+    metric_timestamp: Date;
+    memory_usage: number;
   };
 
 export type MonthCost = {

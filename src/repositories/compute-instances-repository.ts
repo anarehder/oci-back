@@ -24,6 +24,15 @@ export async function getComputeInstancesByTenancyRepository(tenancies: string[]
 
     return computeInstances;
 }
+export async function getComputeInstancesByDisplayNameRepository(displayName: string) {
+  const computeInstances = await prisma2.computeInstances.findFirst({
+    where: {
+      display_name: displayName,
+    }
+  });
+
+  return computeInstances;
+}
 
 export async function getTop5CostComputeInstancesRepository(){
     const computeInstances = await prisma2.computeInstances.findMany({
