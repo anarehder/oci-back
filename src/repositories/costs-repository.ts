@@ -52,3 +52,63 @@ export async function getMonthCostsByTenancyRepository(tenancies: string[]){
 
     return costs;
 }
+
+export async function getMonthServiceCostsByTenancyRepository(tenancies: string[], month: string) {
+  const startOfMonth = new Date(`${month}-01T00:00:00.000Z`);
+  const startOfNextMonth = new Date(new Date(startOfMonth).setMonth(startOfMonth.getMonth() + 1));
+  const monthServicesCost = await prisma2.custoPorService.findMany({
+      where: {
+        tenancy_name: {
+          in: tenancies,
+        },
+        time_started: {
+          gte: startOfMonth,
+          lt: startOfNextMonth,
+        }
+      },
+      orderBy: {
+        cost_mes: 'desc',
+      },
+  });
+
+  return monthServicesCost;
+}
+
+export async function getMonthSKUCostsByTenancyRepository(tenancies: string[], month: string) {
+  const startOfMonth = new Date(`${month}-01T00:00:00.000Z`);
+  const startOfNextMonth = new Date(new Date(startOfMonth).setMonth(startOfMonth.getMonth() + 1));
+  const monthSKUCost = await prisma2.custoPorSkuName.findMany({
+      where: {
+        tenancy_name: {
+          in: tenancies,
+        },
+        time_started: {
+          gte: startOfMonth,
+          lt: startOfNextMonth,
+        }
+      },
+      orderBy: {
+        cost_mes: 'desc',
+      },
+  });
+
+  return monthSKUCost;
+}
+
+export async function getMonthDailyCostsRepository(tenancies: string[], startOfMonth: string) {
+  const monthDailyCosts = await prisma2.custoDiarioTotal.findMany({
+      where: {
+        tenancy_name: {
+          in: tenancies,
+        },
+        time_started: {
+          gte: startOfMonth,
+        }
+      },
+      orderBy: {
+        time_started: 'asc',
+      },
+  });
+
+  return monthDailyCosts;
+}

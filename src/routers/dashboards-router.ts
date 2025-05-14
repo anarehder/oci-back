@@ -5,7 +5,7 @@ import { getDashboardController, getJoinDashboardController } from "../controlle
 
 const dashboardRouter = Router();
 
-dashboardRouter.get("/", authenticateToken, getDashboardController); //pegar quando fizer o login
-dashboardRouter.post("/join", authenticateToken, validateBody(joinDashboardSchema), getJoinDashboardController);//pegar quando selecionar a tenancy
+dashboardRouter.get("/:month?", authenticateToken, getDashboardController); //pegar quando fizer o login
+dashboardRouter.post("/join/:month?", authenticateToken, validateBody(joinDashboardSchema), getJoinDashboardController);//pegar quando selecionar a tenancy
 
 export {dashboardRouter}

@@ -1,9 +1,11 @@
 import { DashboardsOutput, JoinDashboardsInput } from "../protocols";
 import { unauthorizedError } from "../errors";
 import { getUserDetails } from "./user-service";
-import { getAllMonthCosts, getAllTenanciesSubscriptionAmountRepository, getComputeInstancesByTenancyRepository, getComputeInstancesRepository, getMonthCostsByTenancyRepository, getSubscriptionAmountByTenancyRepository, getTenanciesListRepository, getTop5CostComputeInstancesByTenancyRepository, getTop5CostComputeInstancesRepository } from "../repositories";
+import { getAllMonthCosts, getAllTenanciesSubscriptionAmountRepository, getComputeInstancesByTenancyRepository, getComputeInstancesRepository, getMonthCostsByTenancyRepository, getMonthDailyCostsRepository, getMonthServiceCostsByTenancyRepository, getMonthSKUCostsByTenancyRepository, getSubscriptionAmountByTenancyRepository, getTenanciesListRepository, getTop5CostComputeInstancesByTenancyRepository, getTop5CostComputeInstancesRepository } from "../repositories";
+import { getBlockVolumeListRepository } from "../repositories/block-volume-repository";
+import { getSubscriptionDetailsRepository } from "./price-service";
 
-export async function getDashboardService(userToken: string) {
+export async function getDashboardService(userToken: string, month: string) {
     const token = userToken.slice(7);
     // pegar o cliente com a tenancy
     const userDetails = await getUserDetails(token);
@@ -12,13 +14,13 @@ export async function getDashboardService(userToken: string) {
         return response;
     } else{
         const tenancies = userDetails.map(user => user.tenancy.toLocaleLowerCase());
-        const response = await getTenancyDashboards(tenancies);
+        const response = await getTenancyDashboards(tenancies, month);
         return response;
     }
     
 }
 
-export async function getJoinDashboardService(userToken: string, body:JoinDashboardsInput) {
+export async function getJoinDashboardService(userToken: string, body:JoinDashboardsInput, month: string) {
     const token = userToken.slice(7);
     const userDetails = await getUserDetails(token);
     if (!userDetails[0].isAdmin){
@@ -29,7 +31,7 @@ export async function getJoinDashboardService(userToken: string, body:JoinDashbo
     );
     const tenancies = Object.values(filteredTenancies);
 
-    const response = await getTenancyDashboards(tenancies);
+    const response = await getTenancyDashboards(tenancies, month);
     return response;
 }
 
@@ -38,33 +40,49 @@ export async function getAllDashboards(){
     const top5_costVM = await getTop5CostComputeInstancesRepository();
     const creditsOCI = await getAllTenanciesSubscriptionAmountRepository();
     const cost_history = await getAllMonthCosts();
+    const orphan = await getBlockVolumeListRepository();
     const tenanciesList = await getTenanciesListRepository();
     const tenancies = tenanciesList.map(t => t.tenancy_name);
+    const cost_services = await getMonthServiceCostsByTenancyRepository(tenancies, '2025-05');
+    const cost_SKU = await getMonthSKUCostsByTenancyRepository(tenancies, '2025-05');
+    const cost_daily = await getMonthDailyCostsRepository(tenancies, '2025-05');
+    const subscriptionDetails = await getSubscriptionDetailsRepository(tenancies);
     const response: DashboardsOutput = {
         tenancies,
         user: null,
         computeInstances,
-        orphan: null,
-        cost_history: cost_history,
-        cost_services: null,
+        orphan,
+        cost_history,
+        cost_daily,
+        cost_services,
+        cost_SKU,
+        subscriptionDetails,
         top5_costVM,
         creditsOCI
     }
     return response;
 }
 
-export async function getTenancyDashboards(tenancies: string[]){
+export async function getTenancyDashboards(tenancies: string[], month: string){
     const computeInstances = await getComputeInstancesByTenancyRepository(tenancies);
     const top5_costVM = await getTop5CostComputeInstancesByTenancyRepository(tenancies);
     const creditsOCI = await getSubscriptionAmountByTenancyRepository(tenancies);
+    const orphan = await getBlockVolumeListRepository();
     const cost_history = await getMonthCostsByTenancyRepository(tenancies);
+    const cost_services = await getMonthServiceCostsByTenancyRepository(tenancies, '2025-05');
+    const cost_SKU = await getMonthSKUCostsByTenancyRepository(tenancies, '2025-05');
+    const cost_daily = await getMonthDailyCostsRepository(tenancies, '2025-05');
+    const subscriptionDetails = await getSubscriptionDetailsRepository(tenancies);
     const response: DashboardsOutput = {
         tenancies,
         user: null,
         computeInstances,
-        orphan: null,
-        cost_history: cost_history,
-        cost_services: null,
+        orphan,
+        cost_history,
+        cost_daily,
+        cost_services,
+        cost_SKU,
+        subscriptionDetails,
         top5_costVM,
         creditsOCI
     }

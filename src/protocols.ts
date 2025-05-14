@@ -1,4 +1,4 @@
-import { ComputeInstances } from "../prisma/generated/banco2";
+import { BlockVolume, ComputeInstances, CustoDiarioTotal, CustoPorService, CustoPorSkuName, SubscriptionDetails } from "../prisma/generated/banco2";
 
 export type ApplicationError = {
     name: string;
@@ -55,9 +55,12 @@ export type DashboardsOutput = {
     tenancies: string[],
     user: string[]| null,
     computeInstances: ComputeInstances[],
-    orphan: string[]| null,
-    cost_history: MonthCost[]| null,
-    cost_services: string[] | null,
+    orphan: BlockVolume[],
+    cost_history: MonthCost[],
+    cost_daily: CustoDiarioTotal[],
+    cost_services: CustoPorService[] ,
+    cost_SKU: CustoPorSkuName[],
+    subscriptionDetails: SubscriptionDetails[],
     top5_costVM: Top5VMCost[],
     creditsOCI: CreditsOCI[]
 }

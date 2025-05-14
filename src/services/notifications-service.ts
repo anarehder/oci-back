@@ -1,5 +1,5 @@
 import { getUserDetails } from "./user-service";
-import { getNotificationsByTenancyRepository, getNotificationsRepository } from "../repositories";
+import { getNotificationsRepository } from "../repositories";
 import { JoinDashboardsInput } from "../protocols";
 import { unauthorizedError } from "../errors";
 
@@ -12,7 +12,7 @@ export async function getNotificationsService(userToken: string) {
         return response;
     } else{
         const tenancies = userDetails.map(user => user.tenancy);
-        const response = await getNotificationsByTenancyRepository(tenancies);
+        const response = await getNotificationsRepository();
         return response;
     }
     
@@ -28,6 +28,6 @@ export async function getJoinNotificationsService(userToken: string, body:JoinDa
         Object.entries(body).filter(([key, value]) => value !== null)
     );
     const tenancies = Object.values(filteredTenancies);
-    const response = await getNotificationsByTenancyRepository(tenancies);
+    const response = await getNotificationsRepository();
     return response;
 }

@@ -173,39 +173,6 @@ exports.Prisma.TenancyDetailsScalarFieldEnum = {
   total_credit: 'total_credit'
 };
 
-exports.Prisma.AuditScalarFieldEnum = {
-  id: 'id',
-  event_id: 'event_id',
-  event_type: 'event_type',
-  event_time: 'event_time',
-  source: 'source',
-  compartment_id: 'compartment_id',
-  compartment_name: 'compartment_name',
-  event_name: 'event_name',
-  ip_address: 'ip_address',
-  principal_id: 'principal_id',
-  principal_name: 'principal_name',
-  tenant_id: 'tenant_id',
-  action: 'action',
-  message: 'message',
-  tenancy_name: 'tenancy_name'
-};
-
-exports.Prisma.NotificationsScalarFieldEnum = {
-  id: 'id',
-  event_id: 'event_id',
-  event_type: 'event_type',
-  event_time: 'event_time',
-  compartment_id: 'compartment_id',
-  compartment_name: 'compartment_name',
-  resource_name: 'resource_name',
-  created_by: 'created_by',
-  tenancy_name: 'tenancy_name',
-  timestamp: 'timestamp',
-  instanceActionType: 'instanceActionType',
-  type_vm: 'type_vm'
-};
-
 exports.Prisma.Tenancy_detailsScalarFieldEnum = {
   tenancy_id: 'tenancy_id',
   tenancy_name: 'tenancy_name',
@@ -240,29 +207,30 @@ exports.Prisma.CustoMensalTotalScalarFieldEnum = {
 
 exports.Prisma.ComputeEventsScalarFieldEnum = {
   id: 'id',
-  event_type: 'event_type',
-  event_time: 'event_time',
+  eventType: 'eventType',
+  eventTime: 'eventTime',
   source: 'source',
   opcRequestId: 'opcRequestId',
-  raw_event: 'raw_event',
-  compartment_id: 'compartment_id',
-  compartment_name: 'compartment_name',
-  event_name: 'event_name',
+  rawEvent: 'rawEvent',
+  compartmentId: 'compartmentId',
+  compartmentName: 'compartmentName',
+  eventName: 'eventName',
   message: 'message',
   action: 'action',
-  principal_name: 'principal_name',
-  ip_address: 'ip_address',
-  display_name: 'display_name',
-  lifecycle_state: 'lifecycle_state',
+  principalName: 'principalName',
+  ipAddress: 'ipAddress',
+  displayName: 'displayName',
+  lifecycleState: 'lifecycleState',
   shape: 'shape',
   ocpus: 'ocpus',
-  memory_in_gbs: 'memory_in_gbs',
-  processor_description: 'processor_description',
-  created_by: 'created_by',
-  created_on: 'created_on',
-  preserve_boot_volume: 'preserve_boot_volume',
-  created_at: 'created_at',
-  instanceActionType: 'instanceActionType'
+  memoryInGbs: 'memoryInGbs',
+  processorDescription: 'processorDescription',
+  createdBy: 'createdBy',
+  createdOn: 'createdOn',
+  preserveBootVolume: 'preserveBootVolume',
+  createdAt: 'createdAt',
+  instanceActionType: 'instanceActionType',
+  tenancyName: 'tenancyName'
 };
 
 exports.Prisma.IdentityEventsScalarFieldEnum = {
@@ -283,7 +251,8 @@ exports.Prisma.IdentityEventsScalarFieldEnum = {
   policyName: 'policyName',
   statements: 'statements',
   createdAt: 'createdAt',
-  eventName: 'eventName'
+  eventName: 'eventName',
+  tenancyName: 'tenancyName'
 };
 
 exports.Prisma.NetworkEventsScalarFieldEnum = {
@@ -303,7 +272,65 @@ exports.Prisma.NetworkEventsScalarFieldEnum = {
   routeRules: 'routeRules',
   createdBy: 'createdBy',
   createdOn: 'createdOn',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  tenancyName: 'tenancyName'
+};
+
+exports.Prisma.BlockVolumeScalarFieldEnum = {
+  tenancy_name: 'tenancy_name',
+  tenancy_id: 'tenancy_id',
+  availability_domain: 'availability_domain',
+  compartment_id: 'compartment_id',
+  display_name: 'display_name',
+  id: 'id',
+  lifecycle_state: 'lifecycle_state',
+  size_in_gbs: 'size_in_gbs',
+  time_created: 'time_created',
+  vpus_per_gb: 'vpus_per_gb',
+  is_boot_volume: 'is_boot_volume',
+  is_orfao: 'is_orfao',
+  custo_mes: 'custo_mes'
+};
+
+exports.Prisma.CustoPorServiceScalarFieldEnum = {
+  tenancy_name: 'tenancy_name',
+  tenant_id: 'tenant_id',
+  service: 'service',
+  cost_mes: 'cost_mes',
+  currency: 'currency',
+  usage_mes: 'usage_mes',
+  time_started: 'time_started',
+  time_ended: 'time_ended'
+};
+
+exports.Prisma.CustoPorSkuNameScalarFieldEnum = {
+  tenancy_name: 'tenancy_name',
+  tenant_id: 'tenant_id',
+  sku_name: 'sku_name',
+  cost_mes: 'cost_mes',
+  currency: 'currency',
+  usage_mes: 'usage_mes',
+  time_started: 'time_started',
+  time_ended: 'time_ended'
+};
+
+exports.Prisma.IdentityUsersScalarFieldEnum = {
+  id: 'id',
+  is_mfa_activated: 'is_mfa_activated',
+  lifecycle_state: 'lifecycle_state',
+  time_created: 'time_created',
+  last_successful_login_time: 'last_successful_login_time',
+  email: 'email',
+  email_verified: 'email_verified',
+  can_use_api_keys: 'can_use_api_keys',
+  can_use_auth_tokens: 'can_use_auth_tokens',
+  can_use_console_password: 'can_use_console_password',
+  can_use_customer_secret_keys: 'can_use_customer_secret_keys',
+  can_use_db_credentials: 'can_use_db_credentials',
+  can_use_o_auth2_client_credentials: 'can_use_o_auth2_client_credentials',
+  can_use_smtp_credentials: 'can_use_smtp_credentials',
+  identity_provider_id: 'identity_provider_id',
+  tenancy_name: 'tenancy_name'
 };
 
 exports.Prisma.SortOrder = {
@@ -357,35 +384,6 @@ exports.Prisma.TenancyDetailsOrderByRelevanceFieldEnum = {
   tenancy_status: 'tenancy_status'
 };
 
-exports.Prisma.auditOrderByRelevanceFieldEnum = {
-  event_id: 'event_id',
-  event_type: 'event_type',
-  source: 'source',
-  compartment_id: 'compartment_id',
-  compartment_name: 'compartment_name',
-  event_name: 'event_name',
-  ip_address: 'ip_address',
-  principal_id: 'principal_id',
-  principal_name: 'principal_name',
-  tenant_id: 'tenant_id',
-  action: 'action',
-  message: 'message',
-  tenancy_name: 'tenancy_name'
-};
-
-exports.Prisma.notificationsOrderByRelevanceFieldEnum = {
-  event_id: 'event_id',
-  event_type: 'event_type',
-  event_time: 'event_time',
-  compartment_id: 'compartment_id',
-  compartment_name: 'compartment_name',
-  resource_name: 'resource_name',
-  created_by: 'created_by',
-  tenancy_name: 'tenancy_name',
-  instanceActionType: 'instanceActionType',
-  type_vm: 'type_vm'
-};
-
 exports.Prisma.tenancy_detailsOrderByRelevanceFieldEnum = {
   tenancy_id: 'tenancy_id',
   tenancy_name: 'tenancy_name',
@@ -408,23 +406,24 @@ exports.Prisma.CustoMensalTotalOrderByRelevanceFieldEnum = {
 };
 
 exports.Prisma.computeEventsOrderByRelevanceFieldEnum = {
-  event_type: 'event_type',
+  eventType: 'eventType',
   source: 'source',
   opcRequestId: 'opcRequestId',
-  raw_event: 'raw_event',
-  compartment_id: 'compartment_id',
-  compartment_name: 'compartment_name',
-  event_name: 'event_name',
+  rawEvent: 'rawEvent',
+  compartmentId: 'compartmentId',
+  compartmentName: 'compartmentName',
+  eventName: 'eventName',
   message: 'message',
   action: 'action',
-  principal_name: 'principal_name',
-  ip_address: 'ip_address',
-  display_name: 'display_name',
-  lifecycle_state: 'lifecycle_state',
+  principalName: 'principalName',
+  ipAddress: 'ipAddress',
+  displayName: 'displayName',
+  lifecycleState: 'lifecycleState',
   shape: 'shape',
-  processor_description: 'processor_description',
-  created_by: 'created_by',
-  instanceActionType: 'instanceActionType'
+  processorDescription: 'processorDescription',
+  createdBy: 'createdBy',
+  instanceActionType: 'instanceActionType',
+  tenancyName: 'tenancyName'
 };
 
 exports.Prisma.identityEventsOrderByRelevanceFieldEnum = {
@@ -442,7 +441,8 @@ exports.Prisma.identityEventsOrderByRelevanceFieldEnum = {
   idcsLastModifiedByType: 'idcsLastModifiedByType',
   policyName: 'policyName',
   statements: 'statements',
-  eventName: 'eventName'
+  eventName: 'eventName',
+  tenancyName: 'tenancyName'
 };
 
 exports.Prisma.networkEventsOrderByRelevanceFieldEnum = {
@@ -458,7 +458,42 @@ exports.Prisma.networkEventsOrderByRelevanceFieldEnum = {
   principalName: 'principalName',
   ipAddress: 'ipAddress',
   routeRules: 'routeRules',
-  createdBy: 'createdBy'
+  createdBy: 'createdBy',
+  tenancyName: 'tenancyName'
+};
+
+exports.Prisma.BlockVolumeOrderByRelevanceFieldEnum = {
+  tenancy_name: 'tenancy_name',
+  tenancy_id: 'tenancy_id',
+  availability_domain: 'availability_domain',
+  compartment_id: 'compartment_id',
+  display_name: 'display_name',
+  id: 'id',
+  lifecycle_state: 'lifecycle_state',
+  is_boot_volume: 'is_boot_volume',
+  is_orfao: 'is_orfao'
+};
+
+exports.Prisma.CustoPorServiceOrderByRelevanceFieldEnum = {
+  tenancy_name: 'tenancy_name',
+  tenant_id: 'tenant_id',
+  service: 'service',
+  currency: 'currency'
+};
+
+exports.Prisma.CustoPorSkuNameOrderByRelevanceFieldEnum = {
+  tenancy_name: 'tenancy_name',
+  tenant_id: 'tenant_id',
+  sku_name: 'sku_name',
+  currency: 'currency'
+};
+
+exports.Prisma.IdentityUsersOrderByRelevanceFieldEnum = {
+  lifecycle_state: 'lifecycle_state',
+  email: 'email',
+  email_verified: 'email_verified',
+  identity_provider_id: 'identity_provider_id',
+  tenancy_name: 'tenancy_name'
 };
 
 
@@ -466,14 +501,16 @@ exports.Prisma.ModelName = {
   ComputeInstances: 'ComputeInstances',
   SubscriptionDetails: 'SubscriptionDetails',
   TenancyDetails: 'TenancyDetails',
-  audit: 'audit',
-  notifications: 'notifications',
   tenancy_details: 'tenancy_details',
   CustoDiarioTotal: 'CustoDiarioTotal',
   CustoMensalTotal: 'CustoMensalTotal',
   computeEvents: 'computeEvents',
   identityEvents: 'identityEvents',
-  networkEvents: 'networkEvents'
+  networkEvents: 'networkEvents',
+  BlockVolume: 'BlockVolume',
+  CustoPorService: 'CustoPorService',
+  CustoPorSkuName: 'CustoPorSkuName',
+  IdentityUsers: 'IdentityUsers'
 };
 
 /**
