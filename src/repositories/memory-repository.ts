@@ -19,7 +19,7 @@ export async function getMemoryByDisplayNameRepository(displayName:string) {
         resourceDisplayName: instance.resourceDisplayName,
         resourceId: instance.resourceId,
         metric_timestamp: instance.metric_timestamp,
-        memory_usage: instance.cpu_usage,
+        memory_usage: instance.memory_usage,
     }));
 
     return memory;
@@ -30,7 +30,7 @@ export async function getLatestMemoryRepository() {
             SELECT *
             FROM MemoryUtilization
             WHERE metric_timestamp >= DATE_SUB(NOW(), INTERVAL 5 MINUTE) 
-            ORDER BY cpu_usage DESC;
+            ORDER BY memory_usage DESC;
         `);
 
     const memory: MemoryUtilization[] = rows.map(instance => ({
@@ -41,7 +41,7 @@ export async function getLatestMemoryRepository() {
         resourceDisplayName: instance.resourceDisplayName,
         resourceId: instance.resourceId,
         metric_timestamp: instance.metric_timestamp,
-        memory_usage: instance.cpu_usage,
+        memory_usage: instance.memory_usage,
     }));
     return memory;
 }
@@ -49,7 +49,7 @@ export async function getLatestMemoryRepository() {
 export async function getLatestMemoryByTenancyRepository(tenancies: string[]){
     const placeholders = tenancies.map(t => `'${t}'`).join(", ");
 
-    const query = `SELECT * FROM MemoryUtilization WHERE metric_timestamp >= DATE_SUB(NOW(), INTERVAL 5 MINUTE) AND profile_name IN (${placeholders}) ORDER BY cpu_usage desc;`;
+    const query = `SELECT * FROM MemoryUtilization WHERE metric_timestamp >= DATE_SUB(NOW(), INTERVAL 5 MINUTE) AND profile_name IN (${placeholders}) ORDER BY memory_usage desc;`;
 
     const [rows] = await db2.query<RowDataPacket[]>(`${query}`);
     const memory: MemoryUtilization[] = rows.map(instance => ({
@@ -60,7 +60,7 @@ export async function getLatestMemoryByTenancyRepository(tenancies: string[]){
         resourceDisplayName: instance.resourceDisplayName,
         resourceId: instance.resourceId,
         metric_timestamp: instance.metric_timestamp,
-        memory_usage: instance.cpu_usage,
+        memory_usage: instance.memory_usage,
     }));
 
     return memory;
@@ -71,7 +71,7 @@ export async function getLatestMemoryByTimeRepository(interval: string) {
             SELECT *
             FROM MemoryUtilization
             WHERE metric_timestamp >= DATE_SUB(NOW(), INTERVAL ${interval}) 
-            ORDER BY cpu_usage DESC;
+            ORDER BY memory_usage DESC;
         `);
 
     const memory: MemoryUtilization[] = rows.map(instance => ({
@@ -82,7 +82,7 @@ export async function getLatestMemoryByTimeRepository(interval: string) {
         resourceDisplayName: instance.resourceDisplayName,
         resourceId: instance.resourceId,
         metric_timestamp: instance.metric_timestamp,
-        memory_usage: instance.cpu_usage,
+        memory_usage: instance.memory_usage,
     }));
     return memory;
 }
@@ -100,7 +100,7 @@ export async function getMemoryByDisplayNameAndTimeRepository(displayName:string
         resourceDisplayName: instance.resourceDisplayName,
         resourceId: instance.resourceId,
         metric_timestamp: instance.metric_timestamp,
-        memory_usage: instance.cpu_usage,
+        memory_usage: instance.memory_usage,
     }));
 
     return memory;

@@ -5,6 +5,7 @@ export * from './contract-controller';
 export * from './cpus-controller';
 export * from './dashboards-controller';
 export * from './events-controller';
+export * from './latest-value-controller';
 export * from './notifications-controller';
 export * from './price-controller';
 export * from './reshape-controller';

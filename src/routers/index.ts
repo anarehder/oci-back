@@ -5,6 +5,7 @@ export * from './contract-router';
 export * from './cpus-router';
 export * from './dashboards-router';
 export * from './events-router';
+export * from './latest-value-router';
 export * from './notifications-router';
 export * from './price-router';
 export * from './reshape-router';

@@ -6,6 +6,8 @@ export * from './contract-service';
 export * from './cpus-service';
 export * from './dashboards-services';
 export * from './events-service';
+export * from './latest-value-service';
+export * from './memory-service';
 export * from './notifications-service';
 export * from './price-service';
 export * from './reshape-service';

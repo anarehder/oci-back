@@ -58,7 +58,7 @@ export type DashboardsOutput = {
     orphan: BlockVolume[],
     cost_history: MonthCost[],
     cost_daily: CustoDiarioTotal[],
-    cost_services: CustoPorService[] ,
+    cost_services: CustoPorService[] | SeviceCost[] ,
     cost_SKU: CustoPorSkuName[],
     subscriptionDetails: SubscriptionDetails[],
     top5_costVM: Top5VMCost[],
@@ -112,4 +112,14 @@ export type MonthCost = {
     time_ended: Date;
     cost_mes: number;
     usage_mes: number;
+  };
+
+export type SeviceCost = {
+    service: string;
+    tenancies: string;
+    total_cost: number;
+    total_usage: number;
+    currencies: string;
+    time_started: string;
+    time_ended: string;
   };

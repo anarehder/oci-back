@@ -10,7 +10,7 @@ export async function getDashboardService(userToken: string, month: string) {
     // pegar o cliente com a tenancy
     const userDetails = await getUserDetails(token);
     if (userDetails[0].isAdmin){
-        const response = await getAllDashboards();
+        const response = await getAllDashboards(month);
         return response;
     } else{
         const tenancies = userDetails.map(user => user.tenancy.toLocaleLowerCase());
@@ -35,7 +35,7 @@ export async function getJoinDashboardService(userToken: string, body:JoinDashbo
     return response;
 }
 
-export async function getAllDashboards(){
+export async function getAllDashboards(month: string){
     const computeInstances = await getComputeInstancesRepository();
     const top5_costVM = await getTop5CostComputeInstancesRepository();
     const creditsOCI = await getAllTenanciesSubscriptionAmountRepository();
@@ -43,9 +43,9 @@ export async function getAllDashboards(){
     const orphan = await getBlockVolumeListRepository();
     const tenanciesList = await getTenanciesListRepository();
     const tenancies = tenanciesList.map(t => t.tenancy_name);
-    const cost_services = await getMonthServiceCostsByTenancyRepository(tenancies, '2025-05');
-    const cost_SKU = await getMonthSKUCostsByTenancyRepository(tenancies, '2025-05');
-    const cost_daily = await getMonthDailyCostsRepository(tenancies, '2025-05');
+    const cost_services = await getMonthServiceCostsByTenancyRepository(tenancies, month);
+    const cost_SKU = await getMonthSKUCostsByTenancyRepository(tenancies, month);
+    const cost_daily = await getMonthDailyCostsRepository(tenancies, month);
     const subscriptionDetails = await getSubscriptionDetailsRepository(tenancies);
     const response: DashboardsOutput = {
         tenancies,
