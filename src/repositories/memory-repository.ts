@@ -30,7 +30,8 @@ export async function getLatestMemoryRepository() {
             SELECT *
             FROM MemoryUtilization
             WHERE metric_timestamp >= DATE_SUB(NOW(), INTERVAL 5 MINUTE) 
-            ORDER BY memory_usage DESC;
+            ORDER BY memory_usage DESC
+            LIMIT 20;
         `);
 
     const memory: MemoryUtilization[] = rows.map(instance => ({
@@ -49,7 +50,7 @@ export async function getLatestMemoryRepository() {
 export async function getLatestMemoryByTenancyRepository(tenancies: string[]){
     const placeholders = tenancies.map(t => `'${t}'`).join(", ");
 
-    const query = `SELECT * FROM MemoryUtilization WHERE metric_timestamp >= DATE_SUB(NOW(), INTERVAL 5 MINUTE) AND profile_name IN (${placeholders}) ORDER BY memory_usage desc;`;
+    const query = `SELECT * FROM MemoryUtilization WHERE metric_timestamp >= DATE_SUB(NOW(), INTERVAL 5 MINUTE) AND profile_name IN (${placeholders}) ORDER BY memory_usage desc LIMIT 20;`;
 
     const [rows] = await db2.query<RowDataPacket[]>(`${query}`);
     const memory: MemoryUtilization[] = rows.map(instance => ({

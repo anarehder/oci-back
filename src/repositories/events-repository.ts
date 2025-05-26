@@ -1,108 +1,241 @@
 import { prisma2 } from "../config/database";
 
-export async function getComputeInstancesEventsRepository(){
+export async function getComputeInstancesEventsRepository() {
   const eventos = await prisma2.computeEvents.findMany({
     take: 1000,
+    orderBy: {
+      createdAt: 'desc'
+    },
     select: {
-      displayName: true,
-      instanceActionType: true,
-      eventName: true,
-      compartmentName: true,
+      id: true,
+      eventType: true,
       eventTime: true,
+      source: true,
+      opcRequestId: true,
+      compartmentId: true,
+      compartmentName: true,
+      eventName: true,
+      message: true,
+      action: true,
+      principalName: true,
+      ipAddress: true,
+      displayName: true,
       lifecycleState: true,
-      principalName: true
+      shape: true,
+      ocpus: true,
+      memoryInGbs: true,
+      processorDescription: true,
+      createdBy: true,
+      createdOn: true,
+      preserveBootVolume: true,
+      createdAt: true,
+      instanceActionType: true,
+      tenancyName: true,
+      isCheck: true,
+      ticket: true,
+    },
+    where: {
+      isCheck: null
     }
   });
 
-  const eventosComDescricao = eventos.map(ce => ({
-    ...ce,
-    descricao_evento: `A instância ${ce.displayName ?? '[sem nome]'} sofreu a ação "${ce.instanceActionType?.toUpperCase() ?? ' - '}" (evento: ${ce.eventName}) no compartimento "${ce.compartmentName}" em ${ce.eventTime.toLocaleString('pt-BR')}. Estado atual: ${ce.lifecycleState ?? '[desconhecido]'} Ação realizada por: ${ce.principalName}`
-  }));
-  return eventosComDescricao;
+  return eventos;
 }
 
-
-export async function getJoinComputeInstancesEventsRepository(tenancies: string[]){
+export async function getJoinComputeInstancesEventsRepository(tenancies: string[]) {
   const eventos = await prisma2.computeEvents.findMany({
     take: 1000,
+    where: {
+      tenancyName: {
+        in: tenancies,
+      },
+      isCheck: null
+    },
+    orderBy: {
+      eventTime: 'desc'
+    },
     select: {
-      displayName: true,
-      instanceActionType: true,
-      eventName: true,
-      compartmentName: true,
+      id: true,
+      eventType: true,
       eventTime: true,
+      source: true,
+      opcRequestId: true,
+      compartmentId: true,
+      compartmentName: true,
+      eventName: true,
+      message: true,
+      action: true,
+      principalName: true,
+      ipAddress: true,
+      displayName: true,
       lifecycleState: true,
-      principalName: true
-    },
-    where: {
-      tenancyName: {
-        in: tenancies,
-      },
+      shape: true,
+      ocpus: true,
+      memoryInGbs: true,
+      processorDescription: true,
+      createdBy: true,
+      createdOn: true,
+      preserveBootVolume: true,
+      createdAt: true,
+      instanceActionType: true,
+      tenancyName: true,
+      isCheck: true,
+      ticket: true,
     },
   });
-  
-  const eventosComDescricao = eventos.map(ce => ({
-    ...ce,
-    descricao_evento: `A instância ${ce.displayName ?? '[sem nome]'} sofreu a ação "${ce.instanceActionType?.toUpperCase() ?? ' - '}" (evento: ${ce.eventName}) no compartimento "${ce.compartmentName}" em ${ce.eventTime ? ce.eventTime.toLocaleString('pt-BR') : "-"}. Estado atual: ${ce.lifecycleState ?? '[desconhecido]'} Ação realizada por: ${ce.principalName}`
-  }));
-  return eventosComDescricao;
+
+  return eventos;
 }
 
-export async function getIdentityEventsRepository(){
+export async function getIdentityEventsRepository() {
   const eventos = await prisma2.identityEvents.findMany({
     take: 1000,
+    orderBy: {
+      eventTime: 'desc'
+    },
+    select: {
+      id: true,
+      eventType: true,
+      eventTime: true,
+      source: true,
+      opcRequestId: true,
+      // rawEvent: false, // não incluir
+      adminResourceName: true,
+      adminResourceType: true,
+      compartmentName: true,
+      principalName: true,
+      action: true,
+      message: true,
+      idcsLastModifiedByName: true,
+      idcsLastModifiedByType: true,
+      policyName: true,
+      statements: true,
+      createdAt: true,
+      eventName: true,
+      tenancyName: true,
+      isCheck: true,
+      ticket: true,
+    },
+    where: {
+      isCheck: null
+    }
   });
 
-//   const eventosComDescricao = eventos.map(ce => ({
-//     ...ce,
-//     descricao_evento: `A instância ${ce.displayName ?? '[sem nome]'} sofreu a ação "${ce.instanceActionType?.toUpperCase() ?? ' - '}" (evento: ${ce.eventName}) no compartimento "${ce.compartmentName}" em ${ce.eventTime.toLocaleString('pt-BR')}. Estado atual: ${ce.lifecycleState ?? '[desconhecido]'} Ação realizada por: ${ce.principalName}`
-//   }));
   return eventos;
 }
 
-
-export async function getJoinIdentityEventsRepository(tenancies: string[]){
+export async function getJoinIdentityEventsRepository(tenancies: string[]) {
   const eventos = await prisma2.identityEvents.findMany({
     take: 1000,
     where: {
       tenancyName: {
         in: tenancies,
       },
+      isCheck: null
+    },
+    orderBy: {
+      eventTime: 'desc'
+    },
+
+    select: {
+      id: true,
+      eventType: true,
+      eventTime: true,
+      source: true,
+      opcRequestId: true,
+      // rawEvent: false, // não incluir
+      adminResourceName: true,
+      adminResourceType: true,
+      compartmentName: true,
+      principalName: true,
+      action: true,
+      message: true,
+      idcsLastModifiedByName: true,
+      idcsLastModifiedByType: true,
+      policyName: true,
+      statements: true,
+      createdAt: true,
+      eventName: true,
+      tenancyName: true,
+      isCheck: true,
+      ticket: true,
     },
   });
-//   const eventosComDescricao = eventos.map(ce => ({
-//     ...ce,
-//     descricao_evento: `A instância ${ce.displayName ?? '[sem nome]'} sofreu a ação "${ce.instanceActionType?.toUpperCase() ?? ' - '}" (evento: ${ce.eventName}) no compartimento "${ce.compartmentName}" em ${ce.eventTime.toLocaleString('pt-BR')}. Estado atual: ${ce.lifecycleState ?? '[desconhecido]'} Ação realizada por: ${ce.principalName}`
-//   }));
+
   return eventos;
 }
 
-export async function getNetworkEventsRepository(){
+export async function getNetworkEventsRepository() {
   const eventos = await prisma2.networkEvents.findMany({
     take: 1000,
+    orderBy: {
+      eventTime: 'desc'
+    },
+    where: {
+      isCheck: null
+    },
+    select: {
+      id: true,
+      eventType: true,
+      eventTime: true,
+      source: true,
+      opcRequestId: true,
+      compartmentId: true,
+      compartmentName: true,
+      eventName: true,
+      message: true,
+      action: true,
+      principalName: true,
+      ipAddress: true,
+      routeRules: true,
+      createdBy: true,
+      createdOn: true,
+      createdAt: true,
+      tenancyName: true,
+      isCheck: true,
+      ticket: true
+      // NÃO incluir rawEvent
+    },
   });
 
-//   const eventosComDescricao = eventos.map(ce => ({
-//     ...ce,
-//     descricao_evento: `A instância ${ce.displayName ?? '[sem nome]'} sofreu a ação "${ce.instanceActionType?.toUpperCase() ?? ' - '}" (evento: ${ce.eventName}) no compartimento "${ce.compartmentName}" em ${ce.eventTime.toLocaleString('pt-BR')}. Estado atual: ${ce.lifecycleState ?? '[desconhecido]'} Ação realizada por: ${ce.principalName}`
-//   }));
   return eventos;
 }
 
-
-export async function getJoinNetworkEventsRepository(tenancies: string[]){
+export async function getJoinNetworkEventsRepository(tenancies: string[]) {
   const eventos = await prisma2.networkEvents.findMany({
     take: 1000,
     where: {
       tenancyName: {
         in: tenancies,
       },
+      isCheck: null
+    },
+    orderBy: {
+      eventTime: 'desc'
+    },
+    select: {
+      id: true,
+      eventType: true,
+      eventTime: true,
+      source: true,
+      opcRequestId: true,
+      compartmentId: true,
+      compartmentName: true,
+      eventName: true,
+      message: true,
+      action: true,
+      principalName: true,
+      ipAddress: true,
+      routeRules: true,
+      createdBy: true,
+      createdOn: true,
+      createdAt: true,
+      tenancyName: true,
+      isCheck: true,
+      ticket: true
+      // NÃO incluir rawEvent
     },
   });
 
-//   const eventosComDescricao = eventos.map(ce => ({
-//     ...ce,
-//     descricao_evento: `A instância ${ce.displayName ?? '[sem nome]'} sofreu a ação "${ce.instanceActionType?.toUpperCase() ?? ' - '}" (evento: ${ce.eventName}) no compartimento "${ce.compartmentName}" em ${ce.eventTime.toLocaleString('pt-BR')}. Estado atual: ${ce.lifecycleState ?? '[desconhecido]'} Ação realizada por: ${ce.principalName}`
-//   }));
   return eventos;
 }

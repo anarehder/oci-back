@@ -78,6 +78,11 @@ export type CustoPorSkuName = $Result.DefaultSelection<Prisma.$CustoPorSkuNamePa
  * 
  */
 export type IdentityUsers = $Result.DefaultSelection<Prisma.$IdentityUsersPayload>
+/**
+ * Model VolumesBackup
+ * 
+ */
+export type VolumesBackup = $Result.DefaultSelection<Prisma.$VolumesBackupPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -333,6 +338,16 @@ export class PrismaClient<
     * ```
     */
   get identityUsers(): Prisma.IdentityUsersDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.volumesBackup`: Exposes CRUD operations for the **VolumesBackup** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more VolumesBackups
+    * const volumesBackups = await prisma.volumesBackup.findMany()
+    * ```
+    */
+  get volumesBackup(): Prisma.VolumesBackupDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -785,7 +800,8 @@ export namespace Prisma {
     BlockVolume: 'BlockVolume',
     CustoPorService: 'CustoPorService',
     CustoPorSkuName: 'CustoPorSkuName',
-    IdentityUsers: 'IdentityUsers'
+    IdentityUsers: 'IdentityUsers',
+    VolumesBackup: 'VolumesBackup'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -804,7 +820,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "computeInstances" | "subscriptionDetails" | "tenancyDetails" | "tenancy_details" | "custoDiarioTotal" | "custoMensalTotal" | "computeEvents" | "identityEvents" | "networkEvents" | "blockVolume" | "custoPorService" | "custoPorSkuName" | "identityUsers"
+      modelProps: "computeInstances" | "subscriptionDetails" | "tenancyDetails" | "tenancy_details" | "custoDiarioTotal" | "custoMensalTotal" | "computeEvents" | "identityEvents" | "networkEvents" | "blockVolume" | "custoPorService" | "custoPorSkuName" | "identityUsers" | "volumesBackup"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1666,6 +1682,72 @@ export namespace Prisma {
           }
         }
       }
+      VolumesBackup: {
+        payload: Prisma.$VolumesBackupPayload<ExtArgs>
+        fields: Prisma.VolumesBackupFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.VolumesBackupFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VolumesBackupPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.VolumesBackupFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VolumesBackupPayload>
+          }
+          findFirst: {
+            args: Prisma.VolumesBackupFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VolumesBackupPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.VolumesBackupFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VolumesBackupPayload>
+          }
+          findMany: {
+            args: Prisma.VolumesBackupFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VolumesBackupPayload>[]
+          }
+          create: {
+            args: Prisma.VolumesBackupCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VolumesBackupPayload>
+          }
+          createMany: {
+            args: Prisma.VolumesBackupCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.VolumesBackupDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VolumesBackupPayload>
+          }
+          update: {
+            args: Prisma.VolumesBackupUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VolumesBackupPayload>
+          }
+          deleteMany: {
+            args: Prisma.VolumesBackupDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.VolumesBackupUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.VolumesBackupUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VolumesBackupPayload>
+          }
+          aggregate: {
+            args: Prisma.VolumesBackupAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateVolumesBackup>
+          }
+          groupBy: {
+            args: Prisma.VolumesBackupGroupByArgs<ExtArgs>
+            result: $Utils.Optional<VolumesBackupGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.VolumesBackupCountArgs<ExtArgs>
+            result: $Utils.Optional<VolumesBackupCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1763,6 +1845,7 @@ export namespace Prisma {
     custoPorService?: CustoPorServiceOmit
     custoPorSkuName?: CustoPorSkuNameOmit
     identityUsers?: IdentityUsersOmit
+    volumesBackup?: VolumesBackupOmit
   }
 
   /* Types for Logging */
@@ -7848,13 +7931,13 @@ export namespace Prisma {
   }
 
   export type ComputeEventsSumAggregateOutputType = {
-    id: bigint | null
+    id: number | null
     ocpus: number | null
     memoryInGbs: number | null
   }
 
   export type ComputeEventsMinAggregateOutputType = {
-    id: bigint | null
+    id: number | null
     eventType: string | null
     eventTime: Date | null
     source: string | null
@@ -7879,10 +7962,12 @@ export namespace Prisma {
     createdAt: Date | null
     instanceActionType: string | null
     tenancyName: string | null
+    isCheck: boolean | null
+    ticket: string | null
   }
 
   export type ComputeEventsMaxAggregateOutputType = {
-    id: bigint | null
+    id: number | null
     eventType: string | null
     eventTime: Date | null
     source: string | null
@@ -7907,6 +7992,8 @@ export namespace Prisma {
     createdAt: Date | null
     instanceActionType: string | null
     tenancyName: string | null
+    isCheck: boolean | null
+    ticket: string | null
   }
 
   export type ComputeEventsCountAggregateOutputType = {
@@ -7935,6 +8022,8 @@ export namespace Prisma {
     createdAt: number
     instanceActionType: number
     tenancyName: number
+    isCheck: number
+    ticket: number
     _all: number
   }
 
@@ -7977,6 +8066,8 @@ export namespace Prisma {
     createdAt?: true
     instanceActionType?: true
     tenancyName?: true
+    isCheck?: true
+    ticket?: true
   }
 
   export type ComputeEventsMaxAggregateInputType = {
@@ -8005,6 +8096,8 @@ export namespace Prisma {
     createdAt?: true
     instanceActionType?: true
     tenancyName?: true
+    isCheck?: true
+    ticket?: true
   }
 
   export type ComputeEventsCountAggregateInputType = {
@@ -8033,6 +8126,8 @@ export namespace Prisma {
     createdAt?: true
     instanceActionType?: true
     tenancyName?: true
+    isCheck?: true
+    ticket?: true
     _all?: true
   }
 
@@ -8123,7 +8218,7 @@ export namespace Prisma {
   }
 
   export type ComputeEventsGroupByOutputType = {
-    id: bigint
+    id: number
     eventType: string | null
     eventTime: Date | null
     source: string | null
@@ -8148,6 +8243,8 @@ export namespace Prisma {
     createdAt: Date
     instanceActionType: string | null
     tenancyName: string | null
+    isCheck: boolean | null
+    ticket: string | null
     _count: ComputeEventsCountAggregateOutputType | null
     _avg: ComputeEventsAvgAggregateOutputType | null
     _sum: ComputeEventsSumAggregateOutputType | null
@@ -8195,6 +8292,8 @@ export namespace Prisma {
     createdAt?: boolean
     instanceActionType?: boolean
     tenancyName?: boolean
+    isCheck?: boolean
+    ticket?: boolean
   }, ExtArgs["result"]["computeEvents"]>
 
 
@@ -8225,15 +8324,17 @@ export namespace Prisma {
     createdAt?: boolean
     instanceActionType?: boolean
     tenancyName?: boolean
+    isCheck?: boolean
+    ticket?: boolean
   }
 
-  export type computeEventsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "eventType" | "eventTime" | "source" | "opcRequestId" | "rawEvent" | "compartmentId" | "compartmentName" | "eventName" | "message" | "action" | "principalName" | "ipAddress" | "displayName" | "lifecycleState" | "shape" | "ocpus" | "memoryInGbs" | "processorDescription" | "createdBy" | "createdOn" | "preserveBootVolume" | "createdAt" | "instanceActionType" | "tenancyName", ExtArgs["result"]["computeEvents"]>
+  export type computeEventsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "eventType" | "eventTime" | "source" | "opcRequestId" | "rawEvent" | "compartmentId" | "compartmentName" | "eventName" | "message" | "action" | "principalName" | "ipAddress" | "displayName" | "lifecycleState" | "shape" | "ocpus" | "memoryInGbs" | "processorDescription" | "createdBy" | "createdOn" | "preserveBootVolume" | "createdAt" | "instanceActionType" | "tenancyName" | "isCheck" | "ticket", ExtArgs["result"]["computeEvents"]>
 
   export type $computeEventsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "computeEvents"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
-      id: bigint
+      id: number
       eventType: string | null
       eventTime: Date | null
       source: string | null
@@ -8258,6 +8359,8 @@ export namespace Prisma {
       createdAt: Date
       instanceActionType: string | null
       tenancyName: string | null
+      isCheck: boolean | null
+      ticket: string | null
     }, ExtArgs["result"]["computeEvents"]>
     composites: {}
   }
@@ -8627,7 +8730,7 @@ export namespace Prisma {
    * Fields of the computeEvents model
    */
   interface computeEventsFieldRefs {
-    readonly id: FieldRef<"computeEvents", 'BigInt'>
+    readonly id: FieldRef<"computeEvents", 'Int'>
     readonly eventType: FieldRef<"computeEvents", 'String'>
     readonly eventTime: FieldRef<"computeEvents", 'DateTime'>
     readonly source: FieldRef<"computeEvents", 'String'>
@@ -8652,6 +8755,8 @@ export namespace Prisma {
     readonly createdAt: FieldRef<"computeEvents", 'DateTime'>
     readonly instanceActionType: FieldRef<"computeEvents", 'String'>
     readonly tenancyName: FieldRef<"computeEvents", 'String'>
+    readonly isCheck: FieldRef<"computeEvents", 'Boolean'>
+    readonly ticket: FieldRef<"computeEvents", 'String'>
   }
     
 
@@ -8990,11 +9095,11 @@ export namespace Prisma {
   }
 
   export type IdentityEventsSumAggregateOutputType = {
-    id: bigint | null
+    id: number | null
   }
 
   export type IdentityEventsMinAggregateOutputType = {
-    id: bigint | null
+    id: number | null
     eventType: string | null
     eventTime: Date | null
     source: string | null
@@ -9013,10 +9118,12 @@ export namespace Prisma {
     createdAt: Date | null
     eventName: string | null
     tenancyName: string | null
+    isCheck: boolean | null
+    ticket: string | null
   }
 
   export type IdentityEventsMaxAggregateOutputType = {
-    id: bigint | null
+    id: number | null
     eventType: string | null
     eventTime: Date | null
     source: string | null
@@ -9035,6 +9142,8 @@ export namespace Prisma {
     createdAt: Date | null
     eventName: string | null
     tenancyName: string | null
+    isCheck: boolean | null
+    ticket: string | null
   }
 
   export type IdentityEventsCountAggregateOutputType = {
@@ -9057,6 +9166,8 @@ export namespace Prisma {
     createdAt: number
     eventName: number
     tenancyName: number
+    isCheck: number
+    ticket: number
     _all: number
   }
 
@@ -9089,6 +9200,8 @@ export namespace Prisma {
     createdAt?: true
     eventName?: true
     tenancyName?: true
+    isCheck?: true
+    ticket?: true
   }
 
   export type IdentityEventsMaxAggregateInputType = {
@@ -9111,6 +9224,8 @@ export namespace Prisma {
     createdAt?: true
     eventName?: true
     tenancyName?: true
+    isCheck?: true
+    ticket?: true
   }
 
   export type IdentityEventsCountAggregateInputType = {
@@ -9133,6 +9248,8 @@ export namespace Prisma {
     createdAt?: true
     eventName?: true
     tenancyName?: true
+    isCheck?: true
+    ticket?: true
     _all?: true
   }
 
@@ -9223,7 +9340,7 @@ export namespace Prisma {
   }
 
   export type IdentityEventsGroupByOutputType = {
-    id: bigint
+    id: number
     eventType: string | null
     eventTime: Date | null
     source: string | null
@@ -9242,6 +9359,8 @@ export namespace Prisma {
     createdAt: Date
     eventName: string | null
     tenancyName: string | null
+    isCheck: boolean | null
+    ticket: string | null
     _count: IdentityEventsCountAggregateOutputType | null
     _avg: IdentityEventsAvgAggregateOutputType | null
     _sum: IdentityEventsSumAggregateOutputType | null
@@ -9283,6 +9402,8 @@ export namespace Prisma {
     createdAt?: boolean
     eventName?: boolean
     tenancyName?: boolean
+    isCheck?: boolean
+    ticket?: boolean
   }, ExtArgs["result"]["identityEvents"]>
 
 
@@ -9307,15 +9428,17 @@ export namespace Prisma {
     createdAt?: boolean
     eventName?: boolean
     tenancyName?: boolean
+    isCheck?: boolean
+    ticket?: boolean
   }
 
-  export type identityEventsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "eventType" | "eventTime" | "source" | "opcRequestId" | "rawEvent" | "adminResourceName" | "adminResourceType" | "compartmentName" | "principalName" | "action" | "message" | "idcsLastModifiedByName" | "idcsLastModifiedByType" | "policyName" | "statements" | "createdAt" | "eventName" | "tenancyName", ExtArgs["result"]["identityEvents"]>
+  export type identityEventsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "eventType" | "eventTime" | "source" | "opcRequestId" | "rawEvent" | "adminResourceName" | "adminResourceType" | "compartmentName" | "principalName" | "action" | "message" | "idcsLastModifiedByName" | "idcsLastModifiedByType" | "policyName" | "statements" | "createdAt" | "eventName" | "tenancyName" | "isCheck" | "ticket", ExtArgs["result"]["identityEvents"]>
 
   export type $identityEventsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "identityEvents"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
-      id: bigint
+      id: number
       eventType: string | null
       eventTime: Date | null
       source: string | null
@@ -9334,6 +9457,8 @@ export namespace Prisma {
       createdAt: Date
       eventName: string | null
       tenancyName: string | null
+      isCheck: boolean | null
+      ticket: string | null
     }, ExtArgs["result"]["identityEvents"]>
     composites: {}
   }
@@ -9703,7 +9828,7 @@ export namespace Prisma {
    * Fields of the identityEvents model
    */
   interface identityEventsFieldRefs {
-    readonly id: FieldRef<"identityEvents", 'BigInt'>
+    readonly id: FieldRef<"identityEvents", 'Int'>
     readonly eventType: FieldRef<"identityEvents", 'String'>
     readonly eventTime: FieldRef<"identityEvents", 'DateTime'>
     readonly source: FieldRef<"identityEvents", 'String'>
@@ -9722,6 +9847,8 @@ export namespace Prisma {
     readonly createdAt: FieldRef<"identityEvents", 'DateTime'>
     readonly eventName: FieldRef<"identityEvents", 'String'>
     readonly tenancyName: FieldRef<"identityEvents", 'String'>
+    readonly isCheck: FieldRef<"identityEvents", 'Boolean'>
+    readonly ticket: FieldRef<"identityEvents", 'String'>
   }
     
 
@@ -10060,11 +10187,11 @@ export namespace Prisma {
   }
 
   export type NetworkEventsSumAggregateOutputType = {
-    id: bigint | null
+    id: number | null
   }
 
   export type NetworkEventsMinAggregateOutputType = {
-    id: bigint | null
+    id: number | null
     eventType: string | null
     eventTime: Date | null
     source: string | null
@@ -10082,10 +10209,12 @@ export namespace Prisma {
     createdOn: Date | null
     createdAt: Date | null
     tenancyName: string | null
+    isCheck: boolean | null
+    ticket: string | null
   }
 
   export type NetworkEventsMaxAggregateOutputType = {
-    id: bigint | null
+    id: number | null
     eventType: string | null
     eventTime: Date | null
     source: string | null
@@ -10103,6 +10232,8 @@ export namespace Prisma {
     createdOn: Date | null
     createdAt: Date | null
     tenancyName: string | null
+    isCheck: boolean | null
+    ticket: string | null
   }
 
   export type NetworkEventsCountAggregateOutputType = {
@@ -10124,6 +10255,8 @@ export namespace Prisma {
     createdOn: number
     createdAt: number
     tenancyName: number
+    isCheck: number
+    ticket: number
     _all: number
   }
 
@@ -10155,6 +10288,8 @@ export namespace Prisma {
     createdOn?: true
     createdAt?: true
     tenancyName?: true
+    isCheck?: true
+    ticket?: true
   }
 
   export type NetworkEventsMaxAggregateInputType = {
@@ -10176,6 +10311,8 @@ export namespace Prisma {
     createdOn?: true
     createdAt?: true
     tenancyName?: true
+    isCheck?: true
+    ticket?: true
   }
 
   export type NetworkEventsCountAggregateInputType = {
@@ -10197,6 +10334,8 @@ export namespace Prisma {
     createdOn?: true
     createdAt?: true
     tenancyName?: true
+    isCheck?: true
+    ticket?: true
     _all?: true
   }
 
@@ -10287,7 +10426,7 @@ export namespace Prisma {
   }
 
   export type NetworkEventsGroupByOutputType = {
-    id: bigint
+    id: number
     eventType: string | null
     eventTime: Date | null
     source: string | null
@@ -10305,6 +10444,8 @@ export namespace Prisma {
     createdOn: Date | null
     createdAt: Date
     tenancyName: string | null
+    isCheck: boolean | null
+    ticket: string | null
     _count: NetworkEventsCountAggregateOutputType | null
     _avg: NetworkEventsAvgAggregateOutputType | null
     _sum: NetworkEventsSumAggregateOutputType | null
@@ -10345,6 +10486,8 @@ export namespace Prisma {
     createdOn?: boolean
     createdAt?: boolean
     tenancyName?: boolean
+    isCheck?: boolean
+    ticket?: boolean
   }, ExtArgs["result"]["networkEvents"]>
 
 
@@ -10368,15 +10511,17 @@ export namespace Prisma {
     createdOn?: boolean
     createdAt?: boolean
     tenancyName?: boolean
+    isCheck?: boolean
+    ticket?: boolean
   }
 
-  export type networkEventsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "eventType" | "eventTime" | "source" | "opcRequestId" | "rawEvent" | "compartmentId" | "compartmentName" | "eventName" | "message" | "action" | "principalName" | "ipAddress" | "routeRules" | "createdBy" | "createdOn" | "createdAt" | "tenancyName", ExtArgs["result"]["networkEvents"]>
+  export type networkEventsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "eventType" | "eventTime" | "source" | "opcRequestId" | "rawEvent" | "compartmentId" | "compartmentName" | "eventName" | "message" | "action" | "principalName" | "ipAddress" | "routeRules" | "createdBy" | "createdOn" | "createdAt" | "tenancyName" | "isCheck" | "ticket", ExtArgs["result"]["networkEvents"]>
 
   export type $networkEventsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "networkEvents"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
-      id: bigint
+      id: number
       eventType: string | null
       eventTime: Date | null
       source: string | null
@@ -10394,6 +10539,8 @@ export namespace Prisma {
       createdOn: Date | null
       createdAt: Date
       tenancyName: string | null
+      isCheck: boolean | null
+      ticket: string | null
     }, ExtArgs["result"]["networkEvents"]>
     composites: {}
   }
@@ -10763,7 +10910,7 @@ export namespace Prisma {
    * Fields of the networkEvents model
    */
   interface networkEventsFieldRefs {
-    readonly id: FieldRef<"networkEvents", 'BigInt'>
+    readonly id: FieldRef<"networkEvents", 'Int'>
     readonly eventType: FieldRef<"networkEvents", 'String'>
     readonly eventTime: FieldRef<"networkEvents", 'DateTime'>
     readonly source: FieldRef<"networkEvents", 'String'>
@@ -10781,6 +10928,8 @@ export namespace Prisma {
     readonly createdOn: FieldRef<"networkEvents", 'DateTime'>
     readonly createdAt: FieldRef<"networkEvents", 'DateTime'>
     readonly tenancyName: FieldRef<"networkEvents", 'String'>
+    readonly isCheck: FieldRef<"networkEvents", 'Boolean'>
+    readonly ticket: FieldRef<"networkEvents", 'String'>
   }
     
 
@@ -15058,6 +15207,1060 @@ export namespace Prisma {
 
 
   /**
+   * Model VolumesBackup
+   */
+
+  export type AggregateVolumesBackup = {
+    _count: VolumesBackupCountAggregateOutputType | null
+    _avg: VolumesBackupAvgAggregateOutputType | null
+    _sum: VolumesBackupSumAggregateOutputType | null
+    _min: VolumesBackupMinAggregateOutputType | null
+    _max: VolumesBackupMaxAggregateOutputType | null
+  }
+
+  export type VolumesBackupAvgAggregateOutputType = {
+    id: number | null
+    sizeInGbs: number | null
+    vpusPerGb: number | null
+    totalDias: number | null
+    uniqueSizeInGbs: number | null
+    custoBackupDia: Decimal | null
+    custoBackupMes: Decimal | null
+    custoBackupHora: Decimal | null
+  }
+
+  export type VolumesBackupSumAggregateOutputType = {
+    id: bigint | null
+    sizeInGbs: number | null
+    vpusPerGb: number | null
+    totalDias: number | null
+    uniqueSizeInGbs: number | null
+    custoBackupDia: Decimal | null
+    custoBackupMes: Decimal | null
+    custoBackupHora: Decimal | null
+  }
+
+  export type VolumesBackupMinAggregateOutputType = {
+    id: bigint | null
+    tenancyName: string | null
+    displayName: string | null
+    sizeInGbs: number | null
+    vpusPerGb: number | null
+    volumeId: string | null
+    backupId: string | null
+    backupDisplayName: string | null
+    timeCreated: Date | null
+    backupType: string | null
+    totalDias: number | null
+    uniqueSizeInGbs: number | null
+    custoBackupDia: Decimal | null
+    custoBackupMes: Decimal | null
+    custoBackupHora: Decimal | null
+  }
+
+  export type VolumesBackupMaxAggregateOutputType = {
+    id: bigint | null
+    tenancyName: string | null
+    displayName: string | null
+    sizeInGbs: number | null
+    vpusPerGb: number | null
+    volumeId: string | null
+    backupId: string | null
+    backupDisplayName: string | null
+    timeCreated: Date | null
+    backupType: string | null
+    totalDias: number | null
+    uniqueSizeInGbs: number | null
+    custoBackupDia: Decimal | null
+    custoBackupMes: Decimal | null
+    custoBackupHora: Decimal | null
+  }
+
+  export type VolumesBackupCountAggregateOutputType = {
+    id: number
+    tenancyName: number
+    displayName: number
+    sizeInGbs: number
+    vpusPerGb: number
+    volumeId: number
+    backupId: number
+    backupDisplayName: number
+    timeCreated: number
+    backupType: number
+    totalDias: number
+    uniqueSizeInGbs: number
+    custoBackupDia: number
+    custoBackupMes: number
+    custoBackupHora: number
+    _all: number
+  }
+
+
+  export type VolumesBackupAvgAggregateInputType = {
+    id?: true
+    sizeInGbs?: true
+    vpusPerGb?: true
+    totalDias?: true
+    uniqueSizeInGbs?: true
+    custoBackupDia?: true
+    custoBackupMes?: true
+    custoBackupHora?: true
+  }
+
+  export type VolumesBackupSumAggregateInputType = {
+    id?: true
+    sizeInGbs?: true
+    vpusPerGb?: true
+    totalDias?: true
+    uniqueSizeInGbs?: true
+    custoBackupDia?: true
+    custoBackupMes?: true
+    custoBackupHora?: true
+  }
+
+  export type VolumesBackupMinAggregateInputType = {
+    id?: true
+    tenancyName?: true
+    displayName?: true
+    sizeInGbs?: true
+    vpusPerGb?: true
+    volumeId?: true
+    backupId?: true
+    backupDisplayName?: true
+    timeCreated?: true
+    backupType?: true
+    totalDias?: true
+    uniqueSizeInGbs?: true
+    custoBackupDia?: true
+    custoBackupMes?: true
+    custoBackupHora?: true
+  }
+
+  export type VolumesBackupMaxAggregateInputType = {
+    id?: true
+    tenancyName?: true
+    displayName?: true
+    sizeInGbs?: true
+    vpusPerGb?: true
+    volumeId?: true
+    backupId?: true
+    backupDisplayName?: true
+    timeCreated?: true
+    backupType?: true
+    totalDias?: true
+    uniqueSizeInGbs?: true
+    custoBackupDia?: true
+    custoBackupMes?: true
+    custoBackupHora?: true
+  }
+
+  export type VolumesBackupCountAggregateInputType = {
+    id?: true
+    tenancyName?: true
+    displayName?: true
+    sizeInGbs?: true
+    vpusPerGb?: true
+    volumeId?: true
+    backupId?: true
+    backupDisplayName?: true
+    timeCreated?: true
+    backupType?: true
+    totalDias?: true
+    uniqueSizeInGbs?: true
+    custoBackupDia?: true
+    custoBackupMes?: true
+    custoBackupHora?: true
+    _all?: true
+  }
+
+  export type VolumesBackupAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which VolumesBackup to aggregate.
+     */
+    where?: VolumesBackupWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of VolumesBackups to fetch.
+     */
+    orderBy?: VolumesBackupOrderByWithRelationInput | VolumesBackupOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: VolumesBackupWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` VolumesBackups from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` VolumesBackups.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned VolumesBackups
+    **/
+    _count?: true | VolumesBackupCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: VolumesBackupAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: VolumesBackupSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: VolumesBackupMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: VolumesBackupMaxAggregateInputType
+  }
+
+  export type GetVolumesBackupAggregateType<T extends VolumesBackupAggregateArgs> = {
+        [P in keyof T & keyof AggregateVolumesBackup]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateVolumesBackup[P]>
+      : GetScalarType<T[P], AggregateVolumesBackup[P]>
+  }
+
+
+
+
+  export type VolumesBackupGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: VolumesBackupWhereInput
+    orderBy?: VolumesBackupOrderByWithAggregationInput | VolumesBackupOrderByWithAggregationInput[]
+    by: VolumesBackupScalarFieldEnum[] | VolumesBackupScalarFieldEnum
+    having?: VolumesBackupScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: VolumesBackupCountAggregateInputType | true
+    _avg?: VolumesBackupAvgAggregateInputType
+    _sum?: VolumesBackupSumAggregateInputType
+    _min?: VolumesBackupMinAggregateInputType
+    _max?: VolumesBackupMaxAggregateInputType
+  }
+
+  export type VolumesBackupGroupByOutputType = {
+    id: bigint
+    tenancyName: string | null
+    displayName: string | null
+    sizeInGbs: number | null
+    vpusPerGb: number | null
+    volumeId: string | null
+    backupId: string | null
+    backupDisplayName: string | null
+    timeCreated: Date | null
+    backupType: string | null
+    totalDias: number | null
+    uniqueSizeInGbs: number | null
+    custoBackupDia: Decimal | null
+    custoBackupMes: Decimal | null
+    custoBackupHora: Decimal | null
+    _count: VolumesBackupCountAggregateOutputType | null
+    _avg: VolumesBackupAvgAggregateOutputType | null
+    _sum: VolumesBackupSumAggregateOutputType | null
+    _min: VolumesBackupMinAggregateOutputType | null
+    _max: VolumesBackupMaxAggregateOutputType | null
+  }
+
+  type GetVolumesBackupGroupByPayload<T extends VolumesBackupGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<VolumesBackupGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof VolumesBackupGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], VolumesBackupGroupByOutputType[P]>
+            : GetScalarType<T[P], VolumesBackupGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type VolumesBackupSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    tenancyName?: boolean
+    displayName?: boolean
+    sizeInGbs?: boolean
+    vpusPerGb?: boolean
+    volumeId?: boolean
+    backupId?: boolean
+    backupDisplayName?: boolean
+    timeCreated?: boolean
+    backupType?: boolean
+    totalDias?: boolean
+    uniqueSizeInGbs?: boolean
+    custoBackupDia?: boolean
+    custoBackupMes?: boolean
+    custoBackupHora?: boolean
+  }, ExtArgs["result"]["volumesBackup"]>
+
+
+
+  export type VolumesBackupSelectScalar = {
+    id?: boolean
+    tenancyName?: boolean
+    displayName?: boolean
+    sizeInGbs?: boolean
+    vpusPerGb?: boolean
+    volumeId?: boolean
+    backupId?: boolean
+    backupDisplayName?: boolean
+    timeCreated?: boolean
+    backupType?: boolean
+    totalDias?: boolean
+    uniqueSizeInGbs?: boolean
+    custoBackupDia?: boolean
+    custoBackupMes?: boolean
+    custoBackupHora?: boolean
+  }
+
+  export type VolumesBackupOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "tenancyName" | "displayName" | "sizeInGbs" | "vpusPerGb" | "volumeId" | "backupId" | "backupDisplayName" | "timeCreated" | "backupType" | "totalDias" | "uniqueSizeInGbs" | "custoBackupDia" | "custoBackupMes" | "custoBackupHora", ExtArgs["result"]["volumesBackup"]>
+
+  export type $VolumesBackupPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "VolumesBackup"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: bigint
+      tenancyName: string | null
+      displayName: string | null
+      sizeInGbs: number | null
+      vpusPerGb: number | null
+      volumeId: string | null
+      backupId: string | null
+      backupDisplayName: string | null
+      timeCreated: Date | null
+      backupType: string | null
+      totalDias: number | null
+      uniqueSizeInGbs: number | null
+      custoBackupDia: Prisma.Decimal | null
+      custoBackupMes: Prisma.Decimal | null
+      custoBackupHora: Prisma.Decimal | null
+    }, ExtArgs["result"]["volumesBackup"]>
+    composites: {}
+  }
+
+  type VolumesBackupGetPayload<S extends boolean | null | undefined | VolumesBackupDefaultArgs> = $Result.GetResult<Prisma.$VolumesBackupPayload, S>
+
+  type VolumesBackupCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<VolumesBackupFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: VolumesBackupCountAggregateInputType | true
+    }
+
+  export interface VolumesBackupDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['VolumesBackup'], meta: { name: 'VolumesBackup' } }
+    /**
+     * Find zero or one VolumesBackup that matches the filter.
+     * @param {VolumesBackupFindUniqueArgs} args - Arguments to find a VolumesBackup
+     * @example
+     * // Get one VolumesBackup
+     * const volumesBackup = await prisma.volumesBackup.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends VolumesBackupFindUniqueArgs>(args: SelectSubset<T, VolumesBackupFindUniqueArgs<ExtArgs>>): Prisma__VolumesBackupClient<$Result.GetResult<Prisma.$VolumesBackupPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one VolumesBackup that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {VolumesBackupFindUniqueOrThrowArgs} args - Arguments to find a VolumesBackup
+     * @example
+     * // Get one VolumesBackup
+     * const volumesBackup = await prisma.volumesBackup.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends VolumesBackupFindUniqueOrThrowArgs>(args: SelectSubset<T, VolumesBackupFindUniqueOrThrowArgs<ExtArgs>>): Prisma__VolumesBackupClient<$Result.GetResult<Prisma.$VolumesBackupPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first VolumesBackup that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VolumesBackupFindFirstArgs} args - Arguments to find a VolumesBackup
+     * @example
+     * // Get one VolumesBackup
+     * const volumesBackup = await prisma.volumesBackup.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends VolumesBackupFindFirstArgs>(args?: SelectSubset<T, VolumesBackupFindFirstArgs<ExtArgs>>): Prisma__VolumesBackupClient<$Result.GetResult<Prisma.$VolumesBackupPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first VolumesBackup that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VolumesBackupFindFirstOrThrowArgs} args - Arguments to find a VolumesBackup
+     * @example
+     * // Get one VolumesBackup
+     * const volumesBackup = await prisma.volumesBackup.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends VolumesBackupFindFirstOrThrowArgs>(args?: SelectSubset<T, VolumesBackupFindFirstOrThrowArgs<ExtArgs>>): Prisma__VolumesBackupClient<$Result.GetResult<Prisma.$VolumesBackupPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more VolumesBackups that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VolumesBackupFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all VolumesBackups
+     * const volumesBackups = await prisma.volumesBackup.findMany()
+     * 
+     * // Get first 10 VolumesBackups
+     * const volumesBackups = await prisma.volumesBackup.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const volumesBackupWithIdOnly = await prisma.volumesBackup.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends VolumesBackupFindManyArgs>(args?: SelectSubset<T, VolumesBackupFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VolumesBackupPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a VolumesBackup.
+     * @param {VolumesBackupCreateArgs} args - Arguments to create a VolumesBackup.
+     * @example
+     * // Create one VolumesBackup
+     * const VolumesBackup = await prisma.volumesBackup.create({
+     *   data: {
+     *     // ... data to create a VolumesBackup
+     *   }
+     * })
+     * 
+     */
+    create<T extends VolumesBackupCreateArgs>(args: SelectSubset<T, VolumesBackupCreateArgs<ExtArgs>>): Prisma__VolumesBackupClient<$Result.GetResult<Prisma.$VolumesBackupPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many VolumesBackups.
+     * @param {VolumesBackupCreateManyArgs} args - Arguments to create many VolumesBackups.
+     * @example
+     * // Create many VolumesBackups
+     * const volumesBackup = await prisma.volumesBackup.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends VolumesBackupCreateManyArgs>(args?: SelectSubset<T, VolumesBackupCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a VolumesBackup.
+     * @param {VolumesBackupDeleteArgs} args - Arguments to delete one VolumesBackup.
+     * @example
+     * // Delete one VolumesBackup
+     * const VolumesBackup = await prisma.volumesBackup.delete({
+     *   where: {
+     *     // ... filter to delete one VolumesBackup
+     *   }
+     * })
+     * 
+     */
+    delete<T extends VolumesBackupDeleteArgs>(args: SelectSubset<T, VolumesBackupDeleteArgs<ExtArgs>>): Prisma__VolumesBackupClient<$Result.GetResult<Prisma.$VolumesBackupPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one VolumesBackup.
+     * @param {VolumesBackupUpdateArgs} args - Arguments to update one VolumesBackup.
+     * @example
+     * // Update one VolumesBackup
+     * const volumesBackup = await prisma.volumesBackup.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends VolumesBackupUpdateArgs>(args: SelectSubset<T, VolumesBackupUpdateArgs<ExtArgs>>): Prisma__VolumesBackupClient<$Result.GetResult<Prisma.$VolumesBackupPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more VolumesBackups.
+     * @param {VolumesBackupDeleteManyArgs} args - Arguments to filter VolumesBackups to delete.
+     * @example
+     * // Delete a few VolumesBackups
+     * const { count } = await prisma.volumesBackup.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends VolumesBackupDeleteManyArgs>(args?: SelectSubset<T, VolumesBackupDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more VolumesBackups.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VolumesBackupUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many VolumesBackups
+     * const volumesBackup = await prisma.volumesBackup.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends VolumesBackupUpdateManyArgs>(args: SelectSubset<T, VolumesBackupUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one VolumesBackup.
+     * @param {VolumesBackupUpsertArgs} args - Arguments to update or create a VolumesBackup.
+     * @example
+     * // Update or create a VolumesBackup
+     * const volumesBackup = await prisma.volumesBackup.upsert({
+     *   create: {
+     *     // ... data to create a VolumesBackup
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the VolumesBackup we want to update
+     *   }
+     * })
+     */
+    upsert<T extends VolumesBackupUpsertArgs>(args: SelectSubset<T, VolumesBackupUpsertArgs<ExtArgs>>): Prisma__VolumesBackupClient<$Result.GetResult<Prisma.$VolumesBackupPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of VolumesBackups.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VolumesBackupCountArgs} args - Arguments to filter VolumesBackups to count.
+     * @example
+     * // Count the number of VolumesBackups
+     * const count = await prisma.volumesBackup.count({
+     *   where: {
+     *     // ... the filter for the VolumesBackups we want to count
+     *   }
+     * })
+    **/
+    count<T extends VolumesBackupCountArgs>(
+      args?: Subset<T, VolumesBackupCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], VolumesBackupCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a VolumesBackup.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VolumesBackupAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends VolumesBackupAggregateArgs>(args: Subset<T, VolumesBackupAggregateArgs>): Prisma.PrismaPromise<GetVolumesBackupAggregateType<T>>
+
+    /**
+     * Group by VolumesBackup.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VolumesBackupGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends VolumesBackupGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: VolumesBackupGroupByArgs['orderBy'] }
+        : { orderBy?: VolumesBackupGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, VolumesBackupGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetVolumesBackupGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the VolumesBackup model
+   */
+  readonly fields: VolumesBackupFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for VolumesBackup.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__VolumesBackupClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the VolumesBackup model
+   */
+  interface VolumesBackupFieldRefs {
+    readonly id: FieldRef<"VolumesBackup", 'BigInt'>
+    readonly tenancyName: FieldRef<"VolumesBackup", 'String'>
+    readonly displayName: FieldRef<"VolumesBackup", 'String'>
+    readonly sizeInGbs: FieldRef<"VolumesBackup", 'Int'>
+    readonly vpusPerGb: FieldRef<"VolumesBackup", 'Int'>
+    readonly volumeId: FieldRef<"VolumesBackup", 'String'>
+    readonly backupId: FieldRef<"VolumesBackup", 'String'>
+    readonly backupDisplayName: FieldRef<"VolumesBackup", 'String'>
+    readonly timeCreated: FieldRef<"VolumesBackup", 'DateTime'>
+    readonly backupType: FieldRef<"VolumesBackup", 'String'>
+    readonly totalDias: FieldRef<"VolumesBackup", 'Int'>
+    readonly uniqueSizeInGbs: FieldRef<"VolumesBackup", 'Int'>
+    readonly custoBackupDia: FieldRef<"VolumesBackup", 'Decimal'>
+    readonly custoBackupMes: FieldRef<"VolumesBackup", 'Decimal'>
+    readonly custoBackupHora: FieldRef<"VolumesBackup", 'Decimal'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * VolumesBackup findUnique
+   */
+  export type VolumesBackupFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VolumesBackup
+     */
+    select?: VolumesBackupSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VolumesBackup
+     */
+    omit?: VolumesBackupOmit<ExtArgs> | null
+    /**
+     * Filter, which VolumesBackup to fetch.
+     */
+    where: VolumesBackupWhereUniqueInput
+  }
+
+  /**
+   * VolumesBackup findUniqueOrThrow
+   */
+  export type VolumesBackupFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VolumesBackup
+     */
+    select?: VolumesBackupSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VolumesBackup
+     */
+    omit?: VolumesBackupOmit<ExtArgs> | null
+    /**
+     * Filter, which VolumesBackup to fetch.
+     */
+    where: VolumesBackupWhereUniqueInput
+  }
+
+  /**
+   * VolumesBackup findFirst
+   */
+  export type VolumesBackupFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VolumesBackup
+     */
+    select?: VolumesBackupSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VolumesBackup
+     */
+    omit?: VolumesBackupOmit<ExtArgs> | null
+    /**
+     * Filter, which VolumesBackup to fetch.
+     */
+    where?: VolumesBackupWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of VolumesBackups to fetch.
+     */
+    orderBy?: VolumesBackupOrderByWithRelationInput | VolumesBackupOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for VolumesBackups.
+     */
+    cursor?: VolumesBackupWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` VolumesBackups from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` VolumesBackups.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of VolumesBackups.
+     */
+    distinct?: VolumesBackupScalarFieldEnum | VolumesBackupScalarFieldEnum[]
+  }
+
+  /**
+   * VolumesBackup findFirstOrThrow
+   */
+  export type VolumesBackupFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VolumesBackup
+     */
+    select?: VolumesBackupSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VolumesBackup
+     */
+    omit?: VolumesBackupOmit<ExtArgs> | null
+    /**
+     * Filter, which VolumesBackup to fetch.
+     */
+    where?: VolumesBackupWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of VolumesBackups to fetch.
+     */
+    orderBy?: VolumesBackupOrderByWithRelationInput | VolumesBackupOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for VolumesBackups.
+     */
+    cursor?: VolumesBackupWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` VolumesBackups from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` VolumesBackups.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of VolumesBackups.
+     */
+    distinct?: VolumesBackupScalarFieldEnum | VolumesBackupScalarFieldEnum[]
+  }
+
+  /**
+   * VolumesBackup findMany
+   */
+  export type VolumesBackupFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VolumesBackup
+     */
+    select?: VolumesBackupSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VolumesBackup
+     */
+    omit?: VolumesBackupOmit<ExtArgs> | null
+    /**
+     * Filter, which VolumesBackups to fetch.
+     */
+    where?: VolumesBackupWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of VolumesBackups to fetch.
+     */
+    orderBy?: VolumesBackupOrderByWithRelationInput | VolumesBackupOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing VolumesBackups.
+     */
+    cursor?: VolumesBackupWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` VolumesBackups from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` VolumesBackups.
+     */
+    skip?: number
+    distinct?: VolumesBackupScalarFieldEnum | VolumesBackupScalarFieldEnum[]
+  }
+
+  /**
+   * VolumesBackup create
+   */
+  export type VolumesBackupCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VolumesBackup
+     */
+    select?: VolumesBackupSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VolumesBackup
+     */
+    omit?: VolumesBackupOmit<ExtArgs> | null
+    /**
+     * The data needed to create a VolumesBackup.
+     */
+    data?: XOR<VolumesBackupCreateInput, VolumesBackupUncheckedCreateInput>
+  }
+
+  /**
+   * VolumesBackup createMany
+   */
+  export type VolumesBackupCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many VolumesBackups.
+     */
+    data: VolumesBackupCreateManyInput | VolumesBackupCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * VolumesBackup update
+   */
+  export type VolumesBackupUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VolumesBackup
+     */
+    select?: VolumesBackupSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VolumesBackup
+     */
+    omit?: VolumesBackupOmit<ExtArgs> | null
+    /**
+     * The data needed to update a VolumesBackup.
+     */
+    data: XOR<VolumesBackupUpdateInput, VolumesBackupUncheckedUpdateInput>
+    /**
+     * Choose, which VolumesBackup to update.
+     */
+    where: VolumesBackupWhereUniqueInput
+  }
+
+  /**
+   * VolumesBackup updateMany
+   */
+  export type VolumesBackupUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update VolumesBackups.
+     */
+    data: XOR<VolumesBackupUpdateManyMutationInput, VolumesBackupUncheckedUpdateManyInput>
+    /**
+     * Filter which VolumesBackups to update
+     */
+    where?: VolumesBackupWhereInput
+    /**
+     * Limit how many VolumesBackups to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * VolumesBackup upsert
+   */
+  export type VolumesBackupUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VolumesBackup
+     */
+    select?: VolumesBackupSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VolumesBackup
+     */
+    omit?: VolumesBackupOmit<ExtArgs> | null
+    /**
+     * The filter to search for the VolumesBackup to update in case it exists.
+     */
+    where: VolumesBackupWhereUniqueInput
+    /**
+     * In case the VolumesBackup found by the `where` argument doesn't exist, create a new VolumesBackup with this data.
+     */
+    create: XOR<VolumesBackupCreateInput, VolumesBackupUncheckedCreateInput>
+    /**
+     * In case the VolumesBackup was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<VolumesBackupUpdateInput, VolumesBackupUncheckedUpdateInput>
+  }
+
+  /**
+   * VolumesBackup delete
+   */
+  export type VolumesBackupDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VolumesBackup
+     */
+    select?: VolumesBackupSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VolumesBackup
+     */
+    omit?: VolumesBackupOmit<ExtArgs> | null
+    /**
+     * Filter which VolumesBackup to delete.
+     */
+    where: VolumesBackupWhereUniqueInput
+  }
+
+  /**
+   * VolumesBackup deleteMany
+   */
+  export type VolumesBackupDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which VolumesBackups to delete
+     */
+    where?: VolumesBackupWhereInput
+    /**
+     * Limit how many VolumesBackups to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * VolumesBackup without action
+   */
+  export type VolumesBackupDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VolumesBackup
+     */
+    select?: VolumesBackupSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VolumesBackup
+     */
+    omit?: VolumesBackupOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -15202,7 +16405,9 @@ export namespace Prisma {
     preserveBootVolume: 'preserveBootVolume',
     createdAt: 'createdAt',
     instanceActionType: 'instanceActionType',
-    tenancyName: 'tenancyName'
+    tenancyName: 'tenancyName',
+    isCheck: 'isCheck',
+    ticket: 'ticket'
   };
 
   export type ComputeEventsScalarFieldEnum = (typeof ComputeEventsScalarFieldEnum)[keyof typeof ComputeEventsScalarFieldEnum]
@@ -15227,7 +16432,9 @@ export namespace Prisma {
     statements: 'statements',
     createdAt: 'createdAt',
     eventName: 'eventName',
-    tenancyName: 'tenancyName'
+    tenancyName: 'tenancyName',
+    isCheck: 'isCheck',
+    ticket: 'ticket'
   };
 
   export type IdentityEventsScalarFieldEnum = (typeof IdentityEventsScalarFieldEnum)[keyof typeof IdentityEventsScalarFieldEnum]
@@ -15251,7 +16458,9 @@ export namespace Prisma {
     createdBy: 'createdBy',
     createdOn: 'createdOn',
     createdAt: 'createdAt',
-    tenancyName: 'tenancyName'
+    tenancyName: 'tenancyName',
+    isCheck: 'isCheck',
+    ticket: 'ticket'
   };
 
   export type NetworkEventsScalarFieldEnum = (typeof NetworkEventsScalarFieldEnum)[keyof typeof NetworkEventsScalarFieldEnum]
@@ -15324,6 +16533,27 @@ export namespace Prisma {
   };
 
   export type IdentityUsersScalarFieldEnum = (typeof IdentityUsersScalarFieldEnum)[keyof typeof IdentityUsersScalarFieldEnum]
+
+
+  export const VolumesBackupScalarFieldEnum: {
+    id: 'id',
+    tenancyName: 'tenancyName',
+    displayName: 'displayName',
+    sizeInGbs: 'sizeInGbs',
+    vpusPerGb: 'vpusPerGb',
+    volumeId: 'volumeId',
+    backupId: 'backupId',
+    backupDisplayName: 'backupDisplayName',
+    timeCreated: 'timeCreated',
+    backupType: 'backupType',
+    totalDias: 'totalDias',
+    uniqueSizeInGbs: 'uniqueSizeInGbs',
+    custoBackupDia: 'custoBackupDia',
+    custoBackupMes: 'custoBackupMes',
+    custoBackupHora: 'custoBackupHora'
+  };
+
+  export type VolumesBackupScalarFieldEnum = (typeof VolumesBackupScalarFieldEnum)[keyof typeof VolumesBackupScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -15440,7 +16670,8 @@ export namespace Prisma {
     processorDescription: 'processorDescription',
     createdBy: 'createdBy',
     instanceActionType: 'instanceActionType',
-    tenancyName: 'tenancyName'
+    tenancyName: 'tenancyName',
+    ticket: 'ticket'
   };
 
   export type computeEventsOrderByRelevanceFieldEnum = (typeof computeEventsOrderByRelevanceFieldEnum)[keyof typeof computeEventsOrderByRelevanceFieldEnum]
@@ -15462,7 +16693,8 @@ export namespace Prisma {
     policyName: 'policyName',
     statements: 'statements',
     eventName: 'eventName',
-    tenancyName: 'tenancyName'
+    tenancyName: 'tenancyName',
+    ticket: 'ticket'
   };
 
   export type identityEventsOrderByRelevanceFieldEnum = (typeof identityEventsOrderByRelevanceFieldEnum)[keyof typeof identityEventsOrderByRelevanceFieldEnum]
@@ -15482,7 +16714,8 @@ export namespace Prisma {
     ipAddress: 'ipAddress',
     routeRules: 'routeRules',
     createdBy: 'createdBy',
-    tenancyName: 'tenancyName'
+    tenancyName: 'tenancyName',
+    ticket: 'ticket'
   };
 
   export type networkEventsOrderByRelevanceFieldEnum = (typeof networkEventsOrderByRelevanceFieldEnum)[keyof typeof networkEventsOrderByRelevanceFieldEnum]
@@ -15534,6 +16767,18 @@ export namespace Prisma {
   export type IdentityUsersOrderByRelevanceFieldEnum = (typeof IdentityUsersOrderByRelevanceFieldEnum)[keyof typeof IdentityUsersOrderByRelevanceFieldEnum]
 
 
+  export const VolumesBackupOrderByRelevanceFieldEnum: {
+    tenancyName: 'tenancyName',
+    displayName: 'displayName',
+    volumeId: 'volumeId',
+    backupId: 'backupId',
+    backupDisplayName: 'backupDisplayName',
+    backupType: 'backupType'
+  };
+
+  export type VolumesBackupOrderByRelevanceFieldEnum = (typeof VolumesBackupOrderByRelevanceFieldEnum)[keyof typeof VolumesBackupOrderByRelevanceFieldEnum]
+
+
   /**
    * Field references
    */
@@ -15575,16 +16820,16 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'BigInt'
+   * Reference to a field of type 'Boolean'
    */
-  export type BigIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BigInt'>
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
     
 
 
   /**
-   * Reference to a field of type 'Boolean'
+   * Reference to a field of type 'BigInt'
    */
-  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+  export type BigIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BigInt'>
     
   /**
    * Deep Input Types
@@ -16128,7 +17373,7 @@ export namespace Prisma {
     AND?: computeEventsWhereInput | computeEventsWhereInput[]
     OR?: computeEventsWhereInput[]
     NOT?: computeEventsWhereInput | computeEventsWhereInput[]
-    id?: BigIntFilter<"computeEvents"> | bigint | number
+    id?: IntFilter<"computeEvents"> | number
     eventType?: StringNullableFilter<"computeEvents"> | string | null
     eventTime?: DateTimeNullableFilter<"computeEvents"> | Date | string | null
     source?: StringNullableFilter<"computeEvents"> | string | null
@@ -16153,6 +17398,8 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"computeEvents"> | Date | string
     instanceActionType?: StringNullableFilter<"computeEvents"> | string | null
     tenancyName?: StringNullableFilter<"computeEvents"> | string | null
+    isCheck?: BoolNullableFilter<"computeEvents"> | boolean | null
+    ticket?: StringNullableFilter<"computeEvents"> | string | null
   }
 
   export type computeEventsOrderByWithRelationInput = {
@@ -16181,11 +17428,13 @@ export namespace Prisma {
     createdAt?: SortOrder
     instanceActionType?: SortOrderInput | SortOrder
     tenancyName?: SortOrderInput | SortOrder
+    isCheck?: SortOrderInput | SortOrder
+    ticket?: SortOrderInput | SortOrder
     _relevance?: computeEventsOrderByRelevanceInput
   }
 
   export type computeEventsWhereUniqueInput = Prisma.AtLeast<{
-    id?: bigint | number
+    id?: number
     opcRequestId?: string
     AND?: computeEventsWhereInput | computeEventsWhereInput[]
     OR?: computeEventsWhereInput[]
@@ -16213,6 +17462,8 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"computeEvents"> | Date | string
     instanceActionType?: StringNullableFilter<"computeEvents"> | string | null
     tenancyName?: StringNullableFilter<"computeEvents"> | string | null
+    isCheck?: BoolNullableFilter<"computeEvents"> | boolean | null
+    ticket?: StringNullableFilter<"computeEvents"> | string | null
   }, "id" | "opcRequestId">
 
   export type computeEventsOrderByWithAggregationInput = {
@@ -16241,6 +17492,8 @@ export namespace Prisma {
     createdAt?: SortOrder
     instanceActionType?: SortOrderInput | SortOrder
     tenancyName?: SortOrderInput | SortOrder
+    isCheck?: SortOrderInput | SortOrder
+    ticket?: SortOrderInput | SortOrder
     _count?: computeEventsCountOrderByAggregateInput
     _avg?: computeEventsAvgOrderByAggregateInput
     _max?: computeEventsMaxOrderByAggregateInput
@@ -16252,7 +17505,7 @@ export namespace Prisma {
     AND?: computeEventsScalarWhereWithAggregatesInput | computeEventsScalarWhereWithAggregatesInput[]
     OR?: computeEventsScalarWhereWithAggregatesInput[]
     NOT?: computeEventsScalarWhereWithAggregatesInput | computeEventsScalarWhereWithAggregatesInput[]
-    id?: BigIntWithAggregatesFilter<"computeEvents"> | bigint | number
+    id?: IntWithAggregatesFilter<"computeEvents"> | number
     eventType?: StringNullableWithAggregatesFilter<"computeEvents"> | string | null
     eventTime?: DateTimeNullableWithAggregatesFilter<"computeEvents"> | Date | string | null
     source?: StringNullableWithAggregatesFilter<"computeEvents"> | string | null
@@ -16277,13 +17530,15 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"computeEvents"> | Date | string
     instanceActionType?: StringNullableWithAggregatesFilter<"computeEvents"> | string | null
     tenancyName?: StringNullableWithAggregatesFilter<"computeEvents"> | string | null
+    isCheck?: BoolNullableWithAggregatesFilter<"computeEvents"> | boolean | null
+    ticket?: StringNullableWithAggregatesFilter<"computeEvents"> | string | null
   }
 
   export type identityEventsWhereInput = {
     AND?: identityEventsWhereInput | identityEventsWhereInput[]
     OR?: identityEventsWhereInput[]
     NOT?: identityEventsWhereInput | identityEventsWhereInput[]
-    id?: BigIntFilter<"identityEvents"> | bigint | number
+    id?: IntFilter<"identityEvents"> | number
     eventType?: StringNullableFilter<"identityEvents"> | string | null
     eventTime?: DateTimeNullableFilter<"identityEvents"> | Date | string | null
     source?: StringNullableFilter<"identityEvents"> | string | null
@@ -16302,6 +17557,8 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"identityEvents"> | Date | string
     eventName?: StringNullableFilter<"identityEvents"> | string | null
     tenancyName?: StringNullableFilter<"identityEvents"> | string | null
+    isCheck?: BoolNullableFilter<"identityEvents"> | boolean | null
+    ticket?: StringNullableFilter<"identityEvents"> | string | null
   }
 
   export type identityEventsOrderByWithRelationInput = {
@@ -16324,11 +17581,13 @@ export namespace Prisma {
     createdAt?: SortOrder
     eventName?: SortOrderInput | SortOrder
     tenancyName?: SortOrderInput | SortOrder
+    isCheck?: SortOrderInput | SortOrder
+    ticket?: SortOrderInput | SortOrder
     _relevance?: identityEventsOrderByRelevanceInput
   }
 
   export type identityEventsWhereUniqueInput = Prisma.AtLeast<{
-    id?: bigint | number
+    id?: number
     opcRequestId?: string
     AND?: identityEventsWhereInput | identityEventsWhereInput[]
     OR?: identityEventsWhereInput[]
@@ -16350,6 +17609,8 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"identityEvents"> | Date | string
     eventName?: StringNullableFilter<"identityEvents"> | string | null
     tenancyName?: StringNullableFilter<"identityEvents"> | string | null
+    isCheck?: BoolNullableFilter<"identityEvents"> | boolean | null
+    ticket?: StringNullableFilter<"identityEvents"> | string | null
   }, "id" | "opcRequestId">
 
   export type identityEventsOrderByWithAggregationInput = {
@@ -16372,6 +17633,8 @@ export namespace Prisma {
     createdAt?: SortOrder
     eventName?: SortOrderInput | SortOrder
     tenancyName?: SortOrderInput | SortOrder
+    isCheck?: SortOrderInput | SortOrder
+    ticket?: SortOrderInput | SortOrder
     _count?: identityEventsCountOrderByAggregateInput
     _avg?: identityEventsAvgOrderByAggregateInput
     _max?: identityEventsMaxOrderByAggregateInput
@@ -16383,7 +17646,7 @@ export namespace Prisma {
     AND?: identityEventsScalarWhereWithAggregatesInput | identityEventsScalarWhereWithAggregatesInput[]
     OR?: identityEventsScalarWhereWithAggregatesInput[]
     NOT?: identityEventsScalarWhereWithAggregatesInput | identityEventsScalarWhereWithAggregatesInput[]
-    id?: BigIntWithAggregatesFilter<"identityEvents"> | bigint | number
+    id?: IntWithAggregatesFilter<"identityEvents"> | number
     eventType?: StringNullableWithAggregatesFilter<"identityEvents"> | string | null
     eventTime?: DateTimeNullableWithAggregatesFilter<"identityEvents"> | Date | string | null
     source?: StringNullableWithAggregatesFilter<"identityEvents"> | string | null
@@ -16402,13 +17665,15 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"identityEvents"> | Date | string
     eventName?: StringNullableWithAggregatesFilter<"identityEvents"> | string | null
     tenancyName?: StringNullableWithAggregatesFilter<"identityEvents"> | string | null
+    isCheck?: BoolNullableWithAggregatesFilter<"identityEvents"> | boolean | null
+    ticket?: StringNullableWithAggregatesFilter<"identityEvents"> | string | null
   }
 
   export type networkEventsWhereInput = {
     AND?: networkEventsWhereInput | networkEventsWhereInput[]
     OR?: networkEventsWhereInput[]
     NOT?: networkEventsWhereInput | networkEventsWhereInput[]
-    id?: BigIntFilter<"networkEvents"> | bigint | number
+    id?: IntFilter<"networkEvents"> | number
     eventType?: StringNullableFilter<"networkEvents"> | string | null
     eventTime?: DateTimeNullableFilter<"networkEvents"> | Date | string | null
     source?: StringNullableFilter<"networkEvents"> | string | null
@@ -16426,6 +17691,8 @@ export namespace Prisma {
     createdOn?: DateTimeNullableFilter<"networkEvents"> | Date | string | null
     createdAt?: DateTimeFilter<"networkEvents"> | Date | string
     tenancyName?: StringNullableFilter<"networkEvents"> | string | null
+    isCheck?: BoolNullableFilter<"networkEvents"> | boolean | null
+    ticket?: StringNullableFilter<"networkEvents"> | string | null
   }
 
   export type networkEventsOrderByWithRelationInput = {
@@ -16447,11 +17714,13 @@ export namespace Prisma {
     createdOn?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     tenancyName?: SortOrderInput | SortOrder
+    isCheck?: SortOrderInput | SortOrder
+    ticket?: SortOrderInput | SortOrder
     _relevance?: networkEventsOrderByRelevanceInput
   }
 
   export type networkEventsWhereUniqueInput = Prisma.AtLeast<{
-    id?: bigint | number
+    id?: number
     opcRequestId?: string
     AND?: networkEventsWhereInput | networkEventsWhereInput[]
     OR?: networkEventsWhereInput[]
@@ -16472,6 +17741,8 @@ export namespace Prisma {
     createdOn?: DateTimeNullableFilter<"networkEvents"> | Date | string | null
     createdAt?: DateTimeFilter<"networkEvents"> | Date | string
     tenancyName?: StringNullableFilter<"networkEvents"> | string | null
+    isCheck?: BoolNullableFilter<"networkEvents"> | boolean | null
+    ticket?: StringNullableFilter<"networkEvents"> | string | null
   }, "id" | "opcRequestId">
 
   export type networkEventsOrderByWithAggregationInput = {
@@ -16493,6 +17764,8 @@ export namespace Prisma {
     createdOn?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     tenancyName?: SortOrderInput | SortOrder
+    isCheck?: SortOrderInput | SortOrder
+    ticket?: SortOrderInput | SortOrder
     _count?: networkEventsCountOrderByAggregateInput
     _avg?: networkEventsAvgOrderByAggregateInput
     _max?: networkEventsMaxOrderByAggregateInput
@@ -16504,7 +17777,7 @@ export namespace Prisma {
     AND?: networkEventsScalarWhereWithAggregatesInput | networkEventsScalarWhereWithAggregatesInput[]
     OR?: networkEventsScalarWhereWithAggregatesInput[]
     NOT?: networkEventsScalarWhereWithAggregatesInput | networkEventsScalarWhereWithAggregatesInput[]
-    id?: BigIntWithAggregatesFilter<"networkEvents"> | bigint | number
+    id?: IntWithAggregatesFilter<"networkEvents"> | number
     eventType?: StringNullableWithAggregatesFilter<"networkEvents"> | string | null
     eventTime?: DateTimeNullableWithAggregatesFilter<"networkEvents"> | Date | string | null
     source?: StringNullableWithAggregatesFilter<"networkEvents"> | string | null
@@ -16522,6 +17795,8 @@ export namespace Prisma {
     createdOn?: DateTimeNullableWithAggregatesFilter<"networkEvents"> | Date | string | null
     createdAt?: DateTimeWithAggregatesFilter<"networkEvents"> | Date | string
     tenancyName?: StringNullableWithAggregatesFilter<"networkEvents"> | string | null
+    isCheck?: BoolNullableWithAggregatesFilter<"networkEvents"> | boolean | null
+    ticket?: StringNullableWithAggregatesFilter<"networkEvents"> | string | null
   }
 
   export type BlockVolumeWhereInput = {
@@ -16870,6 +18145,111 @@ export namespace Prisma {
     can_use_smtp_credentials?: BoolNullableWithAggregatesFilter<"IdentityUsers"> | boolean | null
     identity_provider_id?: StringNullableWithAggregatesFilter<"IdentityUsers"> | string | null
     tenancy_name?: StringNullableWithAggregatesFilter<"IdentityUsers"> | string | null
+  }
+
+  export type VolumesBackupWhereInput = {
+    AND?: VolumesBackupWhereInput | VolumesBackupWhereInput[]
+    OR?: VolumesBackupWhereInput[]
+    NOT?: VolumesBackupWhereInput | VolumesBackupWhereInput[]
+    id?: BigIntFilter<"VolumesBackup"> | bigint | number
+    tenancyName?: StringNullableFilter<"VolumesBackup"> | string | null
+    displayName?: StringNullableFilter<"VolumesBackup"> | string | null
+    sizeInGbs?: IntNullableFilter<"VolumesBackup"> | number | null
+    vpusPerGb?: IntNullableFilter<"VolumesBackup"> | number | null
+    volumeId?: StringNullableFilter<"VolumesBackup"> | string | null
+    backupId?: StringNullableFilter<"VolumesBackup"> | string | null
+    backupDisplayName?: StringNullableFilter<"VolumesBackup"> | string | null
+    timeCreated?: DateTimeNullableFilter<"VolumesBackup"> | Date | string | null
+    backupType?: StringNullableFilter<"VolumesBackup"> | string | null
+    totalDias?: IntNullableFilter<"VolumesBackup"> | number | null
+    uniqueSizeInGbs?: IntNullableFilter<"VolumesBackup"> | number | null
+    custoBackupDia?: DecimalNullableFilter<"VolumesBackup"> | Decimal | DecimalJsLike | number | string | null
+    custoBackupMes?: DecimalNullableFilter<"VolumesBackup"> | Decimal | DecimalJsLike | number | string | null
+    custoBackupHora?: DecimalNullableFilter<"VolumesBackup"> | Decimal | DecimalJsLike | number | string | null
+  }
+
+  export type VolumesBackupOrderByWithRelationInput = {
+    id?: SortOrder
+    tenancyName?: SortOrderInput | SortOrder
+    displayName?: SortOrderInput | SortOrder
+    sizeInGbs?: SortOrderInput | SortOrder
+    vpusPerGb?: SortOrderInput | SortOrder
+    volumeId?: SortOrderInput | SortOrder
+    backupId?: SortOrderInput | SortOrder
+    backupDisplayName?: SortOrderInput | SortOrder
+    timeCreated?: SortOrderInput | SortOrder
+    backupType?: SortOrderInput | SortOrder
+    totalDias?: SortOrderInput | SortOrder
+    uniqueSizeInGbs?: SortOrderInput | SortOrder
+    custoBackupDia?: SortOrderInput | SortOrder
+    custoBackupMes?: SortOrderInput | SortOrder
+    custoBackupHora?: SortOrderInput | SortOrder
+    _relevance?: VolumesBackupOrderByRelevanceInput
+  }
+
+  export type VolumesBackupWhereUniqueInput = Prisma.AtLeast<{
+    id?: bigint | number
+    backupId?: string
+    AND?: VolumesBackupWhereInput | VolumesBackupWhereInput[]
+    OR?: VolumesBackupWhereInput[]
+    NOT?: VolumesBackupWhereInput | VolumesBackupWhereInput[]
+    tenancyName?: StringNullableFilter<"VolumesBackup"> | string | null
+    displayName?: StringNullableFilter<"VolumesBackup"> | string | null
+    sizeInGbs?: IntNullableFilter<"VolumesBackup"> | number | null
+    vpusPerGb?: IntNullableFilter<"VolumesBackup"> | number | null
+    volumeId?: StringNullableFilter<"VolumesBackup"> | string | null
+    backupDisplayName?: StringNullableFilter<"VolumesBackup"> | string | null
+    timeCreated?: DateTimeNullableFilter<"VolumesBackup"> | Date | string | null
+    backupType?: StringNullableFilter<"VolumesBackup"> | string | null
+    totalDias?: IntNullableFilter<"VolumesBackup"> | number | null
+    uniqueSizeInGbs?: IntNullableFilter<"VolumesBackup"> | number | null
+    custoBackupDia?: DecimalNullableFilter<"VolumesBackup"> | Decimal | DecimalJsLike | number | string | null
+    custoBackupMes?: DecimalNullableFilter<"VolumesBackup"> | Decimal | DecimalJsLike | number | string | null
+    custoBackupHora?: DecimalNullableFilter<"VolumesBackup"> | Decimal | DecimalJsLike | number | string | null
+  }, "id" | "backupId">
+
+  export type VolumesBackupOrderByWithAggregationInput = {
+    id?: SortOrder
+    tenancyName?: SortOrderInput | SortOrder
+    displayName?: SortOrderInput | SortOrder
+    sizeInGbs?: SortOrderInput | SortOrder
+    vpusPerGb?: SortOrderInput | SortOrder
+    volumeId?: SortOrderInput | SortOrder
+    backupId?: SortOrderInput | SortOrder
+    backupDisplayName?: SortOrderInput | SortOrder
+    timeCreated?: SortOrderInput | SortOrder
+    backupType?: SortOrderInput | SortOrder
+    totalDias?: SortOrderInput | SortOrder
+    uniqueSizeInGbs?: SortOrderInput | SortOrder
+    custoBackupDia?: SortOrderInput | SortOrder
+    custoBackupMes?: SortOrderInput | SortOrder
+    custoBackupHora?: SortOrderInput | SortOrder
+    _count?: VolumesBackupCountOrderByAggregateInput
+    _avg?: VolumesBackupAvgOrderByAggregateInput
+    _max?: VolumesBackupMaxOrderByAggregateInput
+    _min?: VolumesBackupMinOrderByAggregateInput
+    _sum?: VolumesBackupSumOrderByAggregateInput
+  }
+
+  export type VolumesBackupScalarWhereWithAggregatesInput = {
+    AND?: VolumesBackupScalarWhereWithAggregatesInput | VolumesBackupScalarWhereWithAggregatesInput[]
+    OR?: VolumesBackupScalarWhereWithAggregatesInput[]
+    NOT?: VolumesBackupScalarWhereWithAggregatesInput | VolumesBackupScalarWhereWithAggregatesInput[]
+    id?: BigIntWithAggregatesFilter<"VolumesBackup"> | bigint | number
+    tenancyName?: StringNullableWithAggregatesFilter<"VolumesBackup"> | string | null
+    displayName?: StringNullableWithAggregatesFilter<"VolumesBackup"> | string | null
+    sizeInGbs?: IntNullableWithAggregatesFilter<"VolumesBackup"> | number | null
+    vpusPerGb?: IntNullableWithAggregatesFilter<"VolumesBackup"> | number | null
+    volumeId?: StringNullableWithAggregatesFilter<"VolumesBackup"> | string | null
+    backupId?: StringNullableWithAggregatesFilter<"VolumesBackup"> | string | null
+    backupDisplayName?: StringNullableWithAggregatesFilter<"VolumesBackup"> | string | null
+    timeCreated?: DateTimeNullableWithAggregatesFilter<"VolumesBackup"> | Date | string | null
+    backupType?: StringNullableWithAggregatesFilter<"VolumesBackup"> | string | null
+    totalDias?: IntNullableWithAggregatesFilter<"VolumesBackup"> | number | null
+    uniqueSizeInGbs?: IntNullableWithAggregatesFilter<"VolumesBackup"> | number | null
+    custoBackupDia?: DecimalNullableWithAggregatesFilter<"VolumesBackup"> | Decimal | DecimalJsLike | number | string | null
+    custoBackupMes?: DecimalNullableWithAggregatesFilter<"VolumesBackup"> | Decimal | DecimalJsLike | number | string | null
+    custoBackupHora?: DecimalNullableWithAggregatesFilter<"VolumesBackup"> | Decimal | DecimalJsLike | number | string | null
   }
 
   export type ComputeInstancesCreateInput = {
@@ -17489,7 +18869,7 @@ export namespace Prisma {
   }
 
   export type computeEventsCreateInput = {
-    id?: bigint | number
+    id?: number
     eventType?: string | null
     eventTime?: Date | string | null
     source?: string | null
@@ -17514,10 +18894,12 @@ export namespace Prisma {
     createdAt?: Date | string
     instanceActionType?: string | null
     tenancyName?: string | null
+    isCheck?: boolean | null
+    ticket?: string | null
   }
 
   export type computeEventsUncheckedCreateInput = {
-    id?: bigint | number
+    id?: number
     eventType?: string | null
     eventTime?: Date | string | null
     source?: string | null
@@ -17542,10 +18924,12 @@ export namespace Prisma {
     createdAt?: Date | string
     instanceActionType?: string | null
     tenancyName?: string | null
+    isCheck?: boolean | null
+    ticket?: string | null
   }
 
   export type computeEventsUpdateInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: IntFieldUpdateOperationsInput | number
     eventType?: NullableStringFieldUpdateOperationsInput | string | null
     eventTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     source?: NullableStringFieldUpdateOperationsInput | string | null
@@ -17570,10 +18954,12 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     instanceActionType?: NullableStringFieldUpdateOperationsInput | string | null
     tenancyName?: NullableStringFieldUpdateOperationsInput | string | null
+    isCheck?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ticket?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type computeEventsUncheckedUpdateInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: IntFieldUpdateOperationsInput | number
     eventType?: NullableStringFieldUpdateOperationsInput | string | null
     eventTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     source?: NullableStringFieldUpdateOperationsInput | string | null
@@ -17598,10 +18984,12 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     instanceActionType?: NullableStringFieldUpdateOperationsInput | string | null
     tenancyName?: NullableStringFieldUpdateOperationsInput | string | null
+    isCheck?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ticket?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type computeEventsCreateManyInput = {
-    id?: bigint | number
+    id?: number
     eventType?: string | null
     eventTime?: Date | string | null
     source?: string | null
@@ -17626,10 +19014,12 @@ export namespace Prisma {
     createdAt?: Date | string
     instanceActionType?: string | null
     tenancyName?: string | null
+    isCheck?: boolean | null
+    ticket?: string | null
   }
 
   export type computeEventsUpdateManyMutationInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: IntFieldUpdateOperationsInput | number
     eventType?: NullableStringFieldUpdateOperationsInput | string | null
     eventTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     source?: NullableStringFieldUpdateOperationsInput | string | null
@@ -17654,10 +19044,12 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     instanceActionType?: NullableStringFieldUpdateOperationsInput | string | null
     tenancyName?: NullableStringFieldUpdateOperationsInput | string | null
+    isCheck?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ticket?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type computeEventsUncheckedUpdateManyInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: IntFieldUpdateOperationsInput | number
     eventType?: NullableStringFieldUpdateOperationsInput | string | null
     eventTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     source?: NullableStringFieldUpdateOperationsInput | string | null
@@ -17682,10 +19074,12 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     instanceActionType?: NullableStringFieldUpdateOperationsInput | string | null
     tenancyName?: NullableStringFieldUpdateOperationsInput | string | null
+    isCheck?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ticket?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type identityEventsCreateInput = {
-    id?: bigint | number
+    id?: number
     eventType?: string | null
     eventTime?: Date | string | null
     source?: string | null
@@ -17704,10 +19098,12 @@ export namespace Prisma {
     createdAt?: Date | string
     eventName?: string | null
     tenancyName?: string | null
+    isCheck?: boolean | null
+    ticket?: string | null
   }
 
   export type identityEventsUncheckedCreateInput = {
-    id?: bigint | number
+    id?: number
     eventType?: string | null
     eventTime?: Date | string | null
     source?: string | null
@@ -17726,10 +19122,12 @@ export namespace Prisma {
     createdAt?: Date | string
     eventName?: string | null
     tenancyName?: string | null
+    isCheck?: boolean | null
+    ticket?: string | null
   }
 
   export type identityEventsUpdateInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: IntFieldUpdateOperationsInput | number
     eventType?: NullableStringFieldUpdateOperationsInput | string | null
     eventTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     source?: NullableStringFieldUpdateOperationsInput | string | null
@@ -17748,10 +19146,12 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     eventName?: NullableStringFieldUpdateOperationsInput | string | null
     tenancyName?: NullableStringFieldUpdateOperationsInput | string | null
+    isCheck?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ticket?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type identityEventsUncheckedUpdateInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: IntFieldUpdateOperationsInput | number
     eventType?: NullableStringFieldUpdateOperationsInput | string | null
     eventTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     source?: NullableStringFieldUpdateOperationsInput | string | null
@@ -17770,10 +19170,12 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     eventName?: NullableStringFieldUpdateOperationsInput | string | null
     tenancyName?: NullableStringFieldUpdateOperationsInput | string | null
+    isCheck?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ticket?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type identityEventsCreateManyInput = {
-    id?: bigint | number
+    id?: number
     eventType?: string | null
     eventTime?: Date | string | null
     source?: string | null
@@ -17792,10 +19194,12 @@ export namespace Prisma {
     createdAt?: Date | string
     eventName?: string | null
     tenancyName?: string | null
+    isCheck?: boolean | null
+    ticket?: string | null
   }
 
   export type identityEventsUpdateManyMutationInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: IntFieldUpdateOperationsInput | number
     eventType?: NullableStringFieldUpdateOperationsInput | string | null
     eventTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     source?: NullableStringFieldUpdateOperationsInput | string | null
@@ -17814,10 +19218,12 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     eventName?: NullableStringFieldUpdateOperationsInput | string | null
     tenancyName?: NullableStringFieldUpdateOperationsInput | string | null
+    isCheck?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ticket?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type identityEventsUncheckedUpdateManyInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: IntFieldUpdateOperationsInput | number
     eventType?: NullableStringFieldUpdateOperationsInput | string | null
     eventTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     source?: NullableStringFieldUpdateOperationsInput | string | null
@@ -17836,10 +19242,12 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     eventName?: NullableStringFieldUpdateOperationsInput | string | null
     tenancyName?: NullableStringFieldUpdateOperationsInput | string | null
+    isCheck?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ticket?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type networkEventsCreateInput = {
-    id?: bigint | number
+    id?: number
     eventType?: string | null
     eventTime?: Date | string | null
     source?: string | null
@@ -17857,10 +19265,12 @@ export namespace Prisma {
     createdOn?: Date | string | null
     createdAt?: Date | string
     tenancyName?: string | null
+    isCheck?: boolean | null
+    ticket?: string | null
   }
 
   export type networkEventsUncheckedCreateInput = {
-    id?: bigint | number
+    id?: number
     eventType?: string | null
     eventTime?: Date | string | null
     source?: string | null
@@ -17878,10 +19288,12 @@ export namespace Prisma {
     createdOn?: Date | string | null
     createdAt?: Date | string
     tenancyName?: string | null
+    isCheck?: boolean | null
+    ticket?: string | null
   }
 
   export type networkEventsUpdateInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: IntFieldUpdateOperationsInput | number
     eventType?: NullableStringFieldUpdateOperationsInput | string | null
     eventTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     source?: NullableStringFieldUpdateOperationsInput | string | null
@@ -17899,10 +19311,12 @@ export namespace Prisma {
     createdOn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     tenancyName?: NullableStringFieldUpdateOperationsInput | string | null
+    isCheck?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ticket?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type networkEventsUncheckedUpdateInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: IntFieldUpdateOperationsInput | number
     eventType?: NullableStringFieldUpdateOperationsInput | string | null
     eventTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     source?: NullableStringFieldUpdateOperationsInput | string | null
@@ -17920,10 +19334,12 @@ export namespace Prisma {
     createdOn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     tenancyName?: NullableStringFieldUpdateOperationsInput | string | null
+    isCheck?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ticket?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type networkEventsCreateManyInput = {
-    id?: bigint | number
+    id?: number
     eventType?: string | null
     eventTime?: Date | string | null
     source?: string | null
@@ -17941,10 +19357,12 @@ export namespace Prisma {
     createdOn?: Date | string | null
     createdAt?: Date | string
     tenancyName?: string | null
+    isCheck?: boolean | null
+    ticket?: string | null
   }
 
   export type networkEventsUpdateManyMutationInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: IntFieldUpdateOperationsInput | number
     eventType?: NullableStringFieldUpdateOperationsInput | string | null
     eventTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     source?: NullableStringFieldUpdateOperationsInput | string | null
@@ -17962,10 +19380,12 @@ export namespace Prisma {
     createdOn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     tenancyName?: NullableStringFieldUpdateOperationsInput | string | null
+    isCheck?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ticket?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type networkEventsUncheckedUpdateManyInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: IntFieldUpdateOperationsInput | number
     eventType?: NullableStringFieldUpdateOperationsInput | string | null
     eventTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     source?: NullableStringFieldUpdateOperationsInput | string | null
@@ -17983,6 +19403,8 @@ export namespace Prisma {
     createdOn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     tenancyName?: NullableStringFieldUpdateOperationsInput | string | null
+    isCheck?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ticket?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type BlockVolumeCreateInput = {
@@ -18382,6 +19804,132 @@ export namespace Prisma {
     can_use_smtp_credentials?: NullableBoolFieldUpdateOperationsInput | boolean | null
     identity_provider_id?: NullableStringFieldUpdateOperationsInput | string | null
     tenancy_name?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type VolumesBackupCreateInput = {
+    id?: bigint | number
+    tenancyName?: string | null
+    displayName?: string | null
+    sizeInGbs?: number | null
+    vpusPerGb?: number | null
+    volumeId?: string | null
+    backupId?: string | null
+    backupDisplayName?: string | null
+    timeCreated?: Date | string | null
+    backupType?: string | null
+    totalDias?: number | null
+    uniqueSizeInGbs?: number | null
+    custoBackupDia?: Decimal | DecimalJsLike | number | string | null
+    custoBackupMes?: Decimal | DecimalJsLike | number | string | null
+    custoBackupHora?: Decimal | DecimalJsLike | number | string | null
+  }
+
+  export type VolumesBackupUncheckedCreateInput = {
+    id?: bigint | number
+    tenancyName?: string | null
+    displayName?: string | null
+    sizeInGbs?: number | null
+    vpusPerGb?: number | null
+    volumeId?: string | null
+    backupId?: string | null
+    backupDisplayName?: string | null
+    timeCreated?: Date | string | null
+    backupType?: string | null
+    totalDias?: number | null
+    uniqueSizeInGbs?: number | null
+    custoBackupDia?: Decimal | DecimalJsLike | number | string | null
+    custoBackupMes?: Decimal | DecimalJsLike | number | string | null
+    custoBackupHora?: Decimal | DecimalJsLike | number | string | null
+  }
+
+  export type VolumesBackupUpdateInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    tenancyName?: NullableStringFieldUpdateOperationsInput | string | null
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    sizeInGbs?: NullableIntFieldUpdateOperationsInput | number | null
+    vpusPerGb?: NullableIntFieldUpdateOperationsInput | number | null
+    volumeId?: NullableStringFieldUpdateOperationsInput | string | null
+    backupId?: NullableStringFieldUpdateOperationsInput | string | null
+    backupDisplayName?: NullableStringFieldUpdateOperationsInput | string | null
+    timeCreated?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    backupType?: NullableStringFieldUpdateOperationsInput | string | null
+    totalDias?: NullableIntFieldUpdateOperationsInput | number | null
+    uniqueSizeInGbs?: NullableIntFieldUpdateOperationsInput | number | null
+    custoBackupDia?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    custoBackupMes?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    custoBackupHora?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+  }
+
+  export type VolumesBackupUncheckedUpdateInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    tenancyName?: NullableStringFieldUpdateOperationsInput | string | null
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    sizeInGbs?: NullableIntFieldUpdateOperationsInput | number | null
+    vpusPerGb?: NullableIntFieldUpdateOperationsInput | number | null
+    volumeId?: NullableStringFieldUpdateOperationsInput | string | null
+    backupId?: NullableStringFieldUpdateOperationsInput | string | null
+    backupDisplayName?: NullableStringFieldUpdateOperationsInput | string | null
+    timeCreated?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    backupType?: NullableStringFieldUpdateOperationsInput | string | null
+    totalDias?: NullableIntFieldUpdateOperationsInput | number | null
+    uniqueSizeInGbs?: NullableIntFieldUpdateOperationsInput | number | null
+    custoBackupDia?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    custoBackupMes?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    custoBackupHora?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+  }
+
+  export type VolumesBackupCreateManyInput = {
+    id?: bigint | number
+    tenancyName?: string | null
+    displayName?: string | null
+    sizeInGbs?: number | null
+    vpusPerGb?: number | null
+    volumeId?: string | null
+    backupId?: string | null
+    backupDisplayName?: string | null
+    timeCreated?: Date | string | null
+    backupType?: string | null
+    totalDias?: number | null
+    uniqueSizeInGbs?: number | null
+    custoBackupDia?: Decimal | DecimalJsLike | number | string | null
+    custoBackupMes?: Decimal | DecimalJsLike | number | string | null
+    custoBackupHora?: Decimal | DecimalJsLike | number | string | null
+  }
+
+  export type VolumesBackupUpdateManyMutationInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    tenancyName?: NullableStringFieldUpdateOperationsInput | string | null
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    sizeInGbs?: NullableIntFieldUpdateOperationsInput | number | null
+    vpusPerGb?: NullableIntFieldUpdateOperationsInput | number | null
+    volumeId?: NullableStringFieldUpdateOperationsInput | string | null
+    backupId?: NullableStringFieldUpdateOperationsInput | string | null
+    backupDisplayName?: NullableStringFieldUpdateOperationsInput | string | null
+    timeCreated?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    backupType?: NullableStringFieldUpdateOperationsInput | string | null
+    totalDias?: NullableIntFieldUpdateOperationsInput | number | null
+    uniqueSizeInGbs?: NullableIntFieldUpdateOperationsInput | number | null
+    custoBackupDia?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    custoBackupMes?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    custoBackupHora?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+  }
+
+  export type VolumesBackupUncheckedUpdateManyInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    tenancyName?: NullableStringFieldUpdateOperationsInput | string | null
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    sizeInGbs?: NullableIntFieldUpdateOperationsInput | number | null
+    vpusPerGb?: NullableIntFieldUpdateOperationsInput | number | null
+    volumeId?: NullableStringFieldUpdateOperationsInput | string | null
+    backupId?: NullableStringFieldUpdateOperationsInput | string | null
+    backupDisplayName?: NullableStringFieldUpdateOperationsInput | string | null
+    timeCreated?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    backupType?: NullableStringFieldUpdateOperationsInput | string | null
+    totalDias?: NullableIntFieldUpdateOperationsInput | number | null
+    uniqueSizeInGbs?: NullableIntFieldUpdateOperationsInput | number | null
+    custoBackupDia?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    custoBackupMes?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    custoBackupHora?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
   }
 
   export type StringNullableFilter<$PrismaModel = never> = {
@@ -18968,15 +20516,15 @@ export namespace Prisma {
     usage_mes?: SortOrder
   }
 
-  export type BigIntFilter<$PrismaModel = never> = {
-    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    in?: bigint[] | number[]
-    notIn?: bigint[] | number[]
-    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    not?: NestedBigIntFilter<$PrismaModel> | bigint | number
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
   }
 
   export type BoolNullableFilter<$PrismaModel = never> = {
@@ -19016,6 +20564,8 @@ export namespace Prisma {
     createdAt?: SortOrder
     instanceActionType?: SortOrder
     tenancyName?: SortOrder
+    isCheck?: SortOrder
+    ticket?: SortOrder
   }
 
   export type computeEventsAvgOrderByAggregateInput = {
@@ -19050,6 +20600,8 @@ export namespace Prisma {
     createdAt?: SortOrder
     instanceActionType?: SortOrder
     tenancyName?: SortOrder
+    isCheck?: SortOrder
+    ticket?: SortOrder
   }
 
   export type computeEventsMinOrderByAggregateInput = {
@@ -19078,6 +20630,8 @@ export namespace Prisma {
     createdAt?: SortOrder
     instanceActionType?: SortOrder
     tenancyName?: SortOrder
+    isCheck?: SortOrder
+    ticket?: SortOrder
   }
 
   export type computeEventsSumOrderByAggregateInput = {
@@ -19086,20 +20640,20 @@ export namespace Prisma {
     memoryInGbs?: SortOrder
   }
 
-  export type BigIntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    in?: bigint[] | number[]
-    notIn?: bigint[] | number[]
-    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    not?: NestedBigIntWithAggregatesFilter<$PrismaModel> | bigint | number
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
     _count?: NestedIntFilter<$PrismaModel>
     _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedBigIntFilter<$PrismaModel>
-    _min?: NestedBigIntFilter<$PrismaModel>
-    _max?: NestedBigIntFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type BoolNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -19136,6 +20690,8 @@ export namespace Prisma {
     createdAt?: SortOrder
     eventName?: SortOrder
     tenancyName?: SortOrder
+    isCheck?: SortOrder
+    ticket?: SortOrder
   }
 
   export type identityEventsAvgOrderByAggregateInput = {
@@ -19162,6 +20718,8 @@ export namespace Prisma {
     createdAt?: SortOrder
     eventName?: SortOrder
     tenancyName?: SortOrder
+    isCheck?: SortOrder
+    ticket?: SortOrder
   }
 
   export type identityEventsMinOrderByAggregateInput = {
@@ -19184,6 +20742,8 @@ export namespace Prisma {
     createdAt?: SortOrder
     eventName?: SortOrder
     tenancyName?: SortOrder
+    isCheck?: SortOrder
+    ticket?: SortOrder
   }
 
   export type identityEventsSumOrderByAggregateInput = {
@@ -19215,6 +20775,8 @@ export namespace Prisma {
     createdOn?: SortOrder
     createdAt?: SortOrder
     tenancyName?: SortOrder
+    isCheck?: SortOrder
+    ticket?: SortOrder
   }
 
   export type networkEventsAvgOrderByAggregateInput = {
@@ -19240,6 +20802,8 @@ export namespace Prisma {
     createdOn?: SortOrder
     createdAt?: SortOrder
     tenancyName?: SortOrder
+    isCheck?: SortOrder
+    ticket?: SortOrder
   }
 
   export type networkEventsMinOrderByAggregateInput = {
@@ -19261,6 +20825,8 @@ export namespace Prisma {
     createdOn?: SortOrder
     createdAt?: SortOrder
     tenancyName?: SortOrder
+    isCheck?: SortOrder
+    ticket?: SortOrder
   }
 
   export type networkEventsSumOrderByAggregateInput = {
@@ -19448,6 +21014,17 @@ export namespace Prisma {
     usage_mes?: SortOrder
   }
 
+  export type BigIntFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    in?: bigint[] | number[]
+    notIn?: bigint[] | number[]
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntFilter<$PrismaModel> | bigint | number
+  }
+
   export type IdentityUsersOrderByRelevanceInput = {
     fields: IdentityUsersOrderByRelevanceFieldEnum | IdentityUsersOrderByRelevanceFieldEnum[]
     sort: SortOrder
@@ -19519,6 +21096,104 @@ export namespace Prisma {
     id?: SortOrder
   }
 
+  export type BigIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    in?: bigint[] | number[]
+    notIn?: bigint[] | number[]
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntWithAggregatesFilter<$PrismaModel> | bigint | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedBigIntFilter<$PrismaModel>
+    _min?: NestedBigIntFilter<$PrismaModel>
+    _max?: NestedBigIntFilter<$PrismaModel>
+  }
+
+  export type VolumesBackupOrderByRelevanceInput = {
+    fields: VolumesBackupOrderByRelevanceFieldEnum | VolumesBackupOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type VolumesBackupCountOrderByAggregateInput = {
+    id?: SortOrder
+    tenancyName?: SortOrder
+    displayName?: SortOrder
+    sizeInGbs?: SortOrder
+    vpusPerGb?: SortOrder
+    volumeId?: SortOrder
+    backupId?: SortOrder
+    backupDisplayName?: SortOrder
+    timeCreated?: SortOrder
+    backupType?: SortOrder
+    totalDias?: SortOrder
+    uniqueSizeInGbs?: SortOrder
+    custoBackupDia?: SortOrder
+    custoBackupMes?: SortOrder
+    custoBackupHora?: SortOrder
+  }
+
+  export type VolumesBackupAvgOrderByAggregateInput = {
+    id?: SortOrder
+    sizeInGbs?: SortOrder
+    vpusPerGb?: SortOrder
+    totalDias?: SortOrder
+    uniqueSizeInGbs?: SortOrder
+    custoBackupDia?: SortOrder
+    custoBackupMes?: SortOrder
+    custoBackupHora?: SortOrder
+  }
+
+  export type VolumesBackupMaxOrderByAggregateInput = {
+    id?: SortOrder
+    tenancyName?: SortOrder
+    displayName?: SortOrder
+    sizeInGbs?: SortOrder
+    vpusPerGb?: SortOrder
+    volumeId?: SortOrder
+    backupId?: SortOrder
+    backupDisplayName?: SortOrder
+    timeCreated?: SortOrder
+    backupType?: SortOrder
+    totalDias?: SortOrder
+    uniqueSizeInGbs?: SortOrder
+    custoBackupDia?: SortOrder
+    custoBackupMes?: SortOrder
+    custoBackupHora?: SortOrder
+  }
+
+  export type VolumesBackupMinOrderByAggregateInput = {
+    id?: SortOrder
+    tenancyName?: SortOrder
+    displayName?: SortOrder
+    sizeInGbs?: SortOrder
+    vpusPerGb?: SortOrder
+    volumeId?: SortOrder
+    backupId?: SortOrder
+    backupDisplayName?: SortOrder
+    timeCreated?: SortOrder
+    backupType?: SortOrder
+    totalDias?: SortOrder
+    uniqueSizeInGbs?: SortOrder
+    custoBackupDia?: SortOrder
+    custoBackupMes?: SortOrder
+    custoBackupHora?: SortOrder
+  }
+
+  export type VolumesBackupSumOrderByAggregateInput = {
+    id?: SortOrder
+    sizeInGbs?: SortOrder
+    vpusPerGb?: SortOrder
+    totalDias?: SortOrder
+    uniqueSizeInGbs?: SortOrder
+    custoBackupDia?: SortOrder
+    custoBackupMes?: SortOrder
+    custoBackupHora?: SortOrder
+  }
+
   export type NullableStringFieldUpdateOperationsInput = {
     set?: string | null
   }
@@ -19559,16 +21234,24 @@ export namespace Prisma {
     divide?: Decimal | DecimalJsLike | number | string
   }
 
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type NullableBoolFieldUpdateOperationsInput = {
+    set?: boolean | null
+  }
+
   export type BigIntFieldUpdateOperationsInput = {
     set?: bigint | number
     increment?: bigint | number
     decrement?: bigint | number
     multiply?: bigint | number
     divide?: bigint | number
-  }
-
-  export type NullableBoolFieldUpdateOperationsInput = {
-    set?: boolean | null
   }
 
   export type NestedStringNullableFilter<$PrismaModel = never> = {
@@ -19779,36 +21462,25 @@ export namespace Prisma {
     _max?: NestedDecimalNullableFilter<$PrismaModel>
   }
 
-  export type NestedBigIntFilter<$PrismaModel = never> = {
-    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    in?: bigint[] | number[]
-    notIn?: bigint[] | number[]
-    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    not?: NestedBigIntFilter<$PrismaModel> | bigint | number
-  }
-
   export type NestedBoolNullableFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
     not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
   }
 
-  export type NestedBigIntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    in?: bigint[] | number[]
-    notIn?: bigint[] | number[]
-    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    not?: NestedBigIntWithAggregatesFilter<$PrismaModel> | bigint | number
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
     _count?: NestedIntFilter<$PrismaModel>
     _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedBigIntFilter<$PrismaModel>
-    _min?: NestedBigIntFilter<$PrismaModel>
-    _max?: NestedBigIntFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type NestedFloatFilter<$PrismaModel = never> = {
@@ -19828,6 +21500,33 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedBoolNullableFilter<$PrismaModel>
     _max?: NestedBoolNullableFilter<$PrismaModel>
+  }
+
+  export type NestedBigIntFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    in?: bigint[] | number[]
+    notIn?: bigint[] | number[]
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntFilter<$PrismaModel> | bigint | number
+  }
+
+  export type NestedBigIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    in?: bigint[] | number[]
+    notIn?: bigint[] | number[]
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntWithAggregatesFilter<$PrismaModel> | bigint | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedBigIntFilter<$PrismaModel>
+    _min?: NestedBigIntFilter<$PrismaModel>
+    _max?: NestedBigIntFilter<$PrismaModel>
   }
 
 

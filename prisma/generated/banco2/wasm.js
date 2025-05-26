@@ -230,7 +230,9 @@ exports.Prisma.ComputeEventsScalarFieldEnum = {
   preserveBootVolume: 'preserveBootVolume',
   createdAt: 'createdAt',
   instanceActionType: 'instanceActionType',
-  tenancyName: 'tenancyName'
+  tenancyName: 'tenancyName',
+  isCheck: 'isCheck',
+  ticket: 'ticket'
 };
 
 exports.Prisma.IdentityEventsScalarFieldEnum = {
@@ -252,7 +254,9 @@ exports.Prisma.IdentityEventsScalarFieldEnum = {
   statements: 'statements',
   createdAt: 'createdAt',
   eventName: 'eventName',
-  tenancyName: 'tenancyName'
+  tenancyName: 'tenancyName',
+  isCheck: 'isCheck',
+  ticket: 'ticket'
 };
 
 exports.Prisma.NetworkEventsScalarFieldEnum = {
@@ -273,7 +277,9 @@ exports.Prisma.NetworkEventsScalarFieldEnum = {
   createdBy: 'createdBy',
   createdOn: 'createdOn',
   createdAt: 'createdAt',
-  tenancyName: 'tenancyName'
+  tenancyName: 'tenancyName',
+  isCheck: 'isCheck',
+  ticket: 'ticket'
 };
 
 exports.Prisma.BlockVolumeScalarFieldEnum = {
@@ -331,6 +337,24 @@ exports.Prisma.IdentityUsersScalarFieldEnum = {
   can_use_smtp_credentials: 'can_use_smtp_credentials',
   identity_provider_id: 'identity_provider_id',
   tenancy_name: 'tenancy_name'
+};
+
+exports.Prisma.VolumesBackupScalarFieldEnum = {
+  id: 'id',
+  tenancyName: 'tenancyName',
+  displayName: 'displayName',
+  sizeInGbs: 'sizeInGbs',
+  vpusPerGb: 'vpusPerGb',
+  volumeId: 'volumeId',
+  backupId: 'backupId',
+  backupDisplayName: 'backupDisplayName',
+  timeCreated: 'timeCreated',
+  backupType: 'backupType',
+  totalDias: 'totalDias',
+  uniqueSizeInGbs: 'uniqueSizeInGbs',
+  custoBackupDia: 'custoBackupDia',
+  custoBackupMes: 'custoBackupMes',
+  custoBackupHora: 'custoBackupHora'
 };
 
 exports.Prisma.SortOrder = {
@@ -423,7 +447,8 @@ exports.Prisma.computeEventsOrderByRelevanceFieldEnum = {
   processorDescription: 'processorDescription',
   createdBy: 'createdBy',
   instanceActionType: 'instanceActionType',
-  tenancyName: 'tenancyName'
+  tenancyName: 'tenancyName',
+  ticket: 'ticket'
 };
 
 exports.Prisma.identityEventsOrderByRelevanceFieldEnum = {
@@ -442,7 +467,8 @@ exports.Prisma.identityEventsOrderByRelevanceFieldEnum = {
   policyName: 'policyName',
   statements: 'statements',
   eventName: 'eventName',
-  tenancyName: 'tenancyName'
+  tenancyName: 'tenancyName',
+  ticket: 'ticket'
 };
 
 exports.Prisma.networkEventsOrderByRelevanceFieldEnum = {
@@ -459,7 +485,8 @@ exports.Prisma.networkEventsOrderByRelevanceFieldEnum = {
   ipAddress: 'ipAddress',
   routeRules: 'routeRules',
   createdBy: 'createdBy',
-  tenancyName: 'tenancyName'
+  tenancyName: 'tenancyName',
+  ticket: 'ticket'
 };
 
 exports.Prisma.BlockVolumeOrderByRelevanceFieldEnum = {
@@ -496,6 +523,15 @@ exports.Prisma.IdentityUsersOrderByRelevanceFieldEnum = {
   tenancy_name: 'tenancy_name'
 };
 
+exports.Prisma.VolumesBackupOrderByRelevanceFieldEnum = {
+  tenancyName: 'tenancyName',
+  displayName: 'displayName',
+  volumeId: 'volumeId',
+  backupId: 'backupId',
+  backupDisplayName: 'backupDisplayName',
+  backupType: 'backupType'
+};
+
 
 exports.Prisma.ModelName = {
   ComputeInstances: 'ComputeInstances',
@@ -510,7 +546,8 @@ exports.Prisma.ModelName = {
   BlockVolume: 'BlockVolume',
   CustoPorService: 'CustoPorService',
   CustoPorSkuName: 'CustoPorSkuName',
-  IdentityUsers: 'IdentityUsers'
+  IdentityUsers: 'IdentityUsers',
+  VolumesBackup: 'VolumesBackup'
 };
 
 /**

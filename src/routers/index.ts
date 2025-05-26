@@ -4,6 +4,7 @@ export * from './compute-instance-router';
 export * from './contract-router';
 export * from './cpus-router';
 export * from './dashboards-router';
+export * from './dataiku-router';
 export * from './events-router';
 export * from './latest-value-router';
 export * from './notifications-router';

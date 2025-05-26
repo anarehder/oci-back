@@ -116,7 +116,7 @@ model CustoMensalTotal {
 }
 
 model computeEvents {
-  id                   BigInt    @id @default(autoincrement())
+  id                   Int       @id @default(0)
   eventType            String?   @db2.VarChar(255)
   eventTime            DateTime? @db2.DateTime(0)
   source               String?   @db2.VarChar(100)
@@ -141,10 +141,12 @@ model computeEvents {
   createdAt            DateTime  @default(now()) @db2.Timestamp(0)
   instanceActionType   String?   @db2.VarChar(50)
   tenancyName          String?   @db2.VarChar(255)
+  isCheck              Boolean?
+  ticket               String?   @db2.VarChar(50)
 }
 
 model identityEvents {
-  id                     BigInt    @id @default(autoincrement())
+  id                     Int       @id @default(0)
   eventType              String?   @db2.VarChar(255)
   eventTime              DateTime? @db2.DateTime(0)
   source                 String?   @db2.VarChar(100)
@@ -163,10 +165,12 @@ model identityEvents {
   createdAt              DateTime  @default(now()) @db2.Timestamp(0)
   eventName              String?   @db2.VarChar(50)
   tenancyName            String?   @db2.VarChar(255)
+  isCheck                Boolean?
+  ticket                 String?   @db2.VarChar(50)
 }
 
 model networkEvents {
-  id              BigInt    @id @default(autoincrement())
+  id              Int       @id @default(0)
   eventType       String?   @db2.VarChar(255)
   eventTime       DateTime? @db2.DateTime(0)
   source          String?   @db2.VarChar(100)
@@ -184,6 +188,8 @@ model networkEvents {
   createdOn       DateTime? @db2.DateTime(0)
   createdAt       DateTime  @default(now()) @db2.Timestamp(0)
   tenancyName     String?   @db2.VarChar(255)
+  isCheck         Boolean?
+  ticket          String?   @db2.VarChar(50)
 }
 
 model BlockVolume {
@@ -262,4 +268,22 @@ model MemoryUtilization {
   memory_usage        Float?
 
   @@ignore
+}
+
+model VolumesBackup {
+  id                BigInt    @id @default(autoincrement())
+  tenancyName       String?   @db2.VarChar(100)
+  displayName       String?   @db2.VarChar(255)
+  sizeInGbs         Int?
+  vpusPerGb         Int?
+  volumeId          String?   @db2.VarChar(255)
+  backupId          String?   @unique(map: "backupId") @db2.VarChar(255)
+  backupDisplayName String?   @db2.VarChar(255)
+  timeCreated       DateTime? @db2.DateTime(0)
+  backupType        String?   @db2.VarChar(50)
+  totalDias         Int?
+  uniqueSizeInGbs   Int?
+  custoBackupDia    Decimal?  @db2.Decimal(10, 2)
+  custoBackupMes    Decimal?  @db2.Decimal(10, 2)
+  custoBackupHora   Decimal?  @db2.Decimal(10, 2)
 }

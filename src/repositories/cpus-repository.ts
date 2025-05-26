@@ -28,7 +28,8 @@ export async function getLatestCpusRepository() {
             SELECT *
             FROM CpuUtilization
             WHERE metric_timestamp >= DATE_SUB(NOW(), INTERVAL 5 MINUTE) 
-            ORDER BY cpu_usage DESC;
+            ORDER BY cpu_usage DESC
+            LIMIT 20;
         `);
 
     const cpus: CpuUtilization[] = rows.map(instance => ({
@@ -47,7 +48,7 @@ export async function getLatestCpusRepository() {
 export async function getLatestCpusByTenancyRepository(tenancies: string[]){
     const placeholders = tenancies.map(t => `'${t}'`).join(", ");
 
-    const query = `SELECT * FROM CpuUtilization WHERE metric_timestamp >= DATE_SUB(NOW(), INTERVAL 5 MINUTE) AND profile_name IN (${placeholders}) ORDER BY cpu_usage desc;`;
+    const query = `SELECT * FROM CpuUtilization WHERE metric_timestamp >= DATE_SUB(NOW(), INTERVAL 5 MINUTE) AND profile_name IN (${placeholders}) ORDER BY cpu_usage desc LIMIT 20;`;
 
     const [rows] = await db2.query<RowDataPacket[]>(`${query}`);
     const cpus: CpuUtilization[] = rows.map(instance => ({

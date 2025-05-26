@@ -4,14 +4,12 @@ import { getComputeInstancesEventsRepository, getIdentityEventsRepository, getJo
 import { getUserDetails } from "./user-service";
 
 export async function getEventsService(userToken: string, type: string) {
-    console.log("entrei no service");
     const token = userToken.slice(7);
     // pegar o cliente com a tenancy
     const userDetails = await getUserDetails(token);
     if (type !== 'compute' && type !== 'identity' && type !== 'network') {
         throw unauthorizedError("Rota inexistente");
     }
-    console.log(userDetails);
     if (userDetails[0].isAdmin){
         if (type === 'compute'){
             const response = await getComputeInstancesEventsRepository();
@@ -51,7 +49,7 @@ export async function getJoinEventsService(userToken: string, body: JoinDashboar
     const userDetails = await getUserDetails(token);
     const userTenancies = userDetails.map(user => user.tenancy.toLowerCase());
     const tenancies = [body.tenancy1?.toLowerCase(), body.tenancy2?.toLowerCase(), body.tenancy3?.toLowerCase()].filter(Boolean);
-
+    console.log("join events");
     
     // Verifica se todas as chaves de filteredTenancies estão incluídas em tenancies
     const isValid = tenancies.every(key => userTenancies.includes(key));

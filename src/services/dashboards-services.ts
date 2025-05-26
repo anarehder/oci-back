@@ -23,8 +23,8 @@ export async function getDashboardService(userToken: string, month: string) {
 export async function getJoinDashboardService(userToken: string, body:JoinDashboardsInput, month: string) {
     const token = userToken.slice(7);
     const userDetails = await getUserDetails(token);
-    if (!userDetails[0].isAdmin){
-        throw unauthorizedError("Apenas administradores podem acessar essa rota");
+    if (!userDetails){
+        throw unauthorizedError("Usuário não encontrado!");
     }
     const filteredTenancies = Object.fromEntries(
         Object.entries(body).filter(([key, value]) => value !== null)
