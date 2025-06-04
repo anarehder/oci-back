@@ -83,6 +83,11 @@ export type IdentityUsers = $Result.DefaultSelection<Prisma.$IdentityUsersPayloa
  * 
  */
 export type VolumesBackup = $Result.DefaultSelection<Prisma.$VolumesBackupPayload>
+/**
+ * Model SubscriptionCommit
+ * 
+ */
+export type SubscriptionCommit = $Result.DefaultSelection<Prisma.$SubscriptionCommitPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -348,6 +353,16 @@ export class PrismaClient<
     * ```
     */
   get volumesBackup(): Prisma.VolumesBackupDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.subscriptionCommit`: Exposes CRUD operations for the **SubscriptionCommit** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more SubscriptionCommits
+    * const subscriptionCommits = await prisma.subscriptionCommit.findMany()
+    * ```
+    */
+  get subscriptionCommit(): Prisma.SubscriptionCommitDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -801,7 +816,8 @@ export namespace Prisma {
     CustoPorService: 'CustoPorService',
     CustoPorSkuName: 'CustoPorSkuName',
     IdentityUsers: 'IdentityUsers',
-    VolumesBackup: 'VolumesBackup'
+    VolumesBackup: 'VolumesBackup',
+    SubscriptionCommit: 'SubscriptionCommit'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -820,7 +836,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "computeInstances" | "subscriptionDetails" | "tenancyDetails" | "tenancy_details" | "custoDiarioTotal" | "custoMensalTotal" | "computeEvents" | "identityEvents" | "networkEvents" | "blockVolume" | "custoPorService" | "custoPorSkuName" | "identityUsers" | "volumesBackup"
+      modelProps: "computeInstances" | "subscriptionDetails" | "tenancyDetails" | "tenancy_details" | "custoDiarioTotal" | "custoMensalTotal" | "computeEvents" | "identityEvents" | "networkEvents" | "blockVolume" | "custoPorService" | "custoPorSkuName" | "identityUsers" | "volumesBackup" | "subscriptionCommit"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1748,6 +1764,72 @@ export namespace Prisma {
           }
         }
       }
+      SubscriptionCommit: {
+        payload: Prisma.$SubscriptionCommitPayload<ExtArgs>
+        fields: Prisma.SubscriptionCommitFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.SubscriptionCommitFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubscriptionCommitPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.SubscriptionCommitFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubscriptionCommitPayload>
+          }
+          findFirst: {
+            args: Prisma.SubscriptionCommitFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubscriptionCommitPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.SubscriptionCommitFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubscriptionCommitPayload>
+          }
+          findMany: {
+            args: Prisma.SubscriptionCommitFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubscriptionCommitPayload>[]
+          }
+          create: {
+            args: Prisma.SubscriptionCommitCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubscriptionCommitPayload>
+          }
+          createMany: {
+            args: Prisma.SubscriptionCommitCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.SubscriptionCommitDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubscriptionCommitPayload>
+          }
+          update: {
+            args: Prisma.SubscriptionCommitUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubscriptionCommitPayload>
+          }
+          deleteMany: {
+            args: Prisma.SubscriptionCommitDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.SubscriptionCommitUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.SubscriptionCommitUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubscriptionCommitPayload>
+          }
+          aggregate: {
+            args: Prisma.SubscriptionCommitAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateSubscriptionCommit>
+          }
+          groupBy: {
+            args: Prisma.SubscriptionCommitGroupByArgs<ExtArgs>
+            result: $Utils.Optional<SubscriptionCommitGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.SubscriptionCommitCountArgs<ExtArgs>
+            result: $Utils.Optional<SubscriptionCommitCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1846,6 +1928,7 @@ export namespace Prisma {
     custoPorSkuName?: CustoPorSkuNameOmit
     identityUsers?: IdentityUsersOmit
     volumesBackup?: VolumesBackupOmit
+    subscriptionCommit?: SubscriptionCommitOmit
   }
 
   /* Types for Logging */
@@ -3037,6 +3120,8 @@ export namespace Prisma {
     available_amount: number | null
     total_dias_contrato: number | null
     dias_decorridos: number | null
+    updated: Date | null
+    status: string | null
   }
 
   export type SubscriptionDetailsMaxAggregateOutputType = {
@@ -3061,6 +3146,8 @@ export namespace Prisma {
     available_amount: number | null
     total_dias_contrato: number | null
     dias_decorridos: number | null
+    updated: Date | null
+    status: string | null
   }
 
   export type SubscriptionDetailsCountAggregateOutputType = {
@@ -3085,6 +3172,8 @@ export namespace Prisma {
     available_amount: number
     total_dias_contrato: number
     dias_decorridos: number
+    updated: number
+    status: number
     _all: number
   }
 
@@ -3129,6 +3218,8 @@ export namespace Prisma {
     available_amount?: true
     total_dias_contrato?: true
     dias_decorridos?: true
+    updated?: true
+    status?: true
   }
 
   export type SubscriptionDetailsMaxAggregateInputType = {
@@ -3153,6 +3244,8 @@ export namespace Prisma {
     available_amount?: true
     total_dias_contrato?: true
     dias_decorridos?: true
+    updated?: true
+    status?: true
   }
 
   export type SubscriptionDetailsCountAggregateInputType = {
@@ -3177,6 +3270,8 @@ export namespace Prisma {
     available_amount?: true
     total_dias_contrato?: true
     dias_decorridos?: true
+    updated?: true
+    status?: true
     _all?: true
   }
 
@@ -3288,6 +3383,8 @@ export namespace Prisma {
     available_amount: number | null
     total_dias_contrato: number | null
     dias_decorridos: number | null
+    updated: Date | null
+    status: string | null
     _count: SubscriptionDetailsCountAggregateOutputType | null
     _avg: SubscriptionDetailsAvgAggregateOutputType | null
     _sum: SubscriptionDetailsSumAggregateOutputType | null
@@ -3331,6 +3428,8 @@ export namespace Prisma {
     available_amount?: boolean
     total_dias_contrato?: boolean
     dias_decorridos?: boolean
+    updated?: boolean
+    status?: boolean
   }, ExtArgs["result"]["subscriptionDetails"]>
 
 
@@ -3357,9 +3456,11 @@ export namespace Prisma {
     available_amount?: boolean
     total_dias_contrato?: boolean
     dias_decorridos?: boolean
+    updated?: boolean
+    status?: boolean
   }
 
-  export type SubscriptionDetailsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"tenancy_name" | "tenancy_id" | "home_region" | "subscription_id" | "service_name" | "currency" | "time_start" | "time_end" | "admin_email" | "buyer_email" | "end_user_customer" | "payment_method" | "pricing_model" | "product" | "is_having_usage" | "total_value" | "used_amount" | "line_net_amount" | "available_amount" | "total_dias_contrato" | "dias_decorridos", ExtArgs["result"]["subscriptionDetails"]>
+  export type SubscriptionDetailsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"tenancy_name" | "tenancy_id" | "home_region" | "subscription_id" | "service_name" | "currency" | "time_start" | "time_end" | "admin_email" | "buyer_email" | "end_user_customer" | "payment_method" | "pricing_model" | "product" | "is_having_usage" | "total_value" | "used_amount" | "line_net_amount" | "available_amount" | "total_dias_contrato" | "dias_decorridos" | "updated" | "status", ExtArgs["result"]["subscriptionDetails"]>
 
   export type $SubscriptionDetailsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "SubscriptionDetails"
@@ -3386,6 +3487,8 @@ export namespace Prisma {
       available_amount: number | null
       total_dias_contrato: number | null
       dias_decorridos: number | null
+      updated: Date | null
+      status: string | null
     }, ExtArgs["result"]["subscriptionDetails"]>
     composites: {}
   }
@@ -3776,6 +3879,8 @@ export namespace Prisma {
     readonly available_amount: FieldRef<"SubscriptionDetails", 'Float'>
     readonly total_dias_contrato: FieldRef<"SubscriptionDetails", 'Int'>
     readonly dias_decorridos: FieldRef<"SubscriptionDetails", 'Int'>
+    readonly updated: FieldRef<"SubscriptionDetails", 'DateTime'>
+    readonly status: FieldRef<"SubscriptionDetails", 'String'>
   }
     
 
@@ -10191,7 +10296,6 @@ export namespace Prisma {
   }
 
   export type NetworkEventsMinAggregateOutputType = {
-    id: number | null
     eventType: string | null
     eventTime: Date | null
     source: string | null
@@ -10211,10 +10315,10 @@ export namespace Prisma {
     tenancyName: string | null
     isCheck: boolean | null
     ticket: string | null
+    id: number | null
   }
 
   export type NetworkEventsMaxAggregateOutputType = {
-    id: number | null
     eventType: string | null
     eventTime: Date | null
     source: string | null
@@ -10234,10 +10338,10 @@ export namespace Prisma {
     tenancyName: string | null
     isCheck: boolean | null
     ticket: string | null
+    id: number | null
   }
 
   export type NetworkEventsCountAggregateOutputType = {
-    id: number
     eventType: number
     eventTime: number
     source: number
@@ -10257,6 +10361,7 @@ export namespace Prisma {
     tenancyName: number
     isCheck: number
     ticket: number
+    id: number
     _all: number
   }
 
@@ -10270,7 +10375,6 @@ export namespace Prisma {
   }
 
   export type NetworkEventsMinAggregateInputType = {
-    id?: true
     eventType?: true
     eventTime?: true
     source?: true
@@ -10290,10 +10394,10 @@ export namespace Prisma {
     tenancyName?: true
     isCheck?: true
     ticket?: true
+    id?: true
   }
 
   export type NetworkEventsMaxAggregateInputType = {
-    id?: true
     eventType?: true
     eventTime?: true
     source?: true
@@ -10313,10 +10417,10 @@ export namespace Prisma {
     tenancyName?: true
     isCheck?: true
     ticket?: true
+    id?: true
   }
 
   export type NetworkEventsCountAggregateInputType = {
-    id?: true
     eventType?: true
     eventTime?: true
     source?: true
@@ -10336,6 +10440,7 @@ export namespace Prisma {
     tenancyName?: true
     isCheck?: true
     ticket?: true
+    id?: true
     _all?: true
   }
 
@@ -10426,7 +10531,6 @@ export namespace Prisma {
   }
 
   export type NetworkEventsGroupByOutputType = {
-    id: number
     eventType: string | null
     eventTime: Date | null
     source: string | null
@@ -10446,6 +10550,7 @@ export namespace Prisma {
     tenancyName: string | null
     isCheck: boolean | null
     ticket: string | null
+    id: number
     _count: NetworkEventsCountAggregateOutputType | null
     _avg: NetworkEventsAvgAggregateOutputType | null
     _sum: NetworkEventsSumAggregateOutputType | null
@@ -10468,7 +10573,6 @@ export namespace Prisma {
 
 
   export type networkEventsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
     eventType?: boolean
     eventTime?: boolean
     source?: boolean
@@ -10488,12 +10592,12 @@ export namespace Prisma {
     tenancyName?: boolean
     isCheck?: boolean
     ticket?: boolean
+    id?: boolean
   }, ExtArgs["result"]["networkEvents"]>
 
 
 
   export type networkEventsSelectScalar = {
-    id?: boolean
     eventType?: boolean
     eventTime?: boolean
     source?: boolean
@@ -10513,15 +10617,15 @@ export namespace Prisma {
     tenancyName?: boolean
     isCheck?: boolean
     ticket?: boolean
+    id?: boolean
   }
 
-  export type networkEventsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "eventType" | "eventTime" | "source" | "opcRequestId" | "rawEvent" | "compartmentId" | "compartmentName" | "eventName" | "message" | "action" | "principalName" | "ipAddress" | "routeRules" | "createdBy" | "createdOn" | "createdAt" | "tenancyName" | "isCheck" | "ticket", ExtArgs["result"]["networkEvents"]>
+  export type networkEventsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"eventType" | "eventTime" | "source" | "opcRequestId" | "rawEvent" | "compartmentId" | "compartmentName" | "eventName" | "message" | "action" | "principalName" | "ipAddress" | "routeRules" | "createdBy" | "createdOn" | "createdAt" | "tenancyName" | "isCheck" | "ticket" | "id", ExtArgs["result"]["networkEvents"]>
 
   export type $networkEventsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "networkEvents"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
-      id: number
       eventType: string | null
       eventTime: Date | null
       source: string | null
@@ -10541,6 +10645,7 @@ export namespace Prisma {
       tenancyName: string | null
       isCheck: boolean | null
       ticket: string | null
+      id: number
     }, ExtArgs["result"]["networkEvents"]>
     composites: {}
   }
@@ -10624,8 +10729,8 @@ export namespace Prisma {
      * // Get first 10 NetworkEvents
      * const networkEvents = await prisma.networkEvents.findMany({ take: 10 })
      * 
-     * // Only select the `id`
-     * const networkEventsWithIdOnly = await prisma.networkEvents.findMany({ select: { id: true } })
+     * // Only select the `eventType`
+     * const networkEventsWithEventTypeOnly = await prisma.networkEvents.findMany({ select: { eventType: true } })
      * 
      */
     findMany<T extends networkEventsFindManyArgs>(args?: SelectSubset<T, networkEventsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$networkEventsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -10910,7 +11015,6 @@ export namespace Prisma {
    * Fields of the networkEvents model
    */
   interface networkEventsFieldRefs {
-    readonly id: FieldRef<"networkEvents", 'Int'>
     readonly eventType: FieldRef<"networkEvents", 'String'>
     readonly eventTime: FieldRef<"networkEvents", 'DateTime'>
     readonly source: FieldRef<"networkEvents", 'String'>
@@ -10930,6 +11034,7 @@ export namespace Prisma {
     readonly tenancyName: FieldRef<"networkEvents", 'String'>
     readonly isCheck: FieldRef<"networkEvents", 'Boolean'>
     readonly ticket: FieldRef<"networkEvents", 'String'>
+    readonly id: FieldRef<"networkEvents", 'Int'>
   }
     
 
@@ -11289,6 +11394,7 @@ export namespace Prisma {
     is_boot_volume: string | null
     is_orfao: string | null
     custo_mes: number | null
+    updated: Date | null
   }
 
   export type BlockVolumeMaxAggregateOutputType = {
@@ -11305,6 +11411,7 @@ export namespace Prisma {
     is_boot_volume: string | null
     is_orfao: string | null
     custo_mes: number | null
+    updated: Date | null
   }
 
   export type BlockVolumeCountAggregateOutputType = {
@@ -11321,6 +11428,7 @@ export namespace Prisma {
     is_boot_volume: number
     is_orfao: number
     custo_mes: number
+    updated: number
     _all: number
   }
 
@@ -11351,6 +11459,7 @@ export namespace Prisma {
     is_boot_volume?: true
     is_orfao?: true
     custo_mes?: true
+    updated?: true
   }
 
   export type BlockVolumeMaxAggregateInputType = {
@@ -11367,6 +11476,7 @@ export namespace Prisma {
     is_boot_volume?: true
     is_orfao?: true
     custo_mes?: true
+    updated?: true
   }
 
   export type BlockVolumeCountAggregateInputType = {
@@ -11383,6 +11493,7 @@ export namespace Prisma {
     is_boot_volume?: true
     is_orfao?: true
     custo_mes?: true
+    updated?: true
     _all?: true
   }
 
@@ -11486,6 +11597,7 @@ export namespace Prisma {
     is_boot_volume: string | null
     is_orfao: string | null
     custo_mes: number | null
+    updated: Date | null
     _count: BlockVolumeCountAggregateOutputType | null
     _avg: BlockVolumeAvgAggregateOutputType | null
     _sum: BlockVolumeSumAggregateOutputType | null
@@ -11521,6 +11633,7 @@ export namespace Prisma {
     is_boot_volume?: boolean
     is_orfao?: boolean
     custo_mes?: boolean
+    updated?: boolean
   }, ExtArgs["result"]["blockVolume"]>
 
 
@@ -11539,9 +11652,10 @@ export namespace Prisma {
     is_boot_volume?: boolean
     is_orfao?: boolean
     custo_mes?: boolean
+    updated?: boolean
   }
 
-  export type BlockVolumeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"tenancy_name" | "tenancy_id" | "availability_domain" | "compartment_id" | "display_name" | "id" | "lifecycle_state" | "size_in_gbs" | "time_created" | "vpus_per_gb" | "is_boot_volume" | "is_orfao" | "custo_mes", ExtArgs["result"]["blockVolume"]>
+  export type BlockVolumeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"tenancy_name" | "tenancy_id" | "availability_domain" | "compartment_id" | "display_name" | "id" | "lifecycle_state" | "size_in_gbs" | "time_created" | "vpus_per_gb" | "is_boot_volume" | "is_orfao" | "custo_mes" | "updated", ExtArgs["result"]["blockVolume"]>
 
   export type $BlockVolumePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "BlockVolume"
@@ -11560,6 +11674,7 @@ export namespace Prisma {
       is_boot_volume: string | null
       is_orfao: string | null
       custo_mes: number | null
+      updated: Date | null
     }, ExtArgs["result"]["blockVolume"]>
     composites: {}
   }
@@ -11942,6 +12057,7 @@ export namespace Prisma {
     readonly is_boot_volume: FieldRef<"BlockVolume", 'String'>
     readonly is_orfao: FieldRef<"BlockVolume", 'String'>
     readonly custo_mes: FieldRef<"BlockVolume", 'Float'>
+    readonly updated: FieldRef<"BlockVolume", 'DateTime'>
   }
     
 
@@ -16261,6 +16377,948 @@ export namespace Prisma {
 
 
   /**
+   * Model SubscriptionCommit
+   */
+
+  export type AggregateSubscriptionCommit = {
+    _count: SubscriptionCommitCountAggregateOutputType | null
+    _avg: SubscriptionCommitAvgAggregateOutputType | null
+    _sum: SubscriptionCommitSumAggregateOutputType | null
+    _min: SubscriptionCommitMinAggregateOutputType | null
+    _max: SubscriptionCommitMaxAggregateOutputType | null
+  }
+
+  export type SubscriptionCommitAvgAggregateOutputType = {
+    total_used: number | null
+    dias_decorridos: number | null
+  }
+
+  export type SubscriptionCommitSumAggregateOutputType = {
+    total_used: number | null
+    dias_decorridos: number | null
+  }
+
+  export type SubscriptionCommitMinAggregateOutputType = {
+    tenancy_name: string | null
+    tenancy_id: string | null
+    time_started_commit: Date | null
+    time_ended_commit: Date | null
+    total_used: number | null
+    updated: Date | null
+    dias_decorridos: number | null
+  }
+
+  export type SubscriptionCommitMaxAggregateOutputType = {
+    tenancy_name: string | null
+    tenancy_id: string | null
+    time_started_commit: Date | null
+    time_ended_commit: Date | null
+    total_used: number | null
+    updated: Date | null
+    dias_decorridos: number | null
+  }
+
+  export type SubscriptionCommitCountAggregateOutputType = {
+    tenancy_name: number
+    tenancy_id: number
+    time_started_commit: number
+    time_ended_commit: number
+    total_used: number
+    updated: number
+    dias_decorridos: number
+    _all: number
+  }
+
+
+  export type SubscriptionCommitAvgAggregateInputType = {
+    total_used?: true
+    dias_decorridos?: true
+  }
+
+  export type SubscriptionCommitSumAggregateInputType = {
+    total_used?: true
+    dias_decorridos?: true
+  }
+
+  export type SubscriptionCommitMinAggregateInputType = {
+    tenancy_name?: true
+    tenancy_id?: true
+    time_started_commit?: true
+    time_ended_commit?: true
+    total_used?: true
+    updated?: true
+    dias_decorridos?: true
+  }
+
+  export type SubscriptionCommitMaxAggregateInputType = {
+    tenancy_name?: true
+    tenancy_id?: true
+    time_started_commit?: true
+    time_ended_commit?: true
+    total_used?: true
+    updated?: true
+    dias_decorridos?: true
+  }
+
+  export type SubscriptionCommitCountAggregateInputType = {
+    tenancy_name?: true
+    tenancy_id?: true
+    time_started_commit?: true
+    time_ended_commit?: true
+    total_used?: true
+    updated?: true
+    dias_decorridos?: true
+    _all?: true
+  }
+
+  export type SubscriptionCommitAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which SubscriptionCommit to aggregate.
+     */
+    where?: SubscriptionCommitWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SubscriptionCommits to fetch.
+     */
+    orderBy?: SubscriptionCommitOrderByWithRelationInput | SubscriptionCommitOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: SubscriptionCommitWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SubscriptionCommits from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SubscriptionCommits.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned SubscriptionCommits
+    **/
+    _count?: true | SubscriptionCommitCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: SubscriptionCommitAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: SubscriptionCommitSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: SubscriptionCommitMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: SubscriptionCommitMaxAggregateInputType
+  }
+
+  export type GetSubscriptionCommitAggregateType<T extends SubscriptionCommitAggregateArgs> = {
+        [P in keyof T & keyof AggregateSubscriptionCommit]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateSubscriptionCommit[P]>
+      : GetScalarType<T[P], AggregateSubscriptionCommit[P]>
+  }
+
+
+
+
+  export type SubscriptionCommitGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SubscriptionCommitWhereInput
+    orderBy?: SubscriptionCommitOrderByWithAggregationInput | SubscriptionCommitOrderByWithAggregationInput[]
+    by: SubscriptionCommitScalarFieldEnum[] | SubscriptionCommitScalarFieldEnum
+    having?: SubscriptionCommitScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: SubscriptionCommitCountAggregateInputType | true
+    _avg?: SubscriptionCommitAvgAggregateInputType
+    _sum?: SubscriptionCommitSumAggregateInputType
+    _min?: SubscriptionCommitMinAggregateInputType
+    _max?: SubscriptionCommitMaxAggregateInputType
+  }
+
+  export type SubscriptionCommitGroupByOutputType = {
+    tenancy_name: string
+    tenancy_id: string | null
+    time_started_commit: Date
+    time_ended_commit: Date | null
+    total_used: number | null
+    updated: Date
+    dias_decorridos: number | null
+    _count: SubscriptionCommitCountAggregateOutputType | null
+    _avg: SubscriptionCommitAvgAggregateOutputType | null
+    _sum: SubscriptionCommitSumAggregateOutputType | null
+    _min: SubscriptionCommitMinAggregateOutputType | null
+    _max: SubscriptionCommitMaxAggregateOutputType | null
+  }
+
+  type GetSubscriptionCommitGroupByPayload<T extends SubscriptionCommitGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<SubscriptionCommitGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof SubscriptionCommitGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], SubscriptionCommitGroupByOutputType[P]>
+            : GetScalarType<T[P], SubscriptionCommitGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type SubscriptionCommitSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    tenancy_name?: boolean
+    tenancy_id?: boolean
+    time_started_commit?: boolean
+    time_ended_commit?: boolean
+    total_used?: boolean
+    updated?: boolean
+    dias_decorridos?: boolean
+  }, ExtArgs["result"]["subscriptionCommit"]>
+
+
+
+  export type SubscriptionCommitSelectScalar = {
+    tenancy_name?: boolean
+    tenancy_id?: boolean
+    time_started_commit?: boolean
+    time_ended_commit?: boolean
+    total_used?: boolean
+    updated?: boolean
+    dias_decorridos?: boolean
+  }
+
+  export type SubscriptionCommitOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"tenancy_name" | "tenancy_id" | "time_started_commit" | "time_ended_commit" | "total_used" | "updated" | "dias_decorridos", ExtArgs["result"]["subscriptionCommit"]>
+
+  export type $SubscriptionCommitPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "SubscriptionCommit"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      tenancy_name: string
+      tenancy_id: string | null
+      time_started_commit: Date
+      time_ended_commit: Date | null
+      total_used: number | null
+      updated: Date
+      dias_decorridos: number | null
+    }, ExtArgs["result"]["subscriptionCommit"]>
+    composites: {}
+  }
+
+  type SubscriptionCommitGetPayload<S extends boolean | null | undefined | SubscriptionCommitDefaultArgs> = $Result.GetResult<Prisma.$SubscriptionCommitPayload, S>
+
+  type SubscriptionCommitCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<SubscriptionCommitFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: SubscriptionCommitCountAggregateInputType | true
+    }
+
+  export interface SubscriptionCommitDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['SubscriptionCommit'], meta: { name: 'SubscriptionCommit' } }
+    /**
+     * Find zero or one SubscriptionCommit that matches the filter.
+     * @param {SubscriptionCommitFindUniqueArgs} args - Arguments to find a SubscriptionCommit
+     * @example
+     * // Get one SubscriptionCommit
+     * const subscriptionCommit = await prisma.subscriptionCommit.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends SubscriptionCommitFindUniqueArgs>(args: SelectSubset<T, SubscriptionCommitFindUniqueArgs<ExtArgs>>): Prisma__SubscriptionCommitClient<$Result.GetResult<Prisma.$SubscriptionCommitPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one SubscriptionCommit that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {SubscriptionCommitFindUniqueOrThrowArgs} args - Arguments to find a SubscriptionCommit
+     * @example
+     * // Get one SubscriptionCommit
+     * const subscriptionCommit = await prisma.subscriptionCommit.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends SubscriptionCommitFindUniqueOrThrowArgs>(args: SelectSubset<T, SubscriptionCommitFindUniqueOrThrowArgs<ExtArgs>>): Prisma__SubscriptionCommitClient<$Result.GetResult<Prisma.$SubscriptionCommitPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first SubscriptionCommit that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SubscriptionCommitFindFirstArgs} args - Arguments to find a SubscriptionCommit
+     * @example
+     * // Get one SubscriptionCommit
+     * const subscriptionCommit = await prisma.subscriptionCommit.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends SubscriptionCommitFindFirstArgs>(args?: SelectSubset<T, SubscriptionCommitFindFirstArgs<ExtArgs>>): Prisma__SubscriptionCommitClient<$Result.GetResult<Prisma.$SubscriptionCommitPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first SubscriptionCommit that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SubscriptionCommitFindFirstOrThrowArgs} args - Arguments to find a SubscriptionCommit
+     * @example
+     * // Get one SubscriptionCommit
+     * const subscriptionCommit = await prisma.subscriptionCommit.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends SubscriptionCommitFindFirstOrThrowArgs>(args?: SelectSubset<T, SubscriptionCommitFindFirstOrThrowArgs<ExtArgs>>): Prisma__SubscriptionCommitClient<$Result.GetResult<Prisma.$SubscriptionCommitPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more SubscriptionCommits that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SubscriptionCommitFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all SubscriptionCommits
+     * const subscriptionCommits = await prisma.subscriptionCommit.findMany()
+     * 
+     * // Get first 10 SubscriptionCommits
+     * const subscriptionCommits = await prisma.subscriptionCommit.findMany({ take: 10 })
+     * 
+     * // Only select the `tenancy_name`
+     * const subscriptionCommitWithTenancy_nameOnly = await prisma.subscriptionCommit.findMany({ select: { tenancy_name: true } })
+     * 
+     */
+    findMany<T extends SubscriptionCommitFindManyArgs>(args?: SelectSubset<T, SubscriptionCommitFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SubscriptionCommitPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a SubscriptionCommit.
+     * @param {SubscriptionCommitCreateArgs} args - Arguments to create a SubscriptionCommit.
+     * @example
+     * // Create one SubscriptionCommit
+     * const SubscriptionCommit = await prisma.subscriptionCommit.create({
+     *   data: {
+     *     // ... data to create a SubscriptionCommit
+     *   }
+     * })
+     * 
+     */
+    create<T extends SubscriptionCommitCreateArgs>(args: SelectSubset<T, SubscriptionCommitCreateArgs<ExtArgs>>): Prisma__SubscriptionCommitClient<$Result.GetResult<Prisma.$SubscriptionCommitPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many SubscriptionCommits.
+     * @param {SubscriptionCommitCreateManyArgs} args - Arguments to create many SubscriptionCommits.
+     * @example
+     * // Create many SubscriptionCommits
+     * const subscriptionCommit = await prisma.subscriptionCommit.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends SubscriptionCommitCreateManyArgs>(args?: SelectSubset<T, SubscriptionCommitCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a SubscriptionCommit.
+     * @param {SubscriptionCommitDeleteArgs} args - Arguments to delete one SubscriptionCommit.
+     * @example
+     * // Delete one SubscriptionCommit
+     * const SubscriptionCommit = await prisma.subscriptionCommit.delete({
+     *   where: {
+     *     // ... filter to delete one SubscriptionCommit
+     *   }
+     * })
+     * 
+     */
+    delete<T extends SubscriptionCommitDeleteArgs>(args: SelectSubset<T, SubscriptionCommitDeleteArgs<ExtArgs>>): Prisma__SubscriptionCommitClient<$Result.GetResult<Prisma.$SubscriptionCommitPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one SubscriptionCommit.
+     * @param {SubscriptionCommitUpdateArgs} args - Arguments to update one SubscriptionCommit.
+     * @example
+     * // Update one SubscriptionCommit
+     * const subscriptionCommit = await prisma.subscriptionCommit.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends SubscriptionCommitUpdateArgs>(args: SelectSubset<T, SubscriptionCommitUpdateArgs<ExtArgs>>): Prisma__SubscriptionCommitClient<$Result.GetResult<Prisma.$SubscriptionCommitPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more SubscriptionCommits.
+     * @param {SubscriptionCommitDeleteManyArgs} args - Arguments to filter SubscriptionCommits to delete.
+     * @example
+     * // Delete a few SubscriptionCommits
+     * const { count } = await prisma.subscriptionCommit.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends SubscriptionCommitDeleteManyArgs>(args?: SelectSubset<T, SubscriptionCommitDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more SubscriptionCommits.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SubscriptionCommitUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many SubscriptionCommits
+     * const subscriptionCommit = await prisma.subscriptionCommit.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends SubscriptionCommitUpdateManyArgs>(args: SelectSubset<T, SubscriptionCommitUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one SubscriptionCommit.
+     * @param {SubscriptionCommitUpsertArgs} args - Arguments to update or create a SubscriptionCommit.
+     * @example
+     * // Update or create a SubscriptionCommit
+     * const subscriptionCommit = await prisma.subscriptionCommit.upsert({
+     *   create: {
+     *     // ... data to create a SubscriptionCommit
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the SubscriptionCommit we want to update
+     *   }
+     * })
+     */
+    upsert<T extends SubscriptionCommitUpsertArgs>(args: SelectSubset<T, SubscriptionCommitUpsertArgs<ExtArgs>>): Prisma__SubscriptionCommitClient<$Result.GetResult<Prisma.$SubscriptionCommitPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of SubscriptionCommits.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SubscriptionCommitCountArgs} args - Arguments to filter SubscriptionCommits to count.
+     * @example
+     * // Count the number of SubscriptionCommits
+     * const count = await prisma.subscriptionCommit.count({
+     *   where: {
+     *     // ... the filter for the SubscriptionCommits we want to count
+     *   }
+     * })
+    **/
+    count<T extends SubscriptionCommitCountArgs>(
+      args?: Subset<T, SubscriptionCommitCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], SubscriptionCommitCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a SubscriptionCommit.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SubscriptionCommitAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends SubscriptionCommitAggregateArgs>(args: Subset<T, SubscriptionCommitAggregateArgs>): Prisma.PrismaPromise<GetSubscriptionCommitAggregateType<T>>
+
+    /**
+     * Group by SubscriptionCommit.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SubscriptionCommitGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends SubscriptionCommitGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: SubscriptionCommitGroupByArgs['orderBy'] }
+        : { orderBy?: SubscriptionCommitGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, SubscriptionCommitGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSubscriptionCommitGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the SubscriptionCommit model
+   */
+  readonly fields: SubscriptionCommitFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for SubscriptionCommit.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__SubscriptionCommitClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the SubscriptionCommit model
+   */
+  interface SubscriptionCommitFieldRefs {
+    readonly tenancy_name: FieldRef<"SubscriptionCommit", 'String'>
+    readonly tenancy_id: FieldRef<"SubscriptionCommit", 'String'>
+    readonly time_started_commit: FieldRef<"SubscriptionCommit", 'DateTime'>
+    readonly time_ended_commit: FieldRef<"SubscriptionCommit", 'DateTime'>
+    readonly total_used: FieldRef<"SubscriptionCommit", 'Float'>
+    readonly updated: FieldRef<"SubscriptionCommit", 'DateTime'>
+    readonly dias_decorridos: FieldRef<"SubscriptionCommit", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * SubscriptionCommit findUnique
+   */
+  export type SubscriptionCommitFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SubscriptionCommit
+     */
+    select?: SubscriptionCommitSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SubscriptionCommit
+     */
+    omit?: SubscriptionCommitOmit<ExtArgs> | null
+    /**
+     * Filter, which SubscriptionCommit to fetch.
+     */
+    where: SubscriptionCommitWhereUniqueInput
+  }
+
+  /**
+   * SubscriptionCommit findUniqueOrThrow
+   */
+  export type SubscriptionCommitFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SubscriptionCommit
+     */
+    select?: SubscriptionCommitSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SubscriptionCommit
+     */
+    omit?: SubscriptionCommitOmit<ExtArgs> | null
+    /**
+     * Filter, which SubscriptionCommit to fetch.
+     */
+    where: SubscriptionCommitWhereUniqueInput
+  }
+
+  /**
+   * SubscriptionCommit findFirst
+   */
+  export type SubscriptionCommitFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SubscriptionCommit
+     */
+    select?: SubscriptionCommitSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SubscriptionCommit
+     */
+    omit?: SubscriptionCommitOmit<ExtArgs> | null
+    /**
+     * Filter, which SubscriptionCommit to fetch.
+     */
+    where?: SubscriptionCommitWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SubscriptionCommits to fetch.
+     */
+    orderBy?: SubscriptionCommitOrderByWithRelationInput | SubscriptionCommitOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for SubscriptionCommits.
+     */
+    cursor?: SubscriptionCommitWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SubscriptionCommits from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SubscriptionCommits.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of SubscriptionCommits.
+     */
+    distinct?: SubscriptionCommitScalarFieldEnum | SubscriptionCommitScalarFieldEnum[]
+  }
+
+  /**
+   * SubscriptionCommit findFirstOrThrow
+   */
+  export type SubscriptionCommitFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SubscriptionCommit
+     */
+    select?: SubscriptionCommitSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SubscriptionCommit
+     */
+    omit?: SubscriptionCommitOmit<ExtArgs> | null
+    /**
+     * Filter, which SubscriptionCommit to fetch.
+     */
+    where?: SubscriptionCommitWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SubscriptionCommits to fetch.
+     */
+    orderBy?: SubscriptionCommitOrderByWithRelationInput | SubscriptionCommitOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for SubscriptionCommits.
+     */
+    cursor?: SubscriptionCommitWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SubscriptionCommits from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SubscriptionCommits.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of SubscriptionCommits.
+     */
+    distinct?: SubscriptionCommitScalarFieldEnum | SubscriptionCommitScalarFieldEnum[]
+  }
+
+  /**
+   * SubscriptionCommit findMany
+   */
+  export type SubscriptionCommitFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SubscriptionCommit
+     */
+    select?: SubscriptionCommitSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SubscriptionCommit
+     */
+    omit?: SubscriptionCommitOmit<ExtArgs> | null
+    /**
+     * Filter, which SubscriptionCommits to fetch.
+     */
+    where?: SubscriptionCommitWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SubscriptionCommits to fetch.
+     */
+    orderBy?: SubscriptionCommitOrderByWithRelationInput | SubscriptionCommitOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing SubscriptionCommits.
+     */
+    cursor?: SubscriptionCommitWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SubscriptionCommits from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SubscriptionCommits.
+     */
+    skip?: number
+    distinct?: SubscriptionCommitScalarFieldEnum | SubscriptionCommitScalarFieldEnum[]
+  }
+
+  /**
+   * SubscriptionCommit create
+   */
+  export type SubscriptionCommitCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SubscriptionCommit
+     */
+    select?: SubscriptionCommitSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SubscriptionCommit
+     */
+    omit?: SubscriptionCommitOmit<ExtArgs> | null
+    /**
+     * The data needed to create a SubscriptionCommit.
+     */
+    data?: XOR<SubscriptionCommitCreateInput, SubscriptionCommitUncheckedCreateInput>
+  }
+
+  /**
+   * SubscriptionCommit createMany
+   */
+  export type SubscriptionCommitCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many SubscriptionCommits.
+     */
+    data: SubscriptionCommitCreateManyInput | SubscriptionCommitCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * SubscriptionCommit update
+   */
+  export type SubscriptionCommitUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SubscriptionCommit
+     */
+    select?: SubscriptionCommitSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SubscriptionCommit
+     */
+    omit?: SubscriptionCommitOmit<ExtArgs> | null
+    /**
+     * The data needed to update a SubscriptionCommit.
+     */
+    data: XOR<SubscriptionCommitUpdateInput, SubscriptionCommitUncheckedUpdateInput>
+    /**
+     * Choose, which SubscriptionCommit to update.
+     */
+    where: SubscriptionCommitWhereUniqueInput
+  }
+
+  /**
+   * SubscriptionCommit updateMany
+   */
+  export type SubscriptionCommitUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update SubscriptionCommits.
+     */
+    data: XOR<SubscriptionCommitUpdateManyMutationInput, SubscriptionCommitUncheckedUpdateManyInput>
+    /**
+     * Filter which SubscriptionCommits to update
+     */
+    where?: SubscriptionCommitWhereInput
+    /**
+     * Limit how many SubscriptionCommits to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * SubscriptionCommit upsert
+   */
+  export type SubscriptionCommitUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SubscriptionCommit
+     */
+    select?: SubscriptionCommitSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SubscriptionCommit
+     */
+    omit?: SubscriptionCommitOmit<ExtArgs> | null
+    /**
+     * The filter to search for the SubscriptionCommit to update in case it exists.
+     */
+    where: SubscriptionCommitWhereUniqueInput
+    /**
+     * In case the SubscriptionCommit found by the `where` argument doesn't exist, create a new SubscriptionCommit with this data.
+     */
+    create: XOR<SubscriptionCommitCreateInput, SubscriptionCommitUncheckedCreateInput>
+    /**
+     * In case the SubscriptionCommit was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<SubscriptionCommitUpdateInput, SubscriptionCommitUncheckedUpdateInput>
+  }
+
+  /**
+   * SubscriptionCommit delete
+   */
+  export type SubscriptionCommitDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SubscriptionCommit
+     */
+    select?: SubscriptionCommitSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SubscriptionCommit
+     */
+    omit?: SubscriptionCommitOmit<ExtArgs> | null
+    /**
+     * Filter which SubscriptionCommit to delete.
+     */
+    where: SubscriptionCommitWhereUniqueInput
+  }
+
+  /**
+   * SubscriptionCommit deleteMany
+   */
+  export type SubscriptionCommitDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which SubscriptionCommits to delete
+     */
+    where?: SubscriptionCommitWhereInput
+    /**
+     * Limit how many SubscriptionCommits to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * SubscriptionCommit without action
+   */
+  export type SubscriptionCommitDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SubscriptionCommit
+     */
+    select?: SubscriptionCommitSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SubscriptionCommit
+     */
+    omit?: SubscriptionCommitOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -16317,7 +17375,9 @@ export namespace Prisma {
     line_net_amount: 'line_net_amount',
     available_amount: 'available_amount',
     total_dias_contrato: 'total_dias_contrato',
-    dias_decorridos: 'dias_decorridos'
+    dias_decorridos: 'dias_decorridos',
+    updated: 'updated',
+    status: 'status'
   };
 
   export type SubscriptionDetailsScalarFieldEnum = (typeof SubscriptionDetailsScalarFieldEnum)[keyof typeof SubscriptionDetailsScalarFieldEnum]
@@ -16441,7 +17501,6 @@ export namespace Prisma {
 
 
   export const NetworkEventsScalarFieldEnum: {
-    id: 'id',
     eventType: 'eventType',
     eventTime: 'eventTime',
     source: 'source',
@@ -16460,7 +17519,8 @@ export namespace Prisma {
     createdAt: 'createdAt',
     tenancyName: 'tenancyName',
     isCheck: 'isCheck',
-    ticket: 'ticket'
+    ticket: 'ticket',
+    id: 'id'
   };
 
   export type NetworkEventsScalarFieldEnum = (typeof NetworkEventsScalarFieldEnum)[keyof typeof NetworkEventsScalarFieldEnum]
@@ -16479,7 +17539,8 @@ export namespace Prisma {
     vpus_per_gb: 'vpus_per_gb',
     is_boot_volume: 'is_boot_volume',
     is_orfao: 'is_orfao',
-    custo_mes: 'custo_mes'
+    custo_mes: 'custo_mes',
+    updated: 'updated'
   };
 
   export type BlockVolumeScalarFieldEnum = (typeof BlockVolumeScalarFieldEnum)[keyof typeof BlockVolumeScalarFieldEnum]
@@ -16556,6 +17617,19 @@ export namespace Prisma {
   export type VolumesBackupScalarFieldEnum = (typeof VolumesBackupScalarFieldEnum)[keyof typeof VolumesBackupScalarFieldEnum]
 
 
+  export const SubscriptionCommitScalarFieldEnum: {
+    tenancy_name: 'tenancy_name',
+    tenancy_id: 'tenancy_id',
+    time_started_commit: 'time_started_commit',
+    time_ended_commit: 'time_ended_commit',
+    total_used: 'total_used',
+    updated: 'updated',
+    dias_decorridos: 'dias_decorridos'
+  };
+
+  export type SubscriptionCommitScalarFieldEnum = (typeof SubscriptionCommitScalarFieldEnum)[keyof typeof SubscriptionCommitScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -16603,7 +17677,8 @@ export namespace Prisma {
     payment_method: 'payment_method',
     pricing_model: 'pricing_model',
     product: 'product',
-    is_having_usage: 'is_having_usage'
+    is_having_usage: 'is_having_usage',
+    status: 'status'
   };
 
   export type SubscriptionDetailsOrderByRelevanceFieldEnum = (typeof SubscriptionDetailsOrderByRelevanceFieldEnum)[keyof typeof SubscriptionDetailsOrderByRelevanceFieldEnum]
@@ -16777,6 +17852,14 @@ export namespace Prisma {
   };
 
   export type VolumesBackupOrderByRelevanceFieldEnum = (typeof VolumesBackupOrderByRelevanceFieldEnum)[keyof typeof VolumesBackupOrderByRelevanceFieldEnum]
+
+
+  export const SubscriptionCommitOrderByRelevanceFieldEnum: {
+    tenancy_name: 'tenancy_name',
+    tenancy_id: 'tenancy_id'
+  };
+
+  export type SubscriptionCommitOrderByRelevanceFieldEnum = (typeof SubscriptionCommitOrderByRelevanceFieldEnum)[keyof typeof SubscriptionCommitOrderByRelevanceFieldEnum]
 
 
   /**
@@ -16971,6 +18054,8 @@ export namespace Prisma {
     available_amount?: FloatNullableFilter<"SubscriptionDetails"> | number | null
     total_dias_contrato?: IntNullableFilter<"SubscriptionDetails"> | number | null
     dias_decorridos?: IntNullableFilter<"SubscriptionDetails"> | number | null
+    updated?: DateTimeNullableFilter<"SubscriptionDetails"> | Date | string | null
+    status?: StringNullableFilter<"SubscriptionDetails"> | string | null
   }
 
   export type SubscriptionDetailsOrderByWithRelationInput = {
@@ -16995,6 +18080,8 @@ export namespace Prisma {
     available_amount?: SortOrderInput | SortOrder
     total_dias_contrato?: SortOrderInput | SortOrder
     dias_decorridos?: SortOrderInput | SortOrder
+    updated?: SortOrderInput | SortOrder
+    status?: SortOrderInput | SortOrder
     _relevance?: SubscriptionDetailsOrderByRelevanceInput
   }
 
@@ -17024,6 +18111,8 @@ export namespace Prisma {
     available_amount?: FloatNullableFilter<"SubscriptionDetails"> | number | null
     total_dias_contrato?: IntNullableFilter<"SubscriptionDetails"> | number | null
     dias_decorridos?: IntNullableFilter<"SubscriptionDetails"> | number | null
+    updated?: DateTimeNullableFilter<"SubscriptionDetails"> | Date | string | null
+    status?: StringNullableFilter<"SubscriptionDetails"> | string | null
   }, "tenancy_id_subscription_id_time_start">
 
   export type SubscriptionDetailsOrderByWithAggregationInput = {
@@ -17048,6 +18137,8 @@ export namespace Prisma {
     available_amount?: SortOrderInput | SortOrder
     total_dias_contrato?: SortOrderInput | SortOrder
     dias_decorridos?: SortOrderInput | SortOrder
+    updated?: SortOrderInput | SortOrder
+    status?: SortOrderInput | SortOrder
     _count?: SubscriptionDetailsCountOrderByAggregateInput
     _avg?: SubscriptionDetailsAvgOrderByAggregateInput
     _max?: SubscriptionDetailsMaxOrderByAggregateInput
@@ -17080,6 +18171,8 @@ export namespace Prisma {
     available_amount?: FloatNullableWithAggregatesFilter<"SubscriptionDetails"> | number | null
     total_dias_contrato?: IntNullableWithAggregatesFilter<"SubscriptionDetails"> | number | null
     dias_decorridos?: IntNullableWithAggregatesFilter<"SubscriptionDetails"> | number | null
+    updated?: DateTimeNullableWithAggregatesFilter<"SubscriptionDetails"> | Date | string | null
+    status?: StringNullableWithAggregatesFilter<"SubscriptionDetails"> | string | null
   }
 
   export type TenancyDetailsWhereInput = {
@@ -17673,7 +18766,6 @@ export namespace Prisma {
     AND?: networkEventsWhereInput | networkEventsWhereInput[]
     OR?: networkEventsWhereInput[]
     NOT?: networkEventsWhereInput | networkEventsWhereInput[]
-    id?: IntFilter<"networkEvents"> | number
     eventType?: StringNullableFilter<"networkEvents"> | string | null
     eventTime?: DateTimeNullableFilter<"networkEvents"> | Date | string | null
     source?: StringNullableFilter<"networkEvents"> | string | null
@@ -17693,10 +18785,10 @@ export namespace Prisma {
     tenancyName?: StringNullableFilter<"networkEvents"> | string | null
     isCheck?: BoolNullableFilter<"networkEvents"> | boolean | null
     ticket?: StringNullableFilter<"networkEvents"> | string | null
+    id?: IntFilter<"networkEvents"> | number
   }
 
   export type networkEventsOrderByWithRelationInput = {
-    id?: SortOrder
     eventType?: SortOrderInput | SortOrder
     eventTime?: SortOrderInput | SortOrder
     source?: SortOrderInput | SortOrder
@@ -17716,12 +18808,13 @@ export namespace Prisma {
     tenancyName?: SortOrderInput | SortOrder
     isCheck?: SortOrderInput | SortOrder
     ticket?: SortOrderInput | SortOrder
+    id?: SortOrder
     _relevance?: networkEventsOrderByRelevanceInput
   }
 
   export type networkEventsWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
     opcRequestId?: string
+    id?: number
     AND?: networkEventsWhereInput | networkEventsWhereInput[]
     OR?: networkEventsWhereInput[]
     NOT?: networkEventsWhereInput | networkEventsWhereInput[]
@@ -17746,7 +18839,6 @@ export namespace Prisma {
   }, "id" | "opcRequestId">
 
   export type networkEventsOrderByWithAggregationInput = {
-    id?: SortOrder
     eventType?: SortOrderInput | SortOrder
     eventTime?: SortOrderInput | SortOrder
     source?: SortOrderInput | SortOrder
@@ -17766,6 +18858,7 @@ export namespace Prisma {
     tenancyName?: SortOrderInput | SortOrder
     isCheck?: SortOrderInput | SortOrder
     ticket?: SortOrderInput | SortOrder
+    id?: SortOrder
     _count?: networkEventsCountOrderByAggregateInput
     _avg?: networkEventsAvgOrderByAggregateInput
     _max?: networkEventsMaxOrderByAggregateInput
@@ -17777,7 +18870,6 @@ export namespace Prisma {
     AND?: networkEventsScalarWhereWithAggregatesInput | networkEventsScalarWhereWithAggregatesInput[]
     OR?: networkEventsScalarWhereWithAggregatesInput[]
     NOT?: networkEventsScalarWhereWithAggregatesInput | networkEventsScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"networkEvents"> | number
     eventType?: StringNullableWithAggregatesFilter<"networkEvents"> | string | null
     eventTime?: DateTimeNullableWithAggregatesFilter<"networkEvents"> | Date | string | null
     source?: StringNullableWithAggregatesFilter<"networkEvents"> | string | null
@@ -17797,6 +18889,7 @@ export namespace Prisma {
     tenancyName?: StringNullableWithAggregatesFilter<"networkEvents"> | string | null
     isCheck?: BoolNullableWithAggregatesFilter<"networkEvents"> | boolean | null
     ticket?: StringNullableWithAggregatesFilter<"networkEvents"> | string | null
+    id?: IntWithAggregatesFilter<"networkEvents"> | number
   }
 
   export type BlockVolumeWhereInput = {
@@ -17816,6 +18909,7 @@ export namespace Prisma {
     is_boot_volume?: StringNullableFilter<"BlockVolume"> | string | null
     is_orfao?: StringNullableFilter<"BlockVolume"> | string | null
     custo_mes?: FloatNullableFilter<"BlockVolume"> | number | null
+    updated?: DateTimeNullableFilter<"BlockVolume"> | Date | string | null
   }
 
   export type BlockVolumeOrderByWithRelationInput = {
@@ -17832,6 +18926,7 @@ export namespace Prisma {
     is_boot_volume?: SortOrderInput | SortOrder
     is_orfao?: SortOrderInput | SortOrder
     custo_mes?: SortOrderInput | SortOrder
+    updated?: SortOrderInput | SortOrder
     _relevance?: BlockVolumeOrderByRelevanceInput
   }
 
@@ -17853,6 +18948,7 @@ export namespace Prisma {
     is_boot_volume?: StringNullableFilter<"BlockVolume"> | string | null
     is_orfao?: StringNullableFilter<"BlockVolume"> | string | null
     custo_mes?: FloatNullableFilter<"BlockVolume"> | number | null
+    updated?: DateTimeNullableFilter<"BlockVolume"> | Date | string | null
   }, "tenancy_id_id">
 
   export type BlockVolumeOrderByWithAggregationInput = {
@@ -17869,6 +18965,7 @@ export namespace Prisma {
     is_boot_volume?: SortOrderInput | SortOrder
     is_orfao?: SortOrderInput | SortOrder
     custo_mes?: SortOrderInput | SortOrder
+    updated?: SortOrderInput | SortOrder
     _count?: BlockVolumeCountOrderByAggregateInput
     _avg?: BlockVolumeAvgOrderByAggregateInput
     _max?: BlockVolumeMaxOrderByAggregateInput
@@ -17893,6 +18990,7 @@ export namespace Prisma {
     is_boot_volume?: StringNullableWithAggregatesFilter<"BlockVolume"> | string | null
     is_orfao?: StringNullableWithAggregatesFilter<"BlockVolume"> | string | null
     custo_mes?: FloatNullableWithAggregatesFilter<"BlockVolume"> | number | null
+    updated?: DateTimeNullableWithAggregatesFilter<"BlockVolume"> | Date | string | null
   }
 
   export type CustoPorServiceWhereInput = {
@@ -18252,6 +19350,72 @@ export namespace Prisma {
     custoBackupHora?: DecimalNullableWithAggregatesFilter<"VolumesBackup"> | Decimal | DecimalJsLike | number | string | null
   }
 
+  export type SubscriptionCommitWhereInput = {
+    AND?: SubscriptionCommitWhereInput | SubscriptionCommitWhereInput[]
+    OR?: SubscriptionCommitWhereInput[]
+    NOT?: SubscriptionCommitWhereInput | SubscriptionCommitWhereInput[]
+    tenancy_name?: StringFilter<"SubscriptionCommit"> | string
+    tenancy_id?: StringNullableFilter<"SubscriptionCommit"> | string | null
+    time_started_commit?: DateTimeFilter<"SubscriptionCommit"> | Date | string
+    time_ended_commit?: DateTimeNullableFilter<"SubscriptionCommit"> | Date | string | null
+    total_used?: FloatNullableFilter<"SubscriptionCommit"> | number | null
+    updated?: DateTimeFilter<"SubscriptionCommit"> | Date | string
+    dias_decorridos?: IntNullableFilter<"SubscriptionCommit"> | number | null
+  }
+
+  export type SubscriptionCommitOrderByWithRelationInput = {
+    tenancy_name?: SortOrder
+    tenancy_id?: SortOrderInput | SortOrder
+    time_started_commit?: SortOrder
+    time_ended_commit?: SortOrderInput | SortOrder
+    total_used?: SortOrderInput | SortOrder
+    updated?: SortOrder
+    dias_decorridos?: SortOrderInput | SortOrder
+    _relevance?: SubscriptionCommitOrderByRelevanceInput
+  }
+
+  export type SubscriptionCommitWhereUniqueInput = Prisma.AtLeast<{
+    tenancy_name_time_started_commit_updated?: SubscriptionCommitTenancy_nameTime_started_commitUpdatedCompoundUniqueInput
+    AND?: SubscriptionCommitWhereInput | SubscriptionCommitWhereInput[]
+    OR?: SubscriptionCommitWhereInput[]
+    NOT?: SubscriptionCommitWhereInput | SubscriptionCommitWhereInput[]
+    tenancy_name?: StringFilter<"SubscriptionCommit"> | string
+    tenancy_id?: StringNullableFilter<"SubscriptionCommit"> | string | null
+    time_started_commit?: DateTimeFilter<"SubscriptionCommit"> | Date | string
+    time_ended_commit?: DateTimeNullableFilter<"SubscriptionCommit"> | Date | string | null
+    total_used?: FloatNullableFilter<"SubscriptionCommit"> | number | null
+    updated?: DateTimeFilter<"SubscriptionCommit"> | Date | string
+    dias_decorridos?: IntNullableFilter<"SubscriptionCommit"> | number | null
+  }, "tenancy_name_time_started_commit_updated">
+
+  export type SubscriptionCommitOrderByWithAggregationInput = {
+    tenancy_name?: SortOrder
+    tenancy_id?: SortOrderInput | SortOrder
+    time_started_commit?: SortOrder
+    time_ended_commit?: SortOrderInput | SortOrder
+    total_used?: SortOrderInput | SortOrder
+    updated?: SortOrder
+    dias_decorridos?: SortOrderInput | SortOrder
+    _count?: SubscriptionCommitCountOrderByAggregateInput
+    _avg?: SubscriptionCommitAvgOrderByAggregateInput
+    _max?: SubscriptionCommitMaxOrderByAggregateInput
+    _min?: SubscriptionCommitMinOrderByAggregateInput
+    _sum?: SubscriptionCommitSumOrderByAggregateInput
+  }
+
+  export type SubscriptionCommitScalarWhereWithAggregatesInput = {
+    AND?: SubscriptionCommitScalarWhereWithAggregatesInput | SubscriptionCommitScalarWhereWithAggregatesInput[]
+    OR?: SubscriptionCommitScalarWhereWithAggregatesInput[]
+    NOT?: SubscriptionCommitScalarWhereWithAggregatesInput | SubscriptionCommitScalarWhereWithAggregatesInput[]
+    tenancy_name?: StringWithAggregatesFilter<"SubscriptionCommit"> | string
+    tenancy_id?: StringNullableWithAggregatesFilter<"SubscriptionCommit"> | string | null
+    time_started_commit?: DateTimeWithAggregatesFilter<"SubscriptionCommit"> | Date | string
+    time_ended_commit?: DateTimeNullableWithAggregatesFilter<"SubscriptionCommit"> | Date | string | null
+    total_used?: FloatNullableWithAggregatesFilter<"SubscriptionCommit"> | number | null
+    updated?: DateTimeWithAggregatesFilter<"SubscriptionCommit"> | Date | string
+    dias_decorridos?: IntNullableWithAggregatesFilter<"SubscriptionCommit"> | number | null
+  }
+
   export type ComputeInstancesCreateInput = {
     tenancy_name?: string | null
     tenancy_id?: string | null
@@ -18407,6 +19571,8 @@ export namespace Prisma {
     available_amount?: number | null
     total_dias_contrato?: number | null
     dias_decorridos?: number | null
+    updated?: Date | string | null
+    status?: string | null
   }
 
   export type SubscriptionDetailsUncheckedCreateInput = {
@@ -18431,6 +19597,8 @@ export namespace Prisma {
     available_amount?: number | null
     total_dias_contrato?: number | null
     dias_decorridos?: number | null
+    updated?: Date | string | null
+    status?: string | null
   }
 
   export type SubscriptionDetailsUpdateInput = {
@@ -18455,6 +19623,8 @@ export namespace Prisma {
     available_amount?: NullableFloatFieldUpdateOperationsInput | number | null
     total_dias_contrato?: NullableIntFieldUpdateOperationsInput | number | null
     dias_decorridos?: NullableIntFieldUpdateOperationsInput | number | null
+    updated?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type SubscriptionDetailsUncheckedUpdateInput = {
@@ -18479,6 +19649,8 @@ export namespace Prisma {
     available_amount?: NullableFloatFieldUpdateOperationsInput | number | null
     total_dias_contrato?: NullableIntFieldUpdateOperationsInput | number | null
     dias_decorridos?: NullableIntFieldUpdateOperationsInput | number | null
+    updated?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type SubscriptionDetailsCreateManyInput = {
@@ -18503,6 +19675,8 @@ export namespace Prisma {
     available_amount?: number | null
     total_dias_contrato?: number | null
     dias_decorridos?: number | null
+    updated?: Date | string | null
+    status?: string | null
   }
 
   export type SubscriptionDetailsUpdateManyMutationInput = {
@@ -18527,6 +19701,8 @@ export namespace Prisma {
     available_amount?: NullableFloatFieldUpdateOperationsInput | number | null
     total_dias_contrato?: NullableIntFieldUpdateOperationsInput | number | null
     dias_decorridos?: NullableIntFieldUpdateOperationsInput | number | null
+    updated?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type SubscriptionDetailsUncheckedUpdateManyInput = {
@@ -18551,6 +19727,8 @@ export namespace Prisma {
     available_amount?: NullableFloatFieldUpdateOperationsInput | number | null
     total_dias_contrato?: NullableIntFieldUpdateOperationsInput | number | null
     dias_decorridos?: NullableIntFieldUpdateOperationsInput | number | null
+    updated?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type TenancyDetailsCreateInput = {
@@ -18869,7 +20047,6 @@ export namespace Prisma {
   }
 
   export type computeEventsCreateInput = {
-    id?: number
     eventType?: string | null
     eventTime?: Date | string | null
     source?: string | null
@@ -18929,7 +20106,6 @@ export namespace Prisma {
   }
 
   export type computeEventsUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
     eventType?: NullableStringFieldUpdateOperationsInput | string | null
     eventTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     source?: NullableStringFieldUpdateOperationsInput | string | null
@@ -19019,7 +20195,6 @@ export namespace Prisma {
   }
 
   export type computeEventsUpdateManyMutationInput = {
-    id?: IntFieldUpdateOperationsInput | number
     eventType?: NullableStringFieldUpdateOperationsInput | string | null
     eventTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     source?: NullableStringFieldUpdateOperationsInput | string | null
@@ -19079,7 +20254,6 @@ export namespace Prisma {
   }
 
   export type identityEventsCreateInput = {
-    id?: number
     eventType?: string | null
     eventTime?: Date | string | null
     source?: string | null
@@ -19127,7 +20301,6 @@ export namespace Prisma {
   }
 
   export type identityEventsUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
     eventType?: NullableStringFieldUpdateOperationsInput | string | null
     eventTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     source?: NullableStringFieldUpdateOperationsInput | string | null
@@ -19199,7 +20372,6 @@ export namespace Prisma {
   }
 
   export type identityEventsUpdateManyMutationInput = {
-    id?: IntFieldUpdateOperationsInput | number
     eventType?: NullableStringFieldUpdateOperationsInput | string | null
     eventTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     source?: NullableStringFieldUpdateOperationsInput | string | null
@@ -19247,7 +20419,6 @@ export namespace Prisma {
   }
 
   export type networkEventsCreateInput = {
-    id?: number
     eventType?: string | null
     eventTime?: Date | string | null
     source?: string | null
@@ -19270,7 +20441,6 @@ export namespace Prisma {
   }
 
   export type networkEventsUncheckedCreateInput = {
-    id?: number
     eventType?: string | null
     eventTime?: Date | string | null
     source?: string | null
@@ -19290,10 +20460,10 @@ export namespace Prisma {
     tenancyName?: string | null
     isCheck?: boolean | null
     ticket?: string | null
+    id?: number
   }
 
   export type networkEventsUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
     eventType?: NullableStringFieldUpdateOperationsInput | string | null
     eventTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     source?: NullableStringFieldUpdateOperationsInput | string | null
@@ -19316,7 +20486,6 @@ export namespace Prisma {
   }
 
   export type networkEventsUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
     eventType?: NullableStringFieldUpdateOperationsInput | string | null
     eventTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     source?: NullableStringFieldUpdateOperationsInput | string | null
@@ -19336,10 +20505,10 @@ export namespace Prisma {
     tenancyName?: NullableStringFieldUpdateOperationsInput | string | null
     isCheck?: NullableBoolFieldUpdateOperationsInput | boolean | null
     ticket?: NullableStringFieldUpdateOperationsInput | string | null
+    id?: IntFieldUpdateOperationsInput | number
   }
 
   export type networkEventsCreateManyInput = {
-    id?: number
     eventType?: string | null
     eventTime?: Date | string | null
     source?: string | null
@@ -19359,10 +20528,10 @@ export namespace Prisma {
     tenancyName?: string | null
     isCheck?: boolean | null
     ticket?: string | null
+    id?: number
   }
 
   export type networkEventsUpdateManyMutationInput = {
-    id?: IntFieldUpdateOperationsInput | number
     eventType?: NullableStringFieldUpdateOperationsInput | string | null
     eventTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     source?: NullableStringFieldUpdateOperationsInput | string | null
@@ -19385,7 +20554,6 @@ export namespace Prisma {
   }
 
   export type networkEventsUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
     eventType?: NullableStringFieldUpdateOperationsInput | string | null
     eventTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     source?: NullableStringFieldUpdateOperationsInput | string | null
@@ -19405,6 +20573,7 @@ export namespace Prisma {
     tenancyName?: NullableStringFieldUpdateOperationsInput | string | null
     isCheck?: NullableBoolFieldUpdateOperationsInput | boolean | null
     ticket?: NullableStringFieldUpdateOperationsInput | string | null
+    id?: IntFieldUpdateOperationsInput | number
   }
 
   export type BlockVolumeCreateInput = {
@@ -19421,6 +20590,7 @@ export namespace Prisma {
     is_boot_volume?: string | null
     is_orfao?: string | null
     custo_mes?: number | null
+    updated?: Date | string | null
   }
 
   export type BlockVolumeUncheckedCreateInput = {
@@ -19437,6 +20607,7 @@ export namespace Prisma {
     is_boot_volume?: string | null
     is_orfao?: string | null
     custo_mes?: number | null
+    updated?: Date | string | null
   }
 
   export type BlockVolumeUpdateInput = {
@@ -19453,6 +20624,7 @@ export namespace Prisma {
     is_boot_volume?: NullableStringFieldUpdateOperationsInput | string | null
     is_orfao?: NullableStringFieldUpdateOperationsInput | string | null
     custo_mes?: NullableFloatFieldUpdateOperationsInput | number | null
+    updated?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type BlockVolumeUncheckedUpdateInput = {
@@ -19469,6 +20641,7 @@ export namespace Prisma {
     is_boot_volume?: NullableStringFieldUpdateOperationsInput | string | null
     is_orfao?: NullableStringFieldUpdateOperationsInput | string | null
     custo_mes?: NullableFloatFieldUpdateOperationsInput | number | null
+    updated?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type BlockVolumeCreateManyInput = {
@@ -19485,6 +20658,7 @@ export namespace Prisma {
     is_boot_volume?: string | null
     is_orfao?: string | null
     custo_mes?: number | null
+    updated?: Date | string | null
   }
 
   export type BlockVolumeUpdateManyMutationInput = {
@@ -19501,6 +20675,7 @@ export namespace Prisma {
     is_boot_volume?: NullableStringFieldUpdateOperationsInput | string | null
     is_orfao?: NullableStringFieldUpdateOperationsInput | string | null
     custo_mes?: NullableFloatFieldUpdateOperationsInput | number | null
+    updated?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type BlockVolumeUncheckedUpdateManyInput = {
@@ -19517,6 +20692,7 @@ export namespace Prisma {
     is_boot_volume?: NullableStringFieldUpdateOperationsInput | string | null
     is_orfao?: NullableStringFieldUpdateOperationsInput | string | null
     custo_mes?: NullableFloatFieldUpdateOperationsInput | number | null
+    updated?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type CustoPorServiceCreateInput = {
@@ -19932,6 +21108,76 @@ export namespace Prisma {
     custoBackupHora?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
   }
 
+  export type SubscriptionCommitCreateInput = {
+    tenancy_name?: string
+    tenancy_id?: string | null
+    time_started_commit?: Date | string
+    time_ended_commit?: Date | string | null
+    total_used?: number | null
+    updated?: Date | string
+    dias_decorridos?: number | null
+  }
+
+  export type SubscriptionCommitUncheckedCreateInput = {
+    tenancy_name?: string
+    tenancy_id?: string | null
+    time_started_commit?: Date | string
+    time_ended_commit?: Date | string | null
+    total_used?: number | null
+    updated?: Date | string
+    dias_decorridos?: number | null
+  }
+
+  export type SubscriptionCommitUpdateInput = {
+    tenancy_name?: StringFieldUpdateOperationsInput | string
+    tenancy_id?: NullableStringFieldUpdateOperationsInput | string | null
+    time_started_commit?: DateTimeFieldUpdateOperationsInput | Date | string
+    time_ended_commit?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    total_used?: NullableFloatFieldUpdateOperationsInput | number | null
+    updated?: DateTimeFieldUpdateOperationsInput | Date | string
+    dias_decorridos?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type SubscriptionCommitUncheckedUpdateInput = {
+    tenancy_name?: StringFieldUpdateOperationsInput | string
+    tenancy_id?: NullableStringFieldUpdateOperationsInput | string | null
+    time_started_commit?: DateTimeFieldUpdateOperationsInput | Date | string
+    time_ended_commit?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    total_used?: NullableFloatFieldUpdateOperationsInput | number | null
+    updated?: DateTimeFieldUpdateOperationsInput | Date | string
+    dias_decorridos?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type SubscriptionCommitCreateManyInput = {
+    tenancy_name?: string
+    tenancy_id?: string | null
+    time_started_commit?: Date | string
+    time_ended_commit?: Date | string | null
+    total_used?: number | null
+    updated?: Date | string
+    dias_decorridos?: number | null
+  }
+
+  export type SubscriptionCommitUpdateManyMutationInput = {
+    tenancy_name?: StringFieldUpdateOperationsInput | string
+    tenancy_id?: NullableStringFieldUpdateOperationsInput | string | null
+    time_started_commit?: DateTimeFieldUpdateOperationsInput | Date | string
+    time_ended_commit?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    total_used?: NullableFloatFieldUpdateOperationsInput | number | null
+    updated?: DateTimeFieldUpdateOperationsInput | Date | string
+    dias_decorridos?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type SubscriptionCommitUncheckedUpdateManyInput = {
+    tenancy_name?: StringFieldUpdateOperationsInput | string
+    tenancy_id?: NullableStringFieldUpdateOperationsInput | string | null
+    time_started_commit?: DateTimeFieldUpdateOperationsInput | Date | string
+    time_ended_commit?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    total_used?: NullableFloatFieldUpdateOperationsInput | number | null
+    updated?: DateTimeFieldUpdateOperationsInput | Date | string
+    dias_decorridos?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
   export type StringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | null
@@ -20202,6 +21448,8 @@ export namespace Prisma {
     available_amount?: SortOrder
     total_dias_contrato?: SortOrder
     dias_decorridos?: SortOrder
+    updated?: SortOrder
+    status?: SortOrder
   }
 
   export type SubscriptionDetailsAvgOrderByAggregateInput = {
@@ -20235,6 +21483,8 @@ export namespace Prisma {
     available_amount?: SortOrder
     total_dias_contrato?: SortOrder
     dias_decorridos?: SortOrder
+    updated?: SortOrder
+    status?: SortOrder
   }
 
   export type SubscriptionDetailsMinOrderByAggregateInput = {
@@ -20259,6 +21509,8 @@ export namespace Prisma {
     available_amount?: SortOrder
     total_dias_contrato?: SortOrder
     dias_decorridos?: SortOrder
+    updated?: SortOrder
+    status?: SortOrder
   }
 
   export type SubscriptionDetailsSumOrderByAggregateInput = {
@@ -20757,7 +22009,6 @@ export namespace Prisma {
   }
 
   export type networkEventsCountOrderByAggregateInput = {
-    id?: SortOrder
     eventType?: SortOrder
     eventTime?: SortOrder
     source?: SortOrder
@@ -20777,6 +22028,7 @@ export namespace Prisma {
     tenancyName?: SortOrder
     isCheck?: SortOrder
     ticket?: SortOrder
+    id?: SortOrder
   }
 
   export type networkEventsAvgOrderByAggregateInput = {
@@ -20784,7 +22036,6 @@ export namespace Prisma {
   }
 
   export type networkEventsMaxOrderByAggregateInput = {
-    id?: SortOrder
     eventType?: SortOrder
     eventTime?: SortOrder
     source?: SortOrder
@@ -20804,10 +22055,10 @@ export namespace Prisma {
     tenancyName?: SortOrder
     isCheck?: SortOrder
     ticket?: SortOrder
+    id?: SortOrder
   }
 
   export type networkEventsMinOrderByAggregateInput = {
-    id?: SortOrder
     eventType?: SortOrder
     eventTime?: SortOrder
     source?: SortOrder
@@ -20827,6 +22078,7 @@ export namespace Prisma {
     tenancyName?: SortOrder
     isCheck?: SortOrder
     ticket?: SortOrder
+    id?: SortOrder
   }
 
   export type networkEventsSumOrderByAggregateInput = {
@@ -20858,6 +22110,7 @@ export namespace Prisma {
     is_boot_volume?: SortOrder
     is_orfao?: SortOrder
     custo_mes?: SortOrder
+    updated?: SortOrder
   }
 
   export type BlockVolumeAvgOrderByAggregateInput = {
@@ -20880,6 +22133,7 @@ export namespace Prisma {
     is_boot_volume?: SortOrder
     is_orfao?: SortOrder
     custo_mes?: SortOrder
+    updated?: SortOrder
   }
 
   export type BlockVolumeMinOrderByAggregateInput = {
@@ -20896,6 +22150,7 @@ export namespace Prisma {
     is_boot_volume?: SortOrder
     is_orfao?: SortOrder
     custo_mes?: SortOrder
+    updated?: SortOrder
   }
 
   export type BlockVolumeSumOrderByAggregateInput = {
@@ -21194,6 +22449,58 @@ export namespace Prisma {
     custoBackupHora?: SortOrder
   }
 
+  export type SubscriptionCommitOrderByRelevanceInput = {
+    fields: SubscriptionCommitOrderByRelevanceFieldEnum | SubscriptionCommitOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type SubscriptionCommitTenancy_nameTime_started_commitUpdatedCompoundUniqueInput = {
+    tenancy_name: string
+    time_started_commit: Date | string
+    updated: Date | string
+  }
+
+  export type SubscriptionCommitCountOrderByAggregateInput = {
+    tenancy_name?: SortOrder
+    tenancy_id?: SortOrder
+    time_started_commit?: SortOrder
+    time_ended_commit?: SortOrder
+    total_used?: SortOrder
+    updated?: SortOrder
+    dias_decorridos?: SortOrder
+  }
+
+  export type SubscriptionCommitAvgOrderByAggregateInput = {
+    total_used?: SortOrder
+    dias_decorridos?: SortOrder
+  }
+
+  export type SubscriptionCommitMaxOrderByAggregateInput = {
+    tenancy_name?: SortOrder
+    tenancy_id?: SortOrder
+    time_started_commit?: SortOrder
+    time_ended_commit?: SortOrder
+    total_used?: SortOrder
+    updated?: SortOrder
+    dias_decorridos?: SortOrder
+  }
+
+  export type SubscriptionCommitMinOrderByAggregateInput = {
+    tenancy_name?: SortOrder
+    tenancy_id?: SortOrder
+    time_started_commit?: SortOrder
+    time_ended_commit?: SortOrder
+    total_used?: SortOrder
+    updated?: SortOrder
+    dias_decorridos?: SortOrder
+  }
+
+  export type SubscriptionCommitSumOrderByAggregateInput = {
+    total_used?: SortOrder
+    dias_decorridos?: SortOrder
+  }
+
   export type NullableStringFieldUpdateOperationsInput = {
     set?: string | null
   }
@@ -21234,16 +22541,16 @@ export namespace Prisma {
     divide?: Decimal | DecimalJsLike | number | string
   }
 
+  export type NullableBoolFieldUpdateOperationsInput = {
+    set?: boolean | null
+  }
+
   export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
     decrement?: number
     multiply?: number
     divide?: number
-  }
-
-  export type NullableBoolFieldUpdateOperationsInput = {
-    set?: boolean | null
   }
 
   export type BigIntFieldUpdateOperationsInput = {

@@ -37,6 +37,7 @@ model CpuUtilization {
   metric_timestamp    DateTime? @db2.DateTime(0)
   cpu_usage           Float?
 
+  @@index([metric_timestamp], map: "idx_metric_timestamp")
   @@ignore
 }
 
@@ -62,6 +63,8 @@ model SubscriptionDetails {
   available_amount    Float?
   total_dias_contrato Int?
   dias_decorridos     Int?
+  updated             DateTime? @db2.DateTime(0)
+  status              String?   @db2.VarChar(10)
 
   @@id([tenancy_id, subscription_id, time_start])
 }
@@ -116,7 +119,7 @@ model CustoMensalTotal {
 }
 
 model computeEvents {
-  id                   Int       @id @default(0)
+  id                   Int       @id @default(autoincrement())
   eventType            String?   @db2.VarChar(255)
   eventTime            DateTime? @db2.DateTime(0)
   source               String?   @db2.VarChar(100)
@@ -146,7 +149,7 @@ model computeEvents {
 }
 
 model identityEvents {
-  id                     Int       @id @default(0)
+  id                     Int       @id @default(autoincrement())
   eventType              String?   @db2.VarChar(255)
   eventTime              DateTime? @db2.DateTime(0)
   source                 String?   @db2.VarChar(100)
@@ -170,7 +173,6 @@ model identityEvents {
 }
 
 model networkEvents {
-  id              Int       @id @default(0)
   eventType       String?   @db2.VarChar(255)
   eventTime       DateTime? @db2.DateTime(0)
   source          String?   @db2.VarChar(100)
@@ -190,6 +192,7 @@ model networkEvents {
   tenancyName     String?   @db2.VarChar(255)
   isCheck         Boolean?
   ticket          String?   @db2.VarChar(50)
+  id              Int       @id @default(autoincrement())
 }
 
 model BlockVolume {
@@ -206,6 +209,7 @@ model BlockVolume {
   is_boot_volume      String?   @db2.Char(1)
   is_orfao            String?   @db2.Char(1)
   custo_mes           Float?
+  updated             DateTime? @db2.DateTime(0)
 
   @@id([tenancy_id, id])
 }
@@ -267,6 +271,7 @@ model MemoryUtilization {
   metric_timestamp    DateTime? @db2.DateTime(0)
   memory_usage        Float?
 
+  @@index([metric_timestamp], map: "idx_metric_timestamp")
   @@ignore
 }
 
@@ -286,4 +291,16 @@ model VolumesBackup {
   custoBackupDia    Decimal?  @db2.Decimal(10, 2)
   custoBackupMes    Decimal?  @db2.Decimal(10, 2)
   custoBackupHora   Decimal?  @db2.Decimal(10, 2)
+}
+
+model SubscriptionCommit {
+  tenancy_name        String    @default(dbgenerated("()")) @db2.VarChar(50)
+  tenancy_id          String?   @db2.VarChar(200)
+  time_started_commit DateTime  @default(dbgenerated("(0000-00-00 00:00:00)")) @db2.DateTime(0)
+  time_ended_commit   DateTime? @db2.DateTime(0)
+  total_used          Float?
+  updated             DateTime  @default(dbgenerated("(0000-00-00 00:00:00)")) @db2.DateTime(0)
+  dias_decorridos     Int?
+
+  @@id([tenancy_name, time_started_commit, updated])
 }

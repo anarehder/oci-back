@@ -1,4 +1,4 @@
-import { BlockVolume, ComputeInstances, CustoDiarioTotal, CustoPorService, CustoPorSkuName, SubscriptionDetails } from "../prisma/generated/banco2";
+import { BlockVolume, ComputeInstances, CustoDiarioTotal, CustoPorService, CustoPorSkuName, SubscriptionCommit, SubscriptionDetails } from "../prisma/generated/banco2";
 
 export type ApplicationError = {
     name: string;
@@ -11,6 +11,7 @@ export type User = {
     password: string;
     isAdmin: boolean;
     client: string;
+    name: string;
 }
 
 export type UserTenancy = {
@@ -39,6 +40,7 @@ export type UserLogin = {
     isAdmin: boolean;
     client: string;
     token: string;
+    name: string;
 }
 
 export type ReshapeInput = {
@@ -55,14 +57,15 @@ export type DashboardsOutput = {
     tenancies: string[],
     user: string[]| null,
     computeInstances: ComputeInstances[],
+    top5_costVM: Top5VMCost[],
     orphan: BlockVolume[],
-    cost_history: MonthCost[],
-    cost_daily: CustoDiarioTotal[],
     cost_services: CustoPorService[] | SeviceCost[] ,
     cost_SKU: CustoPorSkuName[],
-    subscriptionDetails: SubscriptionDetails[],
-    top5_costVM: Top5VMCost[],
-    creditsOCI: CreditsOCI[]
+    cost_history?: MonthCost[],
+    cost_daily?: CustoDiarioTotal[],
+    subscriptionDetails?: SubscriptionDetails[],
+    creditsOCI?: CreditsOCI[],
+    commitDetails?: SubscriptionCommit[]
 }
 
 export type Top5VMCost = {

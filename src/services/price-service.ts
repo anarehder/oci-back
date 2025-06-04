@@ -26,3 +26,28 @@ export async function getSubscriptionDetailsRepository(tenancies: string[]) {
       })
     return subscriptions;
 }
+
+export async function getCommitDetailsRepository(tenancies: string[]) {
+  const hoje = new Date();
+  hoje.setHours(0, 0, 0, 0);
+
+  const amanha = new Date();
+  amanha.setHours(0, 0, 0, 0);
+  amanha.setDate(amanha.getDate() + 1);
+  
+  const subscriptions = await prisma2.subscriptionCommit.findMany({
+    where: {
+      tenancy_name: {
+        in: tenancies,
+      },
+      updated: {
+        gte: hoje,
+        lt: amanha,
+      }
+    },
+    orderBy: {
+      tenancy_name: 'asc',
+    }
+  })
+  return subscriptions;
+}

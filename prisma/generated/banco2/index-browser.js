@@ -157,7 +157,9 @@ exports.Prisma.SubscriptionDetailsScalarFieldEnum = {
   line_net_amount: 'line_net_amount',
   available_amount: 'available_amount',
   total_dias_contrato: 'total_dias_contrato',
-  dias_decorridos: 'dias_decorridos'
+  dias_decorridos: 'dias_decorridos',
+  updated: 'updated',
+  status: 'status'
 };
 
 exports.Prisma.TenancyDetailsScalarFieldEnum = {
@@ -260,7 +262,6 @@ exports.Prisma.IdentityEventsScalarFieldEnum = {
 };
 
 exports.Prisma.NetworkEventsScalarFieldEnum = {
-  id: 'id',
   eventType: 'eventType',
   eventTime: 'eventTime',
   source: 'source',
@@ -279,7 +280,8 @@ exports.Prisma.NetworkEventsScalarFieldEnum = {
   createdAt: 'createdAt',
   tenancyName: 'tenancyName',
   isCheck: 'isCheck',
-  ticket: 'ticket'
+  ticket: 'ticket',
+  id: 'id'
 };
 
 exports.Prisma.BlockVolumeScalarFieldEnum = {
@@ -295,7 +297,8 @@ exports.Prisma.BlockVolumeScalarFieldEnum = {
   vpus_per_gb: 'vpus_per_gb',
   is_boot_volume: 'is_boot_volume',
   is_orfao: 'is_orfao',
-  custo_mes: 'custo_mes'
+  custo_mes: 'custo_mes',
+  updated: 'updated'
 };
 
 exports.Prisma.CustoPorServiceScalarFieldEnum = {
@@ -357,6 +360,16 @@ exports.Prisma.VolumesBackupScalarFieldEnum = {
   custoBackupHora: 'custoBackupHora'
 };
 
+exports.Prisma.SubscriptionCommitScalarFieldEnum = {
+  tenancy_name: 'tenancy_name',
+  tenancy_id: 'tenancy_id',
+  time_started_commit: 'time_started_commit',
+  time_ended_commit: 'time_ended_commit',
+  total_used: 'total_used',
+  updated: 'updated',
+  dias_decorridos: 'dias_decorridos'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -395,7 +408,8 @@ exports.Prisma.SubscriptionDetailsOrderByRelevanceFieldEnum = {
   payment_method: 'payment_method',
   pricing_model: 'pricing_model',
   product: 'product',
-  is_having_usage: 'is_having_usage'
+  is_having_usage: 'is_having_usage',
+  status: 'status'
 };
 
 exports.Prisma.TenancyDetailsOrderByRelevanceFieldEnum = {
@@ -532,6 +546,11 @@ exports.Prisma.VolumesBackupOrderByRelevanceFieldEnum = {
   backupType: 'backupType'
 };
 
+exports.Prisma.SubscriptionCommitOrderByRelevanceFieldEnum = {
+  tenancy_name: 'tenancy_name',
+  tenancy_id: 'tenancy_id'
+};
+
 
 exports.Prisma.ModelName = {
   ComputeInstances: 'ComputeInstances',
@@ -547,7 +566,8 @@ exports.Prisma.ModelName = {
   CustoPorService: 'CustoPorService',
   CustoPorSkuName: 'CustoPorSkuName',
   IdentityUsers: 'IdentityUsers',
-  VolumesBackup: 'VolumesBackup'
+  VolumesBackup: 'VolumesBackup',
+  SubscriptionCommit: 'SubscriptionCommit'
 };
 
 /**

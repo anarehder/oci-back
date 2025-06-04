@@ -1,6 +1,7 @@
 import { User, UserTenancy } from "../protocols";
 import { db, prisma1 } from "../config/database";
 import { RowDataPacket } from "mysql2";
+import { workerData } from "worker_threads";
 
 export async function createUserRepository(username: string, password: string, isAdmin:boolean, client: string) {
     const response = await db.query<RowDataPacket[]>(`
@@ -28,20 +29,13 @@ export async function deleteUserSessionRepository(token: string ) {
 
 
 export async function getUserByUsernameRepository(username: string) {
-    const [rows] = await db.query<RowDataPacket[]>(`
-        SELECT * FROM User
-        WHERE username = ?;
-    `, [username]);
+    const user = await prisma1.user.findFirst({
+        where: {
+            username
+        },
+    });
 
-    const user: User[] = rows.map(row => ({
-        id: row.id,
-        username: row.username,
-        password: row.password,
-        isAdmin: row.isAdmin,
-        client: row.client
-    }));
-
-    return user[0];
+    return user;
 }
 
 export async function getClientByClientNameRepository(client: string) {
@@ -58,7 +52,7 @@ export async function getUserDetailsByTokenRepository(token: string){
         FROM Session
         JOIN User ON User.id = Session.userId
         JOIN Clients ON Clients.client = User.client
-        WHERE token = ${token};
+        WHERE token = ${token} and Client.Active = true;
     ;`
     return response;
 }

@@ -14,13 +14,24 @@ export async function getOrphanBVRepository() {
 }
 
 export async function getBlockVolumeListRepository() {
-    const orphan = await prisma2.blockVolume.findMany({
+    const blockVolume = await prisma2.blockVolume.findMany({
         orderBy: {
             display_name: 'asc',
         }
     });
 
-    return orphan;
+    return blockVolume;
+}
+
+
+export async function getVolumeBackupListRepository() {
+    const backup = await prisma2.volumesBackup.findMany({
+        orderBy: {
+            displayName: 'asc',
+        }
+    });
+
+    return backup;
 }
 
 export async function getBlockVolumesByTenancyRepository(tenancies: string[]){
@@ -36,4 +47,35 @@ export async function getBlockVolumesByTenancyRepository(tenancies: string[]){
       });
 
     return blockVolumes;
+}
+
+export async function getVolumesBackupByTenancyRepository(tenancies: string[]){
+    const backup = await prisma2.volumesBackup.findMany({
+        where: {
+          tenancyName: {
+            in: tenancies,
+          },
+        },
+        orderBy: {
+          displayName: 'asc',
+        },
+      });
+
+    return backup;
+}
+
+export async function getOrphanByTenancyRepository(tenancies: string[]) {
+    const orphan = await prisma2.blockVolume.findMany({
+        where: {
+            is_orfao: 'Y',
+            tenancy_name: {
+                in: tenancies,
+            },
+        },
+        orderBy: {
+            display_name: 'asc', // ou 'desc' para ordem decrescente
+        },
+    });
+
+    return orphan;
 }

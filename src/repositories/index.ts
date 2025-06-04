@@ -1,4 +1,4 @@
-// export * from './audit-repository';
+export * from './block-volume-repository';
 export * from './compute-instances-repository';
 export * from './contract-repository';
 export * from './costs-repository';

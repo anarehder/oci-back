@@ -24,11 +24,12 @@ export async function userLoginService(username: string, password: string) {
 
     const token = await createSession(user.id);
 
-    const fullResponse: UserLogin = {
+    const fullResponse = {
                         userId: user.id,
                         username: user.username,
                         isAdmin: user.isAdmin,
                         client: user.client,
+                        name: user.name,
                         token
     }
     return (fullResponse);
