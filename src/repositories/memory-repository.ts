@@ -90,7 +90,7 @@ export async function getLatestMemoryByTimeRepository(interval: string) {
 
 export async function getMemoryByDisplayNameAndTimeRepository(displayName:string, interval: string) {
     const query = `SELECT * FROM MemoryUtilization
-            WHERE resourceDisplayName = '${displayName}' AND metric_timestamp >= DATE_SUB(NOW(), INTERVAL ${interval}) ORDER BY metric_timestamp DESC`;
+            WHERE resourceDisplayName = '${displayName}' AND metric_timestamp >= DATE_SUB(NOW(), INTERVAL ${interval}) ORDER BY metric_timestamp ASC`;
     const [rows] = await db2.query<RowDataPacket[]>(query);
 
     const memory: MemoryUtilization[] = rows.map(instance => ({

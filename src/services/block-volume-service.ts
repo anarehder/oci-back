@@ -22,18 +22,12 @@ export async function getJoinBlockVolumeService(userToken: string, body:JoinDash
     const userDetails = await getUserDetails(token);
     const userTenancies = userDetails.map(user => user.tenancy.toLowerCase());
     const tenancies = [body.tenancy1?.toLowerCase(), body.tenancy2?.toLowerCase(), body.tenancy3?.toLowerCase()].filter(Boolean);
-    
-    if (userDetails[0].isAdmin) {
+    const isValid = tenancies.every(key => userTenancies.includes(key));
+    if (userDetails[0].isAdmin || isValid) {
         const response = await getBlockVolumesByTenancyRepository(tenancies);
         return response;
     }
-    // Verifica se todas as chaves de filteredTenancies estão incluídas em tenancies
-    const isValid = tenancies.every(key => userTenancies.includes(key));
-
-    if (!isValid) {
+    else {
         throw conflictError("Você não tem acesso às tenancies desejadas");
-    } else {
-        const response = await getBlockVolumesByTenancyRepository(tenancies);
-        return response;
     }
 }

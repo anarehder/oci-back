@@ -88,7 +88,7 @@ export async function getLatestCPUByTimeRepository(interval: string) {
 
 export async function getCPUByDisplayNameAndTimeRepository(displayName: string, interval: string) {
     const query = `SELECT * FROM CpuUtilization
-            WHERE resourceDisplayName = '${displayName}' AND metric_timestamp >= DATE_SUB(NOW(), INTERVAL ${interval}) ORDER BY metric_timestamp DESC`;
+            WHERE resourceDisplayName = '${displayName}' AND metric_timestamp >= DATE_SUB(NOW(), INTERVAL ${interval}) ORDER BY metric_timestamp ASC`;
     const [rows] = await db2.query<RowDataPacket[]>(query);
 
     const cpus: CpuUtilization[] = rows.map(instance => ({

@@ -53,24 +53,7 @@ export async function getJoinEventsService(userToken: string, body: JoinDashboar
     
     // Verifica se todas as chaves de filteredTenancies estão incluídas em tenancies
     const isValid = tenancies.every(key => userTenancies.includes(key));
-    if (userDetails[0].isAdmin) {
-        if (type === 'compute'){
-            const response = await getComputeInstancesEventsRepository();
-            return response;
-        }
-        if (type === 'identity'){
-            const response = await getIdentityEventsRepository();
-            return response;
-        }
-        if (type === 'network'){
-            const response = await getNetworkEventsRepository();
-            return response;
-        }
-    }
-    
-    if (!isValid) {
-        throw conflictError("Você não tem acesso às tenancies desejadas");
-    } else {
+    if (userDetails[0].isAdmin || isValid) {
         if (type === 'compute'){
             const response = await getJoinComputeInstancesEventsRepository(tenancies);
             return response;
@@ -82,6 +65,8 @@ export async function getJoinEventsService(userToken: string, body: JoinDashboar
         if (type === 'network'){
             const response = await getJoinNetworkEventsRepository(tenancies);
             return response;
-        }    
+        } 
+    }else {
+        throw conflictError("Você não tem acesso às tenancies desejadas");
     }
 }
