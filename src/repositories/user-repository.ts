@@ -52,7 +52,7 @@ export async function getUserDetailsByTokenRepository(token: string){
         FROM Session
         JOIN User ON User.id = Session.userId
         JOIN Clients ON Clients.client = User.client
-        WHERE token = ${token} and Client.Active = true;
+        WHERE token = ${token} and Clients.Active = true;
     ;`
     return response;
 }

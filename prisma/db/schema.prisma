@@ -9,60 +9,59 @@ datasource db {
 }
 
 model Clients {
-  id          Int       @id @default(autoincrement())
-  Client      String    @db.VarChar(1024)
-  Tenancy     String    @db.VarChar(1024)
-  Active      Boolean   @default(true)
+  id      Int     @id @default(autoincrement())
+  Client  String  @db.VarChar(1024)
+  Tenancy String  @db.VarChar(1024)
+  Active  Boolean @default(true)
 }
 
-
 model Log_table {
-  id            Int           @id @default(autoincrement())
-  info          String        @db.VarChar(1024)
-  createdAt     DateTime      @default(now())
+  id        Int      @id @default(autoincrement())
+  info      String   @db.VarChar(1024)
+  createdAt DateTime @default(now())
 }
 
 model Session {
-  id            Int           @id @default(autoincrement())
-  userId        Int
-  token         String        @db.VarChar(255)
-  createdAt     DateTime      @default(now())
-  updatedAt     DateTime      @default(now()) @updatedAt
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  token     String   @db.VarChar(255)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+  User      User     @relation(fields: [userId], references: [id])
 
-  User          User          @relation(fields: [userId], references: [id])
+  @@index([userId], map: "Session_userId_fkey")
 }
 
 model User {
-  id            Int           @id @default(autoincrement())
-  name          String        @db.VarChar(255)
-  username      String        @db.VarChar(255)
-  password      String        @db.VarChar(255)
-  isAdmin       Boolean
-  client        String        @db.VarChar(255)
-  createdAt     DateTime      @default(now())
-  updatedAt     DateTime      @default(now()) @updatedAt
-
-  Session       Session[]
-  UserRole      UserRole[]
+  id        Int        @id @default(autoincrement())
+  name      String     @db.VarChar(255)
+  username  String     @db.VarChar(255)
+  password  String     @db.VarChar(255)
+  isAdmin   Boolean
+  client    String     @db.VarChar(255)
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @default(now()) @updatedAt
+  Session   Session[]
+  UserRole  UserRole[]
 }
 
 model Role {
-  id            Int           @id @default(autoincrement())
-  name          String        @db.VarChar(255)
-  createdAt     DateTime      @default(now())
-  updatedAt     DateTime      @default(now()) @updatedAt  
-
-  UserRole      UserRole[]
+  id        Int        @id @default(autoincrement())
+  name      String     @db.VarChar(255)
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @default(now()) @updatedAt
+  UserRole  UserRole[]
 }
 
 model UserRole {
-  id            Int           @id @default(autoincrement())
-  userId        Int   
-  roleId        Int       
-  createdAt     DateTime      @default(now())
-  updatedAt     DateTime      @default(now()) @updatedAt  
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  roleId    Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+  Role      Role     @relation(fields: [roleId], references: [id])
+  User      User     @relation(fields: [userId], references: [id])
 
-
-  User          User          @relation(fields: [userId], references: [id])
-  Role          Role          @relation(fields: [roleId], references: [id])
+  @@index([roleId], map: "UserRole_roleId_fkey")
+  @@index([userId], map: "UserRole_userId_fkey")
 }

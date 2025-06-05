@@ -20,8 +20,8 @@ export async function getClientsTenanciesListRepository(){
       orderBy: {
         Tenancy: 'asc',
       },
-      where: {
-        Active: true
+      where:{
+        Active: true,
       }
     });
 

@@ -60,7 +60,7 @@ export type DashboardsOutput = {
     top5_costVM: Top5VMCost[],
     orphan: BlockVolume[],
     cost_services: CustoPorService[] | SeviceCost[] ,
-    cost_SKU: CustoPorSkuName[],
+    cost_SKU: CustoPorSkuName[] | SeviceCost[] ,
     cost_history?: MonthCost[],
     cost_daily?: CustoDiarioTotal[],
     subscriptionDetails?: SubscriptionDetails[],
@@ -118,11 +118,16 @@ export type MonthCost = {
   };
 
 export type SeviceCost = {
-    service: string;
-    tenancies: string;
-    total_cost: number;
-    total_usage: number;
-    currencies: string;
-    time_started: string;
-    time_ended: string;
+    service?: string;
+    sku_name?: string;
+    tenancies?: string;
+    total_cost?: number;
+    total_usage?: number;
+    currencies?: string;
+    time_started?: string;
+    time_ended?: string;
+    _sum?: {
+        cost_mes: number;
+        usage_mes: number;
+    };
   };

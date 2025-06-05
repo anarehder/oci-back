@@ -1,7 +1,7 @@
 import { DashboardsOutput, JoinDashboardsInput } from "../protocols";
 import { unauthorizedError } from "../errors";
 import { getUserDetails } from "./user-service";
-import { getClientsTenanciesListRepository, getComputeInstancesByTenancyRepository, getComputeInstancesRepository, getMonthCostsByTenancyRepository, getMonthDailyCostsRepository, getMonthServiceCostsByTenancyRepository, getMonthSKUCostsByTenancyRepository, getOrphanBVRepository, getOrphanByTenancyRepository, getSubscriptionAmountByTenancyRepository, getTop5CostComputeInstancesByTenancyRepository, getTop5CostComputeInstancesRepository } from "../repositories";
+import { getClientsTenanciesListRepository, getComputeInstancesByTenancyRepository, getComputeInstancesRepository, getMonthCostsByTenancyRepository, getMonthDailyCostsRepository, getMonthServiceCostsByTenancyRepository, getMonthServiceCostsGroupByRepository, getMonthSKUCostsByTenancyRepository, getMonthSKUCostsGroupByRepository, getOrphanBVRepository, getOrphanByTenancyRepository, getSubscriptionAmountByTenancyRepository, getTop5CostComputeInstancesByTenancyRepository, getTop5CostComputeInstancesRepository } from "../repositories";
 import { getCommitDetailsRepository, getSubscriptionDetailsRepository } from "./price-service";
 
 export async function getDashboardService(userToken: string, month: string) {
@@ -43,8 +43,8 @@ export async function getAllDashboards(month: string){
     const tenanciesList = await getClientsTenanciesListRepository();
     const tenancies = tenanciesList.map(t => t.Tenancy.toLowerCase());
 
-    const cost_services = await getMonthServiceCostsByTenancyRepository(tenancies, month);
-    const cost_SKU = await getMonthSKUCostsByTenancyRepository(tenancies, month);
+    const cost_services = await getMonthServiceCostsGroupByRepository(tenancies, month);
+    const cost_SKU = await getMonthSKUCostsGroupByRepository(tenancies, month);
 
     const response: DashboardsOutput = {
         tenancies,
@@ -62,9 +62,9 @@ export async function getTenancyDashboards(tenancies: string[], month: string){
     const computeInstances = await getComputeInstancesByTenancyRepository(tenancies);
     const orphan = await getOrphanByTenancyRepository(tenancies);
 
-    const cost_services = await getMonthServiceCostsByTenancyRepository(tenancies, month);
+    const cost_services = await getMonthServiceCostsGroupByRepository(tenancies, month);
     const top5_costVM = await getTop5CostComputeInstancesByTenancyRepository(tenancies)
-    const cost_SKU = await getMonthSKUCostsByTenancyRepository(tenancies, month);
+    const cost_SKU = await getMonthSKUCostsGroupByRepository(tenancies, month);
 
     // const creditsOCI = await getSubscriptionAmountByTenancyRepository(tenancies);
     

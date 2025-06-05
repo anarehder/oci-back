@@ -69,6 +69,35 @@ export async function getMonthServiceCostsByTenancyRepository(tenancies: string[
       orderBy: {
         cost_mes: 'desc',
       },
+      take: 10,
+  });
+
+  return monthServicesCost;
+}
+
+export async function getMonthServiceCostsGroupByRepository(tenancies: string[], month: string) {
+  const startOfMonth = new Date(`${month}-01T00:00:00.000Z`);
+  const startOfNextMonth = new Date(new Date(startOfMonth).setMonth(startOfMonth.getMonth() + 1));
+  const monthServicesCost = await prisma2.custoPorService.groupBy({
+    by: ['service'],
+    where: {
+      tenancy_name: {
+        in: tenancies,
+      },
+      time_started: {
+        gte: startOfMonth,
+        lt: startOfNextMonth,
+      },
+    },
+    _sum: {
+      cost_mes: true,
+      usage_mes: true,
+    },
+    orderBy:{
+      _sum:{
+        cost_mes: 'desc'
+      }
+    }
   });
 
   return monthServicesCost;
@@ -94,6 +123,38 @@ export async function getMonthSKUCostsByTenancyRepository(tenancies: string[], m
 
   return monthSKUCost;
 }
+
+
+export async function getMonthSKUCostsGroupByRepository(tenancies: string[], month: string) {
+  const startOfMonth = new Date(`${month}-01T00:00:00.000Z`);
+  const startOfNextMonth = new Date(new Date(startOfMonth).setMonth(startOfMonth.getMonth() + 1));
+  const monthSKUCost = await prisma2.custoPorSkuName.groupBy({
+    by: ['sku_name'],
+    where: {
+      tenancy_name: {
+        in: tenancies,
+      },
+      time_started: {
+        gte: startOfMonth,
+        lt: startOfNextMonth,
+      }
+    },
+    _sum: {
+      cost_mes: true,
+      usage_mes: true,
+    },
+    orderBy: {
+      _sum: {
+        cost_mes: 'desc'
+      }
+    },
+    take: 10
+  });
+
+
+  return monthSKUCost;
+}
+
 
 export async function getMonthDailyCostsRepository(tenancies: string[], month: string) {
   const startOfMonth = new Date(`${month}-01T00:00:00.000Z`);

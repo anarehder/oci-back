@@ -21,7 +21,7 @@ export async function getSubscriptionDetailsRepository(tenancies: string[]) {
           }
         },
         orderBy: {
-          tenancy_name: 'asc',
+          time_end: 'asc',
         }
       })
     return subscriptions;
@@ -46,7 +46,7 @@ export async function getCommitDetailsRepository(tenancies: string[]) {
       }
     },
     orderBy: {
-      tenancy_name: 'asc',
+      time_ended_commit: 'asc',
     }
   })
   return subscriptions;
