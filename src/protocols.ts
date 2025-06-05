@@ -97,6 +97,14 @@ export type CpuUtilization = {
     cpu_usage: number;
 };
 
+export type CPUMEM_avg = {
+    resourceDisplayName: string;
+    tenancy_name: string;
+    avg_cpu_usage?: number;
+    avg_memory_usage?: number;
+};
+
+
 export type MemoryUtilization = {
     profile_name: string;
     tenancy_name: string;

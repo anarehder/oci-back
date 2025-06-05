@@ -1,5 +1,5 @@
 import { db2 } from "../config/database";
-import { CpuUtilization } from "../protocols";
+import { CPUMEM_avg, CpuUtilization } from "../protocols";
 import { RowDataPacket } from "mysql2";
 
 export async function getCPUByDisplayNameRepository(displayName:string) {
@@ -44,6 +44,50 @@ export async function getLatestCpusRepository() {
 
     return cpus;
 }
+
+export async function get30MinAverageCPURepository(){
+    const query = `SELECT resourceDisplayName, ComputeInstances.tenancy_name, AVG(cpu_usage) AS avg_cpu_usage FROM CpuUtilization JOIN ComputeInstances ON CpuUtilization.resourceDisplayName = ComputeInstances.display_name WHERE metric_timestamp >= DATE_SUB(NOW(), INTERVAL 30 MINUTE) GROUP BY resourceDisplayName ORDER BY avg_cpu_usage DESC LIMIT 8;`;
+
+    const [rows] = await db2.query<RowDataPacket[]>(`${query}`);
+    const cpus: CPUMEM_avg[] = rows.map(instance => ({
+        resourceDisplayName: instance.resourceDisplayName,
+        tenancy_name: instance.tenancy_name,
+        avg_cpu_usage: instance.avg_cpu_usage,
+    }));
+
+    return cpus;
+}
+
+
+export async function get30MinAverageCPUByTenancyRepository(tenancies: string[]){
+    const placeholders = tenancies.map(t => `'${t}'`).join(", ");
+
+    const query = `SELECT resourceDisplayName, ComputeInstances.tenancy_name, AVG(cpu_usage) AS avg_cpu_usage FROM MemoryUtilization JOIN ComputeInstances ON CpuUtilization.resourceDisplayName = ComputeInstances.display_name WHERE metric_timestamp >= DATE_SUB(NOW(), INTERVAL 30 MINUTE) AND profile_name IN (${placeholders}) GROUP BY resourceDisplayName ORDER BY avg_cpu_usage DESC LIMIT 8;`;
+
+    const [rows] = await db2.query<RowDataPacket[]>(`${query}`);
+    const cpus: CPUMEM_avg[] = rows.map(instance => ({
+        resourceDisplayName: instance.resourceDisplayName,
+        tenancy_name: instance.tenancy_name,
+        avg_cpu_usage: instance.avg_cpu_usage,
+    }));
+
+    return cpus;
+}
+
+export async function get30MinAverageCPUByDisplayNameRepository(resourceDisplayName: string){
+
+    const query = `SELECT resourceDisplayName, ComputeInstances.tenancy_name, AVG(cpu_usage) AS avg_cpu_usage FROM CpuUtilization JOIN ComputeInstances ON CpuUtilization.resourceDisplayName = ComputeInstances.display_name WHERE metric_timestamp >= DATE_SUB(NOW(), INTERVAL 30 MINUTE) AND resourceDisplayName = '${resourceDisplayName}' GROUP BY resourceDisplayName ORDER BY avg_cpu_usage DESC LIMIT 8;`;
+
+    const [rows] = await db2.query<RowDataPacket[]>(`${query}`);
+    const cpus: CPUMEM_avg[] = rows.map(instance => ({
+        resourceDisplayName: instance.resourceDisplayName,
+        tenancy_name: instance.tenancy_name,
+        avg_cpu_usage: instance.avg_cpu_usage,
+    }));
+
+    return cpus;
+}
+
 
 export async function getLatestCpusByTenancyRepository(tenancies: string[]){
     const placeholders = tenancies.map(t => `'${t}'`).join(", ");
